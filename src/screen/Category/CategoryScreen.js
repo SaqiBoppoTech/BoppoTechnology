@@ -78,7 +78,7 @@ const CategoryScreen = ({navigation}) => {
                 name: item.name,
               });
             }}
-            activeOpacity={1}>
+            activeOpacity={0.7}>
             <View style={styles.productWrapper}>
               <Image source={item.image} style={styles.imageWrapper} />
               <View style={styles.titleWrapper}>
