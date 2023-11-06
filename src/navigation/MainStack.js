@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import {  ScreenNames } from "../global";
 import SplashScreen from "../screen/SpashScreen";
 import BottomTabs from "./BottomTabs/BottomTabs";
+import OnBoardingScreen from "../screen/OnBoarding/OnBoardingScreen";
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -15,6 +16,7 @@ const MainStack = () => {
                     screenOptions={{ headerShown: false }}
                     initialRouteName={ScreenNames.SPLASH_SCREEN}>
                     <Stack.Screen name={ScreenNames.SPLASH_SCREEN} component={SplashScreen} />
+                    <Stack.Screen name={ScreenNames.ONBOARDING_SCREEN} component={OnBoardingScreen} />
                     <Stack.Screen name={ScreenNames.BOTTOM_TAB} component={BottomTabs} />
 
                 </Stack.Navigator>
