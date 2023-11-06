@@ -1,6 +1,11 @@
 // Login Flow
-export const SPLASH_SCREEN = 'SPLASH_SCREEN';
-export const HOME_SCREEN = 'HOME_SCREEN';
+export const SPLASH_SCREEN = 'SPLASH_SCREEN'
+export const HOME_SCREEN = 'HOME_SCREEN'
+export const ONBOARDING_SCREEN = 'ONBOARDING_SCREEN'
+
+
+
+
 
 // BOTTOM TAB STACK
 export const HOME_STACK = 'HOME_STACK';
