@@ -1,5 +1,7 @@
 const {TouchableOpacity, Image, View, Text} = require('react-native');
 import {styles} from './ExploreItemsStyles';
+import {useNavigation} from '@react-navigation/native';
+import {ScreenName, ScreenNames} from '../../global/index';
 
 const ExploreItemHooks = () => {
   const data = [
@@ -38,8 +40,13 @@ const ExploreItemHooks = () => {
     // Add more items as needed
   ];
 
+  const navigation = useNavigation();
+  const navigateToProductDetail = () => {
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
+  };
+
   const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity style={styles.item} onPress={navigateToProductDetail}>
       <View style={styles.imageContainer}>
         <Image source={item.image} style={styles.image} />
       </View>

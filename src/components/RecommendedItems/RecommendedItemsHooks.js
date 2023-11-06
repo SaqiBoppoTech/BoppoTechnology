@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {styles} from './RecommendedItemsStyles';
+import {useNavigation} from '@react-navigation/native';
+import {ScreenName, ScreenNames} from '../../global/index';
 
 const RecommendedItemHooks = () => {
   const data = [
@@ -39,8 +41,13 @@ const RecommendedItemHooks = () => {
     // Add more items as needed
   ];
 
+  const navigation = useNavigation();
+  const navigateToProductDetail = () => {
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
+  };
+
   const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity style={styles.item} onPress={navigateToProductDetail}>
       <View style={styles.imageContainer}>
         <Image source={item.image} style={styles.image} />
       </View>

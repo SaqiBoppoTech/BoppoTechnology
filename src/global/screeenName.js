@@ -1,11 +1,7 @@
 // Login Flow
-export const SPLASH_SCREEN = 'SPLASH_SCREEN'
-export const HOME_SCREEN = 'HOME_SCREEN'
-export const ONBOARDING_SCREEN = 'ONBOARDING_SCREEN'
-
-
-
-
+export const SPLASH_SCREEN = 'SPLASH_SCREEN';
+export const HOME_SCREEN = 'HOME_SCREEN';
+export const ONBOARDING_SCREEN = 'ONBOARDING_SCREEN';
 
 // BOTTOM TAB STACK
 export const HOME_STACK = 'HOME_STACK';
@@ -19,7 +15,7 @@ export const CATEGORY_SCREEN = 'CATEGORY_SCREEN';
 export const CATEGORY_DETAIL_SCREEN = 'CATEGORY_DETAIL_SCREEN';
 
 //MAINSTACK SCREEN
-export const Product_Detail_View_Screen = 'Product_Detail_View_Screen';
+export const PRODUCT_DETAIL_VIEW_SCREEN = 'PRODUCT_DETAIL_VIEW_SCREEN';
 export const MY_ADDRESSES = 'MY_ADDRESSES';
 export const DELIEVERY_ADDRESS = 'DELIEVERY_ADDRESS';
 export const BILLING_ADDRESS = 'BILLING_ADDRESS';

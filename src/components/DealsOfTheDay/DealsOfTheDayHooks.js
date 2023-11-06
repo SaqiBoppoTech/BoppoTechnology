@@ -1,8 +1,11 @@
 import React from 'react';
 import {TouchableOpacity, Image, Text} from 'react-native';
 import {styles} from './DealsOfTheDayStyles';
+import {useNavigation} from '@react-navigation/native';
+import {ScreenName, ScreenNames} from '../../global/index';
 
 const DealsOfTheDayHooks = () => {
+  const navigation = useNavigation();
   const data = [
     {
       key: '1',
@@ -31,8 +34,12 @@ const DealsOfTheDayHooks = () => {
     // Add more items as needed
   ];
 
+  const navigateToProductDetail = () => {
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
+  };
+
   const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity style={styles.item} onPress={navigateToProductDetail}>
       <Image source={item.image} style={styles.image} />
       <Text
         style={{

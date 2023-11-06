@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import {styles} from './TopDealsStyles';
+import {useNavigation} from '@react-navigation/native';
+import {ScreenName, ScreenNames} from '../../global/index';
 
 const TopDealsHooks = () => {
   const data = [
@@ -31,9 +33,14 @@ const TopDealsHooks = () => {
     // Add more items as needed
   ];
 
+  const navigation = useNavigation();
+  const navigateToProductDetail = () => {
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
+  };
+
   const renderItem = ({item}) => (
     <View style={styles.item}>
-      <TouchableOpacity style={styles.imageback}>
+      <TouchableOpacity style={styles.imageback} onPress={navigateToProductDetail}>
         <Image source={item.image} style={styles.image} />
       </TouchableOpacity>
 
