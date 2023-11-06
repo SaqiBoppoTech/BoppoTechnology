@@ -37,10 +37,14 @@ const MainStack = () => {
           name={ScreenNames.SPLASH_SCREEN}
           component={SplashScreen}
         />
-                    <Stack.Screen name={ScreenNames.ONBOARDING_SCREEN} component={OnBoardingScreen} />
+                   
+        <Stack.Screen
+          name={ScreenNames.ONBOARDING_SCREEN}
+          component={OnBoardingScreen}
+        />
         <Stack.Screen name={ScreenNames.BOTTOM_TAB} component={BottomTabs} />
         <Stack.Screen
-          name={ScreenNames.Product_Detail_View_Screen}
+          name={ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN}
           component={ProductDetailViewScreen}
         />
         <Stack.Screen
