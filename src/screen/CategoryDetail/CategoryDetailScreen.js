@@ -100,7 +100,7 @@ const CategoryDetailScreen = ({route, navigation}) => {
         </View>
         <TouchableOpacity
           style={styles.imageContainer}
-          onPress={() => navigation.navigate('ProductDetailScreen')}>
+          onPress={() => navigation.navigate('Product_Detail_View_Screen')}>
           <Image
             source={{
               uri: item.image,
