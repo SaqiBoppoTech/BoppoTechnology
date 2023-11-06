@@ -27,13 +27,6 @@ const HomeScreen = () => {
 
   return (
     <View style={{backgroundColor: '#fff', flex: 1}}>
-      {/* <CustomAppBar
-            showIcons={true}
-            showCartIcon={true}
-            onPressNotification={() => {
-              navigation.navigate('NotificationScreen');
-            }}
-          /> */}
       <ScrollView>
         <View style={{backgroundColor: '#fff', flex: 1, marginBottom: 3}}>
           <CarouselScreen />

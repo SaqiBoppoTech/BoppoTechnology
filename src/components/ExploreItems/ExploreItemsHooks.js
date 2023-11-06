@@ -1,4 +1,5 @@
 const {TouchableOpacity, Image, View, Text} = require('react-native');
+import ProductHomeBottomSheet from '../CommonThings/ProductHomeBottomSheet';
 import {styles} from './ExploreItemsStyles';
 
 const ExploreItemHooks = () => {
@@ -83,4 +84,4 @@ const ExploreItemHooks = () => {
   };
 };
 
-export {ExploreItemHooks}
+export {ExploreItemHooks};
