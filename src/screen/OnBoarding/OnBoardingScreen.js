@@ -27,12 +27,9 @@ const OnBoardingScreen = () => {
                         pagingEnabled
                         showsHorizontalScrollIndicator={false}
                         onEndReachedThreshold={0.5}
-                        // scrollEnabled={false}
-                        // onScroll={handleScroll}
                     />
                 </View>
-                {/* <View style={styles.child}>
-                </View> */}
+    
             </View>
             <View style={styles.positionBottom}>
                     <View style={styles.flexDirectionContainer}>
