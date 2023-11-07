@@ -18,7 +18,7 @@ const OnBoardingHooks = () => {
     //NAVIGATION FUNCTION
     const resetStackAndGoToBottom = CommonActions.reset({
         index: 0,
-        routes: [{ name: ScreenNames.BOTTOM_TAB, }],
+        routes: [{ name: ScreenNames.LOGIN_SCREEN, }],
     });
 
     //ANIMATION FUNCTION

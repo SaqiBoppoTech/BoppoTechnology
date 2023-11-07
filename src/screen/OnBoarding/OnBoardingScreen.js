@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Animated } from 'react-native';
-import { styles } from './OnBoardingStyle';
-import { OnBoardingHooks } from './OnBoardingHooks';
-import { STATIC_DATA } from '../../global/staticdata';
-import FocusAwareStatusBar from '../../component/FocusAwareStatusBar';
-import { Colors, Constant } from '../../global';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
-import RightSvg from '../../assets/svgs/RightSvg.svg'
+import {View, Text, FlatList, TouchableOpacity, Animated} from 'react-native';
+import {styles} from './OnBoardingStyle';
+import {OnBoardingHooks} from './OnBoardingHooks';
+import {STATIC_DATA} from '../../global/staticdata';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors, Constant} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import RightSvg from '../../assets/svgs/RightSvg.svg';
 const OnBoardingScreen = () => {
     const { currentIndex, handleNext, renderOnBoarding,
         renderSliderStatusBar, skip,

@@ -2,6 +2,7 @@
 
 const GlobalImage = {
   categoryImg: require('../../src/assets/images/categoryimg.png'),
+  loginImage:require('../../src/assets/images/login_img.png')
 };
 
 export {GlobalImage};
