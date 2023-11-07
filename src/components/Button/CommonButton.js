@@ -1,16 +1,18 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
-const CommonButton = ({title, onPress, color}) => {
+const CommonButton = ({title, onPress, color,externalContainer,externalFontStyle}) => {
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-      <View style={styles.containerWrapper}>
+      <View style={[styles.containerWrapper]}>
         <View
           style={{
             ...styles.container,
             backgroundColor: color ? color : '#000000',
+            ...externalContainer
           }}>
-          <Text style={styles.btnText}>{title}</Text>
+          <Text style={[styles.btnText,externalFontStyle]}>{title}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -26,13 +28,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    borderRadius: 20,
-    height: 60,
+    borderRadius: CHANGE_BY_MOBILE_DPI(15),
+    height: CHANGE_BY_MOBILE_DPI(56),
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#fff',
-    borderWidth: 2,
+ 
   },
   btnText: {
     color: '#fff',

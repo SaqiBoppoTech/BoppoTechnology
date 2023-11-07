@@ -24,7 +24,14 @@ import MyQuestionAnswerScreen from '../screen/MyQuestion&Answer/MyQuestionAnswer
 import EditProfileScreen from '../screen/EditProfile/EditProfileScreen';
 import WishlistScreen from '../screen/Wishlist/WishlistScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
-import OnBoardingScreen from "../screen/OnBoarding/OnBoardingScreen";
+import OnBoardingScreen from '../screen/OnBoarding/OnBoardingScreen';
+import LoginScreen from '../screen/Login/LoginScreen';
+import CreateAccountScreen from '../screen/CreateAccount/CreateAccountScreen';
+import VerifyMobileNumberScreen from '../screen/VerifyMobileNumberScreen/VerifyMobileNumberScreen';
+import EmailVerifyScreen from '../screen/VerifyEmail/VerifyEmailScreen';
+import ForgetPasswordScreen from '../screen/ForgetPassword/ForgetPasswordScreen';
+import ForgetPasswordOtpScreen from '../screen/ForgetPasswordOtp/ForgetPasswordOtpScreen';
+import SuccessScreen from '../screen/SuccessScreen/SuccessScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -37,7 +44,7 @@ const MainStack = () => {
           name={ScreenNames.SPLASH_SCREEN}
           component={SplashScreen}
         />
-                   
+
         <Stack.Screen
           name={ScreenNames.ONBOARDING_SCREEN}
           component={OnBoardingScreen}
@@ -107,11 +114,36 @@ const MainStack = () => {
           name={ScreenNames.EDIT_PROFILE_SCREEN}
           component={EditProfileScreen}
         />
+        <Stack.Screen name={ScreenNames.LOGIN_SCREEN} component={LoginScreen} />
+        <Stack.Screen
+          name={ScreenNames.CREATE_NEW_ACCOUNT}
+          component={CreateAccountScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.VERIFY_MOBILE_NUMBER}
+          component={VerifyMobileNumberScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.VERIFY_EMAIL}
+          component={EmailVerifyScreen}
+        />
         <Stack.Screen
           name={ScreenNames.WISHLIST_SCREEN}
           component={WishlistScreen}
         />
         <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} />
+        <Stack.Screen
+          name={ScreenNames.FORGET_PASSWORD_SCREEN}
+          component={ForgetPasswordScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.FORGET_PASSWORD_OTP_SCREEN}
+          component={ForgetPasswordOtpScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.SUCCESS_SCREEN}
+          component={SuccessScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

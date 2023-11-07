@@ -1,22 +1,23 @@
 import {StyleSheet} from 'react-native';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import { Colors, Fonts } from '../../global';
 export const styles = StyleSheet.create({
   input: {
-    height: 50,
-    marginHorizontal: 12,
+    height: CHANGE_BY_MOBILE_DPI(56),
     borderWidth: 1,
-    paddingHorizontal: 10,
-    borderRadius: 10,
-    borderColor: 'grey',
-    color: '#121212',
-    fontSize: 18,
-    marginTop: 8,
-    marginBottom: 10,
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    borderRadius: CHANGE_BY_MOBILE_DPI(7),
+    borderColor: Colors.GRAY_MEDIUM,
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
+    color:Colors.BLACK,
+    fontFamily:Fonts.LATO_REGULAR,
+    marginTop: CHANGE_BY_MOBILE_DPI(8),
+    marginBottom: CHANGE_BY_MOBILE_DPI(20),
   },
   title: {
-    color: '#000000',
-    fontSize: 16,
-    fontWeight: '400',
-    paddingLeft: 15,
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    color:Colors.BLACK,
+    fontFamily:Fonts.MANROPE_BOLD,
   },
   titleview: {
     flexDirection: 'row',
@@ -35,4 +36,7 @@ export const styles = StyleSheet.create({
   inputError: {
     borderColor: 'red',
   },
+  marginContainer:{
+    marginHorizontal:CHANGE_BY_MOBILE_DPI(20)
+  }
 });

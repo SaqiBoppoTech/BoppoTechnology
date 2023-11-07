@@ -1,17 +1,16 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Animated } from 'react-native';
-import { styles } from './OnBoardingStyle';
-import { OnBoardingHooks } from './OnBoardingHooks';
-import { STATIC_DATA } from '../../global/staticdata';
-import FocusAwareStatusBar from '../../component/FocusAwareStatusBar';
-import { Colors, Constant } from '../../global';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
-import RightSvg from '../../assets/svgs/RightSvg.svg'
+import {View, Text, FlatList, TouchableOpacity, Animated} from 'react-native';
+import {styles} from './OnBoardingStyle';
+import {OnBoardingHooks} from './OnBoardingHooks';
+import {STATIC_DATA} from '../../global/staticdata';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors, Constant} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import RightSvg from '../../assets/svgs/RightSvg.svg';
 const OnBoardingScreen = () => {
     const { currentIndex, handleNext, renderOnBoarding,
-        renderSliderStatusBar, handleScroll, skip,
-        handleSlide,
-        flatListRef
+        renderSliderStatusBar, skip,
+        scrollX,flatListRef
     } = OnBoardingHooks()
     return (
         <View style={styles.container}>
@@ -19,7 +18,6 @@ const OnBoardingScreen = () => {
             <View style={styles.parent}>
                 <View style={{}}>
                     <Animated.FlatList
-                        ref={flatListRef}
                         horizontal
                         data={STATIC_DATA.sliderData}
                         renderItem={renderOnBoarding}
@@ -27,9 +25,12 @@ const OnBoardingScreen = () => {
                         pagingEnabled
                         showsHorizontalScrollIndicator={false}
                         onEndReachedThreshold={0.5}
+                        onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], { useNativeDriver: false })}
+                        keyExtractor={(item) => item.id}
+                        ref={flatListRef}
+                        scrollEnabled={false}
                     />
                 </View>
-    
             </View>
             <View style={styles.positionBottom}>
                     <View style={styles.flexDirectionContainer}>
