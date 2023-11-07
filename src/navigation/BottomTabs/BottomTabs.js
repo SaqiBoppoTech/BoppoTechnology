@@ -4,7 +4,7 @@ import CustomBottomTab from './CustomBottomTab'
 import { ScreenNames } from '../../global';
 import HomeStack from '../BottomStack/HomeStack';
 import CategoryStack from '../BottomStack/CategoryStack';
-import NotificationStack from '../BottomStack/NotificationStack';
+import NotificationStack from '../BottomStack/OrderStack';
 import ProfileStack from '../BottomStack/ProfileStack';
 
 const BottomTabs = ({ userType }) => {

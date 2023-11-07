@@ -4,13 +4,14 @@ import MainStack from './src/navigation/MainStack';
 import { Provider } from 'react-redux';
 import { store } from './src/redux/store/store'
 import DummyTest from './src/DummyTest';
+import CustomTopTabs from './src/navigation/CustomTopTabs/CustomTopTab';
 
 const App = () => {
   return (
     <View style={styles.container}>
          <Provider store={store}>
            <MainStack/>
-           {/* <DummyTest/> */}
+           {/* <CustomTopTabs/> */}
          </Provider>
         
     </View>
