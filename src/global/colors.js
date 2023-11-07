@@ -12,8 +12,9 @@ export const WARNING = '#ffae00';
 export const ALERT = '#cc4b37';
 // GRAYSCALE
 export const GRAY_LIGHT = '#e6e6e6';
+export const Gallery_GREY = '#F0F0F0';
 export const GRAY_MEDIUM = '#cacaca';
 export const GRAY_DARK = '#8a8a8a';
-export const GREEN = "#00EF47"
-export const RED = "#FF5151"
-export const GREY = "#CDD4D9"
+export const GREEN = '#00EF47';
+export const RED = '#FF5151';
+export const GREY = '#CDD4D9';

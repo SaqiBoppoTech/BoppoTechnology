@@ -32,6 +32,7 @@ import EmailVerifyScreen from '../screen/VerifyEmail/VerifyEmailScreen';
 import ForgetPasswordScreen from '../screen/ForgetPassword/ForgetPasswordScreen';
 import ForgetPasswordOtpScreen from '../screen/ForgetPasswordOtp/ForgetPasswordOtpScreen';
 import SuccessScreen from '../screen/SuccessScreen/SuccessScreen';
+import CategoryScreen from '../screen/Category/CategoryScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -39,10 +40,10 @@ const MainStack = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{headerShown: false}}
-        initialRouteName={ScreenNames.SPLASH_SCREEN}>
+        initialRouteName={ScreenNames.CATEGORY_SCREEN}>
         <Stack.Screen
-          name={ScreenNames.SPLASH_SCREEN}
-          component={SplashScreen}
+          name={ScreenNames.CATEGORY_SCREEN}
+          component={CategoryScreen}
         />
 
         <Stack.Screen
