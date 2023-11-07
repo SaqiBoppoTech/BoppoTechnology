@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Animated, Platform, Text, TouchableOpacity, View, } from 'react-native';
 //insets
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -16,18 +16,18 @@ import ProfileFillSvg from '../../assets/svgs/BottomTabSvgs/ProfileFillSvg.svg';
 import { Colors, Constant } from '../../global';
 const CustomBottomTab = ({ state, descriptors, navigation, userType }) => {
     const names = ["Home", "Browse", "Buy Again", "Profile"];
-    const svgs = [
+    const [svgs] = useState( [
         <HomeSvg heigth={Constant.CHANGE_BY_MOBILE_DPI(18)} width={Constant.CHANGE_BY_MOBILE_DPI(18)}/>,
         <SearchSvg heigth={Constant.CHANGE_BY_MOBILE_DPI(18)} width={Constant.CHANGE_BY_MOBILE_DPI(18)} />,
         <NotificationSvg heigth={Constant.CHANGE_BY_MOBILE_DPI(18)} width={Constant.CHANGE_BY_MOBILE_DPI(18)} />,
         <ProfileSvg heigth={Constant.CHANGE_BY_MOBILE_DPI(18)} width={Constant.CHANGE_BY_MOBILE_DPI(18)} />
-    ];
-    const blurredSvg = [
+    ]);
+    const [blurredSvg] = useState( [
         <HomeFillSvg heigth={Constant.CHANGE_BY_MOBILE_DPI(18)} width={Constant.CHANGE_BY_MOBILE_DPI(18)}/>,
         <SearchFillSvg heigth={Constant.CHANGE_BY_MOBILE_DPI(18)} width={Constant.CHANGE_BY_MOBILE_DPI(18)} />,
         <NotificationFillSvg heigth={Constant.CHANGE_BY_MOBILE_DPI(18)} width={Constant.CHANGE_BY_MOBILE_DPI(18)} />,
         <ProfileFillSvg heigth={Constant.CHANGE_BY_MOBILE_DPI(18)} width={Constant.CHANGE_BY_MOBILE_DPI(18)} />
-    ]
+    ]);
     const bgColor = {
         backgroundColor:Colors.BLACK,
        borderRadius:Constant.CHANGE_BY_MOBILE_DPI(100),

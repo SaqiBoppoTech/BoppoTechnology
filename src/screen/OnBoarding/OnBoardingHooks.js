@@ -10,8 +10,9 @@ const OnBoardingHooks = () => {
     //VARIABALE
 
     //USEREF
-    const slideValue = new Animated.Value(0);
-    //HOOK
+    const scrollX = new Animated.Value(0);
+    const flatListRef = useRef(null);
+    //USEEFFECT
     const [currentIndex, setCurrentIndex] = useState(0);
     //FUNCTIOM
     //NAVIGATION FUNCTION
@@ -20,23 +21,23 @@ const OnBoardingHooks = () => {
         routes: [{ name: ScreenNames.BOTTOM_TAB, }],
     });
 
-      const handleSlide = () => {
-        const slideDistance = currentIndex* 200; // Adjust the distance you want to slide
-        Animated.timing(slideValue, {
-          toValue: slideDistance,
-          duration: 300, 
-          useNativeDriver: false, 
-        }).start();
-      };
-      const slideAnimation = slideValue.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 200], // Adjust the distance you want to slide
-      });
+    //ANIMATION FUNCTION
+  const clickToSlide = (nextIndex) => {
+    let data = STATIC_DATA.sliderData
+    const itemIndex = data.findIndex((i) => i.id === data[nextIndex].id);
+    if (itemIndex >= 0 && flatListRef.current) {
+    flatListRef.current.scrollToItem({ item: data[itemIndex], animated: true });
+    setCurrentIndex(nextIndex);
+    }
+  };
+
+    
+
+      
     const handleNext = () => {
         const nextIndex = currentIndex + 1;
         if (currentIndex < STATIC_DATA.sliderData.length - 1) {
-            handleSlide()
-            setCurrentIndex(nextIndex);
+            clickToSlide(nextIndex)
         } else {
             navigation.dispatch(resetStackAndGoToBottom)
         }
@@ -47,7 +48,7 @@ const OnBoardingHooks = () => {
 
     const renderOnBoarding = ({ item, index }) => {
         return (
-            <Animated.View style={{...styles.sliderContainer, transform: [{ translateX: slideAnimation }],}}  >
+            <Animated.View style={{...styles.sliderContainer}}  >
                 <Text style={styles.sliderFontStyle}>{STATIC_DATA.sliderData[currentIndex].text}</Text>
             </Animated.View>
         )
@@ -65,7 +66,7 @@ const OnBoardingHooks = () => {
         handleNext,
         renderOnBoarding,
         renderSliderStatusBar,
-        skip,handleSlide
+        skip,scrollX,flatListRef
     }
 }
 export { OnBoardingHooks }
