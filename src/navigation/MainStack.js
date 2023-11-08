@@ -39,8 +39,11 @@ const MainStack = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{headerShown: false}}
-        initialRouteName={ScreenNames.ORDER_SCREEN}>
-        <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} />
+        initialRouteName={ScreenNames.SPLASH_SCREEN}>
+        <Stack.Screen
+          name={ScreenNames.SPLASH_SCREEN}
+          component={SplashScreen}
+        />
 
         <Stack.Screen
           name={ScreenNames.ONBOARDING_SCREEN}
@@ -128,7 +131,7 @@ const MainStack = () => {
           name={ScreenNames.WISHLIST_SCREEN}
           component={WishlistScreen}
         />
-        {/* <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} /> */}
+        <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} />
         <Stack.Screen
           name={ScreenNames.FORGET_PASSWORD_SCREEN}
           component={ForgetPasswordScreen}
