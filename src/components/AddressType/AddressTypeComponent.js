@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './AddressTypeStyle';
+import RightArrow from '../../assets/svgs/BackArrow.svg';
 
 const AddressTypeComponent = ({title, onPress, showDefault}) => {
   return (
@@ -13,14 +13,12 @@ const AddressTypeComponent = ({title, onPress, showDefault}) => {
       <View style={styles.wrapper}>
         {showDefault && (
           <View style={styles.defaultTitle}>
-            <Text style={{fontSize: 15, textAlign: 'center', color: '#000'}}>
-              Default
-            </Text>
+            <Text style={styles.default}>Default</Text>
           </View>
         )}
 
-        <View>
-          <Icon name="arrow-forward" size={25} color="#000" />
+        <View style={styles.rotate}>
+          <RightArrow />
         </View>
       </View>
     </TouchableOpacity>

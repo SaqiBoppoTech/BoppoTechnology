@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import CircleIncrementButton from '../../components/Button/CircleIncrementButton';
 import {styles} from './CategoryDetailStyle';
 import RatingComponent from '../../components/RatingStar';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 
 const CategoryDetailScreen = ({route, navigation}) => {
   const {name} = route.params;

@@ -1,45 +1,42 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
-import {useNavigation} from '@react-navigation/native';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import CommonButton from '../../components/Button/CommonButton';
 import {styles} from './MyAddressStyle';
 import AddressTypeComponent from '../../components/AddressType/AddressTypeComponent';
-import { ADD_NEW_ADDRESS, BILLING_ADDRESS, DELIEVERY_ADDRESS } from '../../global/screeenName';
+import MyAddressHooks from './MyAddressHooks';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
-const MyAddressScreen = ({navigation}) => {
-  const redirect = useNavigation();
-  const handleGoBack = () => {
-    redirect.goBack();
-  };
+const MyAddressScreen = () => {
+  const {
+    handleGoBack,
+    navigateToAddToNewAddress,
+    navigateToBillingScreen,
+    navigateToDeliveryScreen,
+  } = MyAddressHooks();
   return (
     <View style={styles.main}>
-      <SearchAppBar
-        title={'My Addresses'}
-        onPress={() => {
-          handleGoBack();
-        }}
-      />
-      <AddressTypeComponent
-        showDefault={true}
-        title={'Delivery Address'}
-        onPress={() => {
-          navigation.navigate(DELIEVERY_ADDRESS);
-        }}
-      />
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <SearchAppBar title={'My Addresses'} onPress={handleGoBack} />
+      <View style={styles.marginWrapper}>
+        <AddressTypeComponent
+          showDefault={true}
+          title={'Delivery Address'}
+          onPress={navigateToDeliveryScreen}
+        />
+      </View>
+
       <AddressTypeComponent
         showDefault={false}
         title={'Billing Address'}
-        onPress={() => {
-          navigation.navigate(BILLING_ADDRESS);
-        }}
+        onPress={navigateToBillingScreen}
       />
       <View style={styles.btn}>
         <CommonButton
           title={'Add New Address'}
-          onPress={() => {
-            navigation.navigate(ADD_NEW_ADDRESS);
-          }}
+          onPress={navigateToAddToNewAddress}
+          externalFontStyle={styles.externalFontStyle}
+          externalContainer={styles.loginContainer}
         />
       </View>
     </View>

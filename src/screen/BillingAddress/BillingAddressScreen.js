@@ -1,25 +1,20 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
-import {useNavigation} from '@react-navigation/native';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
+import {styles} from './BillingAddressStyle';
+import BillingAddressHooks from './BillingAddressHooks';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const BillingAddressScreen = () => {
-  const redirect = useNavigation();
-  const handleGoBack = () => {
-    redirect.goBack();
-  };
+  const {handleGoBack, editAddress, removeAddress} = BillingAddressHooks();
   return (
-    <View>
-      <SearchAppBar
-        title={'Billing address'}
-        onPress={() => {
-          handleGoBack();
-        }}
-      />
+    <View style={styles.mainView}>
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <SearchAppBar title={'Billing address'} onPress={handleGoBack} />
       <AddressContainerComponenet
-        onEditPress={() => {}}
-        onRemovePress={() => {}}
+        onEditPress={editAddress}
+        onRemovePress={removeAddress}
         showBottomOptions={true}
         showLine={true}
         typeOfAddress={'Billing Address'}
@@ -29,5 +24,3 @@ const BillingAddressScreen = () => {
 };
 
 export default BillingAddressScreen;
-
-const styles = StyleSheet.create({});

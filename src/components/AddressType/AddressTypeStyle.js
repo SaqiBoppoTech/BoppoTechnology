@@ -1,30 +1,41 @@
 import {StyleSheet} from 'react-native';
+import {Colors, Fonts} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    height: 45,
+    backgroundColor: Colors.WHITE,
+    height: CHANGE_BY_MOBILE_DPI(45),
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: CHANGE_BY_MOBILE_DPI(10),
     flexDirection: 'row',
-    marginHorizontal: 20,
-    marginBottom: 10,
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    marginBottom: CHANGE_BY_MOBILE_DPI(10),
   },
   title: {
-    fontSize: 18,
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
     textAlign: 'center',
-    color: '#000',
+    color: Colors.BLACK,
+    fontFamily: Fonts.MANROPE_MEDIUM,
   },
   defaultTitle: {
     backgroundColor: '#DDDDDD',
-    borderRadius: 15,
-    paddingHorizontal: 10,
-    paddingVertical: 2,
+    borderRadius: CHANGE_BY_MOBILE_DPI(15),
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(10),
+    paddingVertical: CHANGE_BY_MOBILE_DPI(2),
   },
   wrapper: {
     flexDirection: 'row',
-    gap: 50,
+    gap: CHANGE_BY_MOBILE_DPI(50),
     alignItems: 'center',
   },
+  default: {
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    textAlign: 'center',
+    color: Colors.BLACK,
+    fontFamily: Fonts.MANROPE_MEDIUM,
+    includeFontPadding: false,
+  },
+  rotate: {transform: [{rotate: '180deg'}]},
 });

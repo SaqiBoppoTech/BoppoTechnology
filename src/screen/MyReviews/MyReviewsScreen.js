@@ -11,7 +11,9 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import RatingComponent from '../../components/RatingStar';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const MyReviewsScreen = () => {
   const data = [
@@ -127,6 +129,7 @@ const MyReviewsScreen = () => {
   };
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
       <SearchAppBar
         title={'My Reviews'}
         onPress={() => {

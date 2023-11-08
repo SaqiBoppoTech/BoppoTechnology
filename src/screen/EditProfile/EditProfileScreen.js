@@ -3,10 +3,17 @@ import {View, ScrollView} from 'react-native';
 import CommonButton from '../../components/Button/CommonButton';
 import {styles} from './EditProfileStyle';
 import CustomTextField from '../../components/CustomTextField/CustomTextFieldComponent';
+import EditProfileHooks from './EditProfileHooks';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const EditProfileScreen = ({navigation}) => {
+const EditProfileScreen = () => {
+  const {handleGoBack, onSubmit} = EditProfileHooks();
   return (
     <View style={styles.mainView}>
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <SearchAppBar title={'Edit Profile'} onPress={handleGoBack} />
       <ScrollView style={styles.bg}>
         <View>
           <CustomTextField
@@ -46,9 +53,9 @@ const EditProfileScreen = ({navigation}) => {
       <View style={styles.btn}>
         <CommonButton
           title={'Submit'}
-          onPress={() => {
-            navigation.navigate();
-          }}
+          onPress={onSubmit}
+          externalFontStyle={styles.externalFontStyle}
+          externalContainer={styles.loginContainer}
         />
       </View>
     </View>

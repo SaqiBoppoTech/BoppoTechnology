@@ -1,13 +1,13 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {styles} from './ProfileSettingsStyle';
+import RightArrow from '../../assets/svgs/RightSvg.svg';
 
 const SettingComponent = ({onPress, title}) => {
   return (
     <TouchableOpacity style={styles.mainView} onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
-      <Icon name="angle-right" size={30} color="#000" />
+      <RightArrow stroke="black" width="8" height="16" />
     </TouchableOpacity>
   );
 };

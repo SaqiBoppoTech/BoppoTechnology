@@ -1,7 +1,7 @@
-import { Text, View, TextInput} from 'react-native';
+import {Text, View, TextInput} from 'react-native';
 import React from 'react';
-import { styles } from './CustomTextFieldStyle';
-import { Colors } from '../../global';
+import {styles} from './CustomTextFieldStyle';
+import {Colors} from '../../global';
 
 const CustomTextField = ({
   keyboardType,
@@ -12,7 +12,7 @@ const CustomTextField = ({
   error,
   value,
   placeholderTextColor,
-  onChangeText=()=>{},
+  onChangeText = () => {},
 }) => {
   return (
     <View style={styles.marginContainer}>
@@ -29,11 +29,9 @@ const CustomTextField = ({
         value={value}
         onChangeText={onChangeText}
       />
-    {error && <Text style={styles.errorText}>{error}</Text>}
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   );
 };
 
 export default CustomTextField;
-
-

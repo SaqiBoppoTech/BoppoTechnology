@@ -1,10 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { ScreenNames } from '../../global';
+import {useNavigation} from '@react-navigation/native';
+import React, {useState} from 'react';
+import {ScreenNames} from '../../global';
 
 const LoginHooks = () => {
   // VARIABLE
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
@@ -13,17 +13,16 @@ const LoginHooks = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
 
-
   // FUNCTION
   const navigateToForgotPassword = () => {
     navigation.navigate(ScreenNames.FORGET_PASSWORD_SCREEN);
-  }
+  };
   const navigateToBottom = () => {
-    navigation.navigate(BOTTOM_TAB);
-  }
+    navigation.navigate(ScreenNames.BOTTOM_TAB);
+  };
   const navigateToCreateAccount = () => {
-    navigation.navigate(CREATE_NEW_ACCOUNT);
-  }
+    navigation.navigate(ScreenNames.CREATE_NEW_ACCOUNT);
+  };
   const handleLogin = () => {
     const validationErrors = {};
     if (!email.match(emailRegex)) {
@@ -49,8 +48,8 @@ const LoginHooks = () => {
     navigation,
     navigateToForgotPassword,
     navigateToBottom,
-    navigateToCreateAccount
+    navigateToCreateAccount,
   };
 };
 
-export { LoginHooks };
+export {LoginHooks};

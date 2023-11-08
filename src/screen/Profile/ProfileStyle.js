@@ -1,63 +1,42 @@
 import {StyleSheet} from 'react-native';
+import {Colors, Fonts} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 export const styles = StyleSheet.create({
   mainView: {
-    position: 'relative',
-  },
-  ProfileSection: {
-    backgroundColor: 'black',
-    margin: 10,
-    borderRadius: 10,
-  },
-  ProfileWrapper: {
-    flexDirection: 'row',
-    padding: 10,
-    alignItems: 'center',
-  },
-  itemWrapper: {
-    flexDirection: 'row',
-    gap: 15,
-    marginHorizontal: 15,
-  },
-  btn: {
-    position: 'absolute',
-    bottom: 10,
-    left: 0,
-    width: '100%',
-  },
-  name: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '600',
-  },
-  updateprofile: {
-    color: 'white',
-    fontSize: 14,
-    fontWeight: '400',
+    flex: 1,
+    marginBottom: CHANGE_BY_MOBILE_DPI(70),
   },
 
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+  btn: {
+    marginVertical: CHANGE_BY_MOBILE_DPI(10),
   },
-  circleImage: {
-    height: 60,
-    width: 60,
-    borderRadius: 30,
-    marginRight: 10,
-  },
+
   settingWrapper: {
-    backgroundColor: '#FAFAFA',
+    backgroundColor: Colors.LIGHT_WHITE,
     justifyContent: 'space-evenly',
-    borderRadius: 15,
-    marginHorizontal: 12,
-    paddingVertical: 5,
+    borderRadius: CHANGE_BY_MOBILE_DPI(10),
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(12),
+    paddingVertical: CHANGE_BY_MOBILE_DPI(5),
   },
   settingTitle: {
-    fontSize: 22,
-    color: '#151515',
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
+    color: Colors.BLACK_DARK,
     textAlign: 'left',
-    fontWeight: '600',
-    marginHorizontal: 18,
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    fontFamily: Fonts.MANROPE_BOLD,
+    marginBottom: CHANGE_BY_MOBILE_DPI(5),
+  },
+  externalFontStyle: {
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
+    color: Colors.WHITE,
+    fontFamily: Fonts.MANROPE_BOLD,
+    includeFontPadding: false,
+  },
+  newCustomerFontStyle: {
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
+    color: Colors.BLACK,
+    fontFamily: Fonts.LATO_BOLD,
+    includeFontPadding: false,
   },
 });

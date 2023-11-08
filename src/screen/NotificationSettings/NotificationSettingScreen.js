@@ -1,9 +1,11 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {ButtonGroup} from 'react-native-elements';
 import {styles} from './NotificationSettingStyle';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors} from '../../global';
 
 const SwitchToggle = ({title}) => {
   const [isOn, setIsOn] = useState(false);
@@ -14,6 +16,7 @@ const SwitchToggle = ({title}) => {
 
   return (
     <View style={styles.toggleContainer}>
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
       <Text style={styles.text}>{title}</Text>
       <TouchableOpacity onPress={toggleSwitch}>
         <View

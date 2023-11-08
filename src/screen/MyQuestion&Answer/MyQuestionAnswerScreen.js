@@ -11,7 +11,9 @@ import {
 
 import {useNavigation} from '@react-navigation/native';
 import RatingComponent from '../../components/RatingStar';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors} from '../../global';
 
 const MyQuestionAnswerScreen = () => {
   const data = [
@@ -115,6 +117,7 @@ const MyQuestionAnswerScreen = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
       <SearchAppBar
         title={'Q&A'}
         onPress={() => {
