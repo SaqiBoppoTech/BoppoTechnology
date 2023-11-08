@@ -12,47 +12,14 @@ import {useNavigation} from '@react-navigation/native';
 import AllOrderScreen from '../AllOrders/AllOrdersScreen';
 import CancelReturnScreen from '../CancelReturn/CancelReturnScreen';
 import SearchAppBar from '../../components/AppBar/SearchAppBar';
+import {styles} from './OrderStyle';
+import {OrderHooks} from './OrderHooks';
+import {Colors} from '../../global';
 
-const OrderScreen = ({navigation}) => {
-  const [currentTab, setCurrentTab] = useState(1);
+const OrderScreen = () => {
+  const {currentTab, setCurrentTab, tabs, tab_conetnt, handleGoBack} =
+    OrderHooks();
 
-  const tabs = [
-    {
-      id: 1,
-      name: 'Delivered',
-    },
-    {
-      id: 2,
-      name: 'Cancelled/Returned',
-    },
-  ];
-
-  //tab content
-
-  const tab_conetnt = () => {
-    switch (currentTab) {
-      case 1:
-        return (
-          <View style={{width: '100%', height: '100%', background: '#fff'}}>
-            <AllOrderScreen
-              onPressOrder={() => {
-                navigation.navigate('');
-              }}
-            />
-          </View>
-        );
-      case 2:
-        return (
-          <View style={{width: '100%', height: '100%', background: '#fff'}}>
-            <CancelReturnScreen />
-          </View>
-        );
-    }
-  };
-  const redirect = useNavigation();
-  const handleGoBack = () => {
-    redirect.goBack();
-  };
   return (
     <>
       {/* tab lis */}
@@ -68,8 +35,8 @@ const OrderScreen = ({navigation}) => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            // justifyContent: 'space-between',
+            // alignItems: 'center',
           }}>
           {tabs?.map((tab, idx) => {
             return (
@@ -82,7 +49,7 @@ const OrderScreen = ({navigation}) => {
                   style={
                     currentTab === tab?.id
                       ? {
-                          color: '#3876BF',
+                          color: Colors.PRIMARY,
                           fontSize: 15,
                           borderBottomWidth: 5,
                           borderColor: '#3876BF',
@@ -96,32 +63,10 @@ const OrderScreen = ({navigation}) => {
             );
           })}
         </View>
-        <View style={{width: '100%', height: '100%', backgroundColor: '#fff'}}>
-          {tab_conetnt()}
-        </View>
+        <View style={{}}>{tab_conetnt()}</View>
       </View>
     </>
   );
 };
 
 export default OrderScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    height: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  wrapper: {},
-  slide: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-  },
-});
