@@ -23,7 +23,6 @@ import MyReviewsScreen from '../screen/MyReviews/MyReviewsScreen';
 import MyQuestionAnswerScreen from '../screen/MyQuestion&Answer/MyQuestionAnswerScreen';
 import EditProfileScreen from '../screen/EditProfile/EditProfileScreen';
 import WishlistScreen from '../screen/Wishlist/WishlistScreen';
-import OrderScreen from '../screen/Order/OrderScreen';
 import OnBoardingScreen from '../screen/OnBoarding/OnBoardingScreen';
 import LoginScreen from '../screen/Login/LoginScreen';
 import CreateAccountScreen from '../screen/CreateAccount/CreateAccountScreen';
@@ -32,6 +31,8 @@ import EmailVerifyScreen from '../screen/VerifyEmail/VerifyEmailScreen';
 import ForgetPasswordScreen from '../screen/ForgetPassword/ForgetPasswordScreen';
 import ForgetPasswordOtpScreen from '../screen/ForgetPasswordOtp/ForgetPasswordOtpScreen';
 import SuccessScreen from '../screen/SuccessScreen/SuccessScreen';
+import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
+import OrderScreen from '../screen/Order/OrderScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -131,7 +132,12 @@ const MainStack = () => {
           name={ScreenNames.WISHLIST_SCREEN}
           component={WishlistScreen}
         />
-        <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} />
+        {/* <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} /> */}
+
+        <Stack.Screen
+          name={ScreenNames.ORDERDETAIL_SCREEN}
+          component={OrderDetailsScreen}
+        />
         <Stack.Screen
           name={ScreenNames.FORGET_PASSWORD_SCREEN}
           component={ForgetPasswordScreen}

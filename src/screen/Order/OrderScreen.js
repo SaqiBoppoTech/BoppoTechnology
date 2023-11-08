@@ -15,6 +15,7 @@ import SearchAppBar from '../../components/AppBar/SearchAppBar';
 import {styles} from './OrderStyle';
 import {OrderHooks} from './OrderHooks';
 import {Colors} from '../../global';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const OrderScreen = () => {
   const {currentTab, setCurrentTab, tabs, tab_conetnt, handleGoBack} =
@@ -24,10 +25,12 @@ const OrderScreen = () => {
     <>
       {/* tab lis */}
       <View style={{backgroundColor: '#fff', flex: 1}}>
+        <FocusAwareStatusBar barColor={Colors.Concrete} />
         <SearchAppBar
           title={'Orders'}
           showIcon={true}
           showHeart={false}
+          showCartIcon={true}
           onPress={() => {
             handleGoBack();
           }}

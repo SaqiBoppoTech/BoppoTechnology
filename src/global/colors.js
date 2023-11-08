@@ -13,6 +13,10 @@ export const ALERT = '#cc4b37';
 // GRAYSCALE
 export const GRAY_LIGHT = '#e6e6e6';
 export const Gallery_GREY = '#F0F0F0';
+export const Concrete = '#F3F3F3';
+export const W3C_DARL_GREY = '#F3F3F3';
+export const DARK_WHITE = '#A9A9A9';
+export const Alabaster_GREY = '#F9F9F9';
 export const GRAY_MEDIUM = '#cacaca';
 export const GRAY_DARK = '#8a8a8a';
 export const GREEN = '#00EF47';

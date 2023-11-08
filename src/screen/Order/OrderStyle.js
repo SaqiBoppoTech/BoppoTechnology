@@ -1,9 +1,11 @@
+import { Colors } from '../../global';
+
 const {StyleSheet} = require('react-native');
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.Alabaster_GREY,
     height: 30,
     alignItems: 'center',
     justifyContent: 'center',
