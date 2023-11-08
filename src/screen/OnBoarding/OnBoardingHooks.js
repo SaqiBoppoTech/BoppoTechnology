@@ -49,7 +49,7 @@ const OnBoardingHooks = () => {
     const renderOnBoarding = ({ item, index }) => {
         return (
             <Animated.View style={{...styles.sliderContainer}}  >
-                <Text style={styles.sliderFontStyle}>{STATIC_DATA.sliderData[currentIndex].text}</Text>
+                <Text style={styles.sliderFontStyle}>{item.text}</Text>
             </Animated.View>
         )
     }

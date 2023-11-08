@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   forgetPassword: {
     textAlign: 'center',
-    marginBottom: CHANGE_BY_MOBILE_DPI(20),
+    marginVertical: CHANGE_BY_MOBILE_DPI(20),
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     color: Colors.BLACK,
     fontFamily:Fonts.LATO_BOLD,
@@ -58,5 +58,8 @@ export const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontFamily:Fonts.LATO_BOLD,
     includeFontPadding:false
+  },
+  marginTopStyle:{
+    marginBottom:CHANGE_BY_MOBILE_DPI(20)
   }
 });

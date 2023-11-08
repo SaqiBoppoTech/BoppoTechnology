@@ -1,44 +1,58 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import {styles} from './ForgetPasswordOtpStyle';
+import { styles } from './ForgetPasswordOtpStyle';
 import CustomTextField from '../../components/CustomTextField/CustomTextFieldComponent';
-import {SUCCESS_SCREEN} from '../../global/screeenName';
+import { SUCCESS_SCREEN } from '../../global/screeenName';
 import CustomAppBar from '../../components/AppBar/CustomAppBar';
 import CommonButton from '../../components/Button/CommonButton';
 import OTPInput from '../../components/CustomOTPField/CustomOTPField';
+import { ForgetPasswordHooks } from './ForgetPasswordOtpHooks';
+import { Colors } from '../../global';
 
-const ForgetPasswordOtpScreen = ({navigation}) => {
+const ForgetPasswordOtpScreen = () => {
+  const { sendToData, password, setPassword,
+    retryPassword, setRetryPassword,navigateToSuccess } = ForgetPasswordHooks()
   return (
-    <View>
-      <View>
+      <View style={styles.mainContainer}>
         <CustomAppBar />
-        <Text style={styles.text}>The OTP has been sent to</Text>
-        <Text style={styles.number}>+00 0000005610</Text>
-        <Text style={styles.title2}>Please enter the OTP</Text>
-        <OTPInput />
+        <View style={styles.marginContainer}>
+          <Text style={styles.otpFontStyle}>The OTP has been sent to</Text>
+          <Text style={styles.sendToFontStyle}>{sendToData}</Text>
+        </View>
+        <Text style={styles.enterOtpFontStyle}>Please enter the OTP</Text>
+        <OTPInput arrayCount={6} />
         <Text style={styles.resendotp}>Resend OTP</Text>
         <CustomTextField
           keyboardType={'default'}
           placeholder={'enter new password'}
+          placeholderTextColor={Colors.GRAY_DARK}
           title={'New Password'}
+          value={password}
+          onChangeText={setPassword}
+        // error={errors.email}
         />
         <CustomTextField
           keyboardType={'default'}
           placeholder={'re - enter new passoword'}
+          placeholderTextColor={Colors.GRAY_DARK}
           title={'Confirm Password'}
+          value={retryPassword}
+          onChangeText={setRetryPassword}
+          // error={errors.email}
+          externalContainer={styles.marginTopStyle}
         />
+
         <View style={styles.container}>
-          <CommonButton
-            title={'Update'}
-            onPress={() => {
-              navigation.navigate(SUCCESS_SCREEN, {
-                message: 'Password updated successfully',
-              });
-            }}
-          />
+        <CommonButton
+        externalCustomButtonStyle={styles.externalCustomButtonStyle}
+        externalContainer={styles.externalContainer}
+        externalFontStyle={styles.externalFontStyle}
+        title={'Update'}
+        onPress={navigateToSuccess}
+      />
+
         </View>
       </View>
-    </View>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Text, View, TextInput} from 'react-native';
+import { Text, View, TextInput } from 'react-native';
 import React from 'react';
 import { styles } from './CustomTextFieldStyle';
 import { Colors } from '../../global';
@@ -12,15 +12,19 @@ const CustomTextField = ({
   error,
   value,
   placeholderTextColor,
-  onChangeText=()=>{},
+  externalContainer,
+  maxLenght,
+  titleExternalStyle,
+  onChangeText = () => { },
 }) => {
   return (
-    <View style={styles.marginContainer}>
-      <View style={styles.titleview}>
+    <View style={[styles.marginContainer, externalContainer]}>
+      <View style={[styles.titleview,titleExternalStyle]}>
         <Text style={styles.title}>{title}</Text>
         {showAsterisk && <Text style={styles.asterisk}>*</Text>}
       </View>
       <TextInput
+        maxLength={maxLenght}
         style={[styles.input, error && styles.inputError]}
         placeholder={placeholder}
         keyboardType={'default' || keyboardType}
@@ -29,7 +33,7 @@ const CustomTextField = ({
         value={value}
         onChangeText={onChangeText}
       />
-    {error && <Text style={styles.errorText}>{error}</Text>}
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   );
 };

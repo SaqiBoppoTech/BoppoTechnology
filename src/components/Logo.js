@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import { CHANGE_BY_MOBILE_DPI } from '../global/constant';
 // import {IconButton} from 'react-native-paper';
 
 const Logo = ({height, width, iconSize}) => {
@@ -20,9 +21,7 @@ export default Logo;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#3876BF',
-    borderRadius: 20,
-    height: 70,
-    width: 70,
+    borderRadius: CHANGE_BY_MOBILE_DPI(10),
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: '#fff',

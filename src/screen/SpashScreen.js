@@ -4,13 +4,13 @@ import {ScreenNames} from '../global';
 import {CommonActions, useNavigation} from '@react-navigation/native';
 const SplashScreen = () => {
   const navigation = useNavigation();
-  const DareNowOpacity = React.useRef(new Animated.Value(1)).current;
+  const Opacity = React.useRef(new Animated.Value(1)).current;
   const resetStackAndGoToBottom = CommonActions.reset({
     index: 0,
     routes: [{name: ScreenNames.ONBOARDING_SCREEN}],
   });
   const onLoad = async () => {
-    Animated.timing(DareNowOpacity, {
+    Animated.timing(Opacity, {
       toValue: 0,
       duration: 1500,
       useNativeDriver: true,

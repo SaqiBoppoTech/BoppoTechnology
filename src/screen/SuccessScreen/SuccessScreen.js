@@ -2,21 +2,20 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import CustomAppBar from '../../components/AppBar/CustomAppBar';
 import {styles} from './SuccessStyle';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import SuccessSvg from '../../assets/svgs/SuccessSvg.svg'
+import { SuccessHooks } from './SuccessHooks';
 
-const SuccessScreen = ({route}) => {
-  const {message} = route.params;
+const SuccessScreen = () => {
+    const {message} = SuccessHooks()
   return (
     <View style={styles.screenContainer}>
       <CustomAppBar />
       <View style={styles.container}>
-        {/* <IconButton icon="check-circle" iconColor="#000" size={90} /> */}
+        <SuccessSvg heigth={CHANGE_BY_MOBILE_DPI(170)} width={CHANGE_BY_MOBILE_DPI(170)}/>
         <View
-          style={{
-            // backgroundColor: 'red',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text style={styles.text}>{message}</Text>
+          style={styles.flexContainer}>
+          <Text style={styles.messageFontStyle}>{message}</Text>
         </View>
       </View>
     </View>

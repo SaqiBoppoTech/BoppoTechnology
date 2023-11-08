@@ -1,8 +1,12 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import Logo from '../Logo';
+import LogoSvg from '../../assets/svgs/LogoSvg.svg';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
+import FocusAwareStatusBar from './FocusAwareStatusBar';
+import { Colors, Fonts } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+
 
 const CustomAppBar = ({
   showIcons,
@@ -12,13 +16,13 @@ const CustomAppBar = ({
   onPressCartIcon,
 }) => {
   return (
-    <View>
+    <View style={styles.mainContainer}>
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
       <View style={styles.container}>
         <View style={styles.containerWrapper}>
-          <Logo height={50} width={50} iconSize={30} />
+          <LogoSvg height={CHANGE_BY_MOBILE_DPI(35)} width={CHANGE_BY_MOBILE_DPI(35)}/>
           <Text style={styles.text}>BoppoGo</Text>
         </View>
-
         {showIcons && (
           <View
             style={{
@@ -40,28 +44,40 @@ const CustomAppBar = ({
           </View>
         )}
       </View>
-
-      <View style={styles.line}></View>
     </View>
+
   );
 };
 
 export default CustomAppBar;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+  },
   container: {
-    height: 70,
+    top:CHANGE_BY_MOBILE_DPI(0),
+    height: CHANGE_BY_MOBILE_DPI(70),
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: 20,
-    marginTop: 10,
+    borderBottomLeftRadius:CHANGE_BY_MOBILE_DPI(15),
+    borderBottomEndRadius:CHANGE_BY_MOBILE_DPI(15),
+    paddingHorizontal:CHANGE_BY_MOBILE_DPI(30),
     justifyContent: 'space-between',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+    elevation: 2,
+    backgroundColor:Colors.WHITE
   },
   text: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#000',
-    marginLeft: 20,
+    fontSize: CHANGE_BY_MOBILE_DPI(20.21),
+    color:Colors.BLACK,
+    fontFamily:Fonts.INTER_BOLD,
+    marginLeft: CHANGE_BY_MOBILE_DPI(15),
     textAlign: 'center',
   },
   line: {
@@ -71,5 +87,6 @@ const styles = StyleSheet.create({
   containerWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
+
   },
 });

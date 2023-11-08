@@ -22,5 +22,8 @@ export const STATIC_DATA = {
             headerName: 'sadsad',
             routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN
         }
+    ],
+    createAccountData:[
+        'Business','Retailer'
     ]
 }
