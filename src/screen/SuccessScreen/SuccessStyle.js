@@ -1,18 +1,26 @@
 import {StyleSheet} from 'react-native';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import { Colors, Constant, Fonts } from '../../global';
 
 export const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
+    backgroundColor:Colors.WHITE
   },
-  text: {
-    color: '#000',
-    fontSize: 24,
-    fontWeight: '600',
-    textAlign: 'center',
+  messageFontStyle: {
+   fontSize:CHANGE_BY_MOBILE_DPI(22),
+   fontFamily:Fonts.MANROPE_BOLD,
+   color:Colors.BLACK,
+   textAlign:'center',
+   marginTop:CHANGE_BY_MOBILE_DPI(25)
   },
   container: {
+    top: CHANGE_BY_MOBILE_DPI(100),
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100,
   },
+  flexContainer:{
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });

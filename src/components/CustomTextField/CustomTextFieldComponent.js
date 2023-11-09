@@ -12,15 +12,19 @@ const CustomTextField = ({
   error,
   value,
   placeholderTextColor,
+  externalContainer,
+  maxLenght,
+  titleExternalStyle,
   onChangeText = () => {},
 }) => {
   return (
-    <View style={styles.marginContainer}>
-      <View style={styles.titleview}>
+    <View style={[styles.marginContainer, externalContainer]}>
+      <View style={[styles.titleview, titleExternalStyle]}>
         <Text style={styles.title}>{title}</Text>
         {showAsterisk && <Text style={styles.asterisk}>*</Text>}
       </View>
       <TextInput
+        maxLength={maxLenght}
         style={[styles.input, error && styles.inputError]}
         placeholder={placeholder}
         keyboardType={'default' || keyboardType}

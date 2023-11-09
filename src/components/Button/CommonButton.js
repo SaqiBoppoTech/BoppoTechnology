@@ -2,10 +2,12 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
-const CommonButton = ({title, onPress, color,externalContainer,externalFontStyle}) => {
+const CommonButton = ({title, onPress, color,externalContainer,externalFontStyle,externalCustomButtonStyle,disable}) => {
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-      <View style={[styles.containerWrapper]}>
+    <TouchableOpacity 
+    disabled={disable}
+    onPress={onPress} activeOpacity={0.8}>
+      <View style={[styles.containerWrapper,externalCustomButtonStyle]}>
         <View
           style={{
             ...styles.container,

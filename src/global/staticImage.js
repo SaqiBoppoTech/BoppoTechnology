@@ -2,7 +2,10 @@
 
 const GlobalImage = {
   categoryImg: require('../../src/assets/images/categoryimg.png'),
-  loginImage:require('../../src/assets/images/login_img.png')
+  loginImage: require('../../src/assets/images/login_img.png'),
+  otpMobileNumberImage: require('../../src/assets/images/mobile_otp.png'),
+  otpEmailImage: require('../../src/assets/images/email_verify.png'),
+
 };
 
-export {GlobalImage};
+export { GlobalImage };

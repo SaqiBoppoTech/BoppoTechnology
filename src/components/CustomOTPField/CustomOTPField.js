@@ -2,17 +2,14 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {styles} from './CustomOTPStyle';
 
-const OTPInput = () => {
-  const [otp, setOtp] = useState(['', '', '', '']);
+const OTPInput = ({arrayCount = 4}) => {
+  const [otp, setOtp] = useState([...new Array(arrayCount)]);
   const inputRefs = [];
-
   const handleChange = (text, index) => {
-    if (isNaN(text)) return; // Only allow numeric input
+    if (isNaN(text)) return; 
     const updatedOtp = [...otp];
     updatedOtp[index] = text;
     setOtp(updatedOtp);
-
-    // Auto focus to the next input field if a digit is entered
     if (index < otp.length - 1 && text.length === 1) {
       inputRefs[index + 1].focus();
     }

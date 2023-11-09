@@ -3,7 +3,7 @@ import React from 'react';
 import {enableScreens} from 'react-native-screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {ScreenNames} from '../global';
+import {Colors, Constant, Fonts, ScreenNames} from '../global';
 import SplashScreen from '../screen/SpashScreen';
 import BottomTabs from './BottomTabs/BottomTabs';
 import ProductDetailViewScreen from '../screen/ProductDetailView/ProductDetailViewScreen';
@@ -31,6 +31,9 @@ import EmailVerifyScreen from '../screen/VerifyEmail/VerifyEmailScreen';
 import ForgetPasswordScreen from '../screen/ForgetPassword/ForgetPasswordScreen';
 import ForgetPasswordOtpScreen from '../screen/ForgetPasswordOtp/ForgetPasswordOtpScreen';
 import SuccessScreen from '../screen/SuccessScreen/SuccessScreen';
+import {StyleSheet} from 'react-native';
+import {CHANGE_BY_MOBILE_DPI} from '../global/constant';
+import CustomToastedAlert from './CustomToastedAlert';
 import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
 enableScreens();
@@ -155,3 +158,27 @@ const MainStack = () => {
   );
 };
 export default MainStack;
+
+const styles = StyleSheet.create({
+  toastedContainer: {
+    height: CHANGE_BY_MOBILE_DPI(81),
+    width: Constant.SCREEN_WIDTH - 40,
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    borderRadius: CHANGE_BY_MOBILE_DPI(10),
+    backgroundColor: Colors.BLACK,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  toastedFontStyle: {
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    fontFamily: Fonts.LATO_BOLD,
+    color: Colors.WHITE,
+    includeFontPadding: false,
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    lineHeight: CHANGE_BY_MOBILE_DPI(20),
+  },
+  positionContainer: {
+    position: 'absolute',
+    bottom: CHANGE_BY_MOBILE_DPI(20),
+  },
+});
