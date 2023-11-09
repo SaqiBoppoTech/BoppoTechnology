@@ -6,16 +6,17 @@ import PayPal from '../../assets/svgs/PayPal.svg';
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
 import {ScrollView} from 'react-native-gesture-handler';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors} from '../../global';
 
 const OrderDetailsScreen = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 5;
   return (
     <ScrollView>
       <View style={styles.main}>
+        <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
         <SearchAppBar title={'Orders'} showCartIcon={true} showIcon={true} />
         <View style={styles.orderDetailView}>
-          <Text style={styles.orderDetailText}>ORDER DETAILS</Text>
+          <Text style={styles.orderDetailTextTop}>ORDER DETAILS</Text>
           <Text style={styles.orderId}>Order ID 123456789</Text>
           <View style={styles.paymentModeWrapper}>
             <Text style={styles.paymentModeText}>Payment Mode</Text>
@@ -49,9 +50,11 @@ const OrderDetailsScreen = () => {
             <Text style={styles.orderTotalValue}>36.99 USD</Text>
           </View>
         </View>
-        <View style={styles.deliveryAddressWrapper}>
+        <View>
           <Text style={styles.deliveryAddressText}>Delivery Address</Text>
-          <AddressContainerComponenet />
+          <View style={styles.deliveryAddressWrapper}>
+            <AddressContainerComponenet />
+          </View>
         </View>
       </View>
     </ScrollView>

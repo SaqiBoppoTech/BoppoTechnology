@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     width: Constant.SCREEN_WIDTH,
     backgroundColor: Colors.wilsonwhite,
     justifyContent: 'center',
-    borderBottomWidth: 1,
+    borderBottomWidth: CHANGE_BY_MOBILE_DPI(1),
     borderColor: Colors.GRAY_MEDIUM,
   },
   paymentModeWrapper: {
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: CHANGE_BY_MOBILE_DPI(15),
   },
-  orderDetailText: {
+  orderDetailTextTop: {
     color: Colors.BLACK,
     fontSize: CHANGE_BY_MOBILE_DPI(17),
     fontWeight: Fonts.MANROPE_BOLD,
@@ -126,7 +126,9 @@ export const styles = StyleSheet.create({
     fontWeight: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.PRIMARY,
   },
-  deliveryAddressWrapper: {},
+  deliveryAddressWrapper: {
+    paddingBottom: CHANGE_BY_MOBILE_DPI(50),
+  },
   deliveryAddressText: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
