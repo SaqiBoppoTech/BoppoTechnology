@@ -3,18 +3,14 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import {Colors, Constant, Fonts} from '../../global';
 
 export const styles = StyleSheet.create({
-  buttonContainer: {
-    // width: 60,
-    // backgroundColor: 'black',
-    // borderRadius: 10,
-    // padding: 10,
-  },
   itemContainer: {
     height: CHANGE_BY_MOBILE_DPI(226),
     width: CHANGE_BY_MOBILE_DPI(351),
-    margin: CHANGE_BY_MOBILE_DPI(10),
+    margin: CHANGE_BY_MOBILE_DPI(6),
     backgroundColor: Colors.Alabaster_GREY,
     borderRadius: CHANGE_BY_MOBILE_DPI(5),
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
   name: {
     color: Colors.BLACK,
@@ -102,31 +98,30 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: Colors.WHITE,
   },
-
   background: {
     backgroundColor: Colors.WHITE,
-    marginBottom: 60,
+    marginBottom: CHANGE_BY_MOBILE_DPI(180),
   },
   alignContent: {
     flexDirection: 'row',
     padding: CHANGE_BY_MOBILE_DPI(10),
-    marginBottom: CHANGE_BY_MOBILE_DPI(10),
+    marginBottom: CHANGE_BY_MOBILE_DPI(5),
   },
-  colWrapper: {
-    flexDirection: 'column',
-  },
-  cancelWrapper: {
-    color: Colors.BLACK,
-    fontSize: 15,
+  viewcancelDetailBtn: {
+    height: CHANGE_BY_MOBILE_DPI(46),
+    borderBottomLeftRadius: CHANGE_BY_MOBILE_DPI(6),
+    borderBottomRightRadius: CHANGE_BY_MOBILE_DPI(6),
+    justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center',
-    marginBottom: 20,
-    fontSize: 12,
-    fontWeight: '700',
   },
-  border: {
-    borderWidth: 0.8,
-    borderColor: 'grey',
-    marginBottom: 10,
+  viewCancelDetailBtnText: {
+    color: Colors.BLACK,
+    fontSize: CHANGE_BY_MOBILE_DPI(12),
+    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
+    includeFontPadding: false,
+  },
+  btn: {
+    borderWidth: CHANGE_BY_MOBILE_DPI(0.2),
+    borderColor: Colors.GRAY_MEDIUM,
   },
 });

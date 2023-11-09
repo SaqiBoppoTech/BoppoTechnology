@@ -36,6 +36,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../global/constant';
 import CustomToastedAlert from './CustomToastedAlert';
 import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
+import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -135,11 +136,16 @@ const MainStack = () => {
           name={ScreenNames.WISHLIST_SCREEN}
           component={WishlistScreen}
         />
-        {/* <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} /> */}
+        <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} />
 
         <Stack.Screen
           name={ScreenNames.ORDERDETAIL_SCREEN}
           component={OrderDetailsScreen}
+        />
+
+        <Stack.Screen
+          name={ScreenNames.CANCELRETURNDETAIL_SCREEN}
+          component={CancelReturnDetailScreen}
         />
         <Stack.Screen
           name={ScreenNames.FORGET_PASSWORD_SCREEN}
