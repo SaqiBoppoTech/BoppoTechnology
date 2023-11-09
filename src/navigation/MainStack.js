@@ -159,6 +159,10 @@ const MainStack = () => {
           name={ScreenNames.SUCCESS_SCREEN}
           component={SuccessScreen}
         />
+        <Stack.Screen
+          name={ScreenNames.MOBILE_OTP_SCREEN}
+          component={VerifyMobileNumberScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
