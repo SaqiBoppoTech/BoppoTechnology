@@ -12,15 +12,13 @@ import Carousel from 'react-native-reanimated-carousel';
 import {FlatList} from 'react-native-gesture-handler';
 import {styles} from './CarouselStyle';
 import {CarouselHooks} from './CarouselHooks';
+import { Constant } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
-const CarouselScreen = () => {
-  const {data, width, DATA, setIsFocused, isFocused, renderItem} =
-    CarouselHooks();
-
+const CustomCarousel = () => {
+  const {data, width, DATA, setIsFocused, renderItem} =CarouselHooks();
   return (
-    <View>
       <View style={styles.main}>
-        <View style={{height: 250, width: width}}>
           <View style={styles.indicatorConatiner}>
             <View style={styles.indicatorPosition}>
               <FlatList
@@ -33,22 +31,20 @@ const CarouselScreen = () => {
           </View>
           <Carousel
             loop
-            width={width}
-            height={250}
+            width={Constant.SCREEN_WIDTH - 29}
+            height={CHANGE_BY_MOBILE_DPI(222)}
             autoPlay={true}
             data={data}
             scrollAnimationDuration={1000}
             onSnapToItem={index => setIsFocused(index)}
             renderItem={({item, index}) => (
               <View style={styles.carousel}>
-                <Image source={item.image} style={styles.imageStyle} />
+                <Image resizeMode={'contain'} source={item.image} style={styles.imageStyle} />
               </View>
             )}
           />
-        </View>
       </View>
-    </View>
   );
 };
 
-export default CarouselScreen;
+export default CustomCarousel;

@@ -1,87 +1,46 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
-import {styles} from './TopDealsStyles';
-import {useNavigation} from '@react-navigation/native';
-import {ScreenName, ScreenNames} from '../../global/index';
-
+import { View, Image, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import { styles } from './TopDealsStyles';
+import { useNavigation } from '@react-navigation/native';
+import { ScreenName, ScreenNames } from '../../global/index';
+import OfferSvg from '../../assets/svgs/OfferSvg.svg'
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import BoldSvg from '../../assets/svgs/BoldSvg.svg'
 const TopDealsHooks = () => {
-  const data = [
-    {
-      key: '1',
-      image: require('../../assets/images/coffee.png'),
-      name: 'Coffee & Tea',
-      price: 'Beverages',
-    },
-    {
-      key: '2',
-      image: require('../../assets/images/dettol.png'),
-      name: 'Coffee & Tea',
-      price: 'Beverages',
-    },
-    {
-      key: '3',
-      image: require('../../assets/images/coffee.png'),
-      name: 'Coffee & Tea',
-      price: 'Beverages',
-    },
-    {
-      key: '4',
-      image: require('../../assets/images/dettol.png'),
-      name: 'Coffee & Tea',
-      price: 'Beverages',
-    },
-    // Add more items as needed
-  ];
 
   const navigation = useNavigation();
   const navigateToProductDetail = () => {
     navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
   };
 
-  const renderItem = ({item}) => (
-    <View style={styles.item}>
+  const renderItem = ({ item }) => (
+    <View style={styles.topDealsContainer}>
+        <View style={styles.positionContainer}>
+            <View style={styles.offerSizeContainer}>
+              <OfferSvg height={CHANGE_BY_MOBILE_DPI(35)} width={CHANGE_BY_MOBILE_DPI(120)} />
+              <View style={styles.positionOffer}>
+                <BoldSvg height={CHANGE_BY_MOBILE_DPI(15)} width={CHANGE_BY_MOBILE_DPI(15)}/>
+            <Text style={styles.offerFontStyle}>GET 50% OFF</Text>
+              </View>
+            </View>
+        </View>
       <TouchableOpacity style={styles.imageback} onPress={navigateToProductDetail}>
         <Image source={item.image} style={styles.image} />
       </TouchableOpacity>
-
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 120,
-          left: 0,
-          width: '80%',
-          height: 40,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          padding: 2,
-        }}>
-        <Image
-          source={require('../../assets/images/rectangle.png')}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'fill',
-          }}
-        />
-        <Text style={{color: '#000', position: 'relative'}}>GET 50% OFF</Text>
+      <View style={styles.fontContainer}>
+        <Text style={styles.titleFontStyle}>
+          {item.name}
+        </Text>
+        <Text style={styles.categoryFontStyle}>
+          {item.category}
+        </Text>
       </View>
 
-      <Text style={{fontSize: 15, fontWeight: '700', color: 'black'}}>
-        {item.name}
-      </Text>
-      <Text style={{fontSize: 13, fontWeight: '400', color: '#DA1319'}}>
-        {item.price}
-      </Text>
     </View>
   );
   return {
-    data,
     renderItem,
   };
 };
 
-export {TopDealsHooks};
+export { TopDealsHooks };

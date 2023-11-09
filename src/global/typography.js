@@ -18,3 +18,10 @@ export const MANROPE_EXTRA_BOLD = 'Manrope-ExtraBold';
 export const MANROPE_MEDIUM = 'Manrope-Medium';
 export const MANROPE_REGULAR = 'Manrope-Regular';
 export const MANROPE_SEMIBOLD = 'Manrope-SemiBold';
+
+//  PLAYFAIR DISPLAY FONTS
+export const PLAYFAIR_DISPLAY_BOLD = 'PlayfairDisplay-Bold';
+export const PLAYFAIR_DISPLAY_EXTRABOLD = 'PlayfairDisplay-ExtraBold';
+export const PLAYFAIR_DISPLAY_MEDIUM = 'PlayfairDisplay-Medium';
+export const PLAYFAIR_DISPLAY_REGULAR = 'PlayfairDisplay-Regular';
+export const PLAYFAIR_DISPLAY_SEMIBOLD = 'PlayfairDisplay-SemiBold';

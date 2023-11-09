@@ -17,3 +17,4 @@ export const GRAY_DARK = '#8a8a8a';
 export const GREEN = "#00EF47"
 export const RED = "#FF5151"
 export const GREY = "#CDD4D9"
+export const PAPAYA_WHIP = "#FFF2D0"

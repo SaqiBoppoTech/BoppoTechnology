@@ -1,10 +1,10 @@
 import React from 'react';
-import {TouchableOpacity, Image, Text} from 'react-native';
+import {TouchableOpacity, Image, Text,View} from 'react-native';
 import {styles} from './DealsOfTheDayStyles';
 import {useNavigation} from '@react-navigation/native';
-import {ScreenName, ScreenNames} from '../../global/index';
+import { ScreenNames} from '../../global/index';
 
-const DealsOfTheDayHooks = () => {
+const DealsOfTheDayhHooks = () => {
   const navigation = useNavigation();
   const data = [
     {
@@ -39,20 +39,14 @@ const DealsOfTheDayHooks = () => {
   };
 
   const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.item} onPress={navigateToProductDetail}>
-      <Image source={item.image} style={styles.image} />
-      <Text
-        style={{
-          color: 'white',
-          fontSize: 15,
-          fontWeight: 700,
-          marginVertical: 3,
-        }}>
-        {item.name}
-      </Text>
-      <Text style={{color: '#AAAAAA', fontSize: 12, fontWeight: 600}}>
-        From ${item.price}
-      </Text>
+    <TouchableOpacity style={styles.container} onPress={navigateToProductDetail}>
+      <View style={styles.sizeContainer}> 
+      <View style={styles.imageMainContainer}>
+      <Image source={item.image} style={styles.imageStyle} />
+      </View>
+      <Text style={styles.titleFontStyle} numberOfLines={1}>{item.name}</Text>
+      <Text style={styles.priceFontSytle}>From ${item.price}</Text>
+      </View>
     </TouchableOpacity>
   );
 
@@ -62,4 +56,4 @@ const DealsOfTheDayHooks = () => {
   };
 };
 
-export {DealsOfTheDayHooks};
+export {DealsOfTheDayhHooks};
