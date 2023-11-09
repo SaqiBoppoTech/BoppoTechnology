@@ -24,18 +24,19 @@ const LoginHooks = () => {
     navigation.navigate(ScreenNames.CREATE_NEW_ACCOUNT);
   };
   const handleLogin = () => {
-    const validationErrors = {};
-    if (!email.match(emailRegex)) {
-      validationErrors.email = 'Invalid email address';
-    }
-    if (!password.match(passwordRegex)) {
-      validationErrors.password =
-        'Password must be at least 8 characters long and contain letters and numbers.';
-    }
-    setErrors(validationErrors);
-    if (Object.keys(validationErrors).length === 0) {
-      navigation.navigate('Tabs');
-    }
+    // const validationErrors = {};
+    // if (!email.match(emailRegex)) {
+    //   validationErrors.email = 'Invalid email address';
+    // }
+    // if (!password.match(passwordRegex)) {
+    //   validationErrors.password =
+    //     'Password must be at least 8 characters long and contain letters and numbers.';
+    // }
+    // setErrors(validationErrors);
+    // if (Object.keys(validationErrors).length === 0) {
+    //   navigation.navigate('Tabs');
+    navigation.navigate(ScreenNames.BOTTOM_TAB);
+    // }
   };
   return {
     handleLogin,

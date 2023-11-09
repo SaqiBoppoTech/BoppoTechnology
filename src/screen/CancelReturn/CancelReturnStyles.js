@@ -1,80 +1,122 @@
 import {StyleSheet} from 'react-native';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import {Colors, Constant, Fonts} from '../../global';
 
 export const styles = StyleSheet.create({
   buttonContainer: {
-    width: 60,
-    backgroundColor: 'black',
-    borderRadius: 10,
-    padding: 10,
+    // width: 60,
+    // backgroundColor: 'black',
+    // borderRadius: 10,
+    // padding: 10,
   },
   itemContainer: {
-    margin: 8,
-    backgroundColor: '#F9F9F9',
-    borderRadius: 10,
+    height: CHANGE_BY_MOBILE_DPI(226),
+    width: CHANGE_BY_MOBILE_DPI(351),
+    margin: CHANGE_BY_MOBILE_DPI(10),
+    backgroundColor: Colors.Alabaster_GREY,
+    borderRadius: CHANGE_BY_MOBILE_DPI(5),
   },
   name: {
-    color: '#151515',
-    fontSize: 16,
-    fontWeight: '600',
-    marginBottom: 10,
+    color: Colors.BLACK,
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    fontFamily: Fonts.MANROPE_BOLD,
   },
-
-  description: {
-    color: '#151515',
-    fontSize: 14,
-    fontWeight: '600',
-    marginBottom: 5,
+  textWrapper: {
+    width: Constant.SCREEN_WIDTH - 200,
+    justifyContent: 'flex-start',
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
   },
-
-  count: {
-    color: '#151515',
-    fontSize: 12,
-    fontWeight: '600',
-    marginBottom: 5,
+  ratingStarBackGround: {
+    marginRight: CHANGE_BY_MOBILE_DPI(1),
+  },
+  rate: {
+    flexDirection: 'row',
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    marginVertical: CHANGE_BY_MOBILE_DPI(8),
+    marginTop: CHANGE_BY_MOBILE_DPI(5),
+  },
+  qtyStyleWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    marginBottom: CHANGE_BY_MOBILE_DPI(5),
+  },
+  discountPriceText: {
+    color: Colors.BLACK,
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
+    fontFamily: Fonts.MANROPE_BOLD,
+  },
+  dot: {
+    backgroundColor: Colors.BLACK,
+    height: CHANGE_BY_MOBILE_DPI(4),
+    width: CHANGE_BY_MOBILE_DPI(4),
+    borderRadius: CHANGE_BY_MOBILE_DPI(100),
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    marginRight: CHANGE_BY_MOBILE_DPI(10),
+  },
+  qtyText: {
+    color: Colors.BLACK,
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    fontWeight: Fonts.MANROPE_BOLD,
+  },
+  priceText: {
+    textDecorationLine: 'line-through',
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    color: Colors.DARK_WHITE,
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    fontWeight: Fonts.MANROPE_BOLD,
+    marginBottom: CHANGE_BY_MOBILE_DPI(5),
+  },
+  buyAgainBtn: {
+    width: CHANGE_BY_MOBILE_DPI(158),
+    height: CHANGE_BY_MOBILE_DPI(33),
+    borderRadius: CHANGE_BY_MOBILE_DPI(8),
+    backgroundColor: Colors.BLACK,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+  },
+  buyAgainText: {
+    color: Colors.WHITE,
   },
   counts: {
-    color: '#A9A9A(',
-    fontSize: 9,
-    fontWeight: ' 400',
-    marginBottom: 5,
-    marginLeft: 5,
+    color: Colors.DARK_WHITE,
+    fontSize: CHANGE_BY_MOBILE_DPI(9),
+    fontWeight: Fonts.MANROPE_MEDIUM,
+    marginLeft: CHANGE_BY_MOBILE_DPI(5),
+    textDecorationLine: 'underline',
   },
-
-  price: {
-    color: '#151515',
-    fontSize: 16,
-    fontWeight: '600',
-    marginBottom: 5,
-  },
-
   imgcontainer: {
-    height: 130,
-    width: 130,
+    height: CHANGE_BY_MOBILE_DPI(105),
+    width: CHANGE_BY_MOBILE_DPI(118),
     justifyContent: 'center',
     alignContent: 'center',
+    backgroundColor: Colors.WHITE,
   },
   imgWrapper: {
-    // backgroundColor: 'blue',
-    height: 150,
+    width: CHANGE_BY_MOBILE_DPI(125),
+    height: CHANGE_BY_MOBILE_DPI(150),
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: Colors.WHITE,
   },
 
   background: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.WHITE,
     marginBottom: 60,
   },
   alignContent: {
     flexDirection: 'row',
-    padding: 10,
+    padding: CHANGE_BY_MOBILE_DPI(10),
+    marginBottom: CHANGE_BY_MOBILE_DPI(10),
   },
   colWrapper: {
     flexDirection: 'column',
-    marginTop: 20,
   },
   cancelWrapper: {
-    color: 'black',
+    color: Colors.BLACK,
     fontSize: 15,
     alignItems: 'center',
     textAlign: 'center',
