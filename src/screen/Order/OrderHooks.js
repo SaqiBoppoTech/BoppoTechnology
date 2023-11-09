@@ -61,6 +61,7 @@ const OrderHooks = () => {
     setCurrentTab,
     tabs,
     tab_conetnt,
+    handleGoBack,
   };
 };
 

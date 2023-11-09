@@ -1,7 +1,16 @@
 import React from 'react';
-import {View, Text, Image, FlatList, Button} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
 import {styles} from './CancelReturnStyles';
 import SelectStarSvg from '../../assets/svgs/SelectStarSvg.svg';
+import {ScreenNames} from '../../global';
+import {useNavigation} from '@react-navigation/native';
 
 const CancelReturnHooks = () => {
   const data = [
@@ -95,6 +104,13 @@ const CancelReturnHooks = () => {
     },
   ];
 
+  // VARIABLE
+  const navigation = useNavigation();
+  // FUNCTION
+  const navigateToCancelReturnDetailScreen = () => {
+    navigation.navigate(ScreenNames.CANCELRETURNDETAIL_SCREEN);
+  };
+
   const renderItem = ({item}) => (
     <View style={styles.itemContainer}>
       <View style={styles.alignContent}>
@@ -129,13 +145,14 @@ const CancelReturnHooks = () => {
           </View>
         </View>
       </View>
-      <View style={styles.border}></View>
-      <View>
-        <Text style={styles.cancelWrapper}>
-          {' '}
-          View Cancelled/Returned Detail
-        </Text>
-      </View>
+      <View style={styles.btn}></View>
+      <TouchableOpacity onPress={navigateToCancelReturnDetailScreen}>
+        <View style={styles.viewcancelDetailBtn}>
+          <Text style={styles.viewCancelDetailBtnText}>
+            View Cancelled/Returned Detail
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 
