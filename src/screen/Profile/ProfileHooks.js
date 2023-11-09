@@ -21,10 +21,10 @@ const ProfileHooks = () => {
     navigation.navigate(ScreenNames.SELL_WITH_US_SCREEN);
   };
   const navigateToMyQuestionAnswer = () => {
-    navigation.navigate(ScreenNames.MY_REVIEW_SCREEN);
+    navigation.navigate(ScreenNames.MY_QUESTION_ANSWER_SCREEN);
   };
   const navigateToMyReview = () => {
-    navigation.navigate(ScreenNames.MY_QUESTION_ANSWER_SCREEN);
+    navigation.navigate(ScreenNames.MY_REVIEW_SCREEN);
   };
   const navigateToPrivacyPolicy = () => {
     navigation.navigate(ScreenNames.PRIVACY_POLICY_SCREEN);

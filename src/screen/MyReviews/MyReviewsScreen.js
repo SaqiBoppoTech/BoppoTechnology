@@ -1,21 +1,16 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  ScrollView,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import Icons from 'react-native-vector-icons/Ionicons';
-import RatingComponent from '../../components/RatingStar';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import MyReviewCommonComponent from '../../components/MyReviewCommonComponent/MyReviewCommonComponent';
+import {styles} from './MyReviewsStyle';
+import Remove from '../../assets/svgs/Remove.svg';
+import MyReviewHooks from './MyReviewsHooks';
 
 const MyReviewsScreen = () => {
+  const {handleGoBack, onRemovePress, navigateToProductDetail} =
+    MyReviewHooks();
   const data = [
     {
       id: 1,
@@ -60,82 +55,32 @@ const MyReviewsScreen = () => {
 
   const renderItem = ({item}) => (
     <View style={styles.container}>
-      <View style={{flexDirection: 'row', marginBottom: 10}}>
-        <Image
-          source={{uri: item.image}}
-          style={{
-            height: 130,
-            width: 130,
-            objectFit: 'cover',
-            alignContent: 'center',
-            marginRight: 10,
-          }}
-        />
-        <View style={{justifyContent: 'center'}}>
-          <Text style={styles.name}>{item.name}</Text>
-          <RatingComponent initialRating={item.rate} />
-          <Text style={styles.yourrating}>Your Rating</Text>
-        </View>
-      </View>
+      <MyReviewCommonComponent
+        productImage={item.image}
+        initialRating={item.rate}
+        productName={item.name}
+      />
       <Text style={styles.description}>{item.description}</Text>
-      <View style={{backgroundColor: '#aaaaaa', height: 2}} />
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          height: 50,
-        }}>
-        <View
-          style={{
-            width: '100%',
-            height: '100%',
-            flex: 5,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <TouchableOpacity>
-            <Text style={{...styles.buttonText}}>View</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{backgroundColor: '#aaaaaa', height: '100%', width: 2}} />
-        <View
-          style={{
-            width: '100%',
-            height: '100%',
-            flex: 5,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <TouchableOpacity>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Icons name="trash" size={16} />
-              <Text style={{...styles.buttonText, marginStart: 5}}>Remove</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.line}></View>
+      <View style={styles.bottomContainer}>
+        <TouchableOpacity
+          style={styles.editWrapper}
+          onPress={navigateToProductDetail}>
+          <Text style={styles.optionText}>View</Text>
+        </TouchableOpacity>
+        <View style={styles.verticalLine}></View>
+        <TouchableOpacity style={styles.removeWrapper} onPress={onRemovePress}>
+          <Remove width="15" height="15" />
+          <Text style={styles.optionText}>Remove</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
-  const redirect = useNavigation();
-  const handleGoBack = () => {
-    redirect.goBack();
-  };
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
-      <SearchAppBar
-        title={'My Reviews'}
-        onPress={() => {
-          handleGoBack();
-        }}
-      />
+      <SearchAppBar title={'My Reviews'} onPress={handleGoBack} />
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -145,40 +90,5 @@ const MyReviewsScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // height: '36%',
-    backgroundColor: '#FAFAFA',
-    margin: 10,
-    borderRadius: 10,
-    paddingVertical: 15,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#151515',
-    width: '70%',
-    marginBottom: 15,
-  },
-  yourrating: {
-    marginTop: 15,
-    color: '#5A5A5A',
-    fontSize: 12,
-    fontWeight: '400',
-  },
-  description: {
-    color: '#151515',
-    padding: 10,
-    fontSize: 14,
-    fontWeight: '500',
-    width: '100%',
-  },
-  buttonText: {
-    fontWeight: '500',
-    fontSize: 15,
-    color: '#000000',
-  },
-});
 
 export default MyReviewsScreen;

@@ -5,6 +5,7 @@ import AddressContainerComponenet from '../../components/AddressContainer/Addres
 import {styles} from './BillingAddressStyle';
 import BillingAddressHooks from './BillingAddressHooks';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const BillingAddressScreen = () => {
   const {handleGoBack, editAddress, removeAddress} = BillingAddressHooks();

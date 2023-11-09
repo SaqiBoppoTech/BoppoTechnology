@@ -6,29 +6,16 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.LIGHT_WHITE,
     margin: CHANGE_BY_MOBILE_DPI(10),
-    borderRadius: CHANGE_BY_MOBILE_DPI(10),
     paddingTop: CHANGE_BY_MOBILE_DPI(5),
   },
 
-  bottomContainer: {
-    flexDirection: 'row',
-    height: CHANGE_BY_MOBILE_DPI(45),
-    borderBottomRightRadius: CHANGE_BY_MOBILE_DPI(10),
-    borderBottomLeftRadius: CHANGE_BY_MOBILE_DPI(10),
-    backgroundColor: Colors.LIGHT_WHITE,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  optionText: {
-    fontSize: CHANGE_BY_MOBILE_DPI(14),
-    color: Colors.BLACK,
-    fontFamily: Fonts.MANROPE_BOLD,
-  },
   line: {
     borderBottomWidth: CHANGE_BY_MOBILE_DPI(1),
-    borderColor: Colors.GAINSBORO,
-    marginTop: CHANGE_BY_MOBILE_DPI(10),
+    borderColor: Colors.BLACK,
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
+  },
+  lineWrapper: {
+    marginVertical: CHANGE_BY_MOBILE_DPI(10),
   },
 
   question: {
@@ -50,5 +37,19 @@ export const styles = StyleSheet.create({
   },
   flexView: {
     flex: 1,
+  },
+  questionViewOnly: {
+    flex: 0.18,
+    alignItems: 'center',
+  },
+  mainView: {
+    flex: 1,
+  },
+  ratingWrapper: {
+    marginVertical: CHANGE_BY_MOBILE_DPI(10),
+  },
+  FlatListConatiner: {
+    flex: 1,
+    backgroundColor: Colors.WHITE,
   },
 });
