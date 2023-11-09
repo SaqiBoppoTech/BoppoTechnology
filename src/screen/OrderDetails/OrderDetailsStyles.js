@@ -26,14 +26,14 @@ export const styles = StyleSheet.create({
   orderDetailTextTop: {
     color: Colors.BLACK,
     fontSize: CHANGE_BY_MOBILE_DPI(17),
-    fontWeight: Fonts.MANROPE_BOLD,
+    fontFamily: Fonts.MANROPE_BOLD,
     marginBottom: CHANGE_BY_MOBILE_DPI(10),
     marginLeft: CHANGE_BY_MOBILE_DPI(15),
   },
   orderId: {
     color: Colors.BLACK,
     fontSize: CHANGE_BY_MOBILE_DPI(16),
-    fontWeight: Fonts.MANROPE_BOLD,
+    fontFamily: Fonts.MANROPE_BOLD,
     marginBottom: CHANGE_BY_MOBILE_DPI(2),
     marginLeft: CHANGE_BY_MOBILE_DPI(15),
   },
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
   paymentModeText: {
     color: Colors.DARK_WHITE,
     fontSize: CHANGE_BY_MOBILE_DPI(14),
-    fontWeight: Fonts.MANROPE_BOLD,
+    fontFamily: Fonts.MANROPE_BOLD,
   },
   productContainer: {
     width: Constant.SCREEN_WIDTH,
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
   },
   orderDetailText: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
-    fontWeight: Fonts.MANROPE_MEDIUM,
+    fontFamily: Fonts.MANROPE_MEDIUM,
     color: Colors.BLACK,
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
     marginTop: CHANGE_BY_MOBILE_DPI(10),
@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
   },
   priceDetails: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
-    fontWeight: Fonts.MANROPE_EXTRA_BOLD,
+    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.BLACK,
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
     marginBottom: CHANGE_BY_MOBILE_DPI(10),
@@ -81,21 +81,21 @@ export const styles = StyleSheet.create({
   },
   totalProductPriceText: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
-    fontWeight: Fonts.MANROPE_BOLD,
+    fontFamily: Fonts.MANROPE_BOLD,
   },
   totalProductPriceValue: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
-    fontWeight: Fonts.MANROPE_EXTRA_BOLD,
+    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.BLACK,
   },
   supplyDiscountText: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
-    fontWeight: Fonts.MANROPE_BOLD,
+    fontFamily: Fonts.MANROPE_BOLD,
   },
   supplyDiscountValue: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
-    fontWeight: Fonts.MANROPE_EXTRA_BOLD,
-    color: Colors.BLACK,
+    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
+    color: Colors.PRIMARY,
   },
   supplyDiscountWrapper: {
     flexDirection: 'row',
@@ -118,12 +118,12 @@ export const styles = StyleSheet.create({
   },
   orderTotalText: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
-    fontWeight: Fonts.MANROPE_EXTRA_BOLD,
+    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.BLACK,
   },
   orderTotalValue: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
-    fontWeight: Fonts.MANROPE_EXTRA_BOLD,
+    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.PRIMARY,
   },
   deliveryAddressWrapper: {
@@ -133,7 +133,7 @@ export const styles = StyleSheet.create({
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
     color: Colors.BLACK,
-    fontWeight: Fonts.MANROPE_BOLD,
+    fontFamily: Fonts.MANROPE_BOLD,
     marginTop: CHANGE_BY_MOBILE_DPI(10),
     marginBottom: CHANGE_BY_MOBILE_DPI(10),
   },
