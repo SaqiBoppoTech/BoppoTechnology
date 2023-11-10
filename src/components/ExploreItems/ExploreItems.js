@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { ExploreItemHooks } from './ExploreItemsHooks';
 import { styles } from './ExploreItemsStyles';
 import { STATIC_DATA } from '../../global/staticdata';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 const ExploreItems = () => {
   const { renderItem } = ExploreItemHooks();
   return (
@@ -15,7 +16,7 @@ const ExploreItems = () => {
         keyExtractor={item => item.key}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentContainerStyle}
-      />
+        />
     </View>
   );
 };

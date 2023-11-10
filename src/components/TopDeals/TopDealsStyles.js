@@ -4,7 +4,7 @@ import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 export const styles = StyleSheet.create({
   topDealsContainer:{
-zIndex:0
+    height:CHANGE_BY_MOBILE_DPI(300),
   },
   imageback: {
     backgroundColor: Colors.WHITE,
@@ -13,7 +13,8 @@ zIndex:0
     justifyContent: 'center',
     alignItems: 'center',
     marginRight:CHANGE_BY_MOBILE_DPI(15),
-    zIndex:0
+    zIndex:0,
+    marginTop:CHANGE_BY_MOBILE_DPI(20)
   },
   item: {
     width: 150, // Adjust the width as needed
@@ -27,14 +28,14 @@ zIndex:0
   },
   backGround: {
     backgroundColor: Colors.PAPAYA_WHIP,
-    height:CHANGE_BY_MOBILE_DPI(295)
+    height:CHANGE_BY_MOBILE_DPI(300),
   },
   headingColor: {
    fontSize:CHANGE_BY_MOBILE_DPI(20),
    color:Colors.BLACK,
    fontFamily:Fonts.PLAYFAIR_DISPLAY_BOLD,
    marginHorizontal:CHANGE_BY_MOBILE_DPI(20),
-   marginVertical:CHANGE_BY_MOBILE_DPI(10)
+   marginTop:CHANGE_BY_MOBILE_DPI(10)
   },
   contentContainerStyle:{
     marginLeft:CHANGE_BY_MOBILE_DPI(20)
@@ -63,8 +64,9 @@ zIndex:0
   },
   positionContainer:{
     position:"absolute",
-    left:CHANGE_BY_MOBILE_DPI(0),
-    zIndex:100
+    left:CHANGE_BY_MOBILE_DPI(-1),
+    zIndex:100,
+    top:CHANGE_BY_MOBILE_DPI(9)
   },
   positionRectangleContainer:{
     

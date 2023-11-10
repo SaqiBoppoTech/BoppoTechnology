@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { ExploreItemHooks } from './BestSellingHooks';
-import { styles } from './BestSellingStyles';
+import { TopOfferHooks } from './TopOfferHooks';
+import { styles } from './TopOfferStyles';
 import { STATIC_DATA } from '../../global/staticdata';
-const BestSelling = () => {
-  const { renderItem } = ExploreItemHooks();
+const TopOffer = () => {
+  const { renderItem } = TopOfferHooks();
   return (
     <View style={styles.backGround}>
-      <Text style={styles.headingText}>Best Selling</Text>
+      <Text style={styles.headingText}>Top Offers</Text>
       <FlatList
         data={STATIC_DATA.exploreItemData}
         horizontal={true}
@@ -20,4 +20,4 @@ const BestSelling = () => {
   );
 };
 
-export default BestSelling;
+export default TopOffer;

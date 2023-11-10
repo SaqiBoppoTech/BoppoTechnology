@@ -24,12 +24,12 @@ export const styles = StyleSheet.create({
     height: '100%',
   },
   backGround: {
+    // paddingHorizontal:CHANGE_BY_MOBILE_DPI(20)
   },
   headingText: {
     fontSize: CHANGE_BY_MOBILE_DPI(20),
     color: Colors.BLACK,
     fontFamily: Fonts.PLAYFAIR_DISPLAY_SEMIBOLD,
-    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
     marginVertical: CHANGE_BY_MOBILE_DPI(10)
   },
   exploreItemCardContainer: {
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(20),
-    marginLeft: CHANGE_BY_MOBILE_DPI(20)
+    // marginLeft: CHANGE_BY_MOBILE_DPI(20),
   },
   titleFontStyle:{
     fontSize:CHANGE_BY_MOBILE_DPI(12),

@@ -111,5 +111,22 @@ export const STATIC_DATA = {
           bannerName:'Shop Health Care'
         },
 
+      ],
+      shopByCategoryData:[
+        {
+          image: GlobalImage.coffieImage,
+          name:'Baby Products',
+          offer:'Up to 20% off'
+        },
+        {
+          image: GlobalImage.detolImage,
+          name:'Health Care',
+          offer:'Up to 20% off'
+        },
+        {
+          image: GlobalImage.coffieImage,
+          name:'Baby Products',
+          offer:'Up to 20% off'
+        },
       ]
 }

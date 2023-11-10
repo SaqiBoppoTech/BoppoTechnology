@@ -15,15 +15,15 @@ const TopDealsHooks = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.topDealsContainer}>
-        <View style={styles.positionContainer}>
-            <View style={styles.offerSizeContainer}>
-              <OfferSvg height={CHANGE_BY_MOBILE_DPI(35)} width={CHANGE_BY_MOBILE_DPI(120)} />
-              <View style={styles.positionOffer}>
-                <BoldSvg height={CHANGE_BY_MOBILE_DPI(15)} width={CHANGE_BY_MOBILE_DPI(15)}/>
+      <View style={styles.positionContainer}>
+        <View style={styles.offerSizeContainer}>
+          <OfferSvg height={CHANGE_BY_MOBILE_DPI(35)} width={CHANGE_BY_MOBILE_DPI(120)} />
+          <View style={styles.positionOffer}>
+            <BoldSvg height={CHANGE_BY_MOBILE_DPI(15)} width={CHANGE_BY_MOBILE_DPI(15)} />
             <Text style={styles.offerFontStyle}>GET 50% OFF</Text>
-              </View>
-            </View>
+          </View>
         </View>
+      </View>
       <TouchableOpacity style={styles.imageback} onPress={navigateToProductDetail}>
         <Image source={item.image} style={styles.image} />
       </TouchableOpacity>
@@ -35,7 +35,6 @@ const TopDealsHooks = () => {
           {item.category}
         </Text>
       </View>
-
     </View>
   );
   return {

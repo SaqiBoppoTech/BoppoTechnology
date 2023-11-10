@@ -6,21 +6,21 @@ import PlusSvg from '../../assets/svgs/PlusSvg.svg'
 import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 // create a component
-const Card = ({ image, name, price, discountPrice, percent,plusSvgVisibility,onPress }) => {
+const Card = ({ image, name, price, discountPrice, percent, plusSvgVisibility, onPress, index }) => {
     return (
-        <TouchableOpacity style={styles.exploreItemCardContainer} onPress={onPress}>
+        <TouchableOpacity style={{ ...styles.exploreItemCardContainer, marginRight: CHANGE_BY_MOBILE_DPI(15), }} onPress={onPress}>
             {image &&
                 <View style={styles.imageContainer}>
                     <Image resizeMode='contain' source={image} style={styles.image} />
                 </View>
             }
             <View style={styles.paddingConmtainer}>
-                    {name && <Text style={styles.titleFontStyle} numberOfLines={3}>{name}</Text>}
-                   <View style={styles.priceContainer}>
+                {name && <Text style={styles.titleFontStyle} numberOfLines={3}>{name}</Text>}
+                <View style={styles.priceContainer}>
                     {price && <Text style={styles.priceFontStyle}>${price}</Text>}
                     {discountPrice && <Text style={styles.discountFontStyle}>${discountPrice}</Text>}
                     {percent && <Text style={styles.percentageFontStyle}>{percent}% OFF </Text>}
-                    </View>
+                </View>
             </View>
             {
                 plusSvgVisibility &&
