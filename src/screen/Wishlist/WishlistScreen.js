@@ -13,7 +13,6 @@ import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {Colors} from '../../global';
 import RatingComponent from '../../components/RatingStar';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
-import Remove from '../../assets/svgs/Remove.svg';
 import ShoppingBag from '../../assets/svgs/Shopping_Bag.svg';
 import Cross from '../../assets/svgs/Cross.svg';
 
@@ -34,39 +33,37 @@ const WishlistScreen = () => {
 
   const renderItem = ({item}) => {
     return (
-      <View style={{backgroundColor: 'red'}}>
-        <View style={styles.rowWrapper}>
+      <View style={styles.renderMainView}>
+        <View style={styles.imageViewWrapper}>
           <Image source={{uri: item.image}} style={styles.imageWrapper} />
-          <View style={{backgroundColor: 'yellow'}}>
-            <View style={styles.nameView}>
-              <Text style={styles.name}>{item.name}</Text>
-              <View style={styles.RatingRowView}>
-                <RatingComponent
-                  initialRating={item.starCount}
-                  starheight={15}
-                  starwidth={15}
-                  width={CHANGE_BY_MOBILE_DPI(90)}
-                />
-                <Text style={styles.customer}>
-                  ({item.numOfCustumer} customer review)
-                </Text>
-              </View>
-              <View style={styles.priceContainer}>
-                <Text style={styles.price}>{item.price} USD</Text>
-                <View style={styles.circle}></View>
-                <Text style={styles.quantity}>{item.quantity}Qty</Text>
-              </View>
-
-              <Text style={styles.discount}>{item.discount} USD</Text>
+          <View style={styles.containWrapper}>
+            <Text style={styles.name}>{item.name}</Text>
+            <View
+              style={{
+                backgroundColor: 'sky-blue',
+                flexDirection: 'row',
+              }}>
+              <RatingComponent
+                initialRating={item.starCount}
+                starheight={15}
+                starwidth={15}
+                width={CHANGE_BY_MOBILE_DPI(90)}
+              />
+              <Text style={styles.customer}>
+                ({item.numOfCustumer} customer review)
+              </Text>
+            </View>
+            <View style={styles.priceContainer}>
+              <Text style={styles.price}>{item.price} USD</Text>
+              <View style={styles.circle}></View>
+              <Text style={styles.quantity}>{item.quantity}Qty</Text>
+            </View>
+            <Text style={styles.discount}>{item.discount} USD</Text>
+            <View style={styles.btn}>
+              <Text style={styles.btnText}>View Product</Text>
             </View>
           </View>
         </View>
-        <TouchableOpacity
-          onPress={() => {}}
-          activeOpacity={0.8}
-          style={styles.btn}>
-          <Text style={styles.btnText}>View Product</Text>
-        </TouchableOpacity>
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
           <TouchableOpacity style={styles.editWrapper} onPress={{}}>
@@ -86,7 +83,7 @@ const WishlistScreen = () => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
-      <SearchAppBar title={'My Reviews'} onPress={{}} />
+      <SearchAppBar title={'Your Whishlist'} onPress={{}} />
       <FlatList
         data={data}
         renderItem={renderItem}

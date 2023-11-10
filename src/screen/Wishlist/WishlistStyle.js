@@ -9,31 +9,94 @@ export const styles = StyleSheet.create({
     backgroundColor: 'red',
     flex: 1,
   },
+  renderMainView: {
+    //
+    backgroundColor: 'red',
+    flex: 1,
+    height: 226,
+  },
+  imageViewWrapper: {
+    //
+    backgroundColor: 'yellow',
+    flexDirection: 'row',
+  },
+  imageWrapper: {
+    //
+    height: 150,
+    width: 150,
+  },
+  containWrapper: {
+    //
+    backgroundColor: 'pink',
+    flex: 1,
+    marginLeft: 10,
+    marginRight: 5,
+  },
+  name: {
+    //
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    color: Colors.BLACK_DARK,
+    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
+  },
+  customer: {
+    //
+    fontFamily: Fonts.MANROPE_MEDIUM,
+    color: Colors.GRAY_DARK,
+    fontSize: CHANGE_BY_MOBILE_DPI(10),
+    backgroundColor: 'green',
+  },
+  discount: {
+    //
+    fontFamily: Fonts.MANROPE_BOLD,
+    color: Colors.GRAY_DARK,
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    textDecorationLine: 'line-through',
+  },
+  priceContainer: {
+    //
+    backgroundColor: 'purple',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  price: {
+    //
+    fontFamily: Fonts.MANROPE_BOLD,
+    color: Colors.BLACK,
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
+  },
+  circle: {
+    //
+    height: CHANGE_BY_MOBILE_DPI(5),
+    width: CHANGE_BY_MOBILE_DPI(5),
+    backgroundColor: Colors.BLACK,
+    borderRadius: CHANGE_BY_MOBILE_DPI(10),
+  },
+  quantity: {
+    //
+    fontFamily: Fonts.MANROPE_BOLD,
+    color: Colors.BLACK,
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+  },
+  btn: {
+    //
+    backgroundColor: 'violet',
+    width: 150,
+    alignItems: 'center',
+  },
+  btnText: {
+    //
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    textAlign: 'center',
+  },
   container: {
     backgroundColor: 'red',
     margin: CHANGE_BY_MOBILE_DPI(10),
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
     paddingVertical: CHANGE_BY_MOBILE_DPI(15),
   },
-  name: {
-    fontSize: CHANGE_BY_MOBILE_DPI(14),
-    color: Colors.BLACK_DARK,
-    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
-  },
-  discount: {
-    fontFamily: Fonts.MANROPE_BOLD,
-    color: Colors.GRAY_DARK,
-    fontSize: CHANGE_BY_MOBILE_DPI(14),
-    textDecorationLine: 'line-through',
-  },
 
-  imageWrapper: {
-    height: CHANGE_BY_MOBILE_DPI(150),
-    width: CHANGE_BY_MOBILE_DPI(120),
-    objectFit: 'cover',
-    alignItems: 'center',
-    marginRight: CHANGE_BY_MOBILE_DPI(10),
-  },
   rowWrapper: {
     flexDirection: 'row',
     marginHorizontal: CHANGE_BY_MOBILE_DPI(10),
@@ -84,46 +147,5 @@ export const styles = StyleSheet.create({
   RatingRowView: {
     flexDirection: 'row',
     gap: CHANGE_BY_MOBILE_DPI(10),
-  },
-  customer: {
-    fontFamily: Fonts.MANROPE_MEDIUM,
-    color: Colors.GRAY_DARK,
-    fontSize: CHANGE_BY_MOBILE_DPI(10),
-  },
-  priceContainer: {
-    flexDirection: 'row',
-    backgroundColor: 'pink',
-    alignItems: 'center',
-    gap: CHANGE_BY_MOBILE_DPI(10),
-  },
-  price: {
-    fontFamily: Fonts.MANROPE_BOLD,
-    color: Colors.BLACK,
-    fontSize: CHANGE_BY_MOBILE_DPI(16),
-  },
-  circle: {
-    height: CHANGE_BY_MOBILE_DPI(5),
-    width: CHANGE_BY_MOBILE_DPI(5),
-    backgroundColor: Colors.BLACK,
-    borderRadius: CHANGE_BY_MOBILE_DPI(10),
-  },
-  quantity: {
-    fontFamily: Fonts.MANROPE_BOLD,
-    color: Colors.BLACK,
-    fontSize: CHANGE_BY_MOBILE_DPI(14),
-  },
-  btn: {
-    borderRadius: CHANGE_BY_MOBILE_DPI(12),
-    height: CHANGE_BY_MOBILE_DPI(40),
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.BLACK,
-    marginHorizontal: CHANGE_BY_MOBILE_DPI(110),
-  },
-  btnText: {
-    color: Colors.WHITE,
-    fontSize: CHANGE_BY_MOBILE_DPI(12),
-    fontWeight: '500',
-    fontFamily: Fonts.MANROPE_EXTRA_BOLD,
   },
 });
