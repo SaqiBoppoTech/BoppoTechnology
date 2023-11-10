@@ -7,7 +7,9 @@ const GlobalImage = {
   otpEmailImage: require('../../src/assets/images/email_verify.png'),
   coffieImage:require('../../src/assets/images/coffee.png'),
   detolImage:require('../../src/assets/images/dettol.png'),
-  offerImage:require('../../src/assets/images/rectangle.png')
+  offerImage:require('../../src/assets/images/rectangle.png'),
+  bannerOfferImage:require('../../src/assets/images/BannerOfferImage.png'),
+  bannerOfferImage2:require('../../src/assets/images/BannerOfferImage2.png')
 };
 
 export { GlobalImage };
