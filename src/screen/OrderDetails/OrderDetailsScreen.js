@@ -28,7 +28,7 @@ const OrderDetailsScreen = () => {
           <OrderContainerComponent showPopup={true} showQuantity={true} />
         </View>
         <View style={styles.orderTrackingWrappe}>
-          <Text>Order Tracking</Text>
+          <Text>Order Tracking YET TO DEVELOP</Text>
         </View>
         <View style={styles.orderDetailWrapper}>
           <Text style={styles.orderDetailText}>Order Details</Text>

@@ -28,7 +28,7 @@ const CancelReturnDetailScreen = () => {
           <OrderContainerComponent showPopup={true} showQuantity={true} />
         </View>
         <View style={styles.cancelTrackingWrappe}>
-          <Text>Order Tracking</Text>
+          <Text>Tracking YET TO DEVELOP</Text>
         </View>
         <View style={styles.cancelDetailWrapper}>
           <Text style={styles.cancelDetailText}>CANCEL/RETURN Details</Text>
