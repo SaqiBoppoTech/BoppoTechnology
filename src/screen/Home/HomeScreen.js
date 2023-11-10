@@ -24,6 +24,7 @@ import DealsOfTheDay from '../../components/DealsOfTheDay/DealsOfTheDay';
 import ExploreItems from '../../components/ExploreItems/ExploreItems';
 import TopDealList from '../../components/TopDeals/TopDeals';
 import BestOffer from '../../components/BestOffer/BestOffer';
+import OfferBanner from '../../components/OfferBanner/OfferBanner';
 
 
 const HomeScreen = () => {
@@ -45,7 +46,7 @@ const HomeScreen = () => {
           <LocationSvg heigth={CHANGE_BY_MOBILE_DPI(20)} width={CHANGE_BY_MOBILE_DPI(20)} />
         </TouchableOpacity>
       </View>
-      <ScrollView>
+      <ScrollView style={styles.marginBottomStyle}>
         <View style={styles.searchContainer}>
           <SearchField />
         </View>
@@ -65,7 +66,12 @@ const HomeScreen = () => {
           <View style={styles.bestOfferContainer}>
             <BestOffer />
           </View>
-
+          <View style={styles.offerBannerContainer}>
+            <OfferBanner />
+          </View>
+          <View style={styles.bestSellingContainer}>
+            <ExploreItems />
+          </View>
 
                    
 {/* 

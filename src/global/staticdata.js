@@ -96,5 +96,20 @@ export const STATIC_DATA = {
         {
           name:'25% Off'
         },
+      ],
+      offerBannerData:[
+        {
+          bannerImage: GlobalImage.bannerOfferImage,
+          bannerName:'Shop Baby Care'
+        },
+        {
+          bannerImage: GlobalImage.bannerOfferImage2,
+          bannerName:'Shop Diet &  Nutrition'
+        },
+        {
+          bannerImage: GlobalImage.bannerOfferImage,
+          bannerName:'Shop Health Care'
+        },
+
       ]
 }

@@ -39,6 +39,12 @@ export const styles = StyleSheet.create({
     },
     topCategoryContainer:{
         
+    },
+    marginBottomStyle:{
+        marginBottom:CHANGE_BY_MOBILE_DPI(100) 
+    },
+    offerBannerContainer:{
+       
     }
 });
 
