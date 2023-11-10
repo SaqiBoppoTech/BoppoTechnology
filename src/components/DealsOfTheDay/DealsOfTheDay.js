@@ -1,22 +1,23 @@
 import React from 'react';
 import {View, FlatList, Text} from 'react-native';
-import {DealsOfTheDayHooks} from './DealsOfTheDayHooks';
 import {styles} from './DealsOfTheDayStyles';
+import { DealsOfTheDayhHooks } from './DealsOfTheDayHooks';
 
-const DealOfTheDayScreen = ({onPress}) => {
-  const {data, renderItem} = DealsOfTheDayHooks();
+const DealsOfTheDay = ({title}) => {
+  const {data, renderItem} = DealsOfTheDayhHooks()
   return (
     <View style={styles.backGround}>
-      <Text style={styles.headerText}>Deals Of the Day</Text>
+      <Text style={styles.headerText}>{title}</Text>
       <FlatList
         data={data}
         horizontal={true}
         renderItem={renderItem}
         keyExtractor={item => item.key}
+        contentContainerStyle={styles.contentContainerStyle}
         showsHorizontalScrollIndicator={false}
       />
     </View>
   );
 };
 
-export default DealOfTheDayScreen;
+export default DealsOfTheDay;

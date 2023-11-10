@@ -9,7 +9,8 @@ const VerifyMobileNumberHooks = () => {
   const checkLoginWithEmailOrMobileNumber = useSelector(e => e.user?.loginWith);
   const goBackToLogin = (quantity, showAlert) => {
     showAlert && invokeToastAlert();
-    navigation.pop(quantity);
+    // navigation.pop(quantity)
+    navigation.navigate(ScreenNames.BOTTOM_TAB);
   };
   const invokeToastAlert = () => {
     dispatch(
@@ -24,7 +25,6 @@ const VerifyMobileNumberHooks = () => {
   const navigateToHomePage = () => {
     navigation.navigate(ScreenNames.BOTTOM_TAB);
   };
-
   return {
     goBackToLogin,
     invokeToastAlert,

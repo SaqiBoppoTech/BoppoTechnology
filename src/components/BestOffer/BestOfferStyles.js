@@ -1,4 +1,4 @@
-import { Colors, Fonts } from "../../global";
+import { Colors, Constant, Fonts } from "../../global";
 import { CHANGE_BY_MOBILE_DPI } from "../../global/constant";
 
 const { StyleSheet } = require("react-native");
@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     height: '100%',
   },
   backGround: {
+    backgroundColor:Colors.WHITE
   },
   headingText: {
     fontSize: CHANGE_BY_MOBILE_DPI(20),
@@ -48,8 +49,8 @@ export const styles = StyleSheet.create({
     width: CHANGE_BY_MOBILE_DPI(160)
   },
   contentContainerStyle: {
-    paddingBottom: CHANGE_BY_MOBILE_DPI(20),
-    marginLeft: CHANGE_BY_MOBILE_DPI(20)
+    paddingVertical: CHANGE_BY_MOBILE_DPI(10),
+    paddingLeft: CHANGE_BY_MOBILE_DPI(20)
   },
   titleFontStyle:{
     fontSize:CHANGE_BY_MOBILE_DPI(12),
@@ -81,5 +82,24 @@ export const styles = StyleSheet.create({
   },
   flexContainer:{
     flex:1
+  },
+  topTabparticualrContainer:{
+    marginRight:CHANGE_BY_MOBILE_DPI(15)
+  },
+  offerTopTabMainContainer:{
+    paddingHorizontal:CHANGE_BY_MOBILE_DPI(20),
+    backgroundColor:Colors.GRAY_LIGHT + 99,
+    paddingTop:CHANGE_BY_MOBILE_DPI(10),
+    width:Constant.SCREEN_WIDTH,
+  },
+  topTabFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(14),
+    fontFamily:Fonts.MANROPE_BOLD,
+    color:Colors.BLACK,
+    marginBottom:CHANGE_BY_MOBILE_DPI(9)
+  },
+  underLine:{
+    height:CHANGE_BY_MOBILE_DPI(3),
+    backgroundColor:Colors.BLACK
   }
 });

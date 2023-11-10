@@ -28,3 +28,4 @@ export const GREY = '#CDD4D9';
 export const wilsonwhite = ' #FCFCFC';
 export const MineShaft = '#343434';
 export const Scorpion = '#5F5F5F';
+export const PAPAYA_WHIP = '#FFF2D0';

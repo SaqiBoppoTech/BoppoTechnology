@@ -37,6 +37,7 @@ import CustomToastedAlert from './CustomToastedAlert';
 import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
 import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';
+import CategoryDetailScreen from '../screen/CategoryDetail/CategoryDetailScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -44,10 +45,10 @@ const MainStack = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{headerShown: false}}
-        initialRouteName={ScreenNames.SPLASH_SCREEN}>
+        initialRouteName={ScreenNames.CATEGORY_DETAIL_SCREEN}>
         <Stack.Screen
-          name={ScreenNames.SPLASH_SCREEN}
-          component={SplashScreen}
+          name={ScreenNames.CATEGORY_DETAIL_SCREEN}
+          component={CategoryDetailScreen}
         />
 
         <Stack.Screen

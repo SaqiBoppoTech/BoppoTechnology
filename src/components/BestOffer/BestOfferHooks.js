@@ -1,19 +1,14 @@
-const {
-  TouchableOpacity,
-  Image,
-  View,
-  Text,
-  Modal,
-  Animated,
-  Dimensions,
-} = require('react-native');
-import {styles} from './ExploreItemsStyles';
+const {TouchableOpacity, Image, View, Text} = require('react-native');
+import {styles} from './BestOfferStyles';
 import {useNavigation} from '@react-navigation/native';
 import { ScreenNames} from '../../global/index';
 import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 import PlusSvg from '../../assets/svgs/PlusSvg.svg'
-const ExploreItemHooks = () => {
+import React from 'react';
+const BestOfferHooks = () => {
   const navigation = useNavigation();
+
+  const  [selectOffer,setSelectOffer] = React.useState(0)
   const navigateToProductDetail = () => {
     navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
   };
@@ -39,9 +34,26 @@ const ExploreItemHooks = () => {
     </TouchableOpacity>
   );
 
+
+  const renderOfferTopTab = ({item,index}) => {
+
+    const selectTheOffer = () => {
+      setSelectOffer(index)
+    }
+    return(
+      <TouchableOpacity
+      onPress={selectTheOffer}
+       style={styles.topTabparticualrContainer}>
+        <Text style={styles.topTabFontStyle}>{item.name}</Text>
+       { selectOffer == index ?  <View style={styles.underLine}></View> : <></>}
+      </TouchableOpacity>
+    )
+  }
+
   return {
     renderItem,
+    renderOfferTopTab
   };
 };
 
-export {ExploreItemHooks};
+export {BestOfferHooks};

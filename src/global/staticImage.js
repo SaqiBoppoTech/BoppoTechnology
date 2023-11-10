@@ -5,7 +5,9 @@ const GlobalImage = {
   loginImage: require('../../src/assets/images/login_img.png'),
   otpMobileNumberImage: require('../../src/assets/images/mobile_otp.png'),
   otpEmailImage: require('../../src/assets/images/email_verify.png'),
-
+  coffieImage:require('../../src/assets/images/coffee.png'),
+  detolImage:require('../../src/assets/images/dettol.png'),
+  offerImage:require('../../src/assets/images/rectangle.png')
 };
 
 export { GlobalImage };

@@ -1,13 +1,19 @@
 import {StyleSheet} from 'react-native';
+import { Colors, Fonts } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 export const styles = StyleSheet.create({
+  topDealsContainer:{
+zIndex:0
+  },
   imageback: {
-    backgroundColor: 'white',
-    width: 150,
-    height: 160,
+    backgroundColor: Colors.WHITE,
+     height:CHANGE_BY_MOBILE_DPI(165),
+     width:CHANGE_BY_MOBILE_DPI(165),
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 5,
+    marginRight:CHANGE_BY_MOBILE_DPI(15),
+    zIndex:0
   },
   item: {
     width: 150, // Adjust the width as needed
@@ -20,16 +26,57 @@ export const styles = StyleSheet.create({
     height: 110,
   },
   backGround: {
-    backgroundColor: '#FFF2D0',
-    height: 300,
-    paddingLeft: 5,
-    // marginTop: 10,
+    backgroundColor: Colors.PAPAYA_WHIP,
+    height:CHANGE_BY_MOBILE_DPI(295)
   },
   headingColor: {
-    fontSize: 22,
-    fontWeight: '600',
-    color: '#000',
-    marginLeft: 10,
-    marginVertical: 10,
+   fontSize:CHANGE_BY_MOBILE_DPI(20),
+   color:Colors.BLACK,
+   fontFamily:Fonts.PLAYFAIR_DISPLAY_BOLD,
+   marginHorizontal:CHANGE_BY_MOBILE_DPI(20),
+   marginVertical:CHANGE_BY_MOBILE_DPI(10)
   },
+  contentContainerStyle:{
+    marginLeft:CHANGE_BY_MOBILE_DPI(20)
+  },
+  titleFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(14),
+   color:Colors.BLACK,
+   fontFamily:Fonts.MANROPE_BOLD,
+  },
+  categoryFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(12),
+    color:Colors.ALERT,
+    fontFamily:Fonts.MANROPE_REGULAR
+  },
+  fontContainer:{
+    marginTop:CHANGE_BY_MOBILE_DPI(10)
+  },
+  offerImageContainer:{
+    height:CHANGE_BY_MOBILE_DPI(60),
+    width:CHANGE_BY_MOBILE_DPI(110)
+  },
+  offerFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(10),
+    color:Colors.BLACK,
+    fontFamily:Fonts.LATO_MEDIUM,bottom:CHANGE_BY_MOBILE_DPI(1)
+  },
+  positionContainer:{
+    position:"absolute",
+    left:CHANGE_BY_MOBILE_DPI(0),
+    zIndex:100
+  },
+  positionRectangleContainer:{
+    
+  },
+  positionOffer:{
+    position:"absolute",
+    zIndex:100,
+    alignItems:"center",
+    height:CHANGE_BY_MOBILE_DPI(35),
+    width:CHANGE_BY_MOBILE_DPI(120),
+    includeFontPadding:false,
+    flexDirection:"row",
+    left:CHANGE_BY_MOBILE_DPI(10)
+  }
 });

@@ -9,21 +9,23 @@ import {
 } from 'react-native';
 import {TopDealsHooks} from './TopDealsHooks';
 import {styles} from './TopDealsStyles';
+import { STATIC_DATA } from '../../global/staticdata';
 
-const TopDealListScreen = () => {
-  const {data, renderItem} = TopDealsHooks();
+const TopDealList = () => {
+  const { renderItem} = TopDealsHooks();
   return (
     <View style={styles.backGround}>
       <Text style={styles.headingColor}>Top Deals</Text>
       <FlatList
-        data={data}
+        data={STATIC_DATA.topDetailData}
         horizontal={true}
         renderItem={renderItem}
         keyExtractor={item => item.key}
         showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.contentContainerStyle}
       />
     </View>
   );
 };
 
-export default TopDealListScreen;
+export default TopDealList;
