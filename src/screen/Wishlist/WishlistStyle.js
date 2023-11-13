@@ -6,92 +6,78 @@ export const styles = StyleSheet.create({
   mainView: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
     flex: 1,
   },
   renderMainView: {
-    //
-    backgroundColor: 'red',
+    backgroundColor: Colors.LIGHT_WHITE,
     flex: 1,
-    height: 226,
+    marginBottom: CHANGE_BY_MOBILE_DPI(5),
+    marginTop: CHANGE_BY_MOBILE_DPI(3),
   },
   imageViewWrapper: {
-    //
-    backgroundColor: 'yellow',
     flexDirection: 'row',
   },
   imageWrapper: {
-    //
-    height: 150,
-    width: 150,
+    height: CHANGE_BY_MOBILE_DPI(150),
+    width: CHANGE_BY_MOBILE_DPI(150),
   },
   containWrapper: {
-    //
-    backgroundColor: 'pink',
     flex: 1,
-    marginLeft: 10,
-    marginRight: 5,
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    marginRight: CHANGE_BY_MOBILE_DPI(5),
+    gap: CHANGE_BY_MOBILE_DPI(2),
   },
   name: {
-    //
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     color: Colors.BLACK_DARK,
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
   },
   customer: {
-    //
     fontFamily: Fonts.MANROPE_MEDIUM,
     color: Colors.GRAY_DARK,
     fontSize: CHANGE_BY_MOBILE_DPI(10),
-    backgroundColor: 'green',
   },
   discount: {
-    //
     fontFamily: Fonts.MANROPE_BOLD,
     color: Colors.GRAY_DARK,
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     textDecorationLine: 'line-through',
   },
   priceContainer: {
-    //
-    backgroundColor: 'purple',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    gap: CHANGE_BY_MOBILE_DPI(10),
   },
   price: {
-    //
     fontFamily: Fonts.MANROPE_BOLD,
     color: Colors.BLACK,
     fontSize: CHANGE_BY_MOBILE_DPI(16),
   },
   circle: {
-    //
     height: CHANGE_BY_MOBILE_DPI(5),
     width: CHANGE_BY_MOBILE_DPI(5),
     backgroundColor: Colors.BLACK,
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
   },
   quantity: {
-    //
     fontFamily: Fonts.MANROPE_BOLD,
     color: Colors.BLACK,
     fontSize: CHANGE_BY_MOBILE_DPI(14),
   },
   btn: {
-    //
-    backgroundColor: 'violet',
-    width: 150,
+    backgroundColor: Colors.BLACK,
+    width: CHANGE_BY_MOBILE_DPI(150),
     alignItems: 'center',
+    borderRadius: CHANGE_BY_MOBILE_DPI(12),
   },
   btnText: {
-    //
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    paddingVertical: CHANGE_BY_MOBILE_DPI(10),
     textAlign: 'center',
+    color: Colors.WHITE,
   },
   container: {
-    backgroundColor: 'red',
     margin: CHANGE_BY_MOBILE_DPI(10),
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
     paddingVertical: CHANGE_BY_MOBILE_DPI(15),
@@ -144,7 +130,7 @@ export const styles = StyleSheet.create({
     width: CHANGE_BY_MOBILE_DPI(1),
     backgroundColor: Colors.GAINSBORO,
   },
-  RatingRowView: {
+  ratingRowView: {
     flexDirection: 'row',
     gap: CHANGE_BY_MOBILE_DPI(10),
   },
