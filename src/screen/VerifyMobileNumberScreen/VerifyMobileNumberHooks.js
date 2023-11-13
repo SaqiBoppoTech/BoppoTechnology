@@ -18,10 +18,14 @@ const VerifyMobileNumberHooks = () => {
             toastedAlertText: `You are successfully registered.${'\n'}PLease Login here to contibue`
         }))
     }
+    const navigateToHomePage = () => {
+      navigation.navigate(ScreenNames.BOTTOM_TAB)
+    }
     return {
         goBackToLogin,
         invokeToastAlert,
-        checkLoginWithEmailOrMobileNumber
+        checkLoginWithEmailOrMobileNumber,
+        navigateToHomePage
     }
 }
 export { VerifyMobileNumberHooks }
