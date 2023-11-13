@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
+import {ScreenNames} from '../../global';
 
 const WishListHooks = () => {
   const navigation = useNavigation();
@@ -8,7 +9,9 @@ const WishListHooks = () => {
 
   const addToCartPress = () => {};
   const removeFromCart = () => {};
-  const navigateToProductScreen = () => {};
+  const navigateToProductScreen = () => {
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
+  };
 
   return {
     handleGoBack,
