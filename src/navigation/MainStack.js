@@ -38,6 +38,7 @@ import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
 import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';
 import QuestionDetailScreen from '../screen/QuestionDetailView/QuestionDetailScreen';
+import PaymentScreen from '../screen/Payment/PaymentScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -168,7 +169,15 @@ const MainStack = () => {
           name={ScreenNames.QUESTION_DETAIL_VIEW}
           component={QuestionDetailScreen}
         />
+
+        <Stack.Screen
+          name={ScreenNames.PAYMENT_SCREEN}
+          component={PaymentScreen}
+        />
       </Stack.Navigator>
+
+    
+
     </NavigationContainer>
   );
 };
