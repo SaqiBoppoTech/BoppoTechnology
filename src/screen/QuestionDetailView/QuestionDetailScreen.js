@@ -85,7 +85,7 @@ const QuestionDetailScreen = () => {
   return (
     <View style={styles.FlatListConatiner}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
-      <SearchAppBar title={'Q&A'} onPress={handleGoBack} />
+      <SearchAppBar title={'Q&A Detail'} onPress={handleGoBack} />
       <View style={styles.ratingWrapper}>
         <MyReviewCommonComponent
           productImage={

@@ -34,4 +34,12 @@ export const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
+  marginRightContainer:{
+    marginRight:CHANGE_BY_MOBILE_DPI(3)
+  },
+  ratingContainer:{
+    flexDirection: 'row',
+    alignItems: 'center',
+  }
 });
+

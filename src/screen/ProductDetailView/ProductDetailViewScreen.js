@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { styles } from './ProductDetailViewStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
@@ -9,14 +9,10 @@ import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 import HeartSvg from '../../assets/svgs/HeartSvg.svg'
 import ShareSvg from '../../assets/svgs/ShareSvg.svg'
 import { STATIC_DATA } from '../../global/staticdata';
-import CustomTopTabs from '../../navigation/CustomTopTabs/CustomTopTab';
 import { ProductDetailViewHooks } from './ProductDetailViewHooks';
-import ProductDescriptionScreen from '../../components/ProductDescription/ProductDescription';
-import ProductDetailScreen from '../../components/ProductDetail/ProductDetailScreen';
-import ProductReviewScreen from '../../components/ProductReview/ProductReviewScreen';
-import ProductDescription from '../../components/ProductDescription/ProductDescription';
+import CartSvg from '../../assets/svgs/CartSvg.svg'
 const ProductDetailViewScreen = () => {
-  const { renderTopBar } = ProductDetailViewHooks()
+  const { renderTopBar, openCustomView } = ProductDetailViewHooks()
   return (
     <View style={styles.mainContainer}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
@@ -43,9 +39,22 @@ const ProductDetailViewScreen = () => {
         <View>
           <FlatList horizontal data={STATIC_DATA.topTabData} renderItem={renderTopBar} contentContainerStyle={styles.contentContainerStyle} />
         </View>
-          <ProductDescription/>
-        {/* <ProductReviewScreen/> */}
-        {/* <ProductDetailScreen/> */}
+        {openCustomView()}
+      </View>
+      <View style={styles.positionContainer}>
+        <View style={styles.addToContainer}>
+          <View style={styles.flexContainer}>
+            <TouchableOpacity style={styles.addToCartSubContainer}>
+              <CartSvg heigth={CHANGE_BY_MOBILE_DPI(23)} width={CHANGE_BY_MOBILE_DPI(23)} />
+              <Text style={styles.addToCartFontStyle}>Add to cart</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.flexContainer}>
+            <TouchableOpacity style={styles.buyNowContainer}>
+              <Text style={styles.buyNowFontStyle}>Buy Now</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </View>
   );

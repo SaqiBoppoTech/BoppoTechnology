@@ -1,19 +1,13 @@
 //import liraries
-import React, { Component, useState } from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  Modal,
-  TouchableOpacity,
-} from 'react-native';
-import { HomeHooks } from './HomeHooks';
-import { styles } from './HomeStyle';
+import React, {Component, useState} from 'react';
+import {View, Text, ScrollView, Modal, TouchableOpacity} from 'react-native';
+import {HomeHooks} from './HomeHooks';
+import {styles} from './HomeStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import { Colors, Constant } from '../../global';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
-import BoppoSvg from '../../assets/svgs/LogoSvg.svg'
-import LocationSvg from '../../assets/svgs/LocationSvg.svg'
+import {Colors, Constant} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import BoppoSvg from '../../assets/svgs/LogoSvg.svg';
+import LocationSvg from '../../assets/svgs/LocationSvg.svg';
 import SearchField from '../../components/SearchField';
 import CustomCarousel from '../../components/Carousel/CustomCarousel';
 import DealsOfTheDay from '../../components/DealsOfTheDay/DealsOfTheDay';
@@ -28,24 +22,27 @@ import ShopByCategory from '../../components/ShopByCategory/ShopByCategory';
 import YourBrowserHistory from '../../components/YourBrowserHistory/YourBrowserHistory';
 import TopOffer from '../../components/TopOffer/TopOffer';
 
-
 const HomeScreen = () => {
-  const {
-    isPopupVisible, setPopupVisible,
-    togglePopup
-  } = HomeHooks()
+  const {isPopupVisible, setPopupVisible, togglePopup, navigateToLocation} =
+    HomeHooks();
   return (
     <View style={styles.mainContainer}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
       <View style={styles.boppoHeaderContainer}>
         <View style={styles.flexContainer}>
           <TouchableOpacity>
-            <BoppoSvg heigth={CHANGE_BY_MOBILE_DPI(35)} width={CHANGE_BY_MOBILE_DPI(35)} />
+            <BoppoSvg
+              heigth={CHANGE_BY_MOBILE_DPI(35)}
+              width={CHANGE_BY_MOBILE_DPI(35)}
+            />
           </TouchableOpacity>
           <Text style={styles.headerFontStyle}>Boppo</Text>
         </View>
-        <TouchableOpacity>
-          <LocationSvg heigth={CHANGE_BY_MOBILE_DPI(20)} width={CHANGE_BY_MOBILE_DPI(20)} />
+        <TouchableOpacity onPress={navigateToLocation}>
+          <LocationSvg
+            heigth={CHANGE_BY_MOBILE_DPI(20)}
+            width={CHANGE_BY_MOBILE_DPI(20)}
+          />
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.marginBottomStyle}>
@@ -78,7 +75,7 @@ const HomeScreen = () => {
             <OfferBannerImage />
           </View>
           <View style={styles.brandStoreContainer}>
-            <BrandStore/>
+            <BrandStore />
           </View>
           <View style={styles.shopByCategorycontainer}>
             <TopOffer />
@@ -87,7 +84,7 @@ const HomeScreen = () => {
             <ShopByCategory />
           </View>
           {/* <View style={styles.yourBrowserHistoryContainer}> */}
-            <YourBrowserHistory />
+          <YourBrowserHistory />
           {/* </View> */}
         </View>
         <Modal
@@ -99,13 +96,13 @@ const HomeScreen = () => {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={{ color: 'black', margin: 50 }}>
+              <Text style={{color: 'black', margin: 50}}>
                 Your Popup Content Goes Here
               </Text>
               <TouchableOpacity
                 onPress={togglePopup}
                 style={styles.closeButton}>
-                <Text style={{ color: 'black' }}>X</Text>
+                <Text style={{color: 'black'}}>X</Text>
               </TouchableOpacity>
             </View>
           </View>

@@ -9,6 +9,7 @@ export const BLACK = '#000000';
 export const TRANSPARENT = '#ffffff00';
 export const BLACK_DARK = '#151515';
 export const GAINSBORO = '#DDDDDD';
+export const GREY_SHADE_500 = '#EDEDED';
 //Actions
 export const SUCCESS = '#3adb76';
 export const WARNING = '#ffae00';
@@ -27,3 +28,6 @@ export const RED = "#FF5151"
 export const GREY = "#CDD4D9"
 export const PAPAYA_WHIP = "#FFF2D0"
 export const HALLOWINE_ORANGE = '#EF691F'
+export const YELLOW = '#F1C40F'
+export const DARK_GREEN = '#585858'
+

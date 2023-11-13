@@ -1,26 +1,27 @@
 import {StyleSheet} from 'react-native';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import { Colors, Fonts } from '../../global';
 
 export const styles = StyleSheet.create({
   product: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#000000',
+    fontSize:CHANGE_BY_MOBILE_DPI(16),
+    color:Colors.BLACK,
+    fontFamily:Fonts.MANROPE_BOLD
   },
   price: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#000000',
+    fontSize:CHANGE_BY_MOBILE_DPI(28.31),
+    color:Colors.BLACK,
+    fontFamily:Fonts.MANROPE_BOLD
   },
   review: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#A9A9A9',
-    marginLeft: 5,
-  },
+    fontSize:CHANGE_BY_MOBILE_DPI(12),
+    color:Colors.GRAY_DARK,
+    fontFamily:Fonts.MANROPE_REGULAR
+    },
   description: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#151515',
+    fontSize:CHANGE_BY_MOBILE_DPI(14),
+    color:Colors.GRAY_DARK,
+    fontFamily:Fonts.MANROPE_MEDIUM
   },
   scrollStyle: {
     marginBottom: 10,
@@ -31,13 +32,17 @@ export const styles = StyleSheet.create({
     padding: 15,
   },
   priceview: {
-    marginTop: 10,
-    marginBottom: 20,
+    marginTop:CHANGE_BY_MOBILE_DPI(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   ratingWrapper: {
     flexDirection: 'row',
-    marginBottom: 20,
+    alignItems:'center',
+    marginVertical:CHANGE_BY_MOBILE_DPI(15)
+    // marginBottom: 20,
   },
+  starWidthStyle:{
+    marginRight:CHANGE_BY_MOBILE_DPI(3)
+  }
 });

@@ -1,80 +1,84 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+import { CHANGE_BY_MOBILE_DPI, SCREEN_WIDTH } from '../../global/constant';
+import { Colors, Fonts } from '../../global';
 
 export const styles = StyleSheet.create({
   squareImage: {
-    height: 100,
-    width: 100,
-    marginRight: 10,
-    backgroundColor: '#A9A9A9',
-    margin: 10,
+    height: CHANGE_BY_MOBILE_DPI(112),
+    width: CHANGE_BY_MOBILE_DPI(112),
+    marginRight: CHANGE_BY_MOBILE_DPI(20),
+    marginTop:CHANGE_BY_MOBILE_DPI(10)
   },
   container: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   circleImage: {
-    height: 60,
-    width: 60,
-    borderRadius: 30,
-    marginRight: 10,
+    height: CHANGE_BY_MOBILE_DPI(44.86),
+    width: CHANGE_BY_MOBILE_DPI(44.86), 
+    borderRadius: CHANGE_BY_MOBILE_DPI(100),
+    marginRight: CHANGE_BY_MOBILE_DPI(10),
   },
   header: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 40,
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
+    fontFamily: Fonts.MANROPE_SEMIBOLD,
+    color: Colors.BLACK
   },
   reviewcontainer: {
-    height: '120%',
-    width: '30%',
+    height: CHANGE_BY_MOBILE_DPI(63),
+    width: CHANGE_BY_MOBILE_DPI(91),
     borderColor: 'black',
-    borderRadius: 5,
+    borderRadius: CHANGE_BY_MOBILE_DPI(5.73),
     borderWidth: 1,
     alignItems: 'center',
-    marginRight: 20,
+    marginRight: CHANGE_BY_MOBILE_DPI(20)
   },
   rating: {
-    color: 'black',
-    fontSize: 38,
-    fontWeight: '700',
+    fontSize: CHANGE_BY_MOBILE_DPI(38),
+    fontFamily: Fonts.MANROPE_BOLD,
+    color: Colors.BLACK,
+    includeFontPadding: false,
+    top:CHANGE_BY_MOBILE_DPI(3)
   },
   ratingText: {
-    color: 'black',
-    fontSize: 17,
-    fontWeight: '700',
+    fontSize: CHANGE_BY_MOBILE_DPI(17.18),
+    fontFamily: Fonts.MANROPE_REGULAR,
+    color: Colors.BLACK,
   },
 
   name: {
-    fontSize: 15,
-    fontWeight: '400',
-    color: '#000000',
-    marginRight: 10,
+    fontSize: CHANGE_BY_MOBILE_DPI(15.27),
+    fontFamily: Fonts.MANROPE_REGULAR,
+    color: Colors.BLACK,
+    marginRight:CHANGE_BY_MOBILE_DPI(10)
   },
   date: {
-    fontSize: 12,
-    fontWeight: '400',
-    color: '#151515',
-    marginRight: 10,
+    fontSize: CHANGE_BY_MOBILE_DPI(17.18),
+    fontFamily: Fonts.MANROPE_REGULAR,
+    color: Colors.BLACK,
+  },
+  namedate:{
+    fontSize: CHANGE_BY_MOBILE_DPI(12.14),
+    fontFamily: Fonts.MANROPE_REGULAR,
+    color: Colors.BLACK,
   },
   reviewDes: {
-    fontSize: 15,
-    fontWeight: '400',
-    color: '#151515',
-    marginRight: 10,
+    fontSize: CHANGE_BY_MOBILE_DPI(15.27),
+    fontFamily: Fonts.MANROPE_REGULAR,
+    color: Colors.BLACK,
   },
   viewWrapper: {
-    padding: 10,
-    marginTop: 20,
+    marginBottom:CHANGE_BY_MOBILE_DPI(10)
   },
   mainView: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: CHANGE_BY_MOBILE_DPI(20),
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: CHANGE_BY_MOBILE_DPI(10),
   },
   ratingWrapper: {
     flexDirection: 'row',
-    marginBottom: 5,
+    marginBottom: CHANGE_BY_MOBILE_DPI(5),
   },
   ratingMainView: {
     flexDirection: 'row',
@@ -83,37 +87,60 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   rateWrapper: {
-    fontSize: 15,
-    fontWeight: '400',
-    color: '#000000',
-  },
-  rateImageWrapper: {
-    height: 20,
-    width: 20,
-    marginLeft: 5,
-    marginRight: 5,
+   fontSize:CHANGE_BY_MOBILE_DPI(15),
+   color:Colors.BLACK,
+   fontFamily:Fonts.MANROPE_REGULAR
   },
   totalRating: {
-    fontSize: 13,
-    fontWeight: '300',
-    color: '#000000',
-    marginLeft: 5,
+    fontSize:CHANGE_BY_MOBILE_DPI(13.36),
+   color:Colors.BLACK,
+   fontFamily:Fonts.MANROPE_REGULAR,
+   marginLeft:CHANGE_BY_MOBILE_DPI(10)
   },
-  totalRatingWrapper: {
-    borderWidth: 4,
-    color: '#F1C40F',
-    borderColor: 20,
-    width: '60%',
-    borderCurve: 'circular',
-  },
-  mainView2: {
+  mainContainer: {
     flex: 1,
-    backgroundColor: 'white',
-    padding: 10,
+    backgroundColor: Colors.WHITE
   },
   reviewWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 30,
+    marginVertical:CHANGE_BY_MOBILE_DPI(20)
+
   },
+  marginHorizontalContainer: {
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20)
+  },
+  starMarginHorizontalContainer:{
+    marginHorizontal:CHANGE_BY_MOBILE_DPI(10)
+  },
+  starBarOuterContainer:{
+    height:CHANGE_BY_MOBILE_DPI(6),
+    width:SCREEN_WIDTH / 1.8,
+    borderRadius:CHANGE_BY_MOBILE_DPI(100),
+    backgroundColor:Colors.GRAY_MEDIUM
+  },
+  starBarInnerContainer:{
+    height:CHANGE_BY_MOBILE_DPI(6),
+    width:SCREEN_WIDTH / 3,
+    borderRadius:CHANGE_BY_MOBILE_DPI(100),
+    backgroundColor:Colors.YELLOW
+  },
+  sizeContainer:{
+    height:CHANGE_BY_MOBILE_DPI(20),
+    width:CHANGE_BY_MOBILE_DPI(40),
+  },
+  flexDirectionStarContainer:{
+    flexDirection:'row',
+    alignItems:'center'
+  },
+  marginRightContainer:{
+    marginRight:CHANGE_BY_MOBILE_DPI(3)
+  },
+  flexWrapContainer:{
+    flexDirection:'row',
+    flexWrap:'wrap'
+  },
+  flexContainer:{
+    marginTop:CHANGE_BY_MOBILE_DPI(10)
+  }
 });

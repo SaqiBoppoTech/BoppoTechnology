@@ -140,11 +140,109 @@ export const STATIC_DATA = {
       image: GlobalImage.manFaceCreamImage,
     },
   ],
-  topTabData:[
-   'Description',
+  topTabData: [
+    'Description',
     'Details',
-    'Subscription',
-   'Reviews',
-   'Q & As'
+    'Reviews',
+    'Q & As'
+  ],
+  ratingAndReviewData: [
+    {
+      key: 1,
+      name: 'Ash Ketchum',
+      date: '4 Sep 2023',
+      rating: 4,
+      image: GlobalImage.bannerOfferImage,
+    },
+    {
+      key: 2,
+      name: 'Ash Ketchum',
+      date: '4 Sep 2023',
+      rating: 4,
+      image: GlobalImage.bannerOfferImage,
+    },
+    {
+      key: 3,
+      name: 'Ash Ketchum',
+      date: '4 Sep 2023',
+      rating: 4,
+      image: GlobalImage.bannerOfferImage,
+    },
+    {
+      key: 4,
+      name: 'Ash Ketchum',
+      date: '4 Sep 2023',
+      rating: 4,
+      image: GlobalImage.bannerOfferImage
+    },
+  ],
+  ratingdata: [
+    {
+      totalRating: '10',
+      borderColor: '#F1C40F',
+      rate: '5',
+    },
+    {
+      totalRating: '0',
+      borderColor: '#C4C4C4',
+      rate: '4',
+    },
+    {
+      totalRating: '0',
+      borderColor: '#C4C4C4',
+      rate: '3',
+    },
+    {
+      totalRating: '0',
+      borderColor: '#C4C4C4',
+      rate: '2',
+    },
+    {
+      totalRating: '0',
+      borderColor: '#C4C4C4',
+      rate: '1',
+    },
+  ],
+  QandAsData : [
+    {
+      id: 1,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      rate: 4,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+
+    {
+      id: 2,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      rate: 5,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+
+    {
+      id: 3,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      rate: 2,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+
+    {
+      id: 4,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      rate: 3,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
   ]
+
 }

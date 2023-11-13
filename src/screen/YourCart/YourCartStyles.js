@@ -4,9 +4,8 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 export const styles = StyleSheet.create({
   mainView: {
-    justifyContent: 'center',
-    alignItems: 'center',
     flex: 1,
+    backgroundColor: Colors.WHITE,
   },
   renderMainView: {
     backgroundColor: Colors.LIGHT_WHITE,
@@ -29,22 +28,18 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginLeft: CHANGE_BY_MOBILE_DPI(10),
     marginRight: CHANGE_BY_MOBILE_DPI(5),
-    gap: CHANGE_BY_MOBILE_DPI(2),
+    gap: CHANGE_BY_MOBILE_DPI(4),
   },
   name: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     color: Colors.BLACK_DARK,
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
   },
-  customer: {
-    fontFamily: Fonts.MANROPE_MEDIUM,
-    color: Colors.GRAY_DARK,
-    fontSize: CHANGE_BY_MOBILE_DPI(10),
-  },
+
   discount: {
     fontFamily: Fonts.MANROPE_BOLD,
     color: Colors.GRAY_DARK,
-    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    fontSize: CHANGE_BY_MOBILE_DPI(12),
     textDecorationLine: 'line-through',
   },
   priceContainer: {
@@ -58,29 +53,13 @@ export const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontSize: CHANGE_BY_MOBILE_DPI(16),
   },
-  circle: {
-    height: CHANGE_BY_MOBILE_DPI(5),
-    width: CHANGE_BY_MOBILE_DPI(5),
-    backgroundColor: Colors.BLACK,
-    borderRadius: CHANGE_BY_MOBILE_DPI(10),
-  },
+
   quantity: {
     fontFamily: Fonts.MANROPE_BOLD,
     color: Colors.BLACK,
     fontSize: CHANGE_BY_MOBILE_DPI(14),
   },
-  btn: {
-    backgroundColor: Colors.BLACK,
-    width: CHANGE_BY_MOBILE_DPI(150),
-    alignItems: 'center',
-    borderRadius: CHANGE_BY_MOBILE_DPI(12),
-  },
-  btnText: {
-    paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
-    paddingVertical: CHANGE_BY_MOBILE_DPI(10),
-    textAlign: 'center',
-    color: Colors.WHITE,
-  },
+
   container: {
     margin: CHANGE_BY_MOBILE_DPI(10),
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
@@ -134,8 +113,15 @@ export const styles = StyleSheet.create({
     width: CHANGE_BY_MOBILE_DPI(1),
     backgroundColor: Colors.GAINSBORO,
   },
-  ratingRowView: {
-    flexDirection: 'row',
-    gap: CHANGE_BY_MOBILE_DPI(10),
+  flatlistView: {
+    backgroundColor: Colors.WHITE,
+    flex: 1,
+    marginBottom: CHANGE_BY_MOBILE_DPI(70),
+  },
+  btnStyle: {
+    position: 'absolute',
+    bottom: CHANGE_BY_MOBILE_DPI(10),
+    left: 0,
+    width: '100%',
   },
 });

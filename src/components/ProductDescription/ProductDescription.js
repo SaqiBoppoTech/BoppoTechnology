@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Text, Button, ScrollView} from 'react-native';
 import RatingComponent from '../RatingStar';
-import BlackIncremnetButton from '../Button/BlackIncrementButton';
+import BlackIncremnetButton from '../BlackIncrementButton/BlackIncrementButton';
 import {styles} from './ProductDescriptionStyle';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const ProductDescription = () => {
   return (
@@ -11,17 +12,14 @@ const ProductDescription = () => {
         <Text style={styles.product}>
           Dove Derma Spa Summer Revived Medium 15g, lorem ipaum{' '}
         </Text>
-
         <View style={styles.priceview}>
           <Text style={styles.price}>£ 2.70</Text>
           <BlackIncremnetButton />
         </View>
-
         <View style={styles.ratingWrapper}>
           <RatingComponent initialRating={3} />
           <Text style={styles.review}> (1 customer review)</Text>
         </View>
-
         <Text style={styles.description}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt
           amet egestas tempor facilisi. Venenatis lorem mattis faucibus netus

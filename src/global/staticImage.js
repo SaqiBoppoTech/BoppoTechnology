@@ -10,7 +10,7 @@ const GlobalImage = {
   offerImage:require('../../src/assets/images/rectangle.png'),
   bannerOfferImage:require('../../src/assets/images/BannerOfferImage.png'),
   bannerOfferImage2:require('../../src/assets/images/BannerOfferImage2.png'),
-  manFaceCreamImage:require('../../src/assets/images/ManFairCream.png')
+  manFaceCreamImage:require('../../src/assets/images/ManFairCream.png'),
 };
 
 export { GlobalImage };

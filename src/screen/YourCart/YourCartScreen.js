@@ -1,29 +1,22 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
-import {styles} from './WishlistStyle';
-import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
+import {styles} from './YourCartStyles';
+import CheckoutNavigationBar from '../../components/CheckoutNavigationBar/CheckoutNavigationBar';
+import BlackIncremnetButton from '../../components/BlackIncrementButton/BlackIncrementButton';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
-import {Colors} from '../../global';
-import RatingComponent from '../../components/RatingStar';
-import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
-import ShoppingBag from '../../assets/svgs/Shopping_Bag.svg';
+import CommonButton from '../../components/Button/CommonButton';
+import Heart from '../../assets/svgs/Heart.svg';
 import Cross from '../../assets/svgs/Cross.svg';
-import WishListHooks from './WishListHooks';
+import YourCartHook from './YourCartHooks';
 
-const WishlistScreen = () => {
+const YourCart = ({navigation}) => {
   const {
     handleGoBack,
-    addToCartPress,
-    removeFromCart,
     navigateToProductScreen,
-  } = WishListHooks();
+    removeFromCart,
+    wishListClick,
+    navigateToOrderSummary,
+  } = YourCartHook();
   const data = [
     {
       id: 1,
@@ -100,35 +93,20 @@ const WishlistScreen = () => {
           <Image source={{uri: item.image}} style={styles.imageWrapper} />
           <View style={styles.containWrapper}>
             <Text style={styles.name}>{item.name}</Text>
-            <View style={styles.ratingRowView}>
-              <RatingComponent
-                initialRating={item.starCount}
-                starheight={15}
-                starwidth={15}
-                width={CHANGE_BY_MOBILE_DPI(90)}
-              />
-              <Text style={styles.customer}>
-                ({item.numOfCustumer} customer review)
-              </Text>
-            </View>
             <View style={styles.priceContainer}>
               <Text style={styles.price}>{item.price} USD</Text>
-              <View style={styles.circle}></View>
-              <Text style={styles.quantity}>{item.quantity}Qty</Text>
+              <Text style={styles.discount}>{item.discount} USD</Text>
             </View>
-            <Text style={styles.discount}>{item.discount} USD</Text>
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={navigateToProductScreen}>
-              <Text style={styles.btnText}>View Product</Text>
-            </TouchableOpacity>
+            <Text style={styles.quantity}>{item.quantity}Qty</Text>
+
+            <BlackIncremnetButton />
           </View>
         </View>
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.editWrapper} onPress={addToCartPress}>
-            <ShoppingBag width="16" height="16" />
-            <Text style={styles.optionText}>Add to Cart</Text>
+          <TouchableOpacity style={styles.editWrapper} onPress={wishListClick}>
+            <Heart width="16" height="16" />
+            <Text style={styles.optionText}>Wishlist</Text>
           </TouchableOpacity>
           <View style={styles.verticalLine}></View>
           <TouchableOpacity
@@ -143,17 +121,23 @@ const WishlistScreen = () => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
-      <SearchAppBar title={'Your Whishlist'} onPress={handleGoBack} />
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        showsVerticalScrollIndicator={false}
-      />
+    <View style={styles.mainView}>
+      <SearchAppBar title={'Cart'} onPress={handleGoBack} />
+      <CheckoutNavigationBar />
+      <View style={styles.flatlistView}>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.key}
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
+
+      <View style={styles.btnStyle}>
+        <CommonButton title={'Continue'} onPress={navigateToOrderSummary} />
+      </View>
     </View>
   );
 };
 
-export default WishlistScreen;
+export default YourCart;
