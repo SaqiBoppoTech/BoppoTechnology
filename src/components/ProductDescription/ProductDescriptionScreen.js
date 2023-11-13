@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Button, ScrollView} from 'react-native';
 import RatingComponent from '../RatingStar';
-import BlackIncremnetButton from '../Button/BlackIncrementButton/BlackIncrementButton';
+import BlackIncremnetButton from '../BlackIncrementButton/BlackIncrementButton';
 import {styles} from './ProductDescriptionStyle';
 
 const ProductDescriptionScreen = () => {

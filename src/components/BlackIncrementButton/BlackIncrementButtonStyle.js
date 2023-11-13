@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {CHANGE_BY_MOBILE_DPI} from '../../../global/constant';
-import {Colors, Fonts} from '../../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import {Colors, Fonts} from '../../global';
 
 export const styles = StyleSheet.create({
   blackContainer: {

@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
 import {styles} from './YourCartStyles';
 import CheckoutNavigationBar from '../../components/CheckoutNavigationBar/CheckoutNavigationBar';
-import BlackIncremnetButton from '../../components/Button/BlackIncrementButton/BlackIncrementButton';
+import BlackIncremnetButton from '../../components/BlackIncrementButton/BlackIncrementButton';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import CommonButton from '../../components/Button/CommonButton';
 import Heart from '../../assets/svgs/Heart.svg';

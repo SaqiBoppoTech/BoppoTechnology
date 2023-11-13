@@ -10,7 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import {useNavigation} from '@react-navigation/native';
 import AddToCartBottomButton from '../Button/AddToCartBottomButton';
-import BlackIncremnetButton from '../Button/BlackIncrementButton/BlackIncrementButton';
+import BlackIncremnetButton from '../BlackIncrementButton/BlackIncrementButton';
 
 const ProductHomeBottomSheet = ({onBuyNowPress, onAddToCartPress}) => {
   const [isModalVisible, setModalVisible] = useState(false);
