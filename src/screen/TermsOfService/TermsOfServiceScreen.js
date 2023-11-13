@@ -1,23 +1,19 @@
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {styles} from './TermsOfServiceStyle';
+import TermsOfServicesHooks from './TermsOfServiceHooks';
+import {Colors} from '../../global';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const TermsAndConditonsScreen = () => {
-  const redirect = useNavigation();
-  const handleGoBack = () => {
-    redirect.goBack();
-  };
+  const {handleGoBack} = TermsOfServicesHooks();
   return (
-    <View>
-      <SearchAppBar
-        title={'Terms & Policies'}
-        onPress={() => {
-          handleGoBack();
-        }}
-      />
-      <ScrollView style={styles.mainView}>
+    <View style={styles.mainView}>
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <SearchAppBar title={'Terms & Policies'} onPress={handleGoBack} />
+      <ScrollView style={styles.scrollChanges}>
         <Text style={styles.header}>Terms And Conditons</Text>
 
         <Text style={styles.text}>

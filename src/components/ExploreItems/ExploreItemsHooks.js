@@ -1,4 +1,12 @@
-const {TouchableOpacity, Image, View, Text} = require('react-native');
+const {
+  TouchableOpacity,
+  Image,
+  View,
+  Text,
+  Modal,
+  Animated,
+  Dimensions,
+} = require('react-native');
 import {styles} from './ExploreItemsStyles';
 import {useNavigation} from '@react-navigation/native';
 import { ScreenNames} from '../../global/index';

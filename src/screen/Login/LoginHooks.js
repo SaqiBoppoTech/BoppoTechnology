@@ -1,39 +1,39 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { ScreenNames } from '../../global';
-import { regex } from '../../global/constant';
-import { useDispatch } from 'react-redux';
-import * as UserAction from '../../redux/actions/userActions'
+import {useNavigation} from '@react-navigation/native';
+import React, {useState} from 'react';
+import {ScreenNames} from '../../global';
+import {regex} from '../../global/constant';
+import {useDispatch} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
 
 const LoginHooks = () => {
   // VARIABLE
-  const navigation = useNavigation()
-  const dispatch = useDispatch()
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
   // HOOKS
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
-  let checkLoginWithEmailOrMobileNumber =  regex.analyisStartingFirst.test(email)
-
+  let checkLoginWithEmailOrMobileNumber =
+    regex.analyisStartingFirst.test(email);
 
   // FUNCTION
   const navigateToForgotPassword = () => {
     navigation.navigate(ScreenNames.FORGET_PASSWORD_SCREEN);
-  }
+  };
   const navigateToBottom = () => {
-    if (email) { 
-      dispatch(UserAction.setLoginWithEmailOrMobileNumber(
-        {
-          condition:checkLoginWithEmailOrMobileNumber ? true : false ,
-          text: email
-        }
-      ))
+    if (email) {
+      dispatch(
+        UserAction.setLoginWithEmailOrMobileNumber({
+          condition: checkLoginWithEmailOrMobileNumber ? true : false,
+          text: email,
+        }),
+      );
       navigation.navigate(ScreenNames.MOBILE_OTP_SCREEN);
     }
-    }
+  };
   const navigateToCreateAccount = () => {
     navigation.navigate(ScreenNames.CREATE_NEW_ACCOUNT);
-  }
+  };
   const handleLogin = () => {
     const validationErrors = {};
     if (!email.match(regex.email)) {
@@ -60,8 +60,8 @@ const LoginHooks = () => {
     navigateToForgotPassword,
     navigateToBottom,
     navigateToCreateAccount,
-    checkLoginWithEmailOrMobileNumber
+    checkLoginWithEmailOrMobileNumber,
   };
 };
 
-export { LoginHooks };
+export {LoginHooks};

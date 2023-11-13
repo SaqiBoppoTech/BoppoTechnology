@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableWithoutFeedback} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import StarSvg from '../assets/svgs/StarSvg.svg';
+import SelectStarSvg from '../assets/svgs/SelectStarSvg.svg';
 
-const RatingComponent = ({initialRating = 0, onRatingChange}) => {
+const RatingComponent = ({
+  initialRating = 0,
+  onRatingChange,
+  starheight,
+  starwidth,
+  width,
+}) => {
   const [rating, setRating] = useState(initialRating);
 
   const handleRatingPress = selectedRating => {
@@ -17,11 +24,14 @@ const RatingComponent = ({initialRating = 0, onRatingChange}) => {
     for (let i = 1; i <= 5; i++) {
       stars.push(
         <TouchableWithoutFeedback key={i} onPress={() => handleRatingPress(i)}>
-          <Icon
-            name={i <= rating ? 'star' : 'star-o'} // Use solid or outline star icon based on the rating
-            size={16}
-            color="#FDBC15" // You can set the color for rated stars
-          />
+          {i <= rating ? (
+            <SelectStarSvg
+              width={starwidth || '12'}
+              height={starheight || '12'}
+            />
+          ) : (
+            <StarSvg width={starwidth || '12'} height={starheight || '12'} />
+          )}
         </TouchableWithoutFeedback>,
       );
     }
@@ -29,7 +39,13 @@ const RatingComponent = ({initialRating = 0, onRatingChange}) => {
   };
 
   return (
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: width || 100,
+      }}>
       {renderStars()}
     </View>
   );

@@ -8,9 +8,7 @@ const ProfileOptionComponent = ({title, onPress}) => {
       onPress={onPress}
       activeOpacity={0.8}
       style={styles.mainView}>
-      <Text style={{fontSize: 18, textAlign: 'center', color: '#000'}}>
-        {title}
-      </Text>
+      <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
 };

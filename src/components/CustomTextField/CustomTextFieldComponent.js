@@ -1,7 +1,7 @@
-import { Text, View, TextInput } from 'react-native';
+import {Text, View, TextInput} from 'react-native';
 import React from 'react';
-import { styles } from './CustomTextFieldStyle';
-import { Colors } from '../../global';
+import {styles} from './CustomTextFieldStyle';
+import {Colors} from '../../global';
 
 const CustomTextField = ({
   keyboardType,
@@ -15,11 +15,11 @@ const CustomTextField = ({
   externalContainer,
   maxLenght,
   titleExternalStyle,
-  onChangeText = () => { },
+  onChangeText = () => {},
 }) => {
   return (
     <View style={[styles.marginContainer, externalContainer]}>
-      <View style={[styles.titleview,titleExternalStyle]}>
+      <View style={[styles.titleview, titleExternalStyle]}>
         <Text style={styles.title}>{title}</Text>
         {showAsterisk && <Text style={styles.asterisk}>*</Text>}
       </View>
@@ -39,5 +39,3 @@ const CustomTextField = ({
 };
 
 export default CustomTextField;
-
-

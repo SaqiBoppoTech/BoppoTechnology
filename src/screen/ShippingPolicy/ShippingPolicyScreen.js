@@ -1,32 +1,20 @@
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {styles} from './ShippingPolicyStyle';
+import ShippingPolicyHooks from './ShippingPolicyHooks';
+import {Colors} from '../../global';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const ShippingPolicyScreen = () => {
-  const redirect = useNavigation();
-  const handleGoBack = () => {
-    redirect.goBack();
-  };
+  const {handleGoBack} = ShippingPolicyHooks();
   return (
-    <View>
-      <SearchAppBar
-        title={'Terms & Policies'}
-        onPress={() => {
-          handleGoBack();
-        }}
-      />
-      <ScrollView style={styles.mainView}>
-        <Text
-          style={{
-            fontSize: 18,
-            fontWeight: '600',
-            color: '#151515',
-            marginBottom: 20,
-          }}>
-          Shipping Policy
-        </Text>
+    <View style={styles.mainView}>
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <SearchAppBar title={'Terms & Policies'} onPress={handleGoBack} />
+      <ScrollView style={styles.scrollChanges}>
+        <Text style={styles.header}>Shipping Policy</Text>
 
         <Text style={styles.text}>
           Thank you for visiting and shopping at RangePlus.com. Following are

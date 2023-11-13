@@ -1,19 +1,16 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  ScrollView,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 
-import {useNavigation} from '@react-navigation/native';
-import RatingComponent from '../../components/RatingStar';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors} from '../../global';
+import MyReviewCommonComponent from '../../components/MyReviewCommonComponent/MyReviewCommonComponent';
+import {styles} from './MyQuestionAnswerStyle';
+import MyQuestionAnswerHooks from './MyQuestionAnswerHooks';
 
 const MyQuestionAnswerScreen = () => {
+  const {handleGoBack, navigateToDetailQuestionAnswerView} =
+    MyQuestionAnswerHooks();
   const data = [
     {
       id: 1,
@@ -21,8 +18,8 @@ const MyQuestionAnswerScreen = () => {
       image:
         'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
       rate: 4,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
     },
 
     {
@@ -31,8 +28,8 @@ const MyQuestionAnswerScreen = () => {
       image:
         'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
       rate: 5,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
     },
 
     {
@@ -41,8 +38,8 @@ const MyQuestionAnswerScreen = () => {
       image:
         'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
       rate: 2,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
     },
 
     {
@@ -51,76 +48,39 @@ const MyQuestionAnswerScreen = () => {
       image:
         'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
       rate: 3,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
     },
   ];
 
   const renderItem = ({item}) => (
     <View style={styles.container}>
-      <View style={{flexDirection: 'row', marginBottom: 10}}>
-        <Image
-          source={{uri: item.image}}
-          style={{
-            height: 130,
-            width: 130,
-            objectFit: 'cover',
-            alignContent: 'center',
-            marginRight: 10,
-          }}
-        />
-        <View style={{justifyContent: 'center'}}>
-          <Text style={styles.name}>{item.name}</Text>
-          <RatingComponent initialRating={item.rate} />
-          <Text style={styles.yourrating}>Your Rating</Text>
+      <MyReviewCommonComponent
+        productImage={item.image}
+        initialRating={item.rate}
+        productName={item.name}
+      />
+      <View style={styles.questionView}>
+        <Text style={styles.question}>Ques 1:</Text>
+        <View style={styles.flexView}>
+          <Text style={styles.questionText} numberOfLines={2}>
+            {item.question}
+          </Text>
         </View>
       </View>
-      <View style={{flexDirection: 'row', paddingHorizontal: 16}}>
-        <Text
-          style={{
-            fontSize: 14,
-            fontWeight: '600',
-            color: '#151515',
-            paddingRight: 10,
-          }}>
-          Que 1:
-        </Text>
-        <Text
-          style={{
-            width: '100%',
-            fontSize: 16,
-            fontWeight: '400',
-            color: '#151515',
-          }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit........
-        </Text>
+      <View style={styles.line}></View>
+      <View style={styles.bottomContainer}>
+        <TouchableOpacity onPress={navigateToDetailQuestionAnswerView}>
+          <Text style={styles.optionText}>View all Q&A</Text>
+        </TouchableOpacity>
       </View>
-      <View style={{borderWidth: 0.2, color: 'grey', marginTop: 10}} />
-      <Text
-        style={{
-          textAlign: 'center',
-          padding: 10,
-          color: 'black',
-          fontSize: 14,
-          fontWeight: '500',
-        }}>
-        View all Q&A
-      </Text>
     </View>
   );
-  const redirect = useNavigation();
-  const handleGoBack = () => {
-    redirect.goBack();
-  };
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
-      <SearchAppBar
-        title={'Q&A'}
-        onPress={() => {
-          handleGoBack();
-        }}
-      />
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <SearchAppBar title={'Q&A'} onPress={handleGoBack} />
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -130,40 +90,5 @@ const MyQuestionAnswerScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // height: '36%',
-    backgroundColor: '#FAFAFA',
-    margin: 10,
-    borderRadius: 10,
-    paddingVertical: 15,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#151515',
-    width: '70%',
-    marginBottom: 15,
-  },
-  yourrating: {
-    marginTop: 15,
-    color: '#5A5A5A',
-    fontSize: 12,
-    fontWeight: '400',
-  },
-  description: {
-    color: '#151515',
-    padding: 10,
-    fontSize: 14,
-    fontWeight: '500',
-    width: '100%',
-  },
-  buttonText: {
-    fontWeight: '500',
-    fontSize: 15,
-    color: '#000000',
-  },
-});
 
 export default MyQuestionAnswerScreen;

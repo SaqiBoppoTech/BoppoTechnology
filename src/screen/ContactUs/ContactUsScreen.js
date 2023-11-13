@@ -1,42 +1,47 @@
 import React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
 import CommonButton from '../../components/Button/CommonButton';
-import SearchAppBar from '../../components/AppBar/SearchAppBar';
-import {useNavigation} from '@react-navigation/native';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {styles} from './ContactUsStyle';
 import CustomTextField from '../../components/CustomTextField/CustomTextFieldComponent';
+import ConatctUsHooks from './ContactUsHooks';
+import {Colors} from '../../global';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const ContactUsScreen = () => {
-  const redirect = useNavigation();
-  const handleGoBack = () => {
-    redirect.goBack();
-  };
+  const {handleGoBack, navigateToProfile} = ConatctUsHooks();
   return (
     <View style={styles.mainView}>
-      <SearchAppBar
-        title={'Contact us'}
-        onPress={() => {
-          handleGoBack();
-        }}
-      />
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <SearchAppBar title={'Contact Us'} onPress={handleGoBack} />
       <View style={styles.containerWrapper}>
-        <CustomTextField placeholder={'enter your name'} title={'Your Name'} />
+        <CustomTextField
+          placeholder={'enter your name'}
+          title={'Your Name'}
+          placeholderTextColor={Colors.GRAY_DARK}
+        />
 
         <CustomTextField
           placeholder={'enter your email id'}
           title={'Your Email ID'}
+          placeholderTextColor={Colors.GRAY_DARK}
         />
-        <View style={styles.titleview}>
+        {/* <View style={styles.titleview}>
           <Text style={styles.title}>Your Message</Text>
-        </View>
-        <TextInput
+        </View> */}
+        <CustomTextField
+          placeholder={'enter message'}
+          title={'Your Message'}
+          placeholderTextColor={Colors.GRAY_DARK}
+        />
+        {/* <TextInput
           style={styles.input}
           placeholder={'Enter message'}
-          placeholderTextColor="#808080"
-        />
+          placeholderTextColor={Colors.GRAY_DARK}
+        /> */}
       </View>
       <View style={styles.btn}>
-        <CommonButton title={'Send Message'} />
+        <CommonButton title={'Send Message'} onPress={navigateToProfile} />
       </View>
     </View>
   );
