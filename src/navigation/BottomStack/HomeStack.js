@@ -2,7 +2,7 @@ import React from 'react';
 import { enableScreens } from 'react-native-screens';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ScreenNames } from '../../global';
-import HomeScreen from '../../screen/HomeScreen';
+import HomeScreen from '../../screen/Home/HomeScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const HomeStack = () => {
