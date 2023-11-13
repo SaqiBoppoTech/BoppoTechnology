@@ -55,3 +55,4 @@ export const VERIFY_EMAIL = 'VERIFY_EMAIL';
 
 //Payment
 export const PAYMENT_SCREEN = 'PAYMENT_SCREEN';
+export const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS'

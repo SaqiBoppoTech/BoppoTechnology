@@ -14,7 +14,7 @@ export const style = StyleSheet.create({
     paymentText:{
         fontSize: CHANGE_BY_MOBILE_DPI(15),
         color: Colors.BLACK,
-        fontWeight: '600',
+        // fontWeight: '600',
         fontFamily:Fonts.MANROPE_BOLD,
         
     },

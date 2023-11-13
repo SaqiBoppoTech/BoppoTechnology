@@ -26,3 +26,4 @@ const PaymentScreen = () => {
 }
 
 export default PaymentScreen;
+

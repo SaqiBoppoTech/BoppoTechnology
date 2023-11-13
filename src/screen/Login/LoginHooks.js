@@ -19,7 +19,8 @@ const LoginHooks = () => {
   // FUNCTION
   const navigateToForgotPassword = () => {
     // navigation.navigate(ScreenNames.FORGET_PASSWORD_SCREEN);
-    navigation.navigate(ScreenNames.PAYMENT_SCREEN);
+    // navigation.navigate(ScreenNames.PAYMENT_SCREEN);
+    navigation.navigate(ScreenNames.PAYMENT_SUCCESS);
   };
   const navigateToBottom = () => {
     if (email) {
