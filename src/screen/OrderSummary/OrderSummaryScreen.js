@@ -6,6 +6,8 @@ import AddressContainerComponenet from '../../components/AddressContainer/Addres
 import CommonButton from '../../components/Button/CommonButton';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import OrderSummaryHooks from './OrderSummaryHooks';
+import ShippingMethod from '../../components/ShippingMethod/ShippingMethod';
+import ShippingType from '../../components/ShippingType/ShippingType';
 
 const OrderSummary = () => {
   const {
@@ -38,9 +40,11 @@ const OrderSummary = () => {
             externalContainer={styles.loginContainer}
           />
         </View>
-
-        {/* <PaymentDetail />
         <ShippingMethod />
+        <View style={styles.line} />
+        <ShippingType />
+        {/* <PaymentDetail />
+       
         <ApplyCode /> */}
 
         <Text style={styles.text}>Billing Address</Text>

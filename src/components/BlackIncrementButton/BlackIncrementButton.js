@@ -1,6 +1,5 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome6';
 import BlackIncrementButtonHooks from './BlackIncrementButtonHooks';
 import Plus from '../../assets/svgs/Plus.svg';
 import Minus from '../../assets/svgs/Minus.svg';

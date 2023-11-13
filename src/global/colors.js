@@ -24,6 +24,7 @@ export const Alabaster_GREY = '#F9F9F9';
 export const GRAY_MEDIUM = '#cacaca';
 export const GRAY_DARK = '#8a8a8a';
 export const GREEN = '#00EF47';
+export const GREEN_DARK = '#6A983C';
 export const RED = '#FF5151';
 export const GREY = '#CDD4D9';
 export const PAPAYA_WHIP = '#FFF2D0';
