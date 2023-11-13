@@ -19,7 +19,7 @@ const CarouselHooks = () => {
 
   const [isFocused, setIsFocused] = useState(0);
 
-  const data = [
+  const carasolimagedata = [
     {id: 1, image: require('../../assets/images/carasolimage.png')},
     {id: 2, image: require('../../assets/images/carasolimage.png')},
     {id: 3, image: require('../../assets/images/carasolimage.png')},
@@ -54,7 +54,7 @@ const CarouselHooks = () => {
     );
   };
   return {
-    data,
+    carasolimagedata,
     width,
     DATA,
     setIsFocused,
