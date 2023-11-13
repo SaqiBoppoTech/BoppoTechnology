@@ -76,11 +76,11 @@ export const styles = StyleSheet.create({
   addressView: {
     marginHorizontal: CHANGE_BY_MOBILE_DPI(30),
     marginTop: CHANGE_BY_MOBILE_DPI(8),
+    marginBottom: CHANGE_BY_MOBILE_DPI(10),
   },
   line: {
     borderBottomWidth: CHANGE_BY_MOBILE_DPI(1),
     borderColor: Colors.GAINSBORO,
-    marginTop: CHANGE_BY_MOBILE_DPI(10),
   },
   verticalLine: {
     width: CHANGE_BY_MOBILE_DPI(1),

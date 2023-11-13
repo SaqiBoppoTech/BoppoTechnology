@@ -38,6 +38,8 @@ import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
 import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';
 import QuestionDetailScreen from '../screen/QuestionDetailView/QuestionDetailScreen';
+import YourCart from '../screen/YourCart/YourCartScreen';
+import OrderSummary from '../screen/OrderSummary/OrderSummaryScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -167,6 +169,14 @@ const MainStack = () => {
         <Stack.Screen
           name={ScreenNames.QUESTION_DETAIL_VIEW}
           component={QuestionDetailScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.YOUR_CART_SCREEN}
+          component={YourCart}
+        />
+        <Stack.Screen
+          name={ScreenNames.ORDER_SUMMARY_SCREEN}
+          component={OrderSummary}
         />
       </Stack.Navigator>
     </NavigationContainer>
