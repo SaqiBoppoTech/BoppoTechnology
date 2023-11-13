@@ -102,7 +102,7 @@ export const styles = StyleSheet.create({
   totalRatingWrapper: {
     borderWidth: 4,
     color: '#F1C40F',
-    borderColor: item.borderColor,
+    borderColor: 20,
     width: '60%',
     borderCurve: 'circular',
   },

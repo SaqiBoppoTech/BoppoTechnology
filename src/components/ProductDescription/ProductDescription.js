@@ -4,7 +4,7 @@ import RatingComponent from '../RatingStar';
 import BlackIncremnetButton from '../Button/BlackIncrementButton';
 import {styles} from './ProductDescriptionStyle';
 
-const ProductDescriptionScreen = () => {
+const ProductDescription = () => {
   return (
     <ScrollView style={styles.scrollStyle}>
       <View style={styles.mainView}>
@@ -117,4 +117,4 @@ const ProductDescriptionScreen = () => {
   );
 };
 
-export default ProductDescriptionScreen;
+export default ProductDescription;

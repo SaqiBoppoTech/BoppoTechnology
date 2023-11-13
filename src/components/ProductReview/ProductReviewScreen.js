@@ -17,29 +17,27 @@ const ProductReviewScreen = () => {
       name: 'Ash Ketchum',
       date: '4 Sep 2023',
       rating: 4,
-      image: require('../../images/carasolimage.png'),
+      image: require('../../assets/images/BannerOfferImage.png'),
     },
     {
       key: 2,
       name: 'Ash Ketchum',
       date: '4 Sep 2023',
       rating: 4,
-      image: require('../../images/carasolimage.png'),
-    },
+      image: require('../../assets/images/BannerOfferImage.png'),    },
     {
       key: 3,
       name: 'Ash Ketchum',
       date: '4 Sep 2023',
       rating: 4,
-      image: require('../../images/carasolimage.png'),
-    },
+      image: require('../../assets/images/BannerOfferImage.png'),    },
     {
       key: 4,
       name: 'Ash Ketchum',
       date: '4 Sep 2023',
       rating: 4,
-      image: require('../../images/carasolimage.png'),
-    },
+      image: require('../../assets/images/BannerOfferImage.png')
+        },
   ];
 
   const renderItem = ({item}) => (
@@ -57,7 +55,7 @@ const ProductReviewScreen = () => {
         </View>
       </View>
       <Image
-        source={require('../../images/coffee.png')}
+        source={require('../../assets/images/BannerOfferImage.png')}
         style={styles.squareImage}
       />
       <View style={{width: '90%'}}>
@@ -103,7 +101,7 @@ const ProductReviewScreen = () => {
     <View style={styles.ratingMainView}>
       <Text style={styles.rateWrapper}>{item.rate}</Text>
       <Image
-        source={require('../../images/rate.png')}
+        source={require('../../assets/images/BannerOfferImage.png')}
         style={styles.rateImageWrapper}
       />
       <View
