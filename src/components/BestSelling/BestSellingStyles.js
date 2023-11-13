@@ -1,4 +1,4 @@
-import { Colors, Fonts } from "../../global";
+import { Colors, Constant, Fonts } from "../../global";
 import { CHANGE_BY_MOBILE_DPI } from "../../global/constant";
 
 const { StyleSheet } = require("react-native");
@@ -49,7 +49,8 @@ export const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(20),
-    marginLeft: CHANGE_BY_MOBILE_DPI(20)
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    paddingTop:CHANGE_BY_MOBILE_DPI(5)
   },
   titleFontStyle:{
     fontSize:CHANGE_BY_MOBILE_DPI(12),

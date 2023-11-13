@@ -36,6 +36,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../global/constant';
 import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
 import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';
+import QuestionDetailScreen from '../screen/QuestionDetailView/QuestionDetailScreen';
 import CategoryDetailScreen from '../screen/CategoryDetail/CategoryDetailScreen';
 enableScreens();
 const Stack = createStackNavigator();
@@ -162,6 +163,10 @@ const MainStack = () => {
         <Stack.Screen
           name={ScreenNames.MOBILE_OTP_SCREEN}
           component={VerifyMobileNumberScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.QUESTION_DETAIL_VIEW}
+          component={QuestionDetailScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

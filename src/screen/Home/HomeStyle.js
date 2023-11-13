@@ -3,6 +3,9 @@ import { Colors, Fonts } from "../../global";
 import { CHANGE_BY_MOBILE_DPI } from "../../global/constant";
 
 export const styles = StyleSheet.create({
+    ExploreItemContainer:{
+   marginHorizontal:CHANGE_BY_MOBILE_DPI(20)
+    },
     mainContainer: {
         flex: 1,
         backgroundColor: Colors.WHITE
@@ -45,6 +48,11 @@ export const styles = StyleSheet.create({
     },
     offerBannerContainer:{
        
+    },
+    bestOfferContainer:{
+    },
+    bestSellingContainer:{
+        backgroundColor:Colors.WHITE
     }
 });
 

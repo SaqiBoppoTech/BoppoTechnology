@@ -1,37 +1,39 @@
 import {StyleSheet} from 'react-native';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import { Colors, Fonts } from '../../global';
 
 export const styles = StyleSheet.create({
   imageback: {
     // backgroundColor: 'red',
-    width: 150,
-    height: 130,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 5,
+    // width: 150,
+    // height: 130,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // marginBottom: 5,
+    marginRight:CHANGE_BY_MOBILE_DPI(15)
   },
   item: {
-    width: 150, // Adjust the width as needed
-    height: 150, // Adjust the height as needed
-    marginHorizontal: 10, // Add margin between items
+    height:CHANGE_BY_MOBILE_DPI(101),
+    width:CHANGE_BY_MOBILE_DPI(149),
   },
   image: {
-    width: 150,
-    height: 110,
-
-    // width: '100%',
-    // height: '100%',
-    // resizeMode: 'cover',
+   height:'100%',
+   width:'100%'
   },
   backGround:{
-    backgroundColor: 'white',
-    height: 180,
-    paddingLeft: 5,
+    // height: 180,s
+    backgroundColor:Colors.WHITE,
+    paddingTop:CHANGE_BY_MOBILE_DPI(15)
   },
-  headingText:{
-    fontSize: 22,
-    fontWeight: '600',
-    color: '#000',
-    marginLeft: 10,
-    marginTop: 8,
-  }
+  headingColor: {
+    fontSize:CHANGE_BY_MOBILE_DPI(20),
+    color:Colors.BLACK,
+    fontFamily:Fonts.PLAYFAIR_DISPLAY_BOLD,
+    marginHorizontal:CHANGE_BY_MOBILE_DPI(20),
+    marginVertical:CHANGE_BY_MOBILE_DPI(10)
+   },
+   contentContainerStyle:{
+    paddingHorizontal:CHANGE_BY_MOBILE_DPI(20)
+   }
 });
+

@@ -4,14 +4,14 @@ import {useNavigation} from '@react-navigation/native';
 import CircleIncrementButton from '../../components/Button/CircleIncrementButton';
 import RatingComponent from '../../components/RatingStar';
 import {styles} from './CategoryDetailStyle';
+import Card from '../../components/Card/Card';
 
 const CategoryDetailHooks = () => {
   const categoryData = [
     {
       key: '1',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: require('../../assets/images/vanish.png'),
+      name: 'Vanish Oxi Action..',
       price: '500',
       discountPrice: '18.44',
       percent: '20',
@@ -19,9 +19,8 @@ const CategoryDetailHooks = () => {
     },
     {
       key: '2',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: ' Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: require('../../assets/images/vanish.png'),
+      name: 'Vanish Oxi Action..',
       price: '600',
       discountPrice: '18.44',
       percent: '20',
@@ -29,9 +28,8 @@ const CategoryDetailHooks = () => {
     },
     {
       key: '3',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: require('../../assets/images/vanish.png'),
+      name: 'Vanish Oxi Action..',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -39,9 +37,8 @@ const CategoryDetailHooks = () => {
     },
     {
       key: '4',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: require('../../assets/images/vanish.png'),
+      name: 'Vanish Oxi Action..',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -49,9 +46,8 @@ const CategoryDetailHooks = () => {
     },
     {
       key: '5',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: require('../../assets/images/vanish.png'),
+      name: 'Vanish Oxi Action..',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -59,9 +55,8 @@ const CategoryDetailHooks = () => {
     },
     {
       key: '6',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: require('../../assets/images/vanish.png'),
+      name: 'Vanish Oxi Action..',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -69,9 +64,8 @@ const CategoryDetailHooks = () => {
     },
     {
       key: '7',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: require('../../assets/images/vanish.png'),
+      name: 'Vanish Oxi Action..',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -79,9 +73,8 @@ const CategoryDetailHooks = () => {
     },
     {
       key: '8',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: require('../../assets/images/vanish.png'),
+      name: 'Vanish Oxi Action..',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -90,74 +83,20 @@ const CategoryDetailHooks = () => {
   ];
 
   const renderItem = ({item}) => (
-    <>
-      <View style={styles.item}>
-        <View style={styles.incrementbtn}>
-          <CircleIncrementButton />
-        </View>
-        <TouchableOpacity
-          style={styles.imageContainer}
-          onPress={() => navigation.navigate('Product_Detail_View_Screen')}>
-          <Image
-            source={{
-              uri: item.image,
-            }}
-            style={styles.image}
-          />
-        </TouchableOpacity>
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 13,
-            fontWeight: 500,
-            marginTop: 15,
-            marginHorizontal: 3,
-          }}
-          numberOfLines={2}
-          ellipsizeMode="tail">
-          {item.name}
-        </Text>
-
-        <View style={styles.priceContainer}>
-          <Text style={{color: 'black', fontSize: 14, fontWeight: 600}}>
-            ${item.price}
-          </Text>
-          <Text
-            style={{
-              color: '#888888',
-              fontSize: 13,
-              fontWeight: '500',
-              textDecorationLine: 'line-through',
-            }}>
-            ${item.discountPrice}
-          </Text>
-
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 13,
-              fontWeight: 700,
-              color: '#E50404',
-            }}>
-            {item.percent}% OFF
-          </Text>
-        </View>
-        <View style={{marginHorizontal: 3}}>
-          <RatingComponent />
-        </View>
-
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 13,
-            fontWeight: '400',
-            marginTop: 3,
-            marginHorizontal: 3,
-          }}>
-          {item.benefit}
-        </Text>
-      </View>
-    </>
+    <Card
+      categoryCardContainer={styles.categoryCardContainer}
+      image={item.image}
+      categoryDetailImageContainer={styles.categoryDetailImageContainer}
+      paddingContainerCategoryDetail={styles.paddingContainerCategoryDetail}
+      name={item.name}
+      titleFontStyleCategoryDetail={styles.titleFontStyleCategoryDetail}
+      price={item.price}
+      discountPrice={item.discountPrice}
+      percent={item.percent}
+      categoryDetailRatingStar={true}
+      freeDelivery={true}
+      plusSvgVisibility={true}
+    />
   );
   const redirect = useNavigation();
   const handleGoBack = () => {

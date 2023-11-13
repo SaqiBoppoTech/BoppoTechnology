@@ -24,7 +24,8 @@ export const styles = StyleSheet.create({
     height: '100%',
   },
   backGround: {
-    backgroundColor:Colors.WHITE
+    backgroundColor:Colors.WHITE,
+    paddingTop:CHANGE_BY_MOBILE_DPI(5)
   },
   headingText: {
     fontSize: CHANGE_BY_MOBILE_DPI(20),
@@ -49,7 +50,7 @@ export const styles = StyleSheet.create({
     width: CHANGE_BY_MOBILE_DPI(160)
   },
   contentContainerStyle: {
-    paddingVertical: CHANGE_BY_MOBILE_DPI(10),
+    paddingVertical: CHANGE_BY_MOBILE_DPI(15),
     paddingLeft: CHANGE_BY_MOBILE_DPI(20)
   },
   titleFontStyle:{
@@ -99,7 +100,7 @@ export const styles = StyleSheet.create({
     marginBottom:CHANGE_BY_MOBILE_DPI(9)
   },
   underLine:{
-    height:CHANGE_BY_MOBILE_DPI(3),
+    height:CHANGE_BY_MOBILE_DPI(4),
     backgroundColor:Colors.BLACK
   }
 });

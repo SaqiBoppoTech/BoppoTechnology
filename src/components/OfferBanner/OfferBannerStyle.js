@@ -4,9 +4,10 @@ import { Colors, Fonts } from "../../global";
 export const styles = StyleSheet.create({
     OfferBannerContainer: {
         height: CHANGE_BY_MOBILE_DPI(225),
-        backgroundColor: Colors.PAPAYA_WHIP,
+        backgroundColor: Colors.PAPAYA_WHIP + 99,
         paddingHorizontal:CHANGE_BY_MOBILE_DPI(20),
-        paddingTop:CHANGE_BY_MOBILE_DPI(20)
+        paddingTop:CHANGE_BY_MOBILE_DPI(20),
+        
     },
     transformContainer: {
 

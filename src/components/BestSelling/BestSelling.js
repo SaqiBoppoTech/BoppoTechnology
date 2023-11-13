@@ -7,7 +7,7 @@ const BestSelling = () => {
   const { renderItem } = ExploreItemHooks();
   return (
     <View style={styles.backGround}>
-      <Text style={styles.headingText}>Explore Items</Text>
+      <Text style={styles.headingText}>Best Selling</Text>
       <FlatList
         data={STATIC_DATA.exploreItemData}
         horizontal={true}

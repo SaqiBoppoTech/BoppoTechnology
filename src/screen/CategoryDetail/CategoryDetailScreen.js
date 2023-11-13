@@ -10,17 +10,13 @@ import {Colors} from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const CategoryDetailScreen = ({route, navigation}) => {
-  // const {name} = route.params;
+  const {name} = route.params;
   const {categoryData, renderItem, handleGoBack} = CategoryDetailHooks();
   return (
-    <View
-      style={{
-        backgroundColor: '#EFEFEF',
-        height: '100%',
-      }}>
+    <View style={styles.main}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
       <SearchAppBar
-        title="{name}"
+        title={name}
         showIcon={true}
         showFilter={true}
         onFilterPress={() => {
@@ -30,12 +26,14 @@ const CategoryDetailScreen = ({route, navigation}) => {
           handleGoBack();
         }}
       />
-      <FlatList
-        data={categoryData}
-        renderItem={renderItem}
-        keyExtractor={item => item.key}
-        numColumns={2}
-      />
+      <View style={styles.listWrapper}>
+        <FlatList
+          data={categoryData}
+          renderItem={renderItem}
+          keyExtractor={item => item.key}
+          numColumns={2}
+        />
+      </View>
     </View>
   );
 };

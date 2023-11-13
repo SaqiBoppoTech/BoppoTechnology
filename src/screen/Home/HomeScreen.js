@@ -7,10 +7,6 @@ import {
   Modal,
   TouchableOpacity,
 } from 'react-native';
-import BrandStoreListScreen from '../../components/BrandStore/BrandStoreScreen';
-import RecommendedItemListScreen from '../../components/RecommendedItems/RecommendedItemsScreen';
-import ShopByCategoryListScreen from '../../components/ShopByCategory/ShopByCategoryScreen';
-import BrowsingHistoryListScreen from '../../components/YourBrowsingHistory/YourBrowsingHistoryScreen';
 import { HomeHooks } from './HomeHooks';
 import { styles } from './HomeStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
@@ -25,6 +21,12 @@ import ExploreItems from '../../components/ExploreItems/ExploreItems';
 import TopDealList from '../../components/TopDeals/TopDeals';
 import BestOffer from '../../components/BestOffer/BestOffer';
 import OfferBanner from '../../components/OfferBanner/OfferBanner';
+import BestSelling from '../../components/BestSelling/BestSelling';
+import OfferBannerImage from '../../components/OfferBannerImage/OfferBannerImage';
+import BrandStore from '../../components/BrandStore/BrandStore';
+import ShopByCategory from '../../components/ShopByCategory/ShopByCategory';
+import YourBrowserHistory from '../../components/YourBrowserHistory/YourBrowserHistory';
+import TopOffer from '../../components/TopOffer/TopOffer';
 
 
 const HomeScreen = () => {
@@ -70,36 +72,23 @@ const HomeScreen = () => {
             <OfferBanner />
           </View>
           <View style={styles.bestSellingContainer}>
-            <ExploreItems />
+            <BestSelling />
           </View>
-
-                   
-{/* 
-          <BrandStoreListScreen />
-          <RecommendedItemListScreen
-            onPress={() => {
-              navigation.navigate('ProductDetailScreen');
-            }}
-            onBuyNowPress={() => {
-              navigation.navigate('YourCart');
-            }}
-          />
-          <ShopByCategoryListScreen
-            onPress={() => {
-              navigation.navigate('ProductDetailScreen');
-            }}
-          />
-          <BrowsingHistoryListScreen
-            onPress={() => {
-              navigation.navigate('ProductDetailScreen');
-            }}
-            onBuyNowPress={() => {
-              navigation.navigate('YourCart');
-            }}
-          /> */}
-          {/* <View style={{position: 'absolute', bottom: 0, width: '100%'}}>
-                <FlushBar />
-              </View> */}
+          <View style={styles.bannerImageContainer}>
+            <OfferBannerImage />
+          </View>
+          <View style={styles.brandStoreContainer}>
+            <BrandStore/>
+          </View>
+          <View style={styles.shopByCategorycontainer}>
+            <TopOffer />
+          </View>
+          <View style={styles.shopByCategorycontainer}>
+            <ShopByCategory />
+          </View>
+          {/* <View style={styles.yourBrowserHistoryContainer}> */}
+            <YourBrowserHistory />
+          {/* </View> */}
         </View>
         <Modal
           visible={isPopupVisible}

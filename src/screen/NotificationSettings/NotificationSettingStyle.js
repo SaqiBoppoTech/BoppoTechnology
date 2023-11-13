@@ -1,21 +1,23 @@
 import {StyleSheet} from 'react-native';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import {Colors, Fonts} from '../../global';
 
 export const styles = StyleSheet.create({
   toggleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ddd',
+    backgroundColor: Colors.GRAY_LIGHT,
     justifyContent: 'space-between',
-    marginHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 8,
-    paddingHorizontal: 20,
-    marginTop: 10,
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    paddingVertical: CHANGE_BY_MOBILE_DPI(10),
+    borderRadius: CHANGE_BY_MOBILE_DPI(8),
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
   },
   toggle: {
-    width: 45,
-    height: 25,
-    borderRadius: 15,
+    width: CHANGE_BY_MOBILE_DPI(38),
+    height: CHANGE_BY_MOBILE_DPI(22),
+    borderRadius: CHANGE_BY_MOBILE_DPI(15),
     justifyContent: 'center',
   },
   toggleOn: {
@@ -33,16 +35,19 @@ export const styles = StyleSheet.create({
     marginRight: 5,
   },
   toggleSmall: {
-    width: 20,
-    height: 20,
-    borderRadius: 15,
-    backgroundColor: 'red',
+    width: CHANGE_BY_MOBILE_DPI(14),
+    height: CHANGE_BY_MOBILE_DPI(14),
+    borderRadius: CHANGE_BY_MOBILE_DPI(15),
     alignItems: 'center',
-    marginLeft: 3,
+    marginLeft: CHANGE_BY_MOBILE_DPI(3),
   },
   text: {
-    fontSize: 16,
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
     color: '#000',
     fontWeight: '500',
+    fontFamily: Fonts.LATO_BOLD,
+  },
+  textView: {
+    flex: 1,
   },
 });

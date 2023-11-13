@@ -5,6 +5,7 @@ import AddressContainerComponenet from '../../components/AddressContainer/Addres
 import DeliveryAddressHooks from './DelieveryAddressHooks';
 import {styles} from './DeliveryAddressStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors} from '../../global';
 
 const DelieveryAddressScreen = () => {
   const {handleGoBack, editAddress, removeAddress} = DeliveryAddressHooks();

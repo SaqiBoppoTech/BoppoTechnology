@@ -6,6 +6,7 @@ import {styles} from './MyAddressStyle';
 import AddressTypeComponent from '../../components/AddressType/AddressTypeComponent';
 import MyAddressHooks from './MyAddressHooks';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {Colors} from '../../global';
 
 const MyAddressScreen = () => {
   const {

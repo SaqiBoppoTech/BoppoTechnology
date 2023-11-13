@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: CHANGE_BY_MOBILE_DPI(18),
     color: Colors.BLACK,
-    fontFamily: Fonts.MANROPE_BOLD,
+    fontFamily: Fonts.MANROPE_MEDIUM,
     includeFontPadding: false,
   },
   iconWrapper: {

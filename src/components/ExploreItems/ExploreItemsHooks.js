@@ -10,8 +10,8 @@ const {
 import {styles} from './ExploreItemsStyles';
 import {useNavigation} from '@react-navigation/native';
 import { ScreenNames} from '../../global/index';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 import Card from '../Card/Card';
+import { STATIC_DATA } from '../../global/staticdata';
 const ExploreItemHooks = () => {
   const navigation = useNavigation();
   const navigateToProductDetail = () => {
@@ -22,6 +22,7 @@ const ExploreItemHooks = () => {
   const renderItem = ({ item, index }) => {
     return (
       <Card
+        index={index}
         image={item.image}
         name={ item.name}
         price={ item.price}

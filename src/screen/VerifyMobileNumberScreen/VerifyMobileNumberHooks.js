@@ -20,16 +20,15 @@ const VerifyMobileNumberHooks = () => {
       }),
     );
   };
-
-  // FUNCTION
-  const navigateToHomePage = () => {
-    navigation.navigate(ScreenNames.BOTTOM_TAB);
-  };
+    // FUNCTION
+    const navigateToHomePage = () => {
+      navigation.navigate(ScreenNames.BOTTOM_TAB);
+    };
   return {
     goBackToLogin,
     invokeToastAlert,
     checkLoginWithEmailOrMobileNumber,
-    navigateToHomePage,
+    navigateToHomePage
   };
 };
 export {VerifyMobileNumberHooks};
