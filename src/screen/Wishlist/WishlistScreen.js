@@ -15,11 +15,73 @@ import RatingComponent from '../../components/RatingStar';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import ShoppingBag from '../../assets/svgs/Shopping_Bag.svg';
 import Cross from '../../assets/svgs/Cross.svg';
+import WishListHooks from './WishListHooks';
 
 const WishlistScreen = () => {
+  const {
+    handleGoBack,
+    addToCartPress,
+    removeFromCart,
+    navigateToProductScreen,
+  } = WishListHooks();
   const data = [
     {
       id: 1,
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      numOfCustumer: 1,
+      starCount: 3,
+      price: 36.99,
+      discount: 48.56,
+      quantity: 1,
+    },
+    {
+      id: 2,
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      numOfCustumer: 1,
+      starCount: 3,
+      price: 36.99,
+      discount: 48.56,
+      quantity: 1,
+    },
+    {
+      id: 3,
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      numOfCustumer: 1,
+      starCount: 3,
+      price: 36.99,
+      discount: 48.56,
+      quantity: 1,
+    },
+    {
+      id: 4,
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      numOfCustumer: 1,
+      starCount: 3,
+      price: 36.99,
+      discount: 48.56,
+      quantity: 1,
+    },
+    {
+      id: 5,
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      numOfCustumer: 1,
+      starCount: 3,
+      price: 36.99,
+      discount: 48.56,
+      quantity: 1,
+    },
+    {
+      id: 6,
       image:
         'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
       name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
@@ -38,11 +100,7 @@ const WishlistScreen = () => {
           <Image source={{uri: item.image}} style={styles.imageWrapper} />
           <View style={styles.containWrapper}>
             <Text style={styles.name}>{item.name}</Text>
-            <View
-              style={{
-                backgroundColor: 'sky-blue',
-                flexDirection: 'row',
-              }}>
+            <View style={styles.ratingRowView}>
               <RatingComponent
                 initialRating={item.starCount}
                 starheight={15}
@@ -59,19 +117,23 @@ const WishlistScreen = () => {
               <Text style={styles.quantity}>{item.quantity}Qty</Text>
             </View>
             <Text style={styles.discount}>{item.discount} USD</Text>
-            <View style={styles.btn}>
+            <TouchableOpacity
+              style={styles.btn}
+              onPress={navigateToProductScreen}>
               <Text style={styles.btnText}>View Product</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.editWrapper} onPress={{}}>
+          <TouchableOpacity style={styles.editWrapper} onPress={addToCartPress}>
             <ShoppingBag width="16" height="16" />
             <Text style={styles.optionText}>Add to Cart</Text>
           </TouchableOpacity>
           <View style={styles.verticalLine}></View>
-          <TouchableOpacity style={styles.removeWrapper} onPress={{}}>
+          <TouchableOpacity
+            style={styles.removeWrapper}
+            onPress={removeFromCart}>
             <Cross width="14" height="14" />
             <Text style={styles.optionText}>Remove</Text>
           </TouchableOpacity>
@@ -83,7 +145,7 @@ const WishlistScreen = () => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
-      <SearchAppBar title={'Your Whishlist'} onPress={{}} />
+      <SearchAppBar title={'Your Whishlist'} onPress={handleGoBack} />
       <FlatList
         data={data}
         renderItem={renderItem}
