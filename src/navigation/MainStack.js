@@ -33,7 +33,6 @@ import ForgetPasswordOtpScreen from '../screen/ForgetPasswordOtp/ForgetPasswordO
 import SuccessScreen from '../screen/SuccessScreen/SuccessScreen';
 import {StyleSheet} from 'react-native';
 import {CHANGE_BY_MOBILE_DPI} from '../global/constant';
-import CustomToastedAlert from './CustomToastedAlert';
 import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
 import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';

@@ -6,6 +6,8 @@ import RatingComponent from '../../components/RatingStar';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {CategoryDetailHooks} from './CategoryDetailHooks';
 import {styles} from './CategoryDetailStyle';
+import {Colors} from '../../global';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const CategoryDetailScreen = ({route, navigation}) => {
   // const {name} = route.params;
@@ -16,6 +18,7 @@ const CategoryDetailScreen = ({route, navigation}) => {
         backgroundColor: '#EFEFEF',
         height: '100%',
       }}>
+      <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
       <SearchAppBar
         title="{name}"
         showIcon={true}
