@@ -11,7 +11,7 @@ import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const CategoryDetailScreen = ({route, navigation}) => {
   const {name} = route.params;
-  const {categoryData, renderItem, handleGoBack} = CategoryDetailHooks();
+  const {categoryData, renderItem, handleGoBack,navigateToFilterPage} = CategoryDetailHooks();
   return (
     <View style={styles.main}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
@@ -19,9 +19,10 @@ const CategoryDetailScreen = ({route, navigation}) => {
         title={name}
         showIcon={true}
         showFilter={true}
-        onFilterPress={() => {
-          navigation.navigate('CategoryFIlter');
-        }}
+        onFilterPress={navigateToFilterPage}
+        // onFilterPress={() => {
+        //   navigation.navigate('CategoryFIlter');
+        // }}
         onPress={() => {
           handleGoBack();
         }}

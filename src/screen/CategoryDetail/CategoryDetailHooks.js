@@ -7,6 +7,8 @@ import {styles} from './CategoryDetailStyle';
 import Card from '../../components/Card/Card';
 
 const CategoryDetailHooks = () => {
+  // VARIABLE
+  const navigation = useNavigation();
   const categoryData = [
     {
       key: '1',
@@ -102,6 +104,14 @@ const CategoryDetailHooks = () => {
   const handleGoBack = () => {
     redirect.goBack();
   };
+
+  //FUNCTION
+  const navigateToFilterPage = item => {
+    navigation.navigate(ScreenNames.CATEGORY_DETAIL_SCREEN, {
+      name: item.name,
+    });
+  };
+
   return {categoryData, renderItem, handleGoBack};
 };
 

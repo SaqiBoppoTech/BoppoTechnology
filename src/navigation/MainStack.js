@@ -38,6 +38,7 @@ import OrderScreen from '../screen/Order/OrderScreen';
 import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';
 import QuestionDetailScreen from '../screen/QuestionDetailView/QuestionDetailScreen';
 import CategoryDetailScreen from '../screen/CategoryDetail/CategoryDetailScreen';
+import Filter from '../screen/Filter';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -45,10 +46,10 @@ const MainStack = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{headerShown: false}}
-        initialRouteName={ScreenNames.SPLASH_SCREEN}>
+        initialRouteName={ScreenNames.FILTER}>
         <Stack.Screen
-          name={ScreenNames.SPLASH_SCREEN}
-          component={SplashScreen}
+          name={ScreenNames.FILTER}
+          component={Filter}
         />
 
         <Stack.Screen
@@ -168,6 +169,10 @@ const MainStack = () => {
           name={ScreenNames.QUESTION_DETAIL_VIEW}
           component={QuestionDetailScreen}
         />
+        {/* <Stack.Screen
+          name={ScreenNames.FILTER}
+          component={Filter}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

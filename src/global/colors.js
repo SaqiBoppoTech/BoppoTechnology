@@ -29,3 +29,4 @@ export const PAPAYA_WHIP = '#FFF2D0';
 export const GREEN = '#00EF47';
 export const RED = '#FF5151';
 export const GREY = '#CDD4D9';
+export const ALTO = '#D1D1D1';
