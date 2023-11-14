@@ -13,7 +13,7 @@ const PaymentScreen = () => {
 
   return (
     <View style={{backgroundColor: Colors.WHITE, flex: 1}}>
-      <SearchAppBar title={'Checkout'} onPress={handleGoBack} />
+      <SearchAppBar title={'Payment'} onPress={handleGoBack} />
       <CheckoutNavigationBar />
       <PaymentDetails />
       <PaymentMethod />
