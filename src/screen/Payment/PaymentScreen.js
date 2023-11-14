@@ -1,4 +1,4 @@
-import React from 'react-native';
+import React, {ScrollView} from 'react-native';
 import PaymentMethod from '../../components/PaymentMethod/PaymentMethod';
 import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
 import CommonButton from '../../components/Button/CommonButton';
@@ -16,9 +16,11 @@ const PaymentScreen = () => {
     <View style={styles.mainView}>
       <SearchAppBar title={'Checkout'} onPress={handleGoBack} />
       <CheckoutNavigationBar />
-      <PaymentDetails />
-      <PaymentMethod />
-      <CommonButton title={'Pay'} onPress={orderReceivedSuccess} />
+      <ScrollView>
+        <PaymentDetails />
+        <PaymentMethod />
+        <CommonButton title={'Pay'} onPress={orderReceivedSuccess} />
+      </ScrollView>
     </View>
   );
 };
