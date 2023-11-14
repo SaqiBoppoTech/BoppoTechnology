@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {Animated, StyleSheet, Text, View} from 'react-native';
-import {ScreenNames} from '../global';
+import {Colors, Fonts, ScreenNames} from '../global';
 import {CommonActions, useNavigation} from '@react-navigation/native';
+import { CHANGE_BY_MOBILE_DPI } from '../global/constant';
+import LogoSvg from '../assets/svgs/LogoSvg.svg';
 const SplashScreen = () => {
   const navigation = useNavigation();
   const Opacity = React.useRef(new Animated.Value(1)).current;
@@ -25,7 +27,8 @@ const SplashScreen = () => {
   }, []);
   return (
     <View style={styles.container}>
-      <Text>SplashScreen</Text>
+    <LogoSvg/>
+      <Text style={styles.text}>BoppoGo</Text>
     </View>
   );
 };
@@ -36,8 +39,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2c3e50',
+    backgroundColor: Colors.PRIMARY,
+    // backgroundColor:'#FF7427'
   },
+  text:{
+    fontSize:CHANGE_BY_MOBILE_DPI(36),
+    fontFamily:Fonts.INTER_BOLD,
+    color:Colors.WHITE
+  }
 });
 
 //make this component available to the app

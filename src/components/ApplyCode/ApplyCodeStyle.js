@@ -5,7 +5,7 @@ const {StyleSheet} = require('react-native');
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.GRAY_LIGHT,
+    backgroundColor: Colors.Gallery_GREY,
     marginHorizontal: CHANGE_BY_MOBILE_DPI(10),
     borderRadius: CHANGE_BY_MOBILE_DPI(5),
     justifyContent: 'space-between',

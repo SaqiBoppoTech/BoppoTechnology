@@ -9,6 +9,7 @@ import OrderSummaryHooks from './OrderSummaryHooks';
 import ShippingMethod from '../../components/ShippingMethod/ShippingMethod';
 import ShippingType from '../../components/ShippingType/ShippingType';
 import ApplyCode from '../../components/ApplyCode/ApplyCode';
+import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
 
 const OrderSummary = () => {
   const {
@@ -44,11 +45,8 @@ const OrderSummary = () => {
         <ShippingMethod />
         <View style={styles.line} />
         <ShippingType />
-        {/* <PaymentDetail />
-       
-        <ApplyCode /> */}
-
         <ApplyCode />
+        <PaymentDetails />
 
         <Text style={styles.text}>Billing Address</Text>
         <AddressContainerComponenet
