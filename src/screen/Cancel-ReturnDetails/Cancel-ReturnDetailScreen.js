@@ -7,7 +7,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
 import {styles} from '../Cancel-ReturnDetails/Cancel-ReturnDetailStyles';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import { Colors } from '../../global';
+import {Colors} from '../../global';
 
 const CancelReturnDetailScreen = () => {
   return (

@@ -23,7 +23,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { styles } from './CustomTopTabStyle';
 const { width } = Dimensions.get('screen');
-const CustomTopTabs = ({ topTabData, CustomTabItem }) => {
+const CustomTopTabs = ({ topTabData, CustomTabItem,externalHeaderItem}) => {
   // const { } = CustomTopTabHooks()
   const [focusedIndex, setFocusedIndex] = React.useState(0);
   let headers = topTabData
@@ -115,7 +115,7 @@ const CustomTopTabs = ({ topTabData, CustomTabItem }) => {
               key={item}
               style={{ flex: Object.is(index, 1) ? 2 : 1 }}>
               <TouchableOpacity
-                style={styles.headerItem}
+                style={[styles.headerItem,externalHeaderItem]}
                 onPress={() => onPressHeader(index)}>
                 <Text style={isFocused ? styles.topTabFontStyle :styles.topTabBlurFontStyle}>{item}</Text>
               </TouchableOpacity>

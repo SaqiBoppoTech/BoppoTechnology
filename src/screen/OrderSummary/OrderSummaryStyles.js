@@ -5,13 +5,10 @@ const {StyleSheet} = require('react-native');
 
 export const styles = StyleSheet.create({
   mainView: {
-    backgroundColor: 'red',
+    backgroundColor: Colors.WHITE,
     flex: 1,
   },
-  // textWrapper: {
-  //   marginTop: 10,
-  //   backgroundColor: 'green',
-  // },
+
   text: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     color: Colors.BLACK,
@@ -36,5 +33,14 @@ export const styles = StyleSheet.create({
   },
   addressbtnStyle: {
     marginTop: CHANGE_BY_MOBILE_DPI(8),
+  },
+  line: {
+    backgroundColor: Colors.GRAY_DARK,
+    height: CHANGE_BY_MOBILE_DPI(1),
+    marginBottom: CHANGE_BY_MOBILE_DPI(20),
+    marginTop: CHANGE_BY_MOBILE_DPI(5),
+  },
+  btn: {
+    marginVertical: CHANGE_BY_MOBILE_DPI(10),
   },
 });

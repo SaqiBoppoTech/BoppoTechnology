@@ -6,16 +6,21 @@ import Search from '../../../assets/svgs/Search.svg';
 import Filter from '../../../assets/svgs/Filter.svg';
 import Cart from '../../../assets/svgs/Cart.svg';
 import Heart from '../../../assets/svgs/Heart.svg';
+import { CHANGE_BY_MOBILE_DPI } from '../../../global/constant';
 
 const SearchAppBar = ({
   title,
   onPress,
-  showIcon,
-  showHeart,
+  showSearchIcon,
+  onSearchPress,
   showFilter,
   onFilterPress,
-  onPressCart,
+  showHeart,
+  onHeartPress,
   showCartIcon,
+  onCartPress,
+  showText,
+  onFilterTextPress,
 }) => {
   return (
     <View style={styles.container}>
@@ -24,27 +29,42 @@ const SearchAppBar = ({
           hitSlop={{top: 10, bottom: 10, right: 10, left: 10}}
           onPress={onPress}
           activeOpacity={0.7}>
-          <BackArrow />
+          <BackArrow  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)} />
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
       </View>
-      {showIcon && (
-        <View style={styles.iconWrapper}>
-          <Search />
-          {showFilter && (
-            <TouchableOpacity onPress={onFilterPress}>
-              <Filter />
-            </TouchableOpacity>
-          )}
-          {showHeart && <Heart />}
+      <View style={styles.rowWrapper}>
+        {showSearchIcon && (
+          <TouchableOpacity
+            style={styles.searchWrapper}
+            onPress={onSearchPress}>
+            <Search  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)}/>
+          </TouchableOpacity>
+        )}
 
-          {showCartIcon && (
-            <TouchableOpacity onPress={onPressCart}>
-              <Cart />
-            </TouchableOpacity>
-          )}
-        </View>
-      )}
+        {showFilter && (
+          <TouchableOpacity style={styles.cartWrapper} onPress={onFilterPress}>
+            <Filter height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)}/>
+          </TouchableOpacity>
+        )}
+        {showHeart && (
+          <TouchableOpacity style={styles.cartWrapper} onPress={onHeartPress}>
+            <Heart  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)} />
+          </TouchableOpacity>
+        )}
+
+        {showCartIcon && (
+          <TouchableOpacity style={styles.cartWrapper} onPress={onCartPress}>
+            <Cart  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)} />
+          </TouchableOpacity>
+        )}
+
+        {showText && (
+          <TouchableOpacity onPress={onFilterTextPress}>
+            <Text style={styles.filter}>Clear Filter</Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };

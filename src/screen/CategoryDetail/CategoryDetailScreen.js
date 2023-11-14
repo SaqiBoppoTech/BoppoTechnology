@@ -29,6 +29,11 @@ const CategoryDetailScreen = ({ route }) => {
           handleGoBack();
         }}
       />
+
+
+
+
+      
       <CustomTopTabs
         topTabData={STATIC_DATA.categoryTopTabData}
         CustomTabItem={

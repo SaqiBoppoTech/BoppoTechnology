@@ -13,7 +13,7 @@ const OrderSummaryHooks = () => {
   const onAddNewBillingAddress = () => {};
 
   const navigateToPayment = () => {
-    // navigation.navigate(ScreenNames.ORDER_SUMMARY_SCREEN);
+    navigation.navigate(ScreenNames.PAYMENT_SCREEN);
   };
 
   return {

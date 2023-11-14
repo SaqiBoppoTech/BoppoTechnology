@@ -25,16 +25,15 @@ const CategoryScreen = () => {
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
       <View style={styles.topView}>
         <View style={styles.searchFiledWrapper}>
-          <SearchField />
+          <SearchField style={{  borderColor: Colors.BLACK,}}/>
         </View>
-        <View>
+        <View style={styles.cartWrapper}>
           <CartSvg />
           <View style={styles.count}>
             <Text style={styles.countNumber}>4</Text>
           </View>
         </View>
       </View>
-
       <FlatList
         data={categoryData}
         keyExtractor={(item, index) => item.toString()}

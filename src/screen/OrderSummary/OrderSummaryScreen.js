@@ -6,6 +6,10 @@ import AddressContainerComponenet from '../../components/AddressContainer/Addres
 import CommonButton from '../../components/Button/CommonButton';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import OrderSummaryHooks from './OrderSummaryHooks';
+import ShippingMethod from '../../components/ShippingMethod/ShippingMethod';
+import ShippingType from '../../components/ShippingType/ShippingType';
+import ApplyCode from '../../components/ApplyCode/ApplyCode';
+import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
 
 const OrderSummary = () => {
   const {
@@ -38,10 +42,11 @@ const OrderSummary = () => {
             externalContainer={styles.loginContainer}
           />
         </View>
-
-        {/* <PaymentDetail />
         <ShippingMethod />
-        <ApplyCode /> */}
+        <View style={styles.line} />
+        <ShippingType />
+        <ApplyCode />
+        <PaymentDetails />
 
         <Text style={styles.text}>Billing Address</Text>
         <AddressContainerComponenet
@@ -59,12 +64,14 @@ const OrderSummary = () => {
             externalContainer={styles.loginContainer}
           />
         </View>
-        <CommonButton
-          title={'Continue'}
-          onPress={navigateToPayment}
-          externalFontStyle={styles.externalFontStyle}
-          externalContainer={styles.loginContainer}
-        />
+        <View style={styles.btn}>
+          <CommonButton
+            title={'Continue'}
+            onPress={navigateToPayment}
+            externalFontStyle={styles.externalFontStyle}
+            externalContainer={styles.loginContainer}
+          />
+        </View>
       </ScrollView>
     </View>
   );
