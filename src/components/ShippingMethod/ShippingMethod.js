@@ -61,6 +61,7 @@ const ShippingMethod = () => {
           <Dhl />
         </View>
       </TouchableOpacity>
+      
     </View>
   );
 };

@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors, Fonts} from '../../global';
-import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import { StyleSheet } from 'react-native';
+import { Colors, Fonts } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 export const style = StyleSheet.create({
   typeWrapper: {
     flexDirection: 'row',
@@ -42,6 +42,7 @@ export const style = StyleSheet.create({
     borderRadius: CHANGE_BY_MOBILE_DPI(5),
     height: CHANGE_BY_MOBILE_DPI(260),
   },
+
   txt: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     fontFamily: Fonts.MANROPE_BOLD,

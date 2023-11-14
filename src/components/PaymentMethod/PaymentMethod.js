@@ -31,7 +31,7 @@ const PaymentMethod = () => {
             </View>
             <Text style={style.paymentText}>PayPal</Text>
           </View>
-          <View style={{justifyContent: 'center'}}>
+          <View style={style.imagePosition}>
             <Paypal />
           </View>
         </View>
@@ -55,7 +55,7 @@ const PaymentMethod = () => {
             </View>
             <Text style={style.paymentText}>Stripe</Text>
           </View>
-          <View style={{justifyContent: 'center'}}>
+          <View style={style.imagePosition}>
             <Stripe />
           </View>
         </View>

@@ -41,6 +41,7 @@ import QuestionDetailScreen from '../screen/QuestionDetailView/QuestionDetailScr
 import YourCart from '../screen/YourCart/YourCartScreen';
 import OrderSummary from '../screen/OrderSummary/OrderSummaryScreen';
 import PaymentScreen from '../screen/Payment/PaymentScreen';
+import PaymentSuccess from '../screen/PaymentSuccess/PaymentSuccess';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -183,6 +184,11 @@ const MainStack = () => {
         <Stack.Screen
           name={ScreenNames.PAYMENT_SCREEN}
           component={PaymentScreen}
+        />
+
+        <Stack.Screen
+          name={ScreenNames.PAYMENT_SUCCESS}
+          component={PaymentSuccess}
         />
       </Stack.Navigator>
     </NavigationContainer>

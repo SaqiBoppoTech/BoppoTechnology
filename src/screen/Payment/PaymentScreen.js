@@ -7,13 +7,14 @@ import {Colors} from '../../global';
 import {PaymentHooks} from './PaymentHooks';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import CheckoutNavigationBar from '../../components/CheckoutNavigationBar/CheckoutNavigationBar';
+import {styles} from './PaymentScreenStyle';
 
 const PaymentScreen = () => {
   const {handleGoBack, orderReceivedSuccess} = PaymentHooks();
 
   return (
-    <View style={{backgroundColor: Colors.WHITE, flex: 1}}>
-      <SearchAppBar title={'Payment'} onPress={handleGoBack} />
+    <View style={styles.mainView}>
+      <SearchAppBar title={'Checkout'} onPress={handleGoBack} />
       <CheckoutNavigationBar />
       <PaymentDetails />
       <PaymentMethod />
