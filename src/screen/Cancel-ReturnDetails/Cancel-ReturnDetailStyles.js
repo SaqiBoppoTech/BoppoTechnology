@@ -76,12 +76,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
     justifyContent: 'space-between',
-    width: Constant.SCREEN_WIDTH - 200,
+    width: Constant.SCREEN_WIDTH - 180,
     marginBottom: CHANGE_BY_MOBILE_DPI(5),
   },
   totalProductPriceTextCancel: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_BOLD,
+    color:Colors.TUNDORA
   },
   totalProductPriceValueCancel: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
@@ -91,6 +92,7 @@ export const styles = StyleSheet.create({
   supplyDiscountTextCancel: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_BOLD,
+    color: Colors.TUNDORA,
   },
   supplyDiscountValueCancel: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
@@ -101,7 +103,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
     justifyContent: 'space-between',
-    width: Constant.SCREEN_WIDTH - 200,
+    width: Constant.SCREEN_WIDTH - 180,
     marginBottom: CHANGE_BY_MOBILE_DPI(10),
   },
   cancelTotalWrapperBorder: {
@@ -113,7 +115,7 @@ export const styles = StyleSheet.create({
   cancelTotalWrapper: {
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
-    width: Constant.SCREEN_WIDTH - 200,
+    width: Constant.SCREEN_WIDTH - 180,
     justifyContent: 'space-between',
   },
   cancelTotalText: {

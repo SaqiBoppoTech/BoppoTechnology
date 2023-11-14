@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
   productWrapper: {
     flexDirection: 'row',
     height: CHANGE_BY_MOBILE_DPI(92),
-    width: Constant.SCREEN_WIDTH - 40,
     margin: CHANGE_BY_MOBILE_DPI(10),
     borderRadius: CHANGE_BY_MOBILE_DPI(17),
     backgroundColor: Colors.WHITE,
@@ -25,11 +24,11 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
 
-    elevation: 3,
+    elevation: 2,
   },
   arrowWrapper: {
     height: CHANGE_BY_MOBILE_DPI(92),
-    paddingHorizontal:CHANGE_BY_MOBILE_DPI(15),
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(15),
     backgroundColor: Colors.GALLERY_GREY,
     borderTopRightRadius: CHANGE_BY_MOBILE_DPI(17),
     borderBottomRightRadius: CHANGE_BY_MOBILE_DPI(17),
