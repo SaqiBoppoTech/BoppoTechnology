@@ -51,10 +51,10 @@ const MainStack = () => {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{headerShown: false}}
-          initialRouteName={ScreenNames.CATEGORY_SCREEN}>
+          initialRouteName={ScreenNames.SPLASH_SCREEN}>
           <Stack.Screen
-            name={ScreenNames.CATEGORY_SCREEN}
-            component={CategoryScreen}
+            name={ScreenNames.SPLASH_SCREEN}
+            component={SplashScreen}
           />
           <Stack.Screen name={ScreenNames.BOTTOM_TAB} component={BottomTabs} />
           <Stack.Screen
