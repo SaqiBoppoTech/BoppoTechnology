@@ -22,7 +22,6 @@ import Animated, {
   useSharedValue
 } from 'react-native-reanimated';
 import { styles } from './CustomTopTabStyle';
-import { CustomTopTabHooks } from './CustomTopTabHooks';
 const { width } = Dimensions.get('screen');
 const CustomTopTabs = ({ topTabData, CustomTabItem }) => {
   // const { } = CustomTopTabHooks()

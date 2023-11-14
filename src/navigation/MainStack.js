@@ -39,10 +39,6 @@ import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-Retu
 import QuestionDetailScreen from '../screen/QuestionDetailView/QuestionDetailScreen';
 import YourCart from '../screen/YourCart/YourCartScreen';
 import OrderSummary from '../screen/OrderSummary/OrderSummaryScreen';
-import AddToCartButton from '../components/AddToCartButton/AddToCartButton';
-import CartWhiteSvg from '../../src/assets/svgs/CartWhiteSvg.svg'
-import { styles } from './BottomTabs/styles';
-import CategoryDetailScreen from '../screen/CategoryDetail/CategoryDetailScreen';
 import Filter from '../screen/Filter/FilterScreen';
 import CustomToastedAlert from './CustomToastedAlert';
 
