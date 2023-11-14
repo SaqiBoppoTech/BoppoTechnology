@@ -10,9 +10,7 @@ export const styles = StyleSheet.create({
       },
       item: {
         height: '100%',
-        width: Constant.SCREEN_WIDTH,
-        backgroundColor: 'grey',
-        borderWidth: 5,
+        width: Constant.SCREEN_WIDTH,      
         borderColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',

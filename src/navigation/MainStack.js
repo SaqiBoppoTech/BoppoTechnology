@@ -31,9 +31,8 @@ import EmailVerifyScreen from '../screen/VerifyEmail/VerifyEmailScreen';
 import ForgetPasswordScreen from '../screen/ForgetPassword/ForgetPasswordScreen';
 import ForgetPasswordOtpScreen from '../screen/ForgetPasswordOtp/ForgetPasswordOtpScreen';
 import SuccessScreen from '../screen/SuccessScreen/SuccessScreen';
-import { StyleSheet, Text, View } from 'react-native';
-import { CHANGE_BY_MOBILE_DPI } from '../global/constant';
-import CustomToastedAlert from './CustomToastedAlert';
+import {StyleSheet} from 'react-native';
+import {CHANGE_BY_MOBILE_DPI} from '../global/constant';
 import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
 import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';
@@ -43,6 +42,10 @@ import OrderSummary from '../screen/OrderSummary/OrderSummaryScreen';
 import AddToCartButton from '../components/AddToCartButton/AddToCartButton';
 import CartWhiteSvg from '../../src/assets/svgs/CartWhiteSvg.svg'
 import { styles } from './BottomTabs/styles';
+import CategoryDetailScreen from '../screen/CategoryDetail/CategoryDetailScreen';
+import Filter from '../screen/Filter/FilterScreen';
+import CustomToastedAlert from './CustomToastedAlert';
+
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -55,10 +58,6 @@ const MainStack = () => {
           <Stack.Screen
             name={ScreenNames.SPLASH_SCREEN}
             component={SplashScreen}
-          />
-          <Stack.Screen
-            name={ScreenNames.ONBOARDING_SCREEN}
-            component={OnBoardingScreen}
           />
           <Stack.Screen name={ScreenNames.BOTTOM_TAB} component={BottomTabs} />
           <Stack.Screen
@@ -145,34 +144,6 @@ const MainStack = () => {
           <Stack.Screen name={ScreenNames.ORDER_SCREEN} component={OrderScreen} />
 
           <Stack.Screen
-            name={ScreenNames.ORDERDETAIL_SCREEN}
-            component={OrderDetailsScreen}
-          />
-          <Stack.Screen
-            name={ScreenNames.CANCELRETURNDETAIL_SCREEN}
-            component={CancelReturnDetailScreen}
-          />
-          <Stack.Screen
-            name={ScreenNames.FORGET_PASSWORD_SCREEN}
-            component={ForgetPasswordScreen}
-          />
-          <Stack.Screen
-            name={ScreenNames.FORGET_PASSWORD_OTP_SCREEN}
-            component={ForgetPasswordOtpScreen}
-          />
-          <Stack.Screen
-            name={ScreenNames.SUCCESS_SCREEN}
-            component={SuccessScreen}
-          />
-          <Stack.Screen
-            name={ScreenNames.MOBILE_OTP_SCREEN}
-            component={VerifyMobileNumberScreen}
-          />
-          <Stack.Screen
-            name={ScreenNames.QUESTION_DETAIL_VIEW}
-            component={QuestionDetailScreen}
-          />
-          <Stack.Screen
             name={ScreenNames.YOUR_CART_SCREEN}
             component={YourCart}
           />
@@ -180,7 +151,40 @@ const MainStack = () => {
             name={ScreenNames.ORDER_SUMMARY_SCREEN}
             component={OrderSummary}
           />
-        </Stack.Navigator>
+        <Stack.Screen
+          name={ScreenNames.ONBOARDING_SCREEN}
+          component={OnBoardingScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.ORDERDETAIL_SCREEN}
+          component={OrderDetailsScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.CANCELRETURNDETAIL_SCREEN}
+          component={CancelReturnDetailScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.FORGET_PASSWORD_SCREEN}
+          component={ForgetPasswordScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.FORGET_PASSWORD_OTP_SCREEN}
+          component={ForgetPasswordOtpScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.SUCCESS_SCREEN}
+          component={SuccessScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.MOBILE_OTP_SCREEN}
+          component={VerifyMobileNumberScreen}
+        />
+        <Stack.Screen
+          name={ScreenNames.QUESTION_DETAIL_VIEW}
+          component={QuestionDetailScreen}
+        />
+        <Stack.Screen name={ScreenNames.FILTER} component={Filter} />
+      </Stack.Navigator>
       </NavigationContainer>
       {/* <AddToCartButton 
       proceedFlag={false}

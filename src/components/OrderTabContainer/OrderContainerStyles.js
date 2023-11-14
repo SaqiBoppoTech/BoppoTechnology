@@ -19,8 +19,15 @@ export const styles = StyleSheet.create({
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_BOLD,
     marginLeft: CHANGE_BY_MOBILE_DPI(10),
-    width: Constant.SCREEN_WIDTH - 180,
     marginBottom: CHANGE_BY_MOBILE_DPI(5),
+    marginRight: CHANGE_BY_MOBILE_DPI(5),
+    width: CHANGE_BY_MOBILE_DPI(156),
+  },
+  quantity: {
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    fontFamily: Fonts.MANROPE_MEDIUM,
+    color: Colors.Scorpion,
   },
   count: {
     color: Colors.BLACK,
@@ -62,15 +69,13 @@ export const styles = StyleSheet.create({
   background: {
     backgroundColor: Colors.WHITE,
     alignItems: 'center',
-    marginBottom: CHANGE_BY_MOBILE_DPI(117),
+    // marginBottom: CHANGE_BY_MOBILE_DPI(117),
   },
   mainView: {
     margin: CHANGE_BY_MOBILE_DPI(6),
     backgroundColor: Colors.Alabaster_GREY,
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
-    height: CHANGE_BY_MOBILE_DPI(226),
     width: CHANGE_BY_MOBILE_DPI(351),
-    backgroundColor:'green'
   },
   nameWrapper: {
     flexDirection: 'column',
@@ -103,5 +108,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: CHANGE_BY_MOBILE_DPI(3),
     marginRight: CHANGE_BY_MOBILE_DPI(5),
+  },
+  descriptionWrapper: {
+    flexDirection: 'row',
+    width: Constant.SCREEN_WIDTH - 180,
   },
 });

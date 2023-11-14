@@ -94,7 +94,7 @@ const CustomTopTabs = ({ topTabData, CustomTabItem }) => {
   const CustomTab = () => {
     return (
       <View style={styles.item}>
-        <Text>jfsdjsa</Text>
+        {CustomTabItem}
       </View>
     )
   }

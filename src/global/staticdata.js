@@ -243,6 +243,12 @@ export const STATIC_DATA = {
       question:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
     },
+  ],
+  categoryTopTabData:[
+  'Baby care',
+  'Body care',
+  'Hair care',
+  'Face care'
   ]
 
 }
