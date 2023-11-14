@@ -30,4 +30,5 @@ export const PAPAYA_WHIP = "#FFF2D0"
 export const HALLOWINE_ORANGE = '#EF691F'
 export const YELLOW = '#F1C40F'
 export const DARK_GREEN = '#585858'
+export const ORANGE = '#FF7427'
 

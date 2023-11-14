@@ -16,11 +16,17 @@ export const styles = StyleSheet.create({
   review: {
     fontSize:CHANGE_BY_MOBILE_DPI(12),
     color:Colors.GRAY_DARK,
-    fontFamily:Fonts.MANROPE_REGULAR
+    fontFamily:Fonts.MANROPE_REGULAR,
+    },
+    reviewWithUnderLine:{
+      fontSize:CHANGE_BY_MOBILE_DPI(12),
+      color:Colors.GRAY_DARK,
+      fontFamily:Fonts.MANROPE_REGULAR,
+      textDecorationLine:'underline'
     },
   description: {
     fontSize:CHANGE_BY_MOBILE_DPI(14),
-    color:Colors.GRAY_DARK,
+    color:Colors.BLACK_DARK + 99,
     fontFamily:Fonts.MANROPE_MEDIUM
   },
   scrollStyle: {

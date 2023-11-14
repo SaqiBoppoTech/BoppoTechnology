@@ -21,25 +21,27 @@ const ProductDetailViewScreen = () => {
         showHeart={true}
         showCartIcon={true}
       />
-      <View style={styles.carosalContainer}>
-        <CustomCarousel
-          autoPlay={false}
-          externalCarsoualContainer={styles.marginContainer}
-          externalData={STATIC_DATA.productDetailCarosualData}
-          externalIndicatorPositionContainer={styles.positionAlignment}
-          defaultWidth={Constant.SCREEN_WIDTH}
-          defaultHeigth={CHANGE_BY_MOBILE_DPI(240)}
-        />
-        <View style={styles.iconPositionContainer}>
-          <HeartSvg heigth={CHANGE_BY_MOBILE_DPI(31)} width={CHANGE_BY_MOBILE_DPI(31)} style={styles.heartSvgStyle} />
-          <ShareSvg heigth={CHANGE_BY_MOBILE_DPI(31)} width={CHANGE_BY_MOBILE_DPI(31)} />
+      <View style={styles.elevationContainer}>
+        <View style={styles.carosalContainer}>
+          <CustomCarousel
+            autoPlay={false}
+            externalCarsoualContainer={styles.marginContainer}
+            externalData={STATIC_DATA.productDetailCarosualData}
+            externalIndicatorPositionContainer={styles.positionAlignment}
+            defaultWidth={Constant.SCREEN_WIDTH}
+            defaultHeigth={CHANGE_BY_MOBILE_DPI(240)}
+          />
+          <View style={styles.iconPositionContainer}>
+            <HeartSvg heigth={CHANGE_BY_MOBILE_DPI(31)} width={CHANGE_BY_MOBILE_DPI(31)} style={styles.heartSvgStyle} />
+            <ShareSvg heigth={CHANGE_BY_MOBILE_DPI(31)} width={CHANGE_BY_MOBILE_DPI(31)} />
+          </View>
         </View>
-      </View>
-      <View style={styles.topTabContainer}>
-        <View>
+        <View style={styles.topTabContainer}>
           <FlatList horizontal data={STATIC_DATA.topTabData} renderItem={renderTopBar} contentContainerStyle={styles.contentContainerStyle} />
         </View>
-        {openCustomView()}
+      </View>
+      <View style={{flex:1,paddingTop:CHANGE_BY_MOBILE_DPI(2)}}>
+      {openCustomView()}
       </View>
       <View style={styles.positionContainer}>
         <View style={styles.addToContainer}>

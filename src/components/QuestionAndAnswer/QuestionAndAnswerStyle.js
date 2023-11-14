@@ -48,7 +48,8 @@ export const styles = StyleSheet.create({
     sendPositionContainer: {
         marginTop: CHANGE_BY_MOBILE_DPI(10),
         marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
+        marginBottom:CHANGE_BY_MOBILE_DPI(20)
     },
     seq: {
         fontSize: CHANGE_BY_MOBILE_DPI()
@@ -76,8 +77,10 @@ export const styles = StyleSheet.create({
     },
     line: {
         borderBottomWidth: CHANGE_BY_MOBILE_DPI(1),
-        borderColor: Colors.GAINSBORO,
-        marginTop: CHANGE_BY_MOBILE_DPI(10),
+        borderColor: Colors.BLACK,
+        marginTop: CHANGE_BY_MOBILE_DPI(20),
+        marginBottom:CHANGE_BY_MOBILE_DPI(20),
+        marginHorizontal:CHANGE_BY_MOBILE_DPI(20)
     },
 
     question: {
@@ -110,10 +113,10 @@ export const styles = StyleSheet.create({
         color: Colors.BLACK
     },
     lessFlexContainer: {
-        flex: 0.2
+        flex: 0.15,
     },
     largeFlexContainer: {
-        flex: 0.7
+        flex: 0.8
     },
     valueFontStyle: {
         fontSize: CHANGE_BY_MOBILE_DPI(14),

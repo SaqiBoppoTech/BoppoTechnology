@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
   },
   carosalContainer: {
     height: CHANGE_BY_MOBILE_DPI(300),
-    marginTop: CHANGE_BY_MOBILE_DPI(10)
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
+    zIndex:0
   },
   positionAlignment: {
     bottom: CHANGE_BY_MOBILE_DPI(-35)
@@ -26,7 +27,9 @@ export const styles = StyleSheet.create({
     marginTop: CHANGE_BY_MOBILE_DPI(20)
   },
   topTabContainer: {
-    flex: 1
+    // flex: 1,
+    // paddingBottom:CHANGE_BY_MOBILE_DPI(3),
+    zIndex:100
   },
   labelFontStyle: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
@@ -44,12 +47,21 @@ export const styles = StyleSheet.create({
     marginTop: CHANGE_BY_MOBILE_DPI(8)
   },
   barContainerStyle: {
-    marginRight: CHANGE_BY_MOBILE_DPI(20)
+    marginRight: CHANGE_BY_MOBILE_DPI(30)
   },
   contentContainerStyle: {
     marginTop: CHANGE_BY_MOBILE_DPI(20),
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
-    paddingBottom: CHANGE_BY_MOBILE_DPI(5)
+    // paddingBottom: CHANGE_BY_MOBILE_DPI(5),
+    backgroundColor: 'white',
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1,
+    // },
+    // shadowOpacity: 0.20,
+    // shadowRadius: 1.41,
+    // elevation: 2,
   },
   addToContainer: {
     flexDirection: 'row',
@@ -101,8 +113,19 @@ export const styles = StyleSheet.create({
     left: CHANGE_BY_MOBILE_DPI(0),
     right: CHANGE_BY_MOBILE_DPI(0)
   },
-  marginBottomContainer:{
-    flex:1,
-    marginBottom:CHANGE_BY_MOBILE_DPI(80)
+  marginBottomContainer: {
+    flex: 1,
+    marginBottom: CHANGE_BY_MOBILE_DPI(80)
+  },
+  elevationContainer: {
+    backgroundColor: Colors.WHITE,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+    elevation: 1,
   }
 });

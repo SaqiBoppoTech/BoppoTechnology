@@ -18,7 +18,7 @@ const ProductDescription = () => {
         </View>
         <View style={styles.ratingWrapper}>
           <RatingComponent initialRating={3} />
-          <Text style={styles.review}> (1 customer review)</Text>
+          <Text style={styles.review}>(<Text style={styles.reviewWithUnderLine}>1 customer review</Text>)</Text>
         </View>
         <Text style={styles.description}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt
