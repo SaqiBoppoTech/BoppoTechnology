@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     height: CHANGE_BY_MOBILE_DPI(226),
     width: CHANGE_BY_MOBILE_DPI(351),
     margin: CHANGE_BY_MOBILE_DPI(6),
-    backgroundColor: Colors.Alabaster_GREY,
+    backgroundColor: Colors.ALABASTER_GREY,
     borderRadius: CHANGE_BY_MOBILE_DPI(5),
     justifyContent: 'center',
     alignSelf: 'center',

@@ -29,8 +29,8 @@ export const styles = StyleSheet.create({
   },
   arrowWrapper: {
     height: CHANGE_BY_MOBILE_DPI(92),
-    width: Constant.SCREEN_WIDTH - 350,
-    backgroundColor: Colors.Gallery_GREY,
+    paddingHorizontal:CHANGE_BY_MOBILE_DPI(15),
+    backgroundColor: Colors.GALLERY_GREY,
     borderTopRightRadius: CHANGE_BY_MOBILE_DPI(17),
     borderBottomRightRadius: CHANGE_BY_MOBILE_DPI(17),
     justifyContent: 'center',

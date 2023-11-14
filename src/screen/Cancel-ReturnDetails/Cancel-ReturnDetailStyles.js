@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   cancelDetailView: {
     height: CHANGE_BY_MOBILE_DPI(119),
     width: Constant.SCREEN_WIDTH,
-    backgroundColor: Colors.wilsonwhite,
+    backgroundColor: Colors.WILSONWHITE,
     justifyContent: 'center',
     borderBottomWidth: CHANGE_BY_MOBILE_DPI(1),
     borderColor: Colors.GRAY_MEDIUM,
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
     marginLeft: CHANGE_BY_MOBILE_DPI(15),
   },
   paypalCancel: {
-    color: Colors.MineShaft,
+    color: Colors.MINESHAFT,
   },
   paymentModeTextCancel: {
     color: Colors.DARK_WHITE,
