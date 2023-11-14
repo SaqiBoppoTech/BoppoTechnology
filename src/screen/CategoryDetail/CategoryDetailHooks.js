@@ -5,6 +5,8 @@ import CircleIncrementButton from '../../components/Button/CircleIncrementButton
 import RatingComponent from '../../components/RatingStar';
 import {styles} from './CategoryDetailStyle';
 import Card from '../../components/Card/Card';
+import {ScreenNames} from '../../global';
+import Filter from '../Filter/FilterScreen';
 
 const CategoryDetailHooks = () => {
   // VARIABLE
@@ -106,13 +108,11 @@ const CategoryDetailHooks = () => {
   };
 
   //FUNCTION
-  const navigateToFilterPage = item => {
-    navigation.navigate(ScreenNames.CATEGORY_DETAIL_SCREEN, {
-      name: item.name,
-    });
+  const navigateToFilterPage = () => {
+    navigation.navigate(ScreenNames.FILTER);
   };
 
-  return {categoryData, renderItem, handleGoBack};
+  return {categoryData, renderItem, handleGoBack, navigateToFilterPage};
 };
 
 export {CategoryDetailHooks};

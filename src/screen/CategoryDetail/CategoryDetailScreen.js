@@ -9,7 +9,7 @@ import {styles} from './CategoryDetailStyle';
 import {Colors} from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
-const CategoryDetailScreen = ({route, navigation}) => {
+const CategoryDetailScreen = ({route}) => {
   const {name} = route.params;
   const {categoryData, renderItem, handleGoBack,navigateToFilterPage} = CategoryDetailHooks();
   return (

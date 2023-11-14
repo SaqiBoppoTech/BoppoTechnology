@@ -30,3 +30,4 @@ export const GREEN = '#00EF47';
 export const RED = '#FF5151';
 export const GREY = '#CDD4D9';
 export const ALTO = '#D1D1D1';
+export const WILDSAND = '#F6F6F6';
