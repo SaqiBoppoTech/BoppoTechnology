@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
-import {Colors, Fonts} from '../../global';
+import { StyleSheet } from 'react-native';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import { Colors, Fonts } from '../../global';
 
 export const styles = StyleSheet.create({
   imageContainer: {
@@ -46,11 +46,11 @@ export const styles = StyleSheet.create({
     marginHorizontal: 3,
   },
   main: {
- flex:1,
- backgroundColor:Colors.WHITE
+    flex: 1,
+    backgroundColor: Colors.WHITE
   },
   listWrapper: {
-    marginBottom: 140,
+    // marginBottom: 140,
   },
   categoryCardContainer: {
     height: CHANGE_BY_MOBILE_DPI(326),
@@ -70,4 +70,22 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.MANROPE_MEDIUM,
     color: Colors.BLACK,
   },
+  externalHeaderItem: {
+    paddingVertical:CHANGE_BY_MOBILE_DPI(3),
+    paddingTop:CHANGE_BY_MOBILE_DPI(5),
+    // backgroundColor:'red'
+  },
+  externalMainContainerStyle: {
+    backgroundColor: Colors.WHITE,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
+    elevation: 1,
+    // marginVertical:20
+
+  }
 });

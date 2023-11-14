@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
-    height: CHANGE_BY_MOBILE_DPI(45),
+    height: CHANGE_BY_MOBILE_DPI(59),
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

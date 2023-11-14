@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
       },
       headerItem: {
         paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
-        marginBottom:CHANGE_BY_MOBILE_DPI(7)
+        marginBottom:CHANGE_BY_MOBILE_DPI(7),
       },
       bar: {
         // height: 3,

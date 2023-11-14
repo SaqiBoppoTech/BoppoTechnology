@@ -22,9 +22,6 @@ const CategoryDetailScreen = ({ route }) => {
         showIcon={true}
         showFilter={true}
         onFilterPress={navigateToFilterPage}
-        // onFilterPress={() => {
-        //   navigation.navigate('CategoryFIlter');
-        // }}
         onPress={() => {
           handleGoBack();
         }}
@@ -33,8 +30,10 @@ const CategoryDetailScreen = ({ route }) => {
 
 
 
-      
+
       <CustomTopTabs
+        externalMainContainerStyle={styles.externalMainContainerStyle}
+        externalHeaderItem={styles.externalHeaderItem}
         topTabData={STATIC_DATA.categoryTopTabData}
         CustomTabItem={
           <View style={styles.listWrapper}>

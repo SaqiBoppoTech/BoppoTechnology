@@ -23,7 +23,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { styles } from './CustomTopTabStyle';
 const { width } = Dimensions.get('screen');
-const CustomTopTabs = ({ topTabData, CustomTabItem,externalHeaderItem}) => {
+const CustomTopTabs = ({ topTabData, CustomTabItem,externalHeaderItem,externalMainContainerStyle}) => {
   // const { } = CustomTopTabHooks()
   const [focusedIndex, setFocusedIndex] = React.useState(0);
   let headers = topTabData
@@ -47,12 +47,39 @@ const CustomTopTabs = ({ topTabData, CustomTabItem,externalHeaderItem}) => {
   useDerivedValue(() => {
     scrollTo(topScrollRef, scroll2.value, 0, true);
   });
+  const calculateHeaderPositions = (headerWidths) => {
+    const headerPositions = [0];
+    let currentPosition = 0;
+    headerWidths.forEach((width) => {
+      currentPosition += width;
+      headerPositions.push(currentPosition);
+    });
+    return headerPositions;
+  };
+  const findCenteredHeaderIndex = (headerPositions, scrollX) => {
+    const centeredX = scrollX + width / 2; // Assuming 'width' is the width of the screen
+    const index = headerPositions.findIndex((position, i, array) => {
+      const nextPosition = array[i + 1] || Infinity;
+      return centeredX >= position && centeredX < nextPosition;
+    });
+    return index;
+  };
 
   const scrollHandler = useAnimatedScrollHandler(event => {
     scrollY.value = event.contentOffset.x;
+    // const headerPositions = calculateHeaderPositions(headerWidths);
+    // const index = findCenteredHeaderIndex(headerPositions, scrollY);
+    // console.log('==1===>>',scrollY)
+    // setFocusedIndex(index)
+    
   });
+
   const topScrollHandler = useAnimatedScrollHandler(event => {
     topScrollY.value = event.contentOffset.x;
+    // const headerPositions = calculateHeaderPositions(headerWidths);
+    // const index = findCenteredHeaderIndex(headerPositions, topScrollY);
+    // console.log('==2===>>',scrollY)
+    // setFocusedIndex(index)
   });
   const barWidthStyle = useAnimatedStyle(() => {
     const input = [];
@@ -90,7 +117,7 @@ const CustomTopTabs = ({ topTabData, CustomTabItem,externalHeaderItem}) => {
 
   };
 
-  const CustomTab = () => {
+  const CustomTab = ({item,index}) => {
     return (
       <View style={styles.item}>
         {CustomTabItem}
@@ -98,7 +125,7 @@ const CustomTopTabs = ({ topTabData, CustomTabItem,externalHeaderItem}) => {
     )
   }
   return (
-    <View style={styles.flex}>
+    <View style={[styles.flex,externalMainContainerStyle]}>
       <Animated.ScrollView
         ref={topScrollRef}
         style={styles.topScroll}
@@ -106,12 +133,10 @@ const CustomTopTabs = ({ topTabData, CustomTabItem,externalHeaderItem}) => {
         showsHorizontalScrollIndicator={false}
         onScroll={topScrollHandler}>
         {headers.map((item, index) => {
-            const isFocused = index === focusedIndex;
+            const isFocused = index == focusedIndex;
           return (
             <View
-              onLayout={e =>
-                (headerWidths[index].value = e.nativeEvent.layout.width)
-              }
+              onLayout={e =>(headerWidths[index].value = e.nativeEvent.layout.width)}
               key={item}
               style={{ flex: Object.is(index, 1) ? 2 : 1 }}>
               <TouchableOpacity
@@ -137,7 +162,7 @@ const CustomTopTabs = ({ topTabData, CustomTabItem,externalHeaderItem}) => {
         showsHorizontalScrollIndicator={false}
         onScroll={scrollHandler}>
         {headers.map((item, index) => (
-          <CustomTab />
+          <CustomTab item={item} index={index}/>
         ))}
       </Animated.ScrollView>
     </View>

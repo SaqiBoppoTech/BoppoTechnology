@@ -2,7 +2,7 @@ import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './OrderDetailsStyles';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
-import PayPal from '../../assets/svgs/PayPal.svg';
+// import PayPal from '../../assets/svgs/PayPal.svg';
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
 import {ScrollView} from 'react-native-gesture-handler';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
@@ -20,7 +20,7 @@ const OrderDetailsScreen = () => {
           <Text style={styles.orderId}>Order ID 123456789</Text>
           <View style={styles.paymentModeWrapper}>
             <Text style={styles.paymentModeText}>Payment Mode</Text>
-            <PayPal />
+            {/* <PayPal /> */}
             <Text style={styles.paypal}>Paypal</Text>
           </View>
         </View>
