@@ -40,4 +40,7 @@ export const styles = StyleSheet.create({
     marginBottom: CHANGE_BY_MOBILE_DPI(20),
     marginTop: CHANGE_BY_MOBILE_DPI(5),
   },
+  btn: {
+    marginVertical: CHANGE_BY_MOBILE_DPI(10),
+  },
 });

@@ -28,3 +28,4 @@ export const GREEN_DARK = '#6A983C';
 export const RED = '#FF5151';
 export const GREY = '#CDD4D9';
 export const PAPAYA_WHIP = '#FFF2D0';
+export const GREY_200 = '#585858';

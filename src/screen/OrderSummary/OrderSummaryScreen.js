@@ -8,6 +8,7 @@ import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import OrderSummaryHooks from './OrderSummaryHooks';
 import ShippingMethod from '../../components/ShippingMethod/ShippingMethod';
 import ShippingType from '../../components/ShippingType/ShippingType';
+import ApplyCode from '../../components/ApplyCode/ApplyCode';
 
 const OrderSummary = () => {
   const {
@@ -47,6 +48,8 @@ const OrderSummary = () => {
        
         <ApplyCode /> */}
 
+        <ApplyCode />
+
         <Text style={styles.text}>Billing Address</Text>
         <AddressContainerComponenet
           showIconRight={true}
@@ -63,12 +66,14 @@ const OrderSummary = () => {
             externalContainer={styles.loginContainer}
           />
         </View>
-        <CommonButton
-          title={'Continue'}
-          onPress={navigateToPayment}
-          externalFontStyle={styles.externalFontStyle}
-          externalContainer={styles.loginContainer}
-        />
+        <View style={styles.btn}>
+          <CommonButton
+            title={'Continue'}
+            onPress={navigateToPayment}
+            externalFontStyle={styles.externalFontStyle}
+            externalContainer={styles.loginContainer}
+          />
+        </View>
       </ScrollView>
     </View>
   );
