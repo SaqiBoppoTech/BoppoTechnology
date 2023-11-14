@@ -1,93 +1,36 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-import {styles} from './ShopByCategoryStyles';
-import {useNavigation} from '@react-navigation/native';
-import {ScreenName, ScreenNames} from '../../global/index';
-
-const ShopByCategoyHooks = () => {
-  const data = [
-    {
-      key: '1',
-      image: require('../../assets/images/coffee.png'),
-      name: 'Coffee Products',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-    },
-    {
-      key: '2',
-      image: require('../../assets/images/dettol.png'),
-      name: 'Health Care',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-    },
-    {
-      key: '3',
-      image: require('../../assets/images/coffee.png'),
-      name: 'Coffee Products',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-    },
-    {
-      key: '4',
-      image: require('../../assets/images/dettol.png'),
-      name: 'Health Care',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-    },
-    // Add more items as needed
-  ];
+import { View, Image, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import { styles } from './ShopByCategoryStyles';
+import { useNavigation } from '@react-navigation/native';
+import { ScreenName, ScreenNames } from '../../global/index';
+import OfferSvg from '../../assets/svgs/OfferSvg.svg'
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import BoldSvg from '../../assets/svgs/BoldSvg.svg'
+const ShopByCategoryHooks = () => {
 
   const navigation = useNavigation();
   const navigateToProductDetail = () => {
     navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
   };
 
-  const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.item} onPress={navigateToProductDetail}>
-      <View style={styles.imageContainer}>
+  const renderItem = ({ item }) => (
+    <View style={styles.topDealsContainer}>
+      <TouchableOpacity style={styles.imageback} onPress={navigateToProductDetail}>
         <Image source={item.image} style={styles.image} />
-      </View>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 13,
-            fontWeight: 600,
-            marginTop: 15,
-          }}>
+      </TouchableOpacity>
+      <View style={styles.fontContainer}>
+        <Text style={styles.titleFontStyle}>
           {item.name}
         </Text>
-
-        <Text
-          style={{
-            color: 'red',
-            fontSize: 15,
-            fontWeight: 700,
-            marginTop: 5,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          Up to {item.percent}% off
+        <Text style={styles.categoryFontStyle}>
+          {item.offer}
         </Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
-
   return {
-    data,
     renderItem,
   };
 };
 
-export {ShopByCategoyHooks};
+export { ShopByCategoryHooks };

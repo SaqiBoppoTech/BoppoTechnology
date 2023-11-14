@@ -8,7 +8,7 @@ const {
   Dimensions,
 } = require('react-native');
 import React, {useRef, useState} from 'react';
-import BlackIncremnetButton from '../Button/BlackIncrementButton';
+import BlackIncremnetButton from '../BlackIncrementButton/BlackIncrementButton';
 import AddToCartBottomButton from '../Button/AddToCartBottomButton';
 
 const HomeBottomSheet = () => {

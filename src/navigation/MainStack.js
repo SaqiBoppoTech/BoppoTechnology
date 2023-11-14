@@ -38,6 +38,8 @@ import OrderDetailsScreen from '../screen/OrderDetails/OrderDetailsScreen';
 import OrderScreen from '../screen/Order/OrderScreen';
 import CancelReturnDetailScreen from '../screen/Cancel-ReturnDetails/Cancel-ReturnDetailScreen';
 import QuestionDetailScreen from '../screen/QuestionDetailView/QuestionDetailScreen';
+import YourCart from '../screen/YourCart/YourCartScreen';
+import OrderSummary from '../screen/OrderSummary/OrderSummaryScreen';
 import PaymentScreen from '../screen/Payment/PaymentScreen';
 import PaymentSuccess from '../screen/PaymentSuccess/PaymentSuccess';
 enableScreens();
@@ -170,6 +172,14 @@ const MainStack = () => {
           name={ScreenNames.QUESTION_DETAIL_VIEW}
           component={QuestionDetailScreen}
         />
+        <Stack.Screen
+          name={ScreenNames.YOUR_CART_SCREEN}
+          component={YourCart}
+        />
+        <Stack.Screen
+          name={ScreenNames.ORDER_SUMMARY_SCREEN}
+          component={OrderSummary}
+        />
 
         <Stack.Screen
           name={ScreenNames.PAYMENT_SCREEN}
@@ -180,11 +190,7 @@ const MainStack = () => {
           name={ScreenNames.PAYMENT_SUCCESS}
           component={PaymentSuccess}
         />
-
       </Stack.Navigator>
-
-    
-
     </NavigationContainer>
   );
 };

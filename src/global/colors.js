@@ -9,6 +9,7 @@ export const BLACK = '#000000';
 export const TRANSPARENT = '#ffffff00';
 export const BLACK_DARK = '#151515';
 export const GAINSBORO = '#DDDDDD';
+export const GREY_SHADE_500 = '#EDEDED';
 //Actions
 export const SUCCESS = '#3adb76';
 export const WARNING = '#ffae00';
@@ -23,5 +24,8 @@ export const Alabaster_GREY = '#F9F9F9';
 export const GRAY_MEDIUM = '#cacaca';
 export const GRAY_DARK = '#8a8a8a';
 export const GREEN = '#00EF47';
+export const GREEN_DARK = '#6A983C';
 export const RED = '#FF5151';
 export const GREY = '#CDD4D9';
+export const PAPAYA_WHIP = '#FFF2D0';
+export const GREY_200 = '#585858';

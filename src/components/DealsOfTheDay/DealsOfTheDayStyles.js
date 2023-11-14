@@ -1,27 +1,51 @@
+import { Colors, Fonts } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+
 const {StyleSheet} = require('react-native');
 
 export const styles = StyleSheet.create({
-  item: {
-    width: 150,
-    height: 150,
-    marginHorizontal: 10,
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-  },
+
+
   backGround: {
-    backgroundColor: 'black',
-    height: 250,
-    paddingLeft: 5,
-    marginTop: 10,
+    backgroundColor:Colors.BLACK,
+    height: CHANGE_BY_MOBILE_DPI(283),
+    paddingHorizontal:CHANGE_BY_MOBILE_DPI(20)
   },
   headerText: {
-    fontSize: 22,
-    fontWeight: '600',
-    color: 'white',
-    marginLeft: 10,
-    marginVertical: 8,
+    fontSize:CHANGE_BY_MOBILE_DPI(20),
+    fontFamily:Fonts.PLAYFAIR_DISPLAY_SEMIBOLD,
+    color:Colors.WHITE,
+    marginVertical:CHANGE_BY_MOBILE_DPI(10)
   },
+  imageMainContainer:{
+    height:CHANGE_BY_MOBILE_DPI(165),
+    width:CHANGE_BY_MOBILE_DPI(165)
+  },
+  sizeContainer:{
+    width:CHANGE_BY_MOBILE_DPI(165)
+  },
+  imageStyle:{
+    height:'100%',
+    width:'100%'
+  },
+  contentContainerStyle:{
+  },
+  container:{
+    marginRight:CHANGE_BY_MOBILE_DPI(15),
+    
+  },
+  titleFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(14),
+    color:Colors.WHITE,
+    fontFamily:Fonts.MANROPE_BOLD,
+    marginTop:CHANGE_BY_MOBILE_DPI(5)
+  },
+  priceFontSytle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(12),
+    color:Colors.GRAY_DARK,
+    fontFamily:Fonts.MANROPE_BOLD
+  },
+  flexContainer:{
+    flex:1
+  }
 });

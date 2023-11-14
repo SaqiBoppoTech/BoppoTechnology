@@ -1,85 +1,85 @@
-const {StyleSheet} = require('react-native');
+import { Colors, Fonts } from "../../global";
+import { CHANGE_BY_MOBILE_DPI } from "../../global/constant";
+
+const { StyleSheet } = require("react-native");
 
 export const styles = StyleSheet.create({
-  circularButtonContainer: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-  },
 
   imageContainer: {
-    width: '100%',
-    height: '60%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: CHANGE_BY_MOBILE_DPI(137),
+    width: CHANGE_BY_MOBILE_DPI(100),
+    alignSelf:"center",
+    marginTop:CHANGE_BY_MOBILE_DPI(20)
   },
 
   priceContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 10,
-    width: 140,
+    marginTop:CHANGE_BY_MOBILE_DPI(3)
   },
-  item: {
-    padding: 5,
-    width: 160,
-    height: 250,
-    marginHorizontal: 10,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   image: {
-    width: '80%',
-    height: '90%',
-    resizeMode: 'contain',
+    width: '100%',
+    height: '100%',
   },
   backGround: {
-    backgroundColor: '#EFEFEF',
-    height: 320,
-    paddingLeft: 5,
+    // paddingHorizontal:CHANGE_BY_MOBILE_DPI(20)
   },
   headingText: {
-    fontSize: 22,
-    fontWeight: '600',
-    color: '#000',
-    marginLeft: 10,
-    marginVertical: 8,
+    fontSize: CHANGE_BY_MOBILE_DPI(20),
+    color: Colors.BLACK,
+    fontFamily: Fonts.PLAYFAIR_DISPLAY_SEMIBOLD,
+    marginVertical: CHANGE_BY_MOBILE_DPI(10)
   },
-  productName: {
-    color: 'black',
-    fontSize: 13,
-    fontWeight: '500',
-    marginTop: 15,
+  exploreItemCardContainer: {
+    height: CHANGE_BY_MOBILE_DPI(268),
+    backgroundColor: Colors.WHITE,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 2,
+    borderRadius: CHANGE_BY_MOBILE_DPI(5),
+    marginRight: CHANGE_BY_MOBILE_DPI(20),
+    width: CHANGE_BY_MOBILE_DPI(160)
   },
-  productPrice: {
-    color: 'black',
-    fontSize: 14,
-    fontWeight: '600',
+  contentContainerStyle: {
+    paddingBottom: CHANGE_BY_MOBILE_DPI(20),
+    // marginLeft: CHANGE_BY_MOBILE_DPI(20),
   },
-  discountPrice: {
-    color: '#888888',
-    fontSize: 12,
-    fontWeight: '400',
-    textDecorationLine: 'line-through',
+  titleFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(12),
+    fontFamily:Fonts.MANROPE_MEDIUM,
+    color:Colors.BLACK
   },
-  productPercent: {
-    color: 'black',
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#E50404',
+  discountFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(10),
+    fontFamily:Fonts.MANROPE_MEDIUM,
+    color:Colors.GRAY_DARK
   },
-  backGroundColorBottomSheetActive: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    justifyContent: 'flex-end',
+  priceFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(14),
+    fontFamily:Fonts.MANROPE_BOLD,
+    color:Colors.BLACK
   },
-  bottomSheetBackground:{
-    backgroundColor: 'white',
-    padding: 16,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+  percentageFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(12),
+    fontFamily:Fonts.MANROPE_BOLD,
+    color:Colors.ALERT
+  },
+  positionContainer:{
+    position:'absolute',
+  top:CHANGE_BY_MOBILE_DPI(10),
+  right:CHANGE_BY_MOBILE_DPI(10)
+  },
+  paddingConmtainer:{
+    paddingHorizontal:CHANGE_BY_MOBILE_DPI(10)
+  },
+  flexContainer:{
+    flex:1
   }
 });

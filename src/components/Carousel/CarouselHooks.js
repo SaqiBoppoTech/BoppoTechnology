@@ -11,13 +11,15 @@ import {
 import Carousel from 'react-native-reanimated-carousel';
 import {FlatList} from 'react-native-gesture-handler';
 import { styles } from './CarouselStyle';
+import { Colors } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const CarouselHooks = () => {
   const width = Dimensions.get('window').width;
 
   const [isFocused, setIsFocused] = useState(0);
 
-  const data = [
+  const carasolimagedata = [
     {id: 1, image: require('../../assets/images/carasolimage.png')},
     {id: 2, image: require('../../assets/images/carasolimage.png')},
     {id: 3, image: require('../../assets/images/carasolimage.png')},
@@ -40,18 +42,19 @@ const CarouselHooks = () => {
   ];
 
   const renderItem = ({item, index}) => {
+    let focusStyle = isFocused === index ?  { backgroundColor: Colors.BLACK} : {backgroundColor:Colors.WHITE,borderWidth:CHANGE_BY_MOBILE_DPI(0.5),borderColor:Colors.GRAY_MEDIUM}
     return (
-      <View style={{marginEnd: 10}}>
+      <View>
         <View
           style={{
             ...styles.indicator,
-            backgroundColor: isFocused === index ? 'black' : 'white',
+             ...focusStyle
           }}></View>
       </View>
     );
   };
   return {
-    data,
+    carasolimagedata,
     width,
     DATA,
     setIsFocused,

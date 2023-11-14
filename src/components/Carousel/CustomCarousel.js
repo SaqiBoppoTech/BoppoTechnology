@@ -12,19 +12,20 @@ import Carousel from 'react-native-reanimated-carousel';
 import {FlatList} from 'react-native-gesture-handler';
 import {styles} from './CarouselStyle';
 import {CarouselHooks} from './CarouselHooks';
+import { Constant } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
-const CarouselScreen = () => {
-  const {data, width, DATA, setIsFocused, isFocused, renderItem} =
-    CarouselHooks();
-
+const CustomCarousel = ({externalIndicatorPositionContainer,defaultWidth,defaultHeigth,externalData}) => {
+  const {carasolimagedata, DATA, setIsFocused, renderItem} =CarouselHooks();
+  let defaultCarosalWidth = defaultWidth ||  Constant.SCREEN_WIDTH - 29
+  let defaultCarouselHeigth = defaultHeigth || CHANGE_BY_MOBILE_DPI(222)
+  let data = externalData || carasolimagedata
   return (
-    <View>
-      <View style={styles.main}>
-        <View style={{height: 250, width: width}}>
+      <View>
           <View style={styles.indicatorConatiner}>
-            <View style={styles.indicatorPosition}>
+            <View style={[styles.indicatorPosition,externalIndicatorPositionContainer]}>
               <FlatList
-                data={DATA}
+                data={data}
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
                 horizontal={true}
@@ -33,22 +34,20 @@ const CarouselScreen = () => {
           </View>
           <Carousel
             loop
-            width={width}
-            height={250}
+            width={defaultCarosalWidth}
+            height={defaultCarouselHeigth}
             autoPlay={true}
             data={data}
             scrollAnimationDuration={1000}
             onSnapToItem={index => setIsFocused(index)}
             renderItem={({item, index}) => (
               <View style={styles.carousel}>
-                <Image source={item.image} style={styles.imageStyle} />
+                <Image resizeMode={'contain'} source={item.image} style={styles.imageStyle} />
               </View>
             )}
           />
-        </View>
       </View>
-    </View>
   );
 };
 
-export default CarouselScreen;
+export default CustomCarousel;
