@@ -1,15 +1,15 @@
 import React from 'react-native'
-import { PaymentHooks } from './PaymentHooks'
 import PaymentMethod from '../../components/PaymentMethod/PaymentMethod';
 import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
 import CommonButton from '../../components/Button/CommonButton';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Colors } from '../../global';
+import { PaymentHooks } from './PaymentHooks';
 
 const PaymentScreen = () => {
-    // const { currentTab, setCurrentTab, tabs, tab_conetnt, handleGoBack } =
-    //     PaymentHooks();
 
+    const { handleGoBack,
+        orderReceivedSuccess } = PaymentHooks();
 
     return (
         <View style={{backgroundColor:Colors.WHITE,flex:1}}> 
@@ -19,6 +19,7 @@ const PaymentScreen = () => {
        </View>
             <CommonButton
             title={'Pay'}
+                onPress={orderReceivedSuccess}
             />
             </View>
 
