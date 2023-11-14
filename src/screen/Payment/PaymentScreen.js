@@ -5,6 +5,7 @@ import CommonButton from '../../components/Button/CommonButton';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Colors } from '../../global';
 import { PaymentHooks } from './PaymentHooks';
+import { styles } from './PaymentScreenStyle';
 
 const PaymentScreen = () => {
 
@@ -12,8 +13,8 @@ const PaymentScreen = () => {
         orderReceivedSuccess } = PaymentHooks();
 
     return (
-        <View style={{backgroundColor:Colors.WHITE,flex:1}}> 
-       <View style={{flex:1}}>
+        <View style={styles.mainView}> 
+       <View style={styles.centerView}>
                 <PaymentDetails />
                 <PaymentMethod />
        </View>
