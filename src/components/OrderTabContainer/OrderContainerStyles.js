@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     marginLeft: CHANGE_BY_MOBILE_DPI(10),
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_MEDIUM,
-    color: Colors.Scorpion,
+    color: Colors.SCORPION,
   },
   count: {
     color: Colors.BLACK,
@@ -69,11 +69,16 @@ export const styles = StyleSheet.create({
   background: {
     backgroundColor: Colors.WHITE,
     alignItems: 'center',
+    // position:'absolute',
+    // top:0,
+    // left:0,
+    // right:0,
+    // bottom:0
     // marginBottom: CHANGE_BY_MOBILE_DPI(117),
   },
   mainView: {
     margin: CHANGE_BY_MOBILE_DPI(6),
-    backgroundColor: Colors.Alabaster_GREY,
+    backgroundColor: Colors.ALABASTER_GREY,
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
     width: CHANGE_BY_MOBILE_DPI(351),
   },

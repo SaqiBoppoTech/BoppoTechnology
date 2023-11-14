@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {styles} from './OrderContainerStyles';
 import PrivacyPolicyHooks from '../../screen/PrivacyPolicy/PrivacyPolicyHooks';
 import {OrderContainerHooks} from './OrderContainerHooks';
@@ -15,6 +15,7 @@ import {Constant, ScreenNames} from '../../global';
 import SelectStarSvg from '../../assets/svgs/SelectStarSvg.svg';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import PopupSvg from '../../assets/svgs/PopupSvg.svg';
+import CustomBottomSheet from '../CustomBottomsheetorderDetails/CustomBottomsheetorderDetails';
 
 const OrderContainerComponent = ({
   heading,
@@ -116,6 +117,16 @@ const OrderContainerComponent = ({
     navigation.navigate(ScreenNames.ORDERDETAIL_SCREEN);
   };
 
+  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
+
+  const openBottomSheet = () => {
+    setIsBottomSheetVisible(true);
+  };
+
+  const closeBottomSheet = () => {
+    setIsBottomSheetVisible(false);
+  };
+
   const renderItem = ({item}) => (
     <View
       style={{
@@ -145,7 +156,11 @@ const OrderContainerComponent = ({
               {' '}
               {item.des}{' '}
             </Text>
-            {showPopup ? <PopupSvg /> : null}
+            {showPopup ? (
+              <TouchableOpacity onPress={openBottomSheet}>
+                <PopupSvg />
+              </TouchableOpacity>
+            ) : null}
           </View>
           {showQuantity ? <Text style={styles.quantity}>1Qty </Text> : null}
           {showProductQty ? (
@@ -159,7 +174,7 @@ const OrderContainerComponent = ({
               <FlatList
                 horizontal
                 data={[1, 2, 3, 4, 5]}
-                renderItem={() => <SelectStarSvg style={{marginLeft: 2}} />}
+                renderItem={() => <SelectStarSvg style={{marginLeft: 2}} width="11" height="11"/>}
               />
             </View>
             <Text style={styles.counts}> Rate this product Now</Text>
@@ -176,6 +191,10 @@ const OrderContainerComponent = ({
           </View>
         ) : null}
       </TouchableOpacity>
+      <CustomBottomSheet
+              isVisible={isBottomSheetVisible}
+              onClose={closeBottomSheet}
+            />
     </View>
   );
   return (
