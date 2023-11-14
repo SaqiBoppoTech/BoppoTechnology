@@ -46,7 +46,8 @@ export const styles = StyleSheet.create({
     marginHorizontal: 3,
   },
   main: {
-    height: '100%',
+ flex:1,
+ backgroundColor:Colors.WHITE
   },
   listWrapper: {
     marginBottom: 140,

@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {Colors, Fonts} from '../../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../../global/constant';
+import {MANROPE_BOLD} from '../../../global/typography';
 
 export const styles = StyleSheet.create({
   container: {
@@ -34,9 +35,22 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.MANROPE_MEDIUM,
     includeFontPadding: false,
   },
-  iconWrapper: {
+  searchWrapper: {
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
+  },
+  cartWrapper: {
+    marginRight: CHANGE_BY_MOBILE_DPI(20),
+  },
+  filter: {
+    color: Colors.BLACK,
+    fontFamily: Fonts.MANROPE_MEDIUM,
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    marginRight: CHANGE_BY_MOBILE_DPI(15),
+  },
+
+  rowWrapper: {
+    height: CHANGE_BY_MOBILE_DPI(45),
     flexDirection: 'row',
-    gap: CHANGE_BY_MOBILE_DPI(20),
-    marginRight: CHANGE_BY_MOBILE_DPI(25),
+    alignItems: 'center',
   },
 });

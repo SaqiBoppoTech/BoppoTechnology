@@ -27,11 +27,11 @@ const AddressContainerComponenet = ({
         {showIconRight && (
           <View style={styles.iconWrapper}>
             <TouchableOpacity onPress={onEditPress}>
-              <Edit width="15" height="15" />
+              <Edit width="16" height="16" />
             </TouchableOpacity>
 
             <TouchableOpacity onPress={onEditPress}>
-              <Remove width="15" height="15" />
+              <Remove width="16" height="16" />
             </TouchableOpacity>
           </View>
         )}

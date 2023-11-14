@@ -13,9 +13,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginBottom: CHANGE_BY_MOBILE_DPI(5),
     marginTop: CHANGE_BY_MOBILE_DPI(3),
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(5),
+    borderRadius: CHANGE_BY_MOBILE_DPI(10),
   },
   imageViewWrapper: {
     flexDirection: 'row',
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    marginTop: CHANGE_BY_MOBILE_DPI(5),
   },
   imageWrapper: {
     height: CHANGE_BY_MOBILE_DPI(150),

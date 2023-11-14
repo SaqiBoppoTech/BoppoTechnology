@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableWithoutFeedback} from 'react-native';
+import {View, Text, TouchableWithoutFeedback, Pressable} from 'react-native';
 import StarSvg from '../assets/svgs/StarSvg.svg';
 import SelectStarSvg from '../assets/svgs/SelectStarSvg.svg';
+import { CHANGE_BY_MOBILE_DPI } from '../global/constant';
+import { styles } from './Carousel/CarouselStyle';
 
 const RatingComponent = ({
   initialRating = 0,
@@ -23,7 +25,7 @@ const RatingComponent = ({
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       stars.push(
-        <TouchableWithoutFeedback key={i} onPress={() => handleRatingPress(i)}>
+        <Pressable style={styles.marginRightContainer} key={i} onPress={() => handleRatingPress(i)}>
           {i <= rating ? (
             <SelectStarSvg
               width={starwidth || '12'}
@@ -32,7 +34,7 @@ const RatingComponent = ({
           ) : (
             <StarSvg width={starwidth || '12'} height={starheight || '12'} />
           )}
-        </TouchableWithoutFeedback>,
+        </Pressable>,
       );
     }
     return stars;
@@ -40,12 +42,7 @@ const RatingComponent = ({
 
   return (
     <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: width || 100,
-      }}>
+      style={styles.ratingContainer}>
       {renderStars()}
     </View>
   );

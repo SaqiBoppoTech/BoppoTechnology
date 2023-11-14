@@ -10,12 +10,16 @@ import Heart from '../../../assets/svgs/Heart.svg';
 const SearchAppBar = ({
   title,
   onPress,
-  showIcon,
-  showHeart,
+  showSearchIcon,
+  onSearchPress,
   showFilter,
   onFilterPress,
-  onPressCart,
+  showHeart,
+  onHeartPress,
   showCartIcon,
+  onCartPress,
+  showText,
+  onFilterTextPress,
 }) => {
   return (
     <View style={styles.container}>
@@ -28,23 +32,38 @@ const SearchAppBar = ({
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
       </View>
-      {showIcon && (
-        <View style={styles.iconWrapper}>
-          <Search />
-          {showFilter && (
-            <TouchableOpacity onPress={onFilterPress}>
-              <Filter />
-            </TouchableOpacity>
-          )}
-          {showHeart && <Heart />}
+      <View style={styles.rowWrapper}>
+        {showSearchIcon && (
+          <TouchableOpacity
+            style={styles.searchWrapper}
+            onPress={onSearchPress}>
+            <Search width="20" height="20" />
+          </TouchableOpacity>
+        )}
 
-          {showCartIcon && (
-            <TouchableOpacity onPress={onPressCart}>
-              <Cart />
-            </TouchableOpacity>
-          )}
-        </View>
-      )}
+        {showFilter && (
+          <TouchableOpacity style={styles.cartWrapper} onPress={onFilterPress}>
+            <Filter />
+          </TouchableOpacity>
+        )}
+        {showHeart && (
+          <TouchableOpacity style={styles.cartWrapper} onPress={onHeartPress}>
+            <Heart />
+          </TouchableOpacity>
+        )}
+
+        {showCartIcon && (
+          <TouchableOpacity style={styles.cartWrapper} onPress={onCartPress}>
+            <Cart />
+          </TouchableOpacity>
+        )}
+
+        {showText && (
+          <TouchableOpacity onPress={onFilterTextPress}>
+            <Text style={styles.filter}>Clear Filter</Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };

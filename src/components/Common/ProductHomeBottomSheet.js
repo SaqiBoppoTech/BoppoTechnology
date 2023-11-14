@@ -1,9 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image,Modal} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Modal,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import {useNavigation} from '@react-navigation/native';
 import AddToCartBottomButton from '../Button/AddToCartBottomButton';
-import BlackIncremnetButton from '../Button/BlackIncrementButton';
+import BlackIncremnetButton from '../BlackIncrementButton/BlackIncrementButton';
 
 const ProductHomeBottomSheet = ({onBuyNowPress, onAddToCartPress}) => {
   const [isModalVisible, setModalVisible] = useState(false);
