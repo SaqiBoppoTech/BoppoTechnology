@@ -12,14 +12,18 @@ const AddressContainerComponenet = ({
   typeOfAddress,
   showIconRight,
   showLine,
+  showdefault,
 }) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.rowWrapper}>
         <Text style={styles.name}>Miss Edna Hayes II</Text>
-        <View style={styles.defaultTitle}>
-          <Text style={styles.typeofAddress}>{typeOfAddress}</Text>
-        </View>
+        {showdefault && (
+          <View style={styles.defaultTitle}>
+            <Text style={styles.typeofAddress}>{typeOfAddress}</Text>
+          </View>
+        )}
+
         {showIconRight && (
           <View style={styles.iconWrapper}>
             <TouchableOpacity onPress={onEditPress}>

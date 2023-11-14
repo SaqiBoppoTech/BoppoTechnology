@@ -42,7 +42,7 @@ const OrderScreen = () => {
             return (
               <TouchableOpacity
                 key={idx}
-                onPress={() => setCurrentTab(tab.id)}
+                onPress={() => {setCurrentTab(tab.id),console.log(tab.name);}}
                 activeOpacity={0.8}
                 style={styles.container}>
                 <Text

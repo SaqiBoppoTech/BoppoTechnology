@@ -1,5 +1,6 @@
 import {StyleSheet } from 'react-native';
-import { Constant } from '../../global';
+import { Colors, Constant, Fonts } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 export const styles = StyleSheet.create({
     flex: {
         flex: 1,
@@ -9,26 +10,35 @@ export const styles = StyleSheet.create({
       },
       item: {
         height: '100%',
-        width: Constant.SCREEN_WIDTH,
-        backgroundColor: 'grey',
-        borderWidth: 5,
+        width: Constant.SCREEN_WIDTH,      
         borderColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
       },
       headerItem: {
-        paddingHorizontal: 20,
-        paddingVertical: 10,
+        paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
+        marginBottom:CHANGE_BY_MOBILE_DPI(7)
       },
       bar: {
-        height: 3,
-        alignSelf: 'flex-start',
+        // height: 3,
+        // alignSelf: 'flex-start',
       },
       barInner: {
-        backgroundColor: '#000',
+        backgroundColor: Colors.HALLOWINE_ORANGE,
+        height:CHANGE_BY_MOBILE_DPI(5)
       },
       txt: {
-        fontSize: 30,
+        // fontSize: 30,
         color: '#fff',
       },
+      topTabFontStyle:{
+        fontSize:CHANGE_BY_MOBILE_DPI(14),
+        color:Colors.HALLOWINE_ORANGE,
+        fontFamily:Fonts.MANROPE_BOLD,
+      },
+      topTabBlurFontStyle:{
+        fontSize:CHANGE_BY_MOBILE_DPI(14),
+        color:Colors.BLACK,
+        fontFamily:Fonts.MANROPE_MEDIUM
+      }
 });

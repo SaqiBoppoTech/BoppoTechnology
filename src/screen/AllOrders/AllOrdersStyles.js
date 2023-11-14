@@ -66,10 +66,11 @@ export const styles = StyleSheet.create({
   },
   mainView: {
     margin: CHANGE_BY_MOBILE_DPI(6),
-    backgroundColor: Colors.Alabaster_GREY,
+    backgroundColor: Colors.ALABASTER_GREY,
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
     height: CHANGE_BY_MOBILE_DPI(226),
     width: CHANGE_BY_MOBILE_DPI(351),
+    backgroundColor:'green'
   },
   nameWrapper: {
     flexDirection: 'column',

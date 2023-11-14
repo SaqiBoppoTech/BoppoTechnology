@@ -1,12 +1,12 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import BlackIncrementButtonHooks from './BlackIncrementButtonHooks';
 import Plus from '../../assets/svgs/Plus.svg';
 import Minus from '../../assets/svgs/Minus.svg';
-import {styles} from './BlackIncrementButtonStyle';
+import { styles } from './BlackIncrementButtonStyle';
 
 const BlackIncremnetButton = () => {
-  const {count, increment, decrement} = BlackIncrementButtonHooks();
+  const { count, increment, decrement } = BlackIncrementButtonHooks();
   return (
     <View style={[styles.container]}>
       <View style={styles.resultContainer}>
@@ -17,9 +17,7 @@ const BlackIncremnetButton = () => {
           <Minus />
         </TouchableOpacity>
       </View>
-
       <Text style={styles.resultText}>{count}</Text>
-
       <View style={styles.resultContainer}>
         <TouchableOpacity
           style={styles.blackContainer}
