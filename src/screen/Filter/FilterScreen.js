@@ -17,6 +17,7 @@ const Filter = () => {
       <SearchAppBar
         title="Filter"
         showText={true}
+        showCartCount={false}
         onFilterTextPress={navigateToFilterPage}
         onPress={() => {
           handleGoBack();

@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import CircleIncrementButton from '../../components/Button/CircleIncrementButton';
-import RatingComponent from '../../components/RatingStar';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import { CategoryDetailHooks } from './CategoryDetailHooks';
 import { styles } from './CategoryDetailStyle';
@@ -23,7 +20,6 @@ const CategoryDetailScreen = ({ route }) => {
         showSearchIcon={true}
         showFilter={true}
         onFilterPress={navigateToFilterPage}
-        showCartCount={true}
         onPress={() => {
           handleGoBack();
         }}

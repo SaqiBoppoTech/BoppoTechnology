@@ -34,11 +34,9 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     borderRadius: CHANGE_BY_MOBILE_DPI(5),
     width: CHANGE_BY_MOBILE_DPI(160),
-    elevation:2
-    // borderBottomWidth: 2,
-    // borderBottomColor: Colors.CONCRETE,
-    // borderEndWidth: 2,
-    // borderEndColor: Colors.CONCRETE,
+    elevation: CHANGE_BY_MOBILE_DPI(2),
+    borderEndWidth: CHANGE_BY_MOBILE_DPI(2),
+    borderEndColor:Colors.GRAY_LIGHT
   },
   contentContainerStyle: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(20),
@@ -85,5 +83,6 @@ export const styles = StyleSheet.create({
   freeDeliveryText: {
     fontSize: CHANGE_BY_MOBILE_DPI(12),
     fontFamily: Fonts.MANROPE_MEDIUM,
+    color: Colors.BLACK,
   },
 });
