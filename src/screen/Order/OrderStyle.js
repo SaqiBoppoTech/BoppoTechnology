@@ -1,4 +1,5 @@
-import { Colors } from '../../global';
+import {Colors} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const {StyleSheet} = require('react-native');
 
@@ -6,7 +7,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.ALABASTER_GREY,
-    height: 30,
+    height: CHANGE_BY_MOBILE_DPI(30),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -16,8 +17,11 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  image: {
-    width: '100%',
-    height: '100%',
+  mainContainer: {
+    backgroundColor: '#fff',
+    flex: 1,
   },
+  screenContainer:{
+    
+  }
 });

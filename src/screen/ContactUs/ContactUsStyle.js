@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 export const styles = StyleSheet.create({
   input: {
@@ -39,5 +40,6 @@ export const styles = StyleSheet.create({
   containerWrapper: {
     backgroundColor: '#fff',
     padding: 10,
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
   },
 });

@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   labelFontStyle: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_BOLD,
-    color: Colors.HALLOWINE_ORANGE,
+    color: Colors.PRIMARY,
   },
   labelBlurFontStyle: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),

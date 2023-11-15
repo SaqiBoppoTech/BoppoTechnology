@@ -16,17 +16,16 @@ import {CategoryHooks} from './CategoryHooks';
 import CartSvg from '../../assets/svgs/CartSvg.svg';
 import Arrow from '../../assets/svgs/ArrowCategorySvg.svg';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import {Colors} from '../../global';
+import {Colors, Constant} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const CategoryScreen = () => {
   const {categoryData, navigateToCategoryDetail} = CategoryHooks();
   return (
     <View style={styles.container}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
-      <View style={styles.topView}>
-        <View style={styles.searchFiledWrapper}>
-          <SearchField style={{  borderColor: Colors.BLACK,}}/>
-        </View>
+      <View style={styles.searchFieldWrapper}>
+        <SearchField externalStyleWidth={styles.externalStyleWidth} />
         <View style={styles.cartWrapper}>
           <CartSvg />
           <View style={styles.count}>

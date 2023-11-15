@@ -5,6 +5,7 @@ import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {styles} from './CurrencyStyle';
 import CurrencyHooks from './CurrencyHooks';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import { Colors } from '../../global';
 
 const CurrencyScreen = () => {
   const {handleGoBack, selectedRadio, setSelectedRadio, navigateToProfile} =

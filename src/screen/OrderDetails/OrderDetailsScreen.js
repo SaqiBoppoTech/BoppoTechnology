@@ -14,7 +14,7 @@ const OrderDetailsScreen = () => {
     <ScrollView>
       <View style={styles.main}>
         <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
-        <SearchAppBar title={'View Order Detail'} showCartIcon={true} showIcon={true} showSearchIcon={true}/>
+        <SearchAppBar title={'View Order Detail'} showCartIcon={true} showIcon={true} showSearchIcon={true} showCartCount={true}/>
         <View style={styles.orderDetailView}>
           <Text style={styles.orderDetailTextTop}>ORDER DETAILS</Text>
           <Text style={styles.orderId}>Order ID 123456789</Text>

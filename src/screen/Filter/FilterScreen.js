@@ -10,12 +10,14 @@ import {Colors} from '../../global';
 import { style } from './FilterStyles';
 
 const Filter = () => {
-  const {DATA, renderItem, handleGoBack, filter, setFilter} = FilterHooks();
+  const {DATA, renderItem, handleGoBack, filter, setFilter,navigateToFilterPage} = FilterHooks();
   return (
     <View style={{flex: 1}}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
       <SearchAppBar
         title="Filter"
+        showText={true}
+        onFilterTextPress={navigateToFilterPage}
         onPress={() => {
           handleGoBack();
         }}

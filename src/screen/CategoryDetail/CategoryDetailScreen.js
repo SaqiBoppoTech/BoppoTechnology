@@ -20,17 +20,14 @@ const CategoryDetailScreen = ({ route }) => {
       <SearchAppBar
         title={name}
         showIcon={true}
+        showSearchIcon={true}
         showFilter={true}
         onFilterPress={navigateToFilterPage}
+        showCartCount={true}
         onPress={() => {
           handleGoBack();
         }}
       />
-
-
-
-
-
       <CustomTopTabs
         externalMainContainerStyle={styles.externalMainContainerStyle}
         externalHeaderItem={styles.externalHeaderItem}

@@ -4,7 +4,8 @@ import FilterType from '../../components/FilterType/FilterTypeScreen';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {useNavigation} from '@react-navigation/native';
 import Brand from '../../components/BrandFilter/BrandScreen';
-import { style } from './FilterStyles';
+import {style} from './FilterStyles';
+import { ScreenNames } from '../../global';
 
 const FilterHooks = () => {
   const DATA = [
@@ -50,12 +51,24 @@ const FilterHooks = () => {
     );
   };
 
-  const redirect = useNavigation();
+  const navigation = useNavigation();
   const handleGoBack = () => {
-    redirect.goBack();
+    navigation.goBack();
   };
 
-  return {DATA, renderItem, handleGoBack,filter,setFilter};
+  //FUNCTION
+  const navigateToFilterPage = () => {
+    navigation.navigate(ScreenNames.FILTER);
+  };
+
+  return {
+    DATA,
+    renderItem,
+    handleGoBack,
+    filter,
+    setFilter,
+    navigateToFilterPage,
+  };
 };
 
 export {FilterHooks};

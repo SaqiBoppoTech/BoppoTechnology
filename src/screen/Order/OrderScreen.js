@@ -21,13 +21,14 @@ const OrderScreen = () => {
   return (
     <>
       {/* tab lis */}
-      <View style={{backgroundColor: '#fff', flex: 1}}>
-        <FocusAwareStatusBar barColor={Colors.Concrete} />
+      <View style={styles.mainContainer}>
+        <FocusAwareStatusBar barColor={Colors.CONCRETE} />
         <SearchAppBar
           title={'Orders'}
           showIcon={true}
           showSearchIcon={true}
           showCartIcon={true}
+          showCartCount={true}
           onPress={() => {
             handleGoBack();
           }}
@@ -35,8 +36,8 @@ const OrderScreen = () => {
         <View
           style={{
             flexDirection: 'row',
-            // justifyContent: 'space-between',
-            // alignItems: 'center',
+            backgroundColor:'red',
+            marginTop:4
           }}>
           {tabs?.map((tab, idx) => {
             return (

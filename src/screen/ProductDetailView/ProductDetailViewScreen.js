@@ -17,9 +17,11 @@ const ProductDetailViewScreen = () => {
     <View style={styles.mainContainer}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
       <SearchAppBar
+      showSearchIcon={true}
         showIcon={true}
         showHeart={true}
         showCartIcon={true}
+        showCartCount={true}
       />
       <View style={styles.elevationContainer}>
         <View style={styles.carosalContainer}>

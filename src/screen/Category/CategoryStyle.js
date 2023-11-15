@@ -67,11 +67,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     width: Constant.SCREEN_WIDTH,
   },
-  searchFiledWrapper: {
-    width: Constant.SCREEN_WIDTH - 50,
-    marginTop: CHANGE_BY_MOBILE_DPI(5),
-    marginBottom: CHANGE_BY_MOBILE_DPI(4),
-  },
   count: {
     position: 'absolute',
     backgroundColor: Colors.PRIMARY,
@@ -85,4 +80,17 @@ export const styles = StyleSheet.create({
     color: Colors.WHITE,
     alignSelf: 'center',
   },
+  searchFieldWrapper:{
+    flexDirection: 'row',
+    width: Constant.SCREEN_WIDTH,
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
+    alignContent: 'center',
+  },
+  externalStyleWidth:{
+    height: CHANGE_BY_MOBILE_DPI(42),
+    width: Constant.SCREEN_WIDTH - 75,
+  },
+  cartWrapper:{
+    alignSelf: 'center'
+  }
 });

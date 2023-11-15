@@ -145,7 +145,7 @@ const WishlistScreen = () => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
-      <SearchAppBar title={'Your Whishlist'} onPress={handleGoBack} />
+      <SearchAppBar title={'Your Wishlist'} onPress={handleGoBack} showCartCount={true} showCartIcon={true}/>
       <FlatList
         data={data}
         renderItem={renderItem}

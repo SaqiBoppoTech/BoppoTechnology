@@ -6,7 +6,7 @@ import Search from '../../../assets/svgs/Search.svg';
 import Filter from '../../../assets/svgs/Filter.svg';
 import Cart from '../../../assets/svgs/Cart.svg';
 import Heart from '../../../assets/svgs/Heart.svg';
-import { CHANGE_BY_MOBILE_DPI } from '../../../global/constant';
+import {CHANGE_BY_MOBILE_DPI} from '../../../global/constant';
 
 const SearchAppBar = ({
   title,
@@ -21,6 +21,7 @@ const SearchAppBar = ({
   onCartPress,
   showText,
   onFilterTextPress,
+  showCartCount,
 }) => {
   return (
     <View style={styles.container}>
@@ -29,7 +30,10 @@ const SearchAppBar = ({
           hitSlop={{top: 10, bottom: 10, right: 10, left: 10}}
           onPress={onPress}
           activeOpacity={0.7}>
-          <BackArrow  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)} />
+          <BackArrow
+            height={CHANGE_BY_MOBILE_DPI(20)}
+            width={CHANGE_BY_MOBILE_DPI(20)}
+          />
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
       </View>
@@ -38,31 +42,41 @@ const SearchAppBar = ({
           <TouchableOpacity
             style={styles.searchWrapper}
             onPress={onSearchPress}>
-            <Search  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)}/>
+            <Search
+              height={CHANGE_BY_MOBILE_DPI(20)}
+              width={CHANGE_BY_MOBILE_DPI(20)}
+            />
           </TouchableOpacity>
         )}
-
         {showFilter && (
           <TouchableOpacity style={styles.cartWrapper} onPress={onFilterPress}>
-            <Filter height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)}/>
+            <Filter
+              height={CHANGE_BY_MOBILE_DPI(17)}
+              width={CHANGE_BY_MOBILE_DPI(25)}
+            />
           </TouchableOpacity>
         )}
         {showHeart && (
           <TouchableOpacity style={styles.cartWrapper} onPress={onHeartPress}>
-            <Heart  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)} />
+            <Heart
+              height={CHANGE_BY_MOBILE_DPI(20)}
+              width={CHANGE_BY_MOBILE_DPI(20)}
+            />
           </TouchableOpacity>
         )}
-
         {showCartIcon && (
           <TouchableOpacity style={styles.cartWrapper} onPress={onCartPress}>
-            <Cart  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)} />
+            <Cart
+              height={CHANGE_BY_MOBILE_DPI(24)}
+              width={CHANGE_BY_MOBILE_DPI(24)}
+            />
           </TouchableOpacity>
         )}
-        {
+        {showCartCount && (
           <View style={styles.count}>
             <Text style={styles.countNumber}>4</Text>
           </View>
-        }
+        )}
         {showText && (
           <TouchableOpacity onPress={onFilterTextPress}>
             <Text style={styles.filter}>Clear Filter</Text>

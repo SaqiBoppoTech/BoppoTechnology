@@ -6,9 +6,9 @@ import { CHANGE_BY_MOBILE_DPI } from '../global/constant';
 import { Colors, Constant, Fonts } from '../global';
 
 
-const SearchField = () => {
+const SearchField = ({externalStyleWidth}) => {
   return (
-    <View style={styles.searchContainer}>
+    <View style={[styles.searchContainer,externalStyleWidth]}>
       <View style={styles.flexDirectionContainer}>
         <SearchSvg height={CHANGE_BY_MOBILE_DPI(20)} width={CHANGE_BY_MOBILE_DPI(20)} style={{marginHorizontal:CHANGE_BY_MOBILE_DPI(2)}}/>
         <View style={styles.flexContainer}>

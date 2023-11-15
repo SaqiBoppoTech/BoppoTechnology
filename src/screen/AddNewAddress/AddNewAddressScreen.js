@@ -16,7 +16,7 @@ const AddNewAddress = () => {
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
-      <SearchAppBar title={'Add Addresses'} onPress={handleGoBack} />
+      <SearchAppBar title={'Add Address'} onPress={handleGoBack} />
       <ScrollView style={styles.margin}>
         <CustomTextField
           keyboardType={'default'}

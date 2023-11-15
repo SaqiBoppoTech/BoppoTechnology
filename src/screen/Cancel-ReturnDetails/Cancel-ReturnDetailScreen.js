@@ -14,7 +14,7 @@ const CancelReturnDetailScreen = () => {
     <ScrollView>
       <View style={styles.main}>
         <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
-        <SearchAppBar title={'Cancel/Return Detail'} showCartIcon={true} showIcon={true} />
+        <SearchAppBar title={'Cancel/Return Detail'} showCartIcon={true} showIcon={true} showSearchIcon={true}/>
         <View style={styles.cancelDetailView}>
           <Text style={styles.cancelDetailTextTop}>CANCEL/RETURN DETAILS</Text>
           <Text style={styles.cancelId}>RETURN ID 123456789</Text>
