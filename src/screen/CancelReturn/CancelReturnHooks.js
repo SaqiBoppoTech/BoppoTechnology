@@ -11,6 +11,7 @@ import {styles} from './CancelReturnStyles';
 import SelectStarSvg from '../../assets/svgs/SelectStarSvg.svg';
 import {ScreenNames} from '../../global';
 import {useNavigation} from '@react-navigation/native';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const CancelReturnHooks = () => {
   const data = [
@@ -111,6 +112,10 @@ const CancelReturnHooks = () => {
     navigation.navigate(ScreenNames.CANCELRETURNDETAIL_SCREEN);
   };
 
+  const navigateToOrderSummaryPage = () => {
+    navigation.navigate(ScreenNames.ORDER_SUMMARY_SCREEN);
+  };
+
   const renderItem = ({item}) => (
     <View style={styles.itemContainer}>
       <View style={styles.alignContent}>
@@ -129,7 +134,7 @@ const CancelReturnHooks = () => {
               <FlatList
                 horizontal
                 data={[1, 2, 3, 4, 5]}
-                renderItem={() => <SelectStarSvg style={{marginLeft: 1}} />}
+                renderItem={() => <SelectStarSvg style={{marginLeft: 1}}  width={CHANGE_BY_MOBILE_DPI(11)} height={CHANGE_BY_MOBILE_DPI(11)}/>}
               />
             </View>
             <Text style={styles.counts}> (1 customer review)</Text>
@@ -140,9 +145,11 @@ const CancelReturnHooks = () => {
             <Text style={styles.qtyText}>{item.qty} Qty </Text>
           </View>
           <Text style={styles.priceText}> {item.price} USD</Text>
-          <View style={styles.buyAgainBtn}>
-            <Text style={styles.buyAgainText}>Buy Again</Text>
-          </View>
+          <TouchableOpacity onPress={navigateToOrderSummaryPage}>
+            <View style={styles.buyAgainBtn}>
+              <Text style={styles.buyAgainText}>Buy Again</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.btn}></View>

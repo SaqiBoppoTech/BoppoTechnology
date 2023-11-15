@@ -146,6 +146,10 @@ export const STATIC_DATA = {
     'Reviews',
     'Q & As'
   ],
+  orderTopTabData:[
+    'Delivered',
+    'Cancelled/Returned'
+  ],
   ratingAndReviewData: [
     {
       key: 1,
@@ -289,6 +293,14 @@ export const STATIC_DATA = {
     {
       name:'Face care'
     }
+  ],
+  orderDetailTopTabData:[
+    {
+      name:'Delivered'
+    },
+    {
+      name:'Cancelled/Returned'
+    },
   ],
    categoryData : [
     {

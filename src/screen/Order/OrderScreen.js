@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
@@ -13,10 +14,16 @@ import {OrderHooks} from './OrderHooks';
 import {Colors} from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
+import {STATIC_DATA} from '../../global/staticdata';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const OrderScreen = () => {
-  const {currentTab, setCurrentTab, tabs, tab_conetnt, handleGoBack} =
-    OrderHooks();
+  const {
+    setCurrentTab,
+    handleGoBack,
+    openCustomView,
+    renderTopBar
+  } = OrderHooks();
 
   return (
     <>
@@ -33,40 +40,17 @@ const OrderScreen = () => {
             handleGoBack();
           }}
         />
-        <View
-          style={{
-            flexDirection: 'row',
-            backgroundColor:'red',
-            marginTop:4
-          }}>
-          {tabs?.map((tab, idx) => {
-            return (
-              <TouchableOpacity
-                key={idx}
-                onPress={() => {
-                  setCurrentTab(tab.id), console.log(tab.name);
-                }}
-                activeOpacity={0.8}
-                style={styles.container}>
-                <Text
-                  style={
-                    currentTab === tab?.id
-                      ? {
-                          color: Colors.PRIMARY,
-                          fontSize: 15,
-                          borderBottomWidth: 5,
-                          borderColor: '#3876BF',
-                          fontWeight: '500',
-                        }
-                      : {color: '#000', fontSize: 16}
-                  }>
-                  {tab?.name}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
+        <View>
+          <FlatList
+            horizontal
+            data={STATIC_DATA.orderTopTabData}
+            renderItem={renderTopBar}
+            contentContainerStyle={styles.contentContainerStyle}
+          />
         </View>
-        <View style={{}}>{tab_conetnt()}</View>
+        <View style={{ paddingTop: CHANGE_BY_MOBILE_DPI(2)}}>
+          {openCustomView()}
+        </View>
       </View>
     </>
   );

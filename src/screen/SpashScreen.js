@@ -1,22 +1,23 @@
-import React, {Component} from 'react';
-import {Animated, StyleSheet, Text, View} from 'react-native';
-import {Colors, Fonts, ScreenNames} from '../global';
-import {CommonActions, useNavigation} from '@react-navigation/native';
+import React, { Component } from 'react';
+import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Colors, Fonts, ScreenNames } from '../global';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 import { CHANGE_BY_MOBILE_DPI } from '../global/constant';
 import LogoSvg from '../assets/svgs/LogoSvg.svg';
+import FocusAwareStatusBar from '../components/AppBar/FocusAwareStatusBar';
 const SplashScreen = () => {
   const navigation = useNavigation();
   const Opacity = React.useRef(new Animated.Value(1)).current;
   const resetStackAndGoToBottom = CommonActions.reset({
     index: 0,
-    routes: [{name: ScreenNames.ONBOARDING_SCREEN}],
+    routes: [{ name: ScreenNames.ONBOARDING_SCREEN }],
   });
   const onLoad = async () => {
     Animated.timing(Opacity, {
       toValue: 0,
       duration: 1500,
       useNativeDriver: true,
-    }).start(async ({finished}) => {
+    }).start(async ({ finished }) => {
       if (finished) {
         navigation.dispatch(resetStackAndGoToBottom);
       }
@@ -26,9 +27,12 @@ const SplashScreen = () => {
     onLoad();
   }, []);
   return (
-    <View style={styles.container}>
-    <LogoSvg/>
-      <Text style={styles.text}>BoppoGo</Text>
+    <View style={{ flex: 1 }}>
+      <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
+      <View style={styles.container}>
+        <LogoSvg />
+        <Text style={styles.text}>BoppoGo</Text>
+      </View>
     </View>
   );
 };
@@ -42,10 +46,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.PRIMARY,
     // backgroundColor:'#FF7427'
   },
-  text:{
-    fontSize:CHANGE_BY_MOBILE_DPI(36),
-    fontFamily:Fonts.INTER_BOLD,
-    color:Colors.WHITE
+  text: {
+    fontSize: CHANGE_BY_MOBILE_DPI(36),
+    fontFamily: Fonts.INTER_BOLD,
+    color: Colors.WHITE
   }
 });
 

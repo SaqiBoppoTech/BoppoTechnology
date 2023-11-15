@@ -174,7 +174,7 @@ const OrderContainerComponent = ({
               <FlatList
                 horizontal
                 data={[1, 2, 3, 4, 5]}
-                renderItem={() => <SelectStarSvg style={{marginLeft: 2}} width="11" height="11"/>}
+                renderItem={() => <SelectStarSvg style={{marginLeft: 2}} width={CHANGE_BY_MOBILE_DPI(11)} height={CHANGE_BY_MOBILE_DPI(11)}/>}
               />
             </View>
             <Text style={styles.counts}> Rate this product Now</Text>

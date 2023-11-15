@@ -94,7 +94,7 @@ child : {
 positionBottom:{
   position:'absolute',
   bottom:CHANGE_BY_MOBILE_DPI(20),
-  left:CHANGE_BY_MOBILE_DPI(20),
+  left:CHANGE_BY_MOBILE_DPI(25),
   right:CHANGE_BY_MOBILE_DPI(0),
   alignItems:"center"
 }

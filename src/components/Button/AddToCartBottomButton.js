@@ -5,7 +5,9 @@ import Icons from 'react-native-vector-icons/Ionicons';
 const AddToCartBottomButton = ({onAddToCartPress, onBuyNowPress}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.addToCart} onPress={onAddToCartPress}>
+      <TouchableOpacity
+       on 
+       style={styles.addToCart} onPress={onAddToCartPress}>
         <Icons name="cart-outline" size={35} color="#000" />
         <Text style={styles.textcart}>Add to cart</Text>
       </TouchableOpacity>

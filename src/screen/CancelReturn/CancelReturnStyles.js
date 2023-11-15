@@ -100,7 +100,7 @@ export const styles = StyleSheet.create({
   },
   background: {
     backgroundColor: Colors.WHITE,
-    marginBottom: CHANGE_BY_MOBILE_DPI(180),
+    marginBottom: CHANGE_BY_MOBILE_DPI(200),
   },
   alignContent: {
     flexDirection: 'row',
