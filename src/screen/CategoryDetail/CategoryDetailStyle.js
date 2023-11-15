@@ -51,6 +51,8 @@ export const styles = StyleSheet.create({
   },
   listWrapper: {
     // marginBottom: 140,
+    flex:1,
+    backgroundColor:'red'
   },
   categoryCardContainer: {
     height: CHANGE_BY_MOBILE_DPI(326),
@@ -87,5 +89,17 @@ export const styles = StyleSheet.create({
     elevation: 1,
     // marginVertical:20
 
+  },
+  externalTopTabContainerStyle:{
+    marginRight:CHANGE_BY_MOBILE_DPI(15),
+  },
+  externalTopTabStyle:{
+    marginVertical:CHANGE_BY_MOBILE_DPI(9)
+  },
+  contentContainerStyle:{
+    paddingHorizontal:CHANGE_BY_MOBILE_DPI(25),
+    backgroundColor:Colors.WHITE,
+    elevation:CHANGE_BY_MOBILE_DPI(2),
+    marginVertical:1
   }
 });
