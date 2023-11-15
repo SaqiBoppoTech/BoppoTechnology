@@ -14,13 +14,13 @@ const OrderDetailsScreen = () => {
     <ScrollView>
       <View style={styles.main}>
         <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
-        <SearchAppBar title={'Orders'} showCartIcon={true} showIcon={true} />
+        <SearchAppBar title={'View Order Detail'} showCartIcon={true} showIcon={true} showSearchIcon={true}/>
         <View style={styles.orderDetailView}>
           <Text style={styles.orderDetailTextTop}>ORDER DETAILS</Text>
           <Text style={styles.orderId}>Order ID 123456789</Text>
           <View style={styles.paymentModeWrapper}>
             <Text style={styles.paymentModeText}>Payment Mode</Text>
-            {/* <PayPal /> */}
+            <Paypal />
             <Text style={styles.paypal}>Paypal</Text>
           </View>
         </View>

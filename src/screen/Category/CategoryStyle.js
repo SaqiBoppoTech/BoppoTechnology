@@ -82,7 +82,7 @@ export const styles = StyleSheet.create({
     borderRadius: CHANGE_BY_MOBILE_DPI(100),
   },
   countNumber: {
-    color: 'white',
+    color: Colors.WHITE,
     alignSelf: 'center',
   },
 });

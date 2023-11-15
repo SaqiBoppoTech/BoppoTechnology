@@ -58,7 +58,11 @@ const SearchAppBar = ({
             <Cart  height={CHANGE_BY_MOBILE_DPI(20)}  width={CHANGE_BY_MOBILE_DPI(20)} />
           </TouchableOpacity>
         )}
-
+        {
+          <View style={styles.count}>
+            <Text style={styles.countNumber}>4</Text>
+          </View>
+        }
         {showText && (
           <TouchableOpacity onPress={onFilterTextPress}>
             <Text style={styles.filter}>Clear Filter</Text>

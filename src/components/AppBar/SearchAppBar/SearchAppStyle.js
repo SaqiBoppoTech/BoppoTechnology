@@ -53,4 +53,17 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  count: {
+    position: 'absolute',
+    backgroundColor: Colors.PRIMARY,
+    height: CHANGE_BY_MOBILE_DPI(20),
+    width: CHANGE_BY_MOBILE_DPI(20),
+    bottom: CHANGE_BY_MOBILE_DPI(22),
+    right: CHANGE_BY_MOBILE_DPI(13),
+    borderRadius: CHANGE_BY_MOBILE_DPI(100),
+  },
+  countNumber: {
+    color: Colors.WHITE,
+    alignSelf: 'center',
+  },
 });
