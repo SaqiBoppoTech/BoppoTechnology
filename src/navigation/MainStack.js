@@ -41,6 +41,7 @@ import PaymentScreen from '../screen/Payment/PaymentScreen';
 import PaymentSuccess from '../screen/PaymentSuccess/PaymentSuccess';
 import Filter from '../screen/Filter/FilterScreen';
 import CustomToastedAlert from './CustomToastedAlert';
+import CategoryScreen from '../screen/Category/CategoryScreen';
 
 enableScreens();
 const Stack = createStackNavigator();
