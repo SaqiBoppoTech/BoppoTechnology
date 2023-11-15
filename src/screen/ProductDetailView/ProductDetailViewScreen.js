@@ -12,7 +12,7 @@ import { STATIC_DATA } from '../../global/staticdata';
 import { ProductDetailViewHooks } from './ProductDetailViewHooks';
 import CartSvg from '../../assets/svgs/CartSvg.svg'
 const ProductDetailViewScreen = () => {
-  const { renderTopBar, openCustomView } = ProductDetailViewHooks()
+  const { renderTopBar, openCustomView,navigateToCart,navigateToCheckOut } = ProductDetailViewHooks()
   return (
     <View style={styles.mainContainer}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
@@ -48,13 +48,13 @@ const ProductDetailViewScreen = () => {
       <View style={styles.positionContainer}>
         <View style={styles.addToContainer}>
           <View style={styles.flexContainer}>
-            <TouchableOpacity style={styles.addToCartSubContainer}>
+            <TouchableOpacity onPress={navigateToCart} style={styles.addToCartSubContainer}>
               <CartSvg heigth={CHANGE_BY_MOBILE_DPI(23)} width={CHANGE_BY_MOBILE_DPI(23)} />
               <Text style={styles.addToCartFontStyle}>Add to cart</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.flexContainer}>
-            <TouchableOpacity style={styles.buyNowContainer}>
+            <TouchableOpacity onPress={navigateToCheckOut} style={styles.buyNowContainer}>
               <Text style={styles.buyNowFontStyle}>Buy Now</Text>
             </TouchableOpacity>
           </View>

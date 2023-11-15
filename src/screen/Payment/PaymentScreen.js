@@ -15,7 +15,7 @@ const PaymentScreen = () => {
   return (
     <View style={styles.mainView}>
       <SearchAppBar title={'Checkout'} onPress={handleGoBack} />
-      <CheckoutNavigationBar />
+      {/* <CheckoutNavigationBar /> */}
       <ScrollView>
         <PaymentDetails />
         <PaymentMethod />

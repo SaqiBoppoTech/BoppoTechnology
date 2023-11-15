@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: CHANGE_BY_MOBILE_DPI(22),
-    marginVertical: CHANGE_BY_MOBILE_DPI(7),
+    marginVertical: CHANGE_BY_MOBILE_DPI(10),
   },
   text: {
     color: Colors.BLACK_DARK,

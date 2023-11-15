@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
   flexDirectionContainer: {
     flexDirection: "row",
     alignItems: 'center',
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
     marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   skipFontStyle: {
@@ -73,7 +73,8 @@ export const styles = StyleSheet.create({
     color: Colors.BLACK
   },
   indicatorContainerStyle: {
-    top: CHANGE_BY_MOBILE_DPI(20)
+    top: CHANGE_BY_MOBILE_DPI(20),
+    marginHorizontal:CHANGE_BY_MOBILE_DPI(70)
   },
   parent : {
     height : Constant.SCREEN_HEIGHT / 1.32,
@@ -93,7 +94,8 @@ child : {
 positionBottom:{
   position:'absolute',
   bottom:CHANGE_BY_MOBILE_DPI(20),
-  left:CHANGE_BY_MOBILE_DPI(0),
-  right:CHANGE_BY_MOBILE_DPI(0)
+  left:CHANGE_BY_MOBILE_DPI(20),
+  right:CHANGE_BY_MOBILE_DPI(0),
+  alignItems:"center"
 }
 });

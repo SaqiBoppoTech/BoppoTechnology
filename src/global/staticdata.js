@@ -3,9 +3,9 @@ import { GlobalImage } from "./staticImage";
 
 export const STATIC_DATA = {
   sliderData: [
-    { id: 1, text: 'Item 1' },
-    { id: 2, text: 'Item 2' },
-    { id: 3, text: 'Item 3' },],
+    { id: 1, text: 'Splash screen1' },
+    { id: 2, text: 'Splash screen2' },
+    { id: 3, text: 'Splash screen3' },],
   topTabData: [
     {
       headerName: 'sadsad',

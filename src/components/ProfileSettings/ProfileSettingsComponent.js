@@ -1,7 +1,7 @@
 import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './ProfileSettingsStyle';
-import RightArrow from '../../assets/svgs/RightSvg.svg';
+import RightArrow from '../../assets/svgs/RightArrowSvg.svg';
 
 const SettingComponent = ({onPress, title}) => {
   return (

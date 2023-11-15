@@ -4,6 +4,7 @@ import React from 'react';
 import {styles} from './AddressContainerStyles';
 import Edit from '../../assets/svgs/Edit.svg';
 import Remove from '../../assets/svgs/Remove.svg';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const AddressContainerComponenet = ({
   onEditPress,
@@ -20,18 +21,17 @@ const AddressContainerComponenet = ({
         <Text style={styles.name}>Miss Edna Hayes II</Text>
         {showdefault && (
           <View style={styles.defaultTitle}>
-            <Text style={styles.typeofAddress}>{typeOfAddress}</Text>
+            <Text style={styles.typeofAddressStyle}>{typeOfAddress}</Text>
           </View>
         )}
 
         {showIconRight && (
           <View style={styles.iconWrapper}>
             <TouchableOpacity onPress={onEditPress}>
-              <Edit width="16" height="16" />
+              <Edit width={CHANGE_BY_MOBILE_DPI(18)} height={CHANGE_BY_MOBILE_DPI(18)}/>
             </TouchableOpacity>
-
             <TouchableOpacity onPress={onEditPress}>
-              <Remove width="16" height="16" />
+              <Remove width={CHANGE_BY_MOBILE_DPI(18)} height={CHANGE_BY_MOBILE_DPI(18)} />
             </TouchableOpacity>
           </View>
         )}

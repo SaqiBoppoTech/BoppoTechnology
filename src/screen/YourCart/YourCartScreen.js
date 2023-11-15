@@ -8,6 +8,8 @@ import CommonButton from '../../components/Button/CommonButton';
 import Heart from '../../assets/svgs/Heart.svg';
 import Cross from '../../assets/svgs/Cross.svg';
 import YourCartHook from './YourCartHooks';
+import { Colors } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const YourCart = ({navigation}) => {
   const {
@@ -95,24 +97,23 @@ const YourCart = ({navigation}) => {
             <Text style={styles.name}>{item.name}</Text>
             <View style={styles.priceContainer}>
               <Text style={styles.price}>{item.price} USD</Text>
-              <Text style={styles.discount}>{item.discount} USD</Text>
+              <Text style={styles.discount}>{item.discount}USD</Text>
             </View>
-            <Text style={styles.quantity}>{item.quantity}Qty</Text>
-
+            <Text style={styles.quantity}>Qty</Text>
             <BlackIncremnetButton />
           </View>
         </View>
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
           <TouchableOpacity style={styles.editWrapper} onPress={wishListClick}>
-            <Heart width="16" height="16" />
+            <Heart width={CHANGE_BY_MOBILE_DPI(14)} height={CHANGE_BY_MOBILE_DPI(14)} />
             <Text style={styles.optionText}>Wishlist</Text>
           </TouchableOpacity>
           <View style={styles.verticalLine}></View>
           <TouchableOpacity
             style={styles.removeWrapper}
             onPress={removeFromCart}>
-            <Cross width="14" height="14" />
+            <Cross width={CHANGE_BY_MOBILE_DPI(12)} height={CHANGE_BY_MOBILE_DPI(12)}/>
             <Text style={styles.optionText}>Remove</Text>
           </TouchableOpacity>
         </View>
@@ -123,7 +124,7 @@ const YourCart = ({navigation}) => {
   return (
     <View style={styles.mainView}>
       <SearchAppBar title={'Cart'} onPress={handleGoBack} />
-      <CheckoutNavigationBar />
+      {/* <CheckoutNavigationBar /> */}
       <View style={styles.flatlistView}>
         <FlatList
           data={data}
@@ -134,7 +135,15 @@ const YourCart = ({navigation}) => {
       </View>
 
       <View style={styles.btnStyle}>
-        <CommonButton title={'Continue'} onPress={navigateToOrderSummary} />
+        {/* <CommonButton title={'Continue'} onPress={navigateToOrderSummary} /> */}
+        <CommonButton
+        color={ Colors.BLACK}
+        externalCustomButtonStyle={styles.externalCustomButtonStyle}
+        externalContainer={styles.externalContainer}
+        externalFontStyle={styles.externalFontStyle}
+        title={'Continue'}
+        onPress={navigateToOrderSummary}
+      />
       </View>
     </View>
   );

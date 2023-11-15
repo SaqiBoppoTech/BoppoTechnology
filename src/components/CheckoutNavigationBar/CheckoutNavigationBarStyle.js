@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
-import {Colors, Fonts} from '../../global';
+import {Colors, Constant, Fonts} from '../../global';
 
 export const styles = StyleSheet.create({
   container: {
@@ -43,4 +43,10 @@ export const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontFamily: Fonts.MANROPE_BOLD,
   },
+  barContainer:{
+    width:Constant.SCREEN_WIDTH / 4,
+    borderWidth:CHANGE_BY_MOBILE_DPI(1),
+    borderStyle:'dashed',
+    borderColor:Colors.BLACK,
+  }
 });

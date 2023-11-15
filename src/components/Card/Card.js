@@ -27,6 +27,7 @@ const Card = ({
 }) => {
   return (
     <TouchableOpacity
+     
       style={[styles.exploreItemCardContainer, categoryCardContainer]}
       onPress={onPress}>
       {image && (

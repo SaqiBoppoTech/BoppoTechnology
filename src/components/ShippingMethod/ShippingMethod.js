@@ -5,6 +5,7 @@ import Dhl from '../../assets/svgs/DHL.svg';
 
 import {styles} from './ShippingMethodStyle';
 import ShippingMethodHooks from './ShippingMethodHooks';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const ShippingMethod = () => {
   const {selectedRadio, setSelectedRadio} = ShippingMethodHooks();
@@ -33,7 +34,7 @@ const ShippingMethod = () => {
           </View>
         </View>
         <View style={styles.imageWrapper}>
-          <FedEx />
+          <FedEx height={CHANGE_BY_MOBILE_DPI(14)} width={CHANGE_BY_MOBILE_DPI(48)}/>
         </View>
       </TouchableOpacity>
 
@@ -58,7 +59,7 @@ const ShippingMethod = () => {
           </View>
         </View>
         <View style={styles.imageWrapper}>
-          <Dhl />
+          <Dhl height={CHANGE_BY_MOBILE_DPI(14)} width={CHANGE_BY_MOBILE_DPI(70)}/>
         </View>
       </TouchableOpacity>
       

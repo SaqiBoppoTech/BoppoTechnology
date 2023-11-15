@@ -6,7 +6,7 @@ import {STATIC_DATA} from '../../global/staticdata';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors, Constant} from '../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
-import RightSvg from '../../assets/svgs/RightSvg.svg';
+import RightButtomSvg from '../../assets/svgs/RightButtonArrow.svg';
 const OnBoardingScreen = () => {
     const { currentIndex, handleNext, renderOnBoarding,
         renderSliderStatusBar, skip,
@@ -41,7 +41,7 @@ const OnBoardingScreen = () => {
                             <FlatList horizontal data={STATIC_DATA.sliderData} renderItem={renderSliderStatusBar} />
                         </View>
                         <TouchableOpacity onPress={handleNext} style={styles.boxContainer}>
-                            <RightSvg heigth={CHANGE_BY_MOBILE_DPI(8)} width={CHANGE_BY_MOBILE_DPI(8)}/>
+                            <RightButtomSvg heigth={CHANGE_BY_MOBILE_DPI(55)} width={CHANGE_BY_MOBILE_DPI(55)}/>
                         </TouchableOpacity>
             </View>
                     </View>

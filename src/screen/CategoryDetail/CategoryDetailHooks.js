@@ -14,6 +14,10 @@ const CategoryDetailHooks = () => {
   const navigation = useNavigation();
 
   const [selectedtopTab, setSelectedTopTab] = React.useState(0)
+
+  const navigateToProdiuctDetail = () => {
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN)
+  }
   const renderItem = ({ item }) => (
     <Card
       categoryCardContainer={styles.categoryCardContainer}
@@ -28,6 +32,7 @@ const CategoryDetailHooks = () => {
       categoryDetailRatingStar={true}
       freeDelivery={true}
       plusSvgVisibility={true}
+      onPress={navigateToProdiuctDetail}
     />
   );
   const redirect = useNavigation();

@@ -25,11 +25,12 @@ export const styles = StyleSheet.create({
   },
   container: {
     height: CHANGE_BY_MOBILE_DPI(50),
-    borderRadius: CHANGE_BY_MOBILE_DPI(5),
+    borderRadius: CHANGE_BY_MOBILE_DPI(7),
     borderColor: 'black',
     borderWidth: CHANGE_BY_MOBILE_DPI(1),
     flexDirection: 'row',
     marginBottom: CHANGE_BY_MOBILE_DPI(10),
+    marginHorizontal:CHANGE_BY_MOBILE_DPI(10)
   },
   radioNameWrapper: {
     flex: 1,
@@ -40,14 +41,14 @@ export const styles = StyleSheet.create({
   radio: {
     height: CHANGE_BY_MOBILE_DPI(16),
     width: CHANGE_BY_MOBILE_DPI(16),
-    borderColor: 'black',
-    borderWidth: CHANGE_BY_MOBILE_DPI(2),
+    borderColor: Colors.BLACK,
+    borderWidth: CHANGE_BY_MOBILE_DPI(1),
     borderRadius: CHANGE_BY_MOBILE_DPI(20),
     alignItems: 'center',
     justifyContent: 'center',
   },
   radioBg: {
-    backgroundColor: 'grey',
+    backgroundColor: Colors.GRAY + 99,
     height: CHANGE_BY_MOBILE_DPI(10),
     width: CHANGE_BY_MOBILE_DPI(10),
     borderRadius: CHANGE_BY_MOBILE_DPI(20),

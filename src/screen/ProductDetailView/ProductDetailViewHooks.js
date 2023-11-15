@@ -1,14 +1,16 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './ProductDetailViewStyle';
-import {Colors, Fonts} from '../../global';
+import {Colors, Fonts, ScreenNames} from '../../global';
 import ProductDescription from '../../components/ProductDescription/ProductDescription';
 import ProductReview from '../../components/ProductReview/ProductReview';
 import ProductDetail from '../../components/ProductDetail/ProductDetail';
 import QuestionAndAnswer from '../../components/QuestionAndAnswer/QuestionAndAnswer';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductDetailViewHooks = () => {
   const [selectedTab, setSelectTabs] = React.useState(0);
+  const navigation = useNavigation()
   const openCustomView = () => {
     return (
       <View style={styles.marginBottomContainer}>
@@ -24,6 +26,14 @@ const ProductDetailViewHooks = () => {
       </View>
     );
   };
+
+  const navigateToCart = () => {
+    navigation.navigate(ScreenNames.YOUR_CART_SCREEN)
+  }
+
+  const navigateToCheckOut = () => {
+    navigation.navigate(ScreenNames.ORDER_SUMMARY_SCREEN)
+  }
 
   const renderTopBar = ({item, index}) => {
     const addIndexOntState = () => {
@@ -49,6 +59,8 @@ const ProductDetailViewHooks = () => {
   return {
     renderTopBar,
     openCustomView,
+    navigateToCart,
+    navigateToCheckOut
   };
 };
 export {ProductDetailViewHooks};

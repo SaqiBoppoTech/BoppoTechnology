@@ -1,6 +1,5 @@
 import {Text, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-// import PaypalFull from '../../assets/svgs/PaypalFull.svg';
 import Stripe from '../../assets/svgs/Stripe.svg';
 import {style} from './PaymentMethodStyle';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';

@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   },
 
   mainContainer: {
-    backgroundColor: Colors.LIGHT_WHITE,
+    backgroundColor: '#F9F9F9',
     marginHorizontal: CHANGE_BY_MOBILE_DPI(10),
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
     marginTop: CHANGE_BY_MOBILE_DPI(12),
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
   },
-  typeofAddress: {
+  typeofAddressStyle: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     textAlign: 'center',
     color: Colors.BLACK,

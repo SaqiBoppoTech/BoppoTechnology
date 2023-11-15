@@ -34,6 +34,7 @@ const CheckoutNavigationBar = () => {
           state === 'PAYMENT_SCREEN'
         }
       />
+      {/* <View style={styles.barContainer}></View> */}
       <Step
         number={2}
         title="Order Summary"
@@ -41,6 +42,7 @@ const CheckoutNavigationBar = () => {
           state === 'ORDER_SUMMARY_SCREEN' || state === 'PAYMENT_SCREEN'
         }
       />
+            {/* <View style={styles.barContainer}></View> */}
       <Step number={3} title="Payment" isActive={state === 'PAYMENT_SCREEN'} />
     </View>
   );

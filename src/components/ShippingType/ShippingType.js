@@ -4,7 +4,7 @@ import {styles} from './ShippingTypeStyle';
 import Package from '../../assets/svgs/Package.svg';
 import Truck from '../../assets/svgs/Truck.svg';
 import Shoppingbag from '../../assets/svgs/ShoppingBag.svg';
-import {Fonts} from '../../global';
+import {Constant, Fonts} from '../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import ShippingTypeHooks from './ShippingHooks';
 
@@ -15,16 +15,14 @@ const ShippingType = () => {
     <View style={styles.shippingMethodButtonBgStyles}>
       <TouchableOpacity
         onPress={() => setSelectedShippingMethod(1)}
-        style={{width: '100%'}}>
+        style={{width: Constant.SCREEN_WIDTH}}>
         <View
           style={{
             ...styles.shippingMethodButtonStyles,
             backgroundColor: selectedShippingMethod === 1 ? 'black' : null,
           }}>
-          <View style={styles.icon}>
-            <Package />
-          </View>
           <View style={styles.titleView}>
+            <Package height={CHANGE_BY_MOBILE_DPI(20)} width={CHANGE_BY_MOBILE_DPI(20)} />
             <Text
               style={{
                 ...styles.title,
@@ -37,7 +35,8 @@ const ShippingType = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => setSelectedShippingMethod(2)}
-        style={{width: '100%'}}>
+        style={{alignItems:'center'}}
+       >
         <View
           style={{
             ...styles.shippingMethodButtonStyles,
@@ -59,15 +58,13 @@ const ShippingType = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => setSelectedShippingMethod(3)}
-        style={{width: '100%'}}>
+     >
         <View
           style={{
             ...styles.shippingMethodButtonStyles,
             backgroundColor: selectedShippingMethod === 3 ? 'black' : null,
           }}>
-          <View style={styles.icon}>
-            <Shoppingbag />
-          </View>
+            <Shoppingbag height={CHANGE_BY_MOBILE_DPI(20)} width={CHANGE_BY_MOBILE_DPI(20)} />
           <View style={styles.titleView}>
             <Text
               style={{
