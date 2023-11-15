@@ -30,7 +30,8 @@ export const styles = StyleSheet.create({
     fontSize: CHANGE_BY_MOBILE_DPI(20),
     color: Colors.BLACK,
     fontFamily: Fonts.PLAYFAIR_DISPLAY_SEMIBOLD,
-    marginVertical: CHANGE_BY_MOBILE_DPI(10)
+    marginVertical: CHANGE_BY_MOBILE_DPI(10),
+    marginHorizontal:CHANGE_BY_MOBILE_DPI(20)
   },
   exploreItemCardContainer: {
     height: CHANGE_BY_MOBILE_DPI(268),
@@ -49,7 +50,7 @@ export const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(20),
-    // marginLeft: CHANGE_BY_MOBILE_DPI(20),
+    paddingLeft: CHANGE_BY_MOBILE_DPI(20),
   },
   titleFontStyle:{
     fontSize:CHANGE_BY_MOBILE_DPI(12),
@@ -81,5 +82,8 @@ export const styles = StyleSheet.create({
   },
   flexContainer:{
     flex:1
+  },
+  categoryCardContainer:{
+    marginRight:CHANGE_BY_MOBILE_DPI(15)
   }
 });

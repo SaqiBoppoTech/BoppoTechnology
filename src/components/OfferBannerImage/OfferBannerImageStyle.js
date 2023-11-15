@@ -5,8 +5,8 @@ export const styles = StyleSheet.create({
     OfferBannerContainer: {
         // height: CHANGE_BY_MOBILE_DPI(225),
         paddingHorizontal:CHANGE_BY_MOBILE_DPI(20),
-        paddingTop:CHANGE_BY_MOBILE_DPI(0),
-        backgroundColor:Colors.WHITE
+        // paddingTop:CHANGE_BY_MOBILE_DPI(0),
+        backgroundColor:Colors.WHITE,
     },
     transformContainer: {
 

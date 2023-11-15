@@ -51,6 +51,7 @@ export const styles = StyleSheet.create({
   contentContainerStyle: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(20),
     paddingLeft: CHANGE_BY_MOBILE_DPI(20),
+    paddingRight:CHANGE_BY_MOBILE_DPI(5),
     paddingTop:CHANGE_BY_MOBILE_DPI(1)
   },
   titleFontStyle:{
@@ -83,5 +84,8 @@ export const styles = StyleSheet.create({
   },
   flexContainer:{
     flex:1
+  },
+  categoryCardContainer:{
+    marginRight:CHANGE_BY_MOBILE_DPI(15)
   }
 });

@@ -39,7 +39,8 @@ export const styles = StyleSheet.create({
     marginVertical: CHANGE_BY_MOBILE_DPI(10)
   },
   contentContainerStyle: {
-    marginLeft: CHANGE_BY_MOBILE_DPI(20)
+    paddingLeft: CHANGE_BY_MOBILE_DPI(20),
+    paddingRight:CHANGE_BY_MOBILE_DPI(5)
   },
   titleFontStyle: {
     fontSize: CHANGE_BY_MOBILE_DPI(12),

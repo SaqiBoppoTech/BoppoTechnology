@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
   productWrapper: {
     flexDirection: 'row',
     height: CHANGE_BY_MOBILE_DPI(92),
-    margin: CHANGE_BY_MOBILE_DPI(10),
-    borderRadius: CHANGE_BY_MOBILE_DPI(17),
+    marginVertical:CHANGE_BY_MOBILE_DPI(10),
+    borderRadius: CHANGE_BY_MOBILE_DPI(12),
     backgroundColor: Colors.WHITE,
     alignItems: 'center',
     marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
@@ -23,15 +23,15 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
-
     elevation: 2,
+    paddingHorizontal:CHANGE_BY_MOBILE_DPI(20)
   },
   arrowWrapper: {
     height: CHANGE_BY_MOBILE_DPI(92),
     paddingHorizontal: CHANGE_BY_MOBILE_DPI(15),
     backgroundColor: Colors.GALLERY_GREY,
-    borderTopRightRadius: CHANGE_BY_MOBILE_DPI(17),
-    borderBottomRightRadius: CHANGE_BY_MOBILE_DPI(17),
+    borderTopRightRadius: CHANGE_BY_MOBILE_DPI(12),
+    borderBottomRightRadius: CHANGE_BY_MOBILE_DPI(12),
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
   imageWrapper: {
     height: CHANGE_BY_MOBILE_DPI(71),
     width: CHANGE_BY_MOBILE_DPI(71),
-    marginLeft: CHANGE_BY_MOBILE_DPI(20),
+    // marginLeft: CHANGE_BY_MOBILE_DPI(20),
   },
   textWrapper: {
     fontSize: CHANGE_BY_MOBILE_DPI(18),
@@ -56,11 +56,8 @@ export const styles = StyleSheet.create({
     color: Colors.GRAY_DARK,
   },
   titleWrapper: {
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    flexDirection: 'column',
+    flex:1,
     marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
-    width: Constant.SCREEN_WIDTH - 220,
   },
   topView: {
     flexDirection: 'row',

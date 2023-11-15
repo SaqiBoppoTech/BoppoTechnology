@@ -39,3 +39,6 @@ export const HALLOWINE_ORANGE = '#EF691F';
 export const YELLOW = '#F1C40F';
 export const DARK_GREEN = '#585858';
 export const ORANGE = '#FF7427';
+export const DIM_GRAY = '#6C6C6C'
+export const PAPAYA_WHIP_700 = '#FFF2D030';
+

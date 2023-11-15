@@ -21,6 +21,7 @@ const YourBrowserHistoryHooks = () => {
         percent={item.percent}
         plusSvgVisibility={true}
         onPress={navigateToProductDetail}
+        categoryCardContainer={styles.categoryCardContainer}
       />
     )
   }
