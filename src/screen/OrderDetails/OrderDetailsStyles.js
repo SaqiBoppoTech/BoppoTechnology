@@ -75,36 +75,38 @@ export const styles = StyleSheet.create({
   totalPriceWrapper: {
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
-    justifyContent: 'space-between',
-    width: Constant.SCREEN_WIDTH - 180,
     marginBottom: CHANGE_BY_MOBILE_DPI(5),
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   totalProductPriceText: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_BOLD,
-    color:Colors.TUNDORA
+    color: Colors.TUNDORA,
+    flex: 1,
   },
   totalProductPriceValue: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.BLACK,
+    flex: 1.2,
   },
   supplyDiscountText: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_BOLD,
-    color:Colors.TUNDORA
+    color: Colors.TUNDORA,
+    flex: 1,
   },
   supplyDiscountValue: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.PRIMARY,
+    flex: 1.2,
   },
   supplyDiscountWrapper: {
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
-    justifyContent: 'space-between',
-    width: Constant.SCREEN_WIDTH - 180,
     marginBottom: CHANGE_BY_MOBILE_DPI(10),
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   orderTotalWrapperBorder: {
     borderBottomWidth: CHANGE_BY_MOBILE_DPI(1),
@@ -115,18 +117,19 @@ export const styles = StyleSheet.create({
   orderTotalWrapper: {
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
-    width: Constant.SCREEN_WIDTH - 180,
-    justifyContent: 'space-between',
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   orderTotalText: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.BLACK,
+    flex: 1,
   },
   orderTotalValue: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.PRIMARY,
+    flex: 1.8,
   },
   deliveryAddressWrapper: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(50),

@@ -75,36 +75,38 @@ export const styles = StyleSheet.create({
   totalPriceWrapperCancel: {
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
-    justifyContent: 'space-between',
-    width: Constant.SCREEN_WIDTH - 180,
     marginBottom: CHANGE_BY_MOBILE_DPI(5),
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   totalProductPriceTextCancel: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_BOLD,
-    color:Colors.TUNDORA
+    color: Colors.TUNDORA,
+    flex: 1,
   },
   totalProductPriceValueCancel: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.BLACK,
+    flex: 1.2,
   },
   supplyDiscountTextCancel: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_BOLD,
     color: Colors.TUNDORA,
+    flex: 1,
   },
   supplyDiscountValueCancel: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
-    color: Colors.BLACK,
+    color: Colors.PRIMARY,
+    flex: 1.2,
   },
   supplyDiscountWrapperCancel: {
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
-    justifyContent: 'space-between',
-    width: Constant.SCREEN_WIDTH - 180,
     marginBottom: CHANGE_BY_MOBILE_DPI(10),
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   cancelTotalWrapperBorder: {
     borderBottomWidth: CHANGE_BY_MOBILE_DPI(1),
@@ -115,18 +117,19 @@ export const styles = StyleSheet.create({
   cancelTotalWrapper: {
     flexDirection: 'row',
     marginLeft: CHANGE_BY_MOBILE_DPI(20),
-    width: Constant.SCREEN_WIDTH - 180,
-    justifyContent: 'space-between',
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   cancelTotalText: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.BLACK,
+    flex: 1,
   },
   cancelTotalValue: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     fontFamily: Fonts.MANROPE_EXTRA_BOLD,
     color: Colors.PRIMARY,
+    flex: 1.8,
   },
   deliveryAddressWrapperCancel: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(50),

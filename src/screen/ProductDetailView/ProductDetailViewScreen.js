@@ -1,23 +1,23 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import { styles } from './ProductDetailViewStyle';
+import {styles} from './ProductDetailViewStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import { Colors, Constant } from '../../global';
+import {Colors, Constant} from '../../global';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import CustomCarousel from '../../components/Carousel/CustomCarousel';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
-import HeartSvg from '../../assets/svgs/HeartSvg.svg'
-import ShareSvg from '../../assets/svgs/ShareSvg.svg'
-import { STATIC_DATA } from '../../global/staticdata';
-import { ProductDetailViewHooks } from './ProductDetailViewHooks';
-import CartSvg from '../../assets/svgs/CartSvg.svg'
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import HeartSvg from '../../assets/svgs/HeartSvg.svg';
+import ShareSvg from '../../assets/svgs/ShareSvg.svg';
+import {STATIC_DATA} from '../../global/staticdata';
+import {ProductDetailViewHooks} from './ProductDetailViewHooks';
+import CartSvg from '../../assets/svgs/CartSvg.svg';
 const ProductDetailViewScreen = () => {
-  const { renderTopBar, openCustomView } = ProductDetailViewHooks()
+  const {renderTopBar, openCustomView} = ProductDetailViewHooks();
   return (
     <View style={styles.mainContainer}>
       <FocusAwareStatusBar barColor={Colors.WHITE} />
       <SearchAppBar
-      showSearchIcon={true}
+        showSearchIcon={true}
         showIcon={true}
         showHeart={true}
         showCartIcon={true}
@@ -34,22 +34,37 @@ const ProductDetailViewScreen = () => {
             defaultHeigth={CHANGE_BY_MOBILE_DPI(240)}
           />
           <View style={styles.iconPositionContainer}>
-            <HeartSvg heigth={CHANGE_BY_MOBILE_DPI(31)} width={CHANGE_BY_MOBILE_DPI(31)} style={styles.heartSvgStyle} />
-            <ShareSvg heigth={CHANGE_BY_MOBILE_DPI(31)} width={CHANGE_BY_MOBILE_DPI(31)} />
+            <HeartSvg
+              heigth={CHANGE_BY_MOBILE_DPI(31)}
+              width={CHANGE_BY_MOBILE_DPI(31)}
+              style={styles.heartSvgStyle}
+            />
+            <ShareSvg
+              heigth={CHANGE_BY_MOBILE_DPI(31)}
+              width={CHANGE_BY_MOBILE_DPI(31)}
+            />
           </View>
         </View>
         <View style={styles.topTabContainer}>
-          <FlatList horizontal data={STATIC_DATA.topTabData} renderItem={renderTopBar} contentContainerStyle={styles.contentContainerStyle} />
+          <FlatList
+            horizontal
+            data={STATIC_DATA.topTabData}
+            renderItem={renderTopBar}
+            contentContainerStyle={styles.contentContainerStyle}
+          />
         </View>
       </View>
-      <View style={{flex:1,paddingTop:CHANGE_BY_MOBILE_DPI(2)}}>
-      {openCustomView()}
+      <View style={{flex: 1, paddingTop: CHANGE_BY_MOBILE_DPI(2)}}>
+        {openCustomView()}
       </View>
       <View style={styles.positionContainer}>
         <View style={styles.addToContainer}>
           <View style={styles.flexContainer}>
             <TouchableOpacity style={styles.addToCartSubContainer}>
-              <CartSvg heigth={CHANGE_BY_MOBILE_DPI(23)} width={CHANGE_BY_MOBILE_DPI(23)} />
+              <CartSvg
+                heigth={CHANGE_BY_MOBILE_DPI(23)}
+                width={CHANGE_BY_MOBILE_DPI(23)}
+              />
               <Text style={styles.addToCartFontStyle}>Add to cart</Text>
             </TouchableOpacity>
           </View>

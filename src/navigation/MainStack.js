@@ -144,7 +144,6 @@ const MainStack = () => {
             name={ScreenNames.ORDER_SCREEN}
             component={OrderScreen}
           />
-
           <Stack.Screen
             name={ScreenNames.YOUR_CART_SCREEN}
             component={YourCart}
