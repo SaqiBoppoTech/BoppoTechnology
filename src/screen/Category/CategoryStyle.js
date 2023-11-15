@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   productWrapper: {
     flexDirection: 'row',
     height: CHANGE_BY_MOBILE_DPI(92),
-    marginVertical:CHANGE_BY_MOBILE_DPI(10),
+    marginVertical: CHANGE_BY_MOBILE_DPI(10),
     borderRadius: CHANGE_BY_MOBILE_DPI(12),
     backgroundColor: Colors.WHITE,
     alignItems: 'center',
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 2,
-    paddingHorizontal:CHANGE_BY_MOBILE_DPI(20)
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   arrowWrapper: {
     height: CHANGE_BY_MOBILE_DPI(92),
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     color: Colors.GRAY_DARK,
   },
   titleWrapper: {
-    flex:1,
+    flex: 1,
     marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
   topView: {
@@ -67,27 +67,33 @@ export const styles = StyleSheet.create({
   count: {
     position: 'absolute',
     backgroundColor: Colors.PRIMARY,
-    height: CHANGE_BY_MOBILE_DPI(20),
-    width: CHANGE_BY_MOBILE_DPI(20),
-    bottom: CHANGE_BY_MOBILE_DPI(14),
-    left: CHANGE_BY_MOBILE_DPI(13),
+    height: CHANGE_BY_MOBILE_DPI(16),
+    width: CHANGE_BY_MOBILE_DPI(16),
+    bottom: CHANGE_BY_MOBILE_DPI(12),
+    left: CHANGE_BY_MOBILE_DPI(11),
     borderRadius: CHANGE_BY_MOBILE_DPI(100),
+    alignItems:'center',
+    justifyContent:'center'
   },
   countNumber: {
     color: Colors.WHITE,
-    alignSelf: 'center',
+    // alignSelf: 'center',
+    fontSize:CHANGE_BY_MOBILE_DPI(12),
+    fontFamily:Fonts.INTER_BOLD,
+    bottom:CHANGE_BY_MOBILE_DPI(1)
   },
-  searchFieldWrapper:{
+  searchFieldWrapper: {
     flexDirection: 'row',
-    width: Constant.SCREEN_WIDTH,
     marginTop: CHANGE_BY_MOBILE_DPI(10),
-    alignContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
   },
-  externalStyleWidth:{
-    height: CHANGE_BY_MOBILE_DPI(42),
-    width: Constant.SCREEN_WIDTH - 75,
+  externalStyleWidth: {
+    flex: 1,
+    marginStart: CHANGE_BY_MOBILE_DPI(0),
+    marginEnd:CHANGE_BY_MOBILE_DPI(15)
   },
-  cartWrapper:{
-    alignSelf: 'center'
-  }
+  cartWrapper: {
+
+  },
 });

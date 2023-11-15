@@ -26,7 +26,7 @@ const CategotyCheckBox = ({label, checked, onChange}) => {
             borderWidth: CHANGE_BY_MOBILE_DPI(1),
             borderColor: Colors.BLACK,
           }}>
-          {checked && <CheckSvg />}
+          {checked && <CheckSvg height={CHANGE_BY_MOBILE_DPI(14)} width={CHANGE_BY_MOBILE_DPI(14)}/>}
         </View>
         <Text
           style={{

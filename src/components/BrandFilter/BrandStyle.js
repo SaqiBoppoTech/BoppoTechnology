@@ -48,5 +48,6 @@ export const styles = StyleSheet.create({
     fontSize: CHANGE_BY_MOBILE_DPI(14),
     fontFamily: Fonts.LATO_REGULAR,
     marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    color:Colors.GRAY
   },
 });

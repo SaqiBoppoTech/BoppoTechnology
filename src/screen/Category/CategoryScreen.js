@@ -12,7 +12,8 @@ import {styles} from './CategoryStyle';
 import {CategoryHooks} from './CategoryHooks';
 import CartSvg from '../../assets/svgs/CartSvg.svg';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import {Colors, Constant} from '../../global';
+import { Colors } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const CategoryScreen = () => {
   const {categoryData,renderCategory} = CategoryHooks();
@@ -22,7 +23,7 @@ const CategoryScreen = () => {
       <View style={styles.searchFieldWrapper}>
         <SearchField externalStyleWidth={styles.externalStyleWidth} />
         <View style={styles.cartWrapper}>
-          <CartSvg />
+          <CartSvg height={CHANGE_BY_MOBILE_DPI(23)} width={CHANGE_BY_MOBILE_DPI(23)}/>
           <View style={styles.count}>
             <Text style={styles.countNumber}>4</Text>
           </View>
