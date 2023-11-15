@@ -10,6 +10,8 @@ import ShippingMethod from '../../components/ShippingMethod/ShippingMethod';
 import ShippingType from '../../components/ShippingType/ShippingType';
 import ApplyCode from '../../components/ApplyCode/ApplyCode';
 import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import { Colors } from '../../global';
 
 const OrderSummary = () => {
   const {
@@ -22,6 +24,7 @@ const OrderSummary = () => {
   } = OrderSummaryHooks();
   return (
     <View style={styles.mainView}>
+      <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
       <SearchAppBar title={'Checkout'} onPress={handleGoBack} />
       <CheckoutNavigationBar />
       <ScrollView>
