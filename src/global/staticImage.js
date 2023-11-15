@@ -13,6 +13,7 @@ const GlobalImage = {
   bannerOfferImage3:require('../../src/assets/images/OralBImage.png'),
   bannerOfferImage4:require('../../src/assets/images/NivaImage.png'),
   manFaceCreamImage:require('../../src/assets/images/ManFairCream.png'),
+  vanishImage:require('../../src/assets/images/vanish.png')
 };
 
 export { GlobalImage };

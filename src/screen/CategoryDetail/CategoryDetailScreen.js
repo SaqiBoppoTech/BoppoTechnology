@@ -5,12 +5,12 @@ import { CategoryDetailHooks } from './CategoryDetailHooks';
 import { styles } from './CategoryDetailStyle';
 import { Colors } from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import CustomTopTabs from '../../navigation/CustomTopTabs/CustomTopTab';
 import { STATIC_DATA } from '../../global/staticdata';
+
 
 const CategoryDetailScreen = ({ route }) => {
   const { name } = route.params;
-  const { categoryData, renderItem, handleGoBack, navigateToFilterPage } = CategoryDetailHooks();
+  const {  renderItem, handleGoBack, navigateToFilterPage,renderItemTopTab } = CategoryDetailHooks();
   return (
     <View style={styles.main}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
@@ -24,21 +24,17 @@ const CategoryDetailScreen = ({ route }) => {
           handleGoBack();
         }}
       />
-      <CustomTopTabs
-        externalMainContainerStyle={styles.externalMainContainerStyle}
-        externalHeaderItem={styles.externalHeaderItem}
-        topTabData={STATIC_DATA.categoryTopTabData}
-        CustomTabItem={
-          <View style={styles.listWrapper}>
+      <View>
+        <FlatList horizontal data={STATIC_DATA.categoryDetailTopTabData} renderItem={renderItemTopTab} contentContainerStyle={styles.contentContainerStyle} />
+      </View>
+        <View style={styles.listWrapper}>
             <FlatList
-              data={categoryData}
+              data={STATIC_DATA.categoryData}
               renderItem={renderItem}
               keyExtractor={item => item.key}
               numColumns={2}
             />
           </View>
-        }
-      />
     </View>
   );
 };

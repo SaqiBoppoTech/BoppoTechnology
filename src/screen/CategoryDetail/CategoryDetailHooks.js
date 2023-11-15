@@ -1,92 +1,20 @@
-import React, {useState} from 'react';
-import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState } from 'react';
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import CircleIncrementButton from '../../components/Button/CircleIncrementButton';
 import RatingComponent from '../../components/RatingStar';
-import {styles} from './CategoryDetailStyle';
+import { styles } from './CategoryDetailStyle';
 import Card from '../../components/Card/Card';
-import {ScreenNames} from '../../global';
+import { ScreenNames } from '../../global';
 import Filter from '../Filter/FilterScreen';
+import TopTabBar from '../../components/TopTabBar/TopTabBar';
 
 const CategoryDetailHooks = () => {
   // VARIABLE
   const navigation = useNavigation();
-  const categoryData = [
-    {
-      key: '1',
-      image: require('../../assets/images/vanish.png'),
-      name: 'Vanish Oxi Action..',
-      price: '500',
-      discountPrice: '18.44',
-      percent: '20',
-      benefit: 'Free Delivery Today',
-    },
-    {
-      key: '2',
-      image: require('../../assets/images/vanish.png'),
-      name: 'Vanish Oxi Action..',
-      price: '600',
-      discountPrice: '18.44',
-      percent: '20',
-      benefit: 'Free Delivery Today',
-    },
-    {
-      key: '3',
-      image: require('../../assets/images/vanish.png'),
-      name: 'Vanish Oxi Action..',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-      benefit: 'Free Delivery Today',
-    },
-    {
-      key: '4',
-      image: require('../../assets/images/vanish.png'),
-      name: 'Vanish Oxi Action..',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-      benefit: 'Free Delivery Today',
-    },
-    {
-      key: '5',
-      image: require('../../assets/images/vanish.png'),
-      name: 'Vanish Oxi Action..',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-      benefit: 'Free Delivery Today',
-    },
-    {
-      key: '6',
-      image: require('../../assets/images/vanish.png'),
-      name: 'Vanish Oxi Action..',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-      benefit: 'Free Delivery Today',
-    },
-    {
-      key: '7',
-      image: require('../../assets/images/vanish.png'),
-      name: 'Vanish Oxi Action..',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-      benefit: 'Free Delivery Today',
-    },
-    {
-      key: '8',
-      image: require('../../assets/images/vanish.png'),
-      name: 'Vanish Oxi Action..',
-      price: '18.44',
-      discountPrice: '18.44',
-      percent: '20',
-      benefit: 'Free Delivery Today',
-    },
-  ];
 
-  const renderItem = ({item}) => (
+  const [selectedtopTab, setSelectedTopTab] = React.useState(0)
+  const renderItem = ({ item }) => (
     <Card
       categoryCardContainer={styles.categoryCardContainer}
       image={item.image}
@@ -112,7 +40,21 @@ const CategoryDetailHooks = () => {
     navigation.navigate(ScreenNames.FILTER);
   };
 
-  return {categoryData, renderItem, handleGoBack, navigateToFilterPage};
+  const renderItemTopTab = ({ item ,index }) => {
+    return (
+      <TopTabBar
+      item={item} 
+      index={index}
+      setValue={setSelectedTopTab}
+      value={selectedtopTab}
+      name={'name'}
+      externalTopTabContainerStyle={styles.externalTopTabContainerStyle}
+      externalTopTabStyle={styles.externalTopTabStyle}
+       />
+    )
+  }
+
+  return {  renderItem, handleGoBack, navigateToFilterPage, renderItemTopTab };
 };
 
-export {CategoryDetailHooks};
+export { CategoryDetailHooks };

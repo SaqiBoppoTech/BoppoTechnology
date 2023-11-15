@@ -275,7 +275,96 @@ export const STATIC_DATA = {
       name: 'Coffee & Tea',
       price: 'Beverages',
     },
+  ],
+  categoryDetailTopTabData:[
+    {
+      name:'Baby care'
+    },
+    {
+      name:'Body care'
+    },
+    {
+      name:'Hair care'
+    },
+    {
+      name:'Face care'
+    }
+  ],
+   categoryData : [
+    {
+      key: '1',
+      image: GlobalImage.vanishImage,
+      name: 'Vanish Oxi Action..',
+      price: '500',
+      discountPrice: '18.44',
+      percent: '20',
+      benefit: 'Free Delivery Today',
+    },
+    {
+      key: '2',
+      image: GlobalImage.vanishImage,
+      name: 'Vanish Oxi Action..',
+      price: '600',
+      discountPrice: '18.44',
+      percent: '20',
+      benefit: 'Free Delivery Today',
+    },
+    {
+      key: '3',
+      image: GlobalImage.vanishImage,
+      name: 'Vanish Oxi Action..',
+      price: '18.44',
+      discountPrice: '18.44',
+      percent: '20',
+      benefit: 'Free Delivery Today',
+    },
+    {
+      key: '4',
+      image: GlobalImage.vanishImage,
+      name: 'Vanish Oxi Action..',
+      price: '18.44',
+      discountPrice: '18.44',
+      percent: '20',
+      benefit: 'Free Delivery Today',
+    },
+    {
+      key: '5',
+      image: GlobalImage.vanishImage,
+      name: 'Vanish Oxi Action..',
+      price: '18.44',
+      discountPrice: '18.44',
+      percent: '20',
+      benefit: 'Free Delivery Today',
+    },
+    {
+      key: '6',
+      image: GlobalImage.vanishImage,
+      name: 'Vanish Oxi Action..',
+      price: '18.44',
+      discountPrice: '18.44',
+      percent: '20',
+      benefit: 'Free Delivery Today',
+    },
+    {
+      key: '7',
+      image: GlobalImage.vanishImage,
+      name: 'Vanish Oxi Action..',
+      price: '18.44',
+      discountPrice: '18.44',
+      percent: '20',
+      benefit: 'Free Delivery Today',
+    },
+    {
+      key: '8',
+      image: GlobalImage.vanishImage,
+      name: 'Vanish Oxi Action..',
+      price: '18.44',
+      discountPrice: '18.44',
+      percent: '20',
+      benefit: 'Free Delivery Today',
+    },
   ]
+
 
 
 }
