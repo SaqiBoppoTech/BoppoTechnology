@@ -10,6 +10,7 @@ import Cross from '../../assets/svgs/Cross.svg';
 import YourCartHook from './YourCartHooks';
 import { Colors } from '../../global';
 import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const YourCart = ({navigation}) => {
   const {
@@ -123,6 +124,7 @@ const YourCart = ({navigation}) => {
 
   return (
     <View style={styles.mainView}>
+           <FocusAwareStatusBar barColor={Colors.WHITE} />
       <SearchAppBar title={'Cart'} onPress={handleGoBack} />
       {/* <CheckoutNavigationBar /> */}
       <View style={styles.flatlistView}>

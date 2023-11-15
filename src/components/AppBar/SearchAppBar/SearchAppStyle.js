@@ -57,14 +57,17 @@ export const styles = StyleSheet.create({
   count: {
     position: 'absolute',
     backgroundColor: Colors.PRIMARY,
-    height: CHANGE_BY_MOBILE_DPI(20),
-    width: CHANGE_BY_MOBILE_DPI(20),
+    height: CHANGE_BY_MOBILE_DPI(15),
+    width: CHANGE_BY_MOBILE_DPI(15),
     bottom: CHANGE_BY_MOBILE_DPI(22),
-    right: CHANGE_BY_MOBILE_DPI(13),
+    right: CHANGE_BY_MOBILE_DPI(15),
     borderRadius: CHANGE_BY_MOBILE_DPI(100),
   },
   countNumber: {
     color: Colors.WHITE,
     alignSelf: 'center',
+    fontFamily:Fonts.INTER_BOLD,
+    fontSize:CHANGE_BY_MOBILE_DPI(12),
+    includeFontPadding:false
   },
 });
