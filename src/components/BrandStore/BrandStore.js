@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Image, FlatList, StyleSheet, Text} from 'react-native';
 import {BrandStoreHooks} from './BrandStoreHooks';
 import {styles} from './BrandStoreStyles';
+import { STATIC_DATA } from '../../global/staticdata';
 
 const BrandStore = () => {
   const {data, renderItem} = BrandStoreHooks();
@@ -9,7 +10,7 @@ const BrandStore = () => {
     <View style={styles.backGround}>
       <Text style={styles.headingColor}>Brand Store</Text>
       <FlatList
-        data={data}
+        data={STATIC_DATA.brandStoreData}
         horizontal={true}
         renderItem={renderItem}
         keyExtractor={item => item.key}

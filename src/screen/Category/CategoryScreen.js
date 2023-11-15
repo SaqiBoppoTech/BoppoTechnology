@@ -7,20 +7,15 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icons from 'react-native-vector-icons/Ionicons';
 import SearchField from '../../components/SearchField';
 import {styles} from './CategoryStyle';
-import {GlobalImage} from '../../global/staticImage';
 import {CategoryHooks} from './CategoryHooks';
 import CartSvg from '../../assets/svgs/CartSvg.svg';
-import Arrow from '../../assets/svgs/ArrowCategorySvg.svg';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors, Constant} from '../../global';
-import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const CategoryScreen = () => {
-  const {categoryData, navigateToCategoryDetail} = CategoryHooks();
+  const {categoryData,renderCategory} = CategoryHooks();
   return (
     <View style={styles.container}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
@@ -36,24 +31,7 @@ const CategoryScreen = () => {
       <FlatList
         data={categoryData}
         keyExtractor={(item, index) => item.toString()}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            onPress={() => navigateToCategoryDetail(item)}
-            activeOpacity={1}>
-            <View style={styles.productWrapper}>
-              <Image source={item.image} style={styles.imageWrapper} />
-              <View style={styles.titleWrapper}>
-                <Text numberOfLines={1} style={styles.textWrapper}>
-                  {item.name}
-                </Text>
-                <Text style={styles.productText}>{item.quantity} products</Text>
-              </View>
-              <View style={styles.arrowWrapper}>
-                <Arrow />
-              </View>
-            </View>
-          </TouchableOpacity>
-        )}
+        renderItem={renderCategory}
       />
     </View>
   );

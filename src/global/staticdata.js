@@ -249,6 +249,33 @@ export const STATIC_DATA = {
   'Body care',
   'Hair care',
   'Face care'
+  ],
+   brandStoreData : [
+    {
+      key: '1',
+      image:  GlobalImage.bannerOfferImage3,
+      name: 'Coffee & Tea',
+      price: 'Beverages',
+    },
+    {
+      key: '2',
+      image:GlobalImage.bannerOfferImage4,
+      name: 'Coffee & Tea',
+      price: 'Beverages',
+    },
+    {
+      key: '3',
+      image: GlobalImage.bannerOfferImage3,
+      name: 'Coffee & Tea',
+      price: 'Beverages',
+    },
+    {
+      key: '4',
+      image: GlobalImage.bannerOfferImage4,
+      name: 'Coffee & Tea',
+      price: 'Beverages',
+    },
   ]
+
 
 }

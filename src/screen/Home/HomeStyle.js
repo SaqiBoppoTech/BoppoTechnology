@@ -4,7 +4,7 @@ import { CHANGE_BY_MOBILE_DPI } from "../../global/constant";
 
 export const styles = StyleSheet.create({
     ExploreItemContainer:{
-   marginHorizontal:CHANGE_BY_MOBILE_DPI(20)
+//    marginHorizontal:CHANGE_BY_MOBILE_DPI(20)
     },
     mainContainer: {
         flex: 1,
@@ -38,13 +38,13 @@ export const styles = StyleSheet.create({
     },
     backgroundColorStyle:{
         flex:1,
-        backgroundColor:Colors.GRAY_LIGHT
+        backgroundColor:Colors.GRAY_LIGHT,
+        marginBottom:CHANGE_BY_MOBILE_DPI(60)
     },
     topCategoryContainer:{
         
     },
     marginBottomStyle:{
-        marginBottom:CHANGE_BY_MOBILE_DPI(100) 
     },
     offerBannerContainer:{
        

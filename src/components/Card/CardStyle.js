@@ -34,10 +34,11 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     borderRadius: CHANGE_BY_MOBILE_DPI(5),
     width: CHANGE_BY_MOBILE_DPI(160),
-    borderBottomWidth: 2,
-    borderBottomColor: Colors.CONCRETE,
-    borderEndWidth: 2,
-    borderEndColor: Colors.CONCRETE,
+    elevation:2
+    // borderBottomWidth: 2,
+    // borderBottomColor: Colors.CONCRETE,
+    // borderEndWidth: 2,
+    // borderEndColor: Colors.CONCRETE,
   },
   contentContainerStyle: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(20),

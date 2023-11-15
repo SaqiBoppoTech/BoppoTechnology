@@ -23,6 +23,7 @@ const BestOfferHooks = () => {
         percent={item.percent}
         plusSvgVisibility={true}
         onPress={navigateToProductDetail}
+        categoryCardContainer={styles.categoryCardContainer}
       />
     )
   }
@@ -34,7 +35,7 @@ const BestOfferHooks = () => {
       <TouchableOpacity
       onPress={selectTheOffer}
        style={styles.topTabparticualrContainer}>
-        <Text style={{...styles.topTabFontStyle,color:selectOffer == index? Colors.BLACK : Colors.GRAY_DARK}}>{item.name}</Text>
+        <Text style={{...styles.topTabFontStyle,color:selectOffer == index? Colors.BLACK : Colors.DIM_GRAY}}>{item.name}</Text>
        { selectOffer == index ?  <View style={styles.underLine}></View> : <></>}
       </TouchableOpacity>
     )

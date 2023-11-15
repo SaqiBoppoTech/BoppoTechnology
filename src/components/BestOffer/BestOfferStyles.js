@@ -90,17 +90,20 @@ export const styles = StyleSheet.create({
   offerTopTabMainContainer:{
     paddingHorizontal:CHANGE_BY_MOBILE_DPI(20),
     backgroundColor:Colors.GRAY_LIGHT + 99,
-    paddingTop:CHANGE_BY_MOBILE_DPI(10),
+    paddingTop:CHANGE_BY_MOBILE_DPI(11),
     width:Constant.SCREEN_WIDTH,
   },
   topTabFontStyle:{
     fontSize:CHANGE_BY_MOBILE_DPI(14),
     fontFamily:Fonts.MANROPE_BOLD,
     color:Colors.BLACK,
-    marginBottom:CHANGE_BY_MOBILE_DPI(9)
+    marginBottom:CHANGE_BY_MOBILE_DPI(10)
   },
   underLine:{
     height:CHANGE_BY_MOBILE_DPI(4),
     backgroundColor:Colors.BLACK
+  },
+  categoryCardContainer:{
+    marginRight:CHANGE_BY_MOBILE_DPI(15)
   }
 });
