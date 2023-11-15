@@ -25,7 +25,7 @@ const Brand = () => {
       <View style={styles.input}>
         <View style={styles.searchBox}>
           <SearchSvg style={{marginLeft: 10}} />
-          <TextInput placeholder="Search" style={styles.SearchText} />
+          <TextInput placeholder="Search" placeholderTextColor={Colors.GRAY} style={styles.SearchText} />
         </View>
         <View style={{}}>
           {checkboxes.map((checkbox, index) => (
