@@ -26,7 +26,7 @@ const OrderScreen = () => {
         <SearchAppBar
           title={'Orders'}
           showIcon={true}
-          showHeart={false}
+          showSearchIcon={true}
           showCartIcon={true}
           onPress={() => {
             handleGoBack();
@@ -42,7 +42,9 @@ const OrderScreen = () => {
             return (
               <TouchableOpacity
                 key={idx}
-                onPress={() => {setCurrentTab(tab.id),console.log(tab.name);}}
+                onPress={() => {
+                  setCurrentTab(tab.id), console.log(tab.name);
+                }}
                 activeOpacity={0.8}
                 style={styles.container}>
                 <Text
