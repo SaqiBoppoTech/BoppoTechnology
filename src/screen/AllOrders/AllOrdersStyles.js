@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
   background: {
     backgroundColor: Colors.WHITE,
     alignItems: 'center',
-    marginBottom: CHANGE_BY_MOBILE_DPI(117),
+    marginBottom: CHANGE_BY_MOBILE_DPI(200),
   },
   mainView: {
     margin: CHANGE_BY_MOBILE_DPI(6),
@@ -70,7 +70,6 @@ export const styles = StyleSheet.create({
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
     height: CHANGE_BY_MOBILE_DPI(226),
     width: CHANGE_BY_MOBILE_DPI(351),
-    backgroundColor:'green'
   },
   nameWrapper: {
     flexDirection: 'column',
@@ -103,5 +102,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: CHANGE_BY_MOBILE_DPI(3),
     marginRight: CHANGE_BY_MOBILE_DPI(5),
+  },
+  rowView: {
+    flexDirection: 'row',
+    padding: CHANGE_BY_MOBILE_DPI(10),
+    marginBottom: CHANGE_BY_MOBILE_DPI(5),
   },
 });

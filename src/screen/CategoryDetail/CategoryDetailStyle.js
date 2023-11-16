@@ -45,13 +45,15 @@ export const styles = StyleSheet.create({
   },
   listWrapper: {
     // marginBottom: 140,
-    flex:1,
+    flex: 1,
   },
   categoryCardContainer: {
     height: CHANGE_BY_MOBILE_DPI(326),
     width: CHANGE_BY_MOBILE_DPI(188),
     borderRadius: CHANGE_BY_MOBILE_DPI(0),
     marginBottom: CHANGE_BY_MOBILE_DPI(2),
+    borderEndWidth: CHANGE_BY_MOBILE_DPI(2),
+    borderEndColor: Colors.GRAY_LIGHT,
   },
   categoryDetailImageContainer: {
     height: CHANGE_BY_MOBILE_DPI(167),
@@ -84,16 +86,16 @@ export const styles = StyleSheet.create({
     elevation: 1,
     // marginVertical:20
   },
-  externalTopTabContainerStyle:{
-    marginRight:CHANGE_BY_MOBILE_DPI(15),
+  externalTopTabContainerStyle: {
+    marginRight: CHANGE_BY_MOBILE_DPI(15),
   },
-  externalTopTabStyle:{
-    marginVertical:CHANGE_BY_MOBILE_DPI(9)
+  externalTopTabStyle: {
+    marginVertical: CHANGE_BY_MOBILE_DPI(9),
   },
-  contentContainerStyle:{
-    paddingHorizontal:CHANGE_BY_MOBILE_DPI(25),
-    backgroundColor:Colors.WHITE,
-    elevation:CHANGE_BY_MOBILE_DPI(2),
-    marginVertical:1
-  }
+  contentContainerStyle: {
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(25),
+    backgroundColor: Colors.WHITE,
+    elevation: CHANGE_BY_MOBILE_DPI(2),
+    marginVertical: 1,
+  },
 });

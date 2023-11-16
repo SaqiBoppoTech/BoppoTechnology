@@ -35,8 +35,6 @@ export const styles = StyleSheet.create({
     borderRadius: CHANGE_BY_MOBILE_DPI(5),
     width: CHANGE_BY_MOBILE_DPI(160),
     elevation: CHANGE_BY_MOBILE_DPI(2),
-    borderEndWidth: CHANGE_BY_MOBILE_DPI(2),
-    borderEndColor:Colors.GRAY_LIGHT
   },
   contentContainerStyle: {
     paddingBottom: CHANGE_BY_MOBILE_DPI(20),
