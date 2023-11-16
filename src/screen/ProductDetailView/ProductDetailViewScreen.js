@@ -15,7 +15,7 @@ const ProductDetailViewScreen = () => {
   const { renderTopBar, openCustomView,navigateToCart,navigateToCheckOut } = ProductDetailViewHooks()
   return (
     <View style={styles.mainContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+            <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
       <SearchAppBar
         showSearchIcon={true}
         showIcon={true}

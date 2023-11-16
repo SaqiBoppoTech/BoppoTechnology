@@ -28,7 +28,7 @@ const SplashScreen = () => {
   }, []);
   return (
     <View style={{ flex: 1 }}>
-      <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
+      <FocusAwareStatusBar barColor={Colors.PRIMARY} />
       <View style={styles.container}>
         <LogoSvg />
         <Text style={styles.text}>BoppoGo</Text>
