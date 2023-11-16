@@ -19,7 +19,6 @@ import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const OrderScreen = () => {
   const {
-    setCurrentTab,
     handleGoBack,
     openCustomView,
     renderTopBar
