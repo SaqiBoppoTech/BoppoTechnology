@@ -13,7 +13,7 @@ const SuccessScreen = () => {
   const {message} = SuccessHooks();
   return (
     <View style={styles.screenContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <CustomAppBar />
       <View style={styles.container}>
         <SuccessSvg

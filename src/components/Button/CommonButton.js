@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import {Colors} from '../../global';
 
 const CommonButton = ({
   title,
@@ -36,14 +37,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    borderRadius: CHANGE_BY_MOBILE_DPI(15),
+    borderRadius: CHANGE_BY_MOBILE_DPI(10),
     height: CHANGE_BY_MOBILE_DPI(56),
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   btnText: {
-    color: '#fff',
+    color: Colors.WHITE,
     fontSize: 18,
     fontWeight: '500',
   },

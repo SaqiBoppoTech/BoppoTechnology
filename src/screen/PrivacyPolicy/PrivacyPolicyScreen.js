@@ -10,7 +10,7 @@ const PrivacyPolicyScreen = () => {
   const {handleGoBack} = PrivacyPolicyHooks();
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Terms & Policies'} onPress={handleGoBack} />
       <ScrollView style={styles.scrollChanges}>
         <Text style={styles.header}>PRIVACY POLICY</Text>

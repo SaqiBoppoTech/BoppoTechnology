@@ -25,7 +25,7 @@ const ProfileScreen = () => {
   } = ProfileHooks();
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <ScrollView>
         <ProfileSection />
         <View
@@ -40,14 +40,17 @@ const ProfileScreen = () => {
             title={'Saved Addresses'}
             onPress={navigateToMyAddress}
           />
+          <View style={styles.line}></View>
           <SettingComponent
             title={'Select currency'}
             onPress={navigateToCurrency}
           />
+          <View style={styles.line}></View>
           <SettingComponent
             title={'Notification Settings'}
             onPress={navigateToNotificationSetting}
           />
+          <View style={styles.line}></View>
           <SettingComponent
             title={'Sell With Us'}
             onPress={navigateToSellWithUs}
@@ -63,6 +66,7 @@ const ProfileScreen = () => {
             <Text style={styles.settingTitle}>Activity</Text>
           </View>
           <SettingComponent title={'Reviews'} onPress={navigateToMyReview} />
+          <View style={styles.line}></View>
           <SettingComponent
             title={'Questions & Answers'}
             onPress={navigateToMyQuestionAnswer}
@@ -82,18 +86,22 @@ const ProfileScreen = () => {
             title={'Privacy Policy'}
             onPress={navigateToPrivacyPolicy}
           />
+          <View style={styles.line}></View>
           <SettingComponent
             title={'Terms of Service'}
             onPress={navigateToTermsAndCondition}
           />
+          <View style={styles.line}></View>
           <SettingComponent
             title={'Contact Us'}
             onPress={navigateToContactUs}
           />
+          <View style={styles.line}></View>
           <SettingComponent
             title={'Refund Policy'}
             onPress={navigateToRefundPolicy}
           />
+          <View style={styles.line}></View>
           <SettingComponent
             title={'Shipping Policy'}
             onPress={navigateToShippingPolicy}

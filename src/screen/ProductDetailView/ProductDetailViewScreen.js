@@ -12,16 +12,23 @@ import {STATIC_DATA} from '../../global/staticdata';
 import {ProductDetailViewHooks} from './ProductDetailViewHooks';
 import CartSvg from '../../assets/svgs/CartSvg.svg';
 const ProductDetailViewScreen = () => {
-  const { renderTopBar, openCustomView,navigateToCart,navigateToCheckOut } = ProductDetailViewHooks()
+  const {
+    renderTopBar,
+    openCustomView,
+    navigateToCart,
+    navigateToCheckOut,
+    handleGoBack,
+  } = ProductDetailViewHooks();
   return (
     <View style={styles.mainContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar
         showSearchIcon={true}
         showIcon={true}
         showHeart={true}
         showCartIcon={true}
         showCartCount={true}
+        handleGoBack={handleGoBack}
       />
       <View style={styles.elevationContainer}>
         <View style={styles.carosalContainer}>
@@ -61,8 +68,8 @@ const ProductDetailViewScreen = () => {
         <View style={styles.addToContainer}>
           <View style={styles.flexContainer}>
             <TouchableOpacity
-            onPress={navigateToCart}
-            style={styles.addToCartSubContainer}>
+              onPress={navigateToCart}
+              style={styles.addToCartSubContainer}>
               <CartSvg
                 heigth={CHANGE_BY_MOBILE_DPI(23)}
                 width={CHANGE_BY_MOBILE_DPI(23)}
@@ -71,7 +78,9 @@ const ProductDetailViewScreen = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.flexContainer}>
-            <TouchableOpacity onPress={navigateToCheckOut} style={styles.buyNowContainer}>
+            <TouchableOpacity
+              onPress={navigateToCheckOut}
+              style={styles.buyNowContainer}>
               <Text style={styles.buyNowFontStyle}>Buy Now</Text>
             </TouchableOpacity>
           </View>

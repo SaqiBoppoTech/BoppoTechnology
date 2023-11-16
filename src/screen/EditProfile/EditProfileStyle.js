@@ -29,4 +29,7 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.LATO_BOLD,
     includeFontPadding: false,
   },
+  space: {
+    marginBottom: CHANGE_BY_MOBILE_DPI(15),
+  },
 });

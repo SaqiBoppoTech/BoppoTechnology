@@ -1,12 +1,12 @@
-import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import {Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import React, {useState} from 'react';
 import CommonButton from '../../components/Button/CommonButton';
-import { styles } from './LoginStyle';
-import { LoginHooks } from './LoginHooks';
+import {styles} from './LoginStyle';
+import {LoginHooks} from './LoginHooks';
 import CustomTextField from '../../components/CustomTextField/CustomTextFieldComponent';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import { Colors } from '../../global';
-import { GlobalImage } from '../../global/staticImage';
+import {Colors} from '../../global';
+import {GlobalImage} from '../../global/staticImage';
 const LoginScreen = () => {
   const {
     setEmail,
@@ -17,11 +17,11 @@ const LoginScreen = () => {
     navigateToForgotPassword,
     navigateToBottom,
     navigateToCreateAccount,
-    checkLoginWithEmailOrMobileNumber
+    checkLoginWithEmailOrMobileNumber,
   } = LoginHooks();
   return (
     <View style={styles.mainContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <ScrollView>
         <View style={styles.imageContainer}>
           <Image
@@ -52,8 +52,7 @@ const LoginScreen = () => {
           secureTextEntry={true}
           error={errors.password}
         />
-        <TouchableOpacity
-          onPress={navigateToForgotPassword}>
+        <TouchableOpacity onPress={navigateToForgotPassword}>
           <Text style={styles.forgetPassword}>Forgot Password?</Text>
         </TouchableOpacity>
         <CommonButton
@@ -64,10 +63,12 @@ const LoginScreen = () => {
         />
         <View style={styles.bottomContainer}>
           <Text style={styles.newCustomerFontStyle}>New Customer?</Text>
-          <TouchableOpacity
-            onPress={navigateToCreateAccount}
-            activeOpacity={1}>
-            <Text style={[styles.newCustomerFontStyle,{color:Colors.PRIMARY}]}> Create your new account</Text>
+          <TouchableOpacity onPress={navigateToCreateAccount} activeOpacity={1}>
+            <Text
+              style={[styles.newCustomerFontStyle, {color: Colors.PRIMARY}]}>
+              {' '}
+              Create your new account
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

@@ -1,33 +1,31 @@
-import { ScreenNames } from ".";
-import { GlobalImage } from "./staticImage";
+import {ScreenNames} from '.';
+import {GlobalImage} from './staticImage';
 
 export const STATIC_DATA = {
   sliderData: [
-    { id: 1, text: 'Splash screen1' },
-    { id: 2, text: 'Splash screen2' },
-    { id: 3, text: 'Splash screen3' },],
+    {id: 1, text: 'Splash screen1'},
+    {id: 2, text: 'Splash screen2'},
+    {id: 3, text: 'Splash screen3'},
+  ],
   topTabData: [
     {
       headerName: 'sadsad',
-      routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN
+      routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN,
     },
     {
       headerName: 'sadsad',
-      routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN
+      routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN,
     },
     {
       headerName: 'sadsad',
-      routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN
+      routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN,
     },
     {
       headerName: 'sadsad',
-      routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN
-    }
+      routeToNavigate: ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN,
+    },
   ],
-  createAccountData: [
-    'Business', 'Retailer'
-  ]
-  ,
+  createAccountData: ['Business', 'Retailer'],
   exploreItemData: [
     {
       key: '1',
@@ -81,52 +79,50 @@ export const STATIC_DATA = {
       name: 'Coffee & Tea',
       category: 'Beverages',
     },
-
   ],
   offerTopData: [
     {
-      name: '10% Off'
+      name: '10% Off',
     },
     {
-      name: '15% Off'
+      name: '15% Off',
     },
     {
-      name: '20% Off'
+      name: '20% Off',
     },
     {
-      name: '25% Off'
+      name: '25% Off',
     },
   ],
   offerBannerData: [
     {
       bannerImage: GlobalImage.bannerOfferImage,
-      bannerName: 'Shop Baby Care'
+      bannerName: 'Shop Baby Care',
     },
     {
       bannerImage: GlobalImage.bannerOfferImage2,
-      bannerName: 'Shop Diet &  Nutrition'
+      bannerName: 'Shop Diet &  Nutrition',
     },
     {
       bannerImage: GlobalImage.bannerOfferImage,
-      bannerName: 'Shop Health Care'
+      bannerName: 'Shop Health Care',
     },
-
   ],
   shopByCategoryData: [
     {
       image: GlobalImage.coffieImage,
       name: 'Baby Products',
-      offer: 'Up to 20% off'
+      offer: 'Up to 20% off',
     },
     {
       image: GlobalImage.detolImage,
       name: 'Health Care',
-      offer: 'Up to 20% off'
+      offer: 'Up to 20% off',
     },
     {
       image: GlobalImage.coffieImage,
       name: 'Baby Products',
-      offer: 'Up to 20% off'
+      offer: 'Up to 20% off',
     },
   ],
   productDetailCarosualData: [
@@ -140,16 +136,8 @@ export const STATIC_DATA = {
       image: GlobalImage.manFaceCreamImage,
     },
   ],
-  topTabData: [
-    'Description',
-    'Details',
-    'Reviews',
-    'Q & As'
-  ],
-  orderTopTabData:[
-    'Delivered',
-    'Cancelled/Returned'
-  ],
+  topTabData: ['Description', 'Details', 'Reviews', 'Q & As'],
+  orderTopTabData: ['Delivered', 'Cancelled/Returned'],
   ratingAndReviewData: [
     {
       key: 1,
@@ -177,7 +165,7 @@ export const STATIC_DATA = {
       name: 'Ash Ketchum',
       date: '4 Sep 2023',
       rating: 4,
-      image: GlobalImage.bannerOfferImage
+      image: GlobalImage.bannerOfferImage,
     },
   ],
   ratingdata: [
@@ -207,7 +195,7 @@ export const STATIC_DATA = {
       rate: '1',
     },
   ],
-  QandAsData : [
+  QandAsData: [
     {
       id: 1,
       name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
@@ -248,22 +236,17 @@ export const STATIC_DATA = {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
     },
   ],
-  categoryTopTabData:[
-  'Baby care',
-  'Body care',
-  'Hair care',
-  'Face care'
-  ],
-   brandStoreData : [
+  categoryTopTabData: ['Baby care', 'Body care', 'Hair care', 'Face care'],
+  brandStoreData: [
     {
       key: '1',
-      image:  GlobalImage.bannerOfferImage3,
+      image: GlobalImage.bannerOfferImage3,
       name: 'Coffee & Tea',
       price: 'Beverages',
     },
     {
       key: '2',
-      image:GlobalImage.bannerOfferImage4,
+      image: GlobalImage.bannerOfferImage4,
       name: 'Coffee & Tea',
       price: 'Beverages',
     },
@@ -280,29 +263,29 @@ export const STATIC_DATA = {
       price: 'Beverages',
     },
   ],
-  categoryDetailTopTabData:[
+  categoryDetailTopTabData: [
     {
-      name:'Baby care'
+      name: 'Baby care',
     },
     {
-      name:'Body care'
+      name: 'Body care',
     },
     {
-      name:'Hair care'
+      name: 'Hair care',
     },
     {
-      name:'Face care'
-    }
-  ],
-  orderDetailTopTabData:[
-    {
-      name:'Delivered'
-    },
-    {
-      name:'Cancelled/Returned'
+      name: 'Face care',
     },
   ],
-   categoryData : [
+  orderDetailTopTabData: [
+    {
+      name: 'Delivered',
+    },
+    {
+      name: 'Cancelled/Returned',
+    },
+  ],
+  categoryData: [
     {
       key: '1',
       image: GlobalImage.vanishImage,
@@ -375,8 +358,123 @@ export const STATIC_DATA = {
       percent: '20',
       benefit: 'Free Delivery Today',
     },
-  ]
+  ],
 
+  myReviewData: [
+    {
+      id: 1,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image:
+        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+      rate: 4,
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
+    },
 
+    {
+      id: 2,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 5,
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
+    },
 
-}
+    {
+      id: 3,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 2,
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
+    },
+
+    {
+      id: 4,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 3,
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
+    },
+  ],
+  myQuestionAnswerData: [
+    {
+      id: 1,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 4,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+
+    {
+      id: 2,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 5,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+
+    {
+      id: 3,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 2,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+
+    {
+      id: 4,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 3,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+  ],
+  questionDetailData: [
+    {
+      id: 1,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 4,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+      answer:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+    {
+      id: 2,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 4,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+      answer:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+    {
+      id: 3,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 4,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+      answer:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+    {
+      id: 4,
+      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      image: GlobalImage.coffeeNetworkImage,
+      rate: 4,
+      question:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+      answer:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
+    },
+  ],
+};

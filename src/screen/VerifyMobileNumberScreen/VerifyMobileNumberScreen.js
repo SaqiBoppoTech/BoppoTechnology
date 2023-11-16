@@ -11,11 +11,11 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import {VerifyMobileNumberHooks} from './VerifyMobileNumberHooks';
 
 const VerifyMobileNumberScreen = () => {
-  const {goBackToLogin, checkLoginWithEmailOrMobileNumber,navigateToHomePage} =
+  const {goBackToLogin, checkLoginWithEmailOrMobileNumber, navigateToHomePage} =
     VerifyMobileNumberHooks();
   return (
     <View style={styles.mainContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <ScrollView>
         <View style={styles.imageContainer}>
           <View

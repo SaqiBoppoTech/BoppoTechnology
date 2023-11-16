@@ -5,10 +5,10 @@ import {Colors, Fonts} from '../../global';
 export const styles = StyleSheet.create({
   businessHeader: {
     fontSize: CHANGE_BY_MOBILE_DPI(18),
-    color: '#151515',
+    color: Colors.BLACK_DARK,
     paddingHorizontal: CHANGE_BY_MOBILE_DPI(20),
-    marginTop: CHANGE_BY_MOBILE_DPI(5),
-    marginBottom: CHANGE_BY_MOBILE_DPI(15),
+    marginTop: CHANGE_BY_MOBILE_DPI(20),
+    marginBottom: CHANGE_BY_MOBILE_DPI(20),
     fontFamily: Fonts.LATO_BOLD,
   },
   mainView: {
@@ -24,5 +24,8 @@ export const styles = StyleSheet.create({
   },
   scroll: {
     marginTop: CHANGE_BY_MOBILE_DPI(10),
+  },
+  space: {
+    marginBottom: CHANGE_BY_MOBILE_DPI(20),
   },
 });

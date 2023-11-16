@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontFamily: Fonts.LATO_REGULAR,
     marginTop: CHANGE_BY_MOBILE_DPI(8),
-    backgroundColor:Colors.GRAY_LIGHT + 40
+    backgroundColor: Colors.ALTO + 10,
   },
   title: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   asterisk: {
     color: Colors.ALERT,
     fontSize: CHANGE_BY_MOBILE_DPI(14),
-    fontFamily:Fonts.INTER_BOLD
+    fontFamily: Fonts.INTER_BOLD,
   },
   errorText: {
     color: 'red',

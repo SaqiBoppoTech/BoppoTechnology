@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
     borderRadius: CHANGE_BY_MOBILE_DPI(20),
     margin: CHANGE_BY_MOBILE_DPI(1),
     alignItems: 'center',
+    justifyContent: 'center',
   },
   mainView: {
     flex: 1,

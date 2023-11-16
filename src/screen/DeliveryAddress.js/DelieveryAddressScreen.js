@@ -11,7 +11,7 @@ const DelieveryAddressScreen = () => {
   const {handleGoBack, editAddress, removeAddress} = DeliveryAddressHooks();
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Delivery address'} onPress={handleGoBack} />
       <AddressContainerComponenet
         showLine={true}
@@ -19,6 +19,7 @@ const DelieveryAddressScreen = () => {
         typeOfAddress={'Delivery Address'}
         onEditPress={editAddress}
         onRemovePress={removeAddress}
+        showdefault={true}
       />
     </View>
   );

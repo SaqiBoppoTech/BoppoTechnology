@@ -5,7 +5,8 @@ import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {styles} from './CurrencyStyle';
 import CurrencyHooks from './CurrencyHooks';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import { Colors } from '../../global';
+import {Colors} from '../../global';
+import {GlobalImage} from '../../global/staticImage';
 
 const CurrencyScreen = () => {
   const {handleGoBack, selectedRadio, setSelectedRadio, navigateToProfile} =
@@ -13,7 +14,7 @@ const CurrencyScreen = () => {
 
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Select Currency'} onPress={handleGoBack} />
       <View style={styles.container}>
         <TouchableOpacity
@@ -23,10 +24,7 @@ const CurrencyScreen = () => {
             {selectedRadio === 1 ? <View style={styles.radioBg}></View> : null}
           </View>
           <View style={styles.imgWrapper}>
-            <Image
-              source={require('../../assets/images/india.png')}
-              style={styles.imgView}
-            />
+            <Image source={GlobalImage.indiaFlag} style={styles.imgView} />
           </View>
           <Text style={styles.type}>INR</Text>
         </TouchableOpacity>
@@ -38,10 +36,7 @@ const CurrencyScreen = () => {
           </View>
 
           <View style={styles.imgWrapper}>
-            <Image
-              source={require('../../assets/images/uk.png')}
-              style={styles.imgView}
-            />
+            <Image source={GlobalImage.ukFlag} style={styles.imgView} />
           </View>
           <Text style={styles.type}>GBP</Text>
         </TouchableOpacity>

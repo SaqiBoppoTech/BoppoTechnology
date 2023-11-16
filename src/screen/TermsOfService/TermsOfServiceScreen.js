@@ -11,7 +11,7 @@ const TermsAndConditonsScreen = () => {
   const {handleGoBack} = TermsOfServicesHooks();
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Terms & Policies'} onPress={handleGoBack} />
       <ScrollView style={styles.scrollChanges}>
         <Text style={styles.header}>Terms And Conditons</Text>

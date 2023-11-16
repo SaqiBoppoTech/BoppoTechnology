@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   },
   itemWrapper: {
     flexDirection: 'row',
-    gap: CHANGE_BY_MOBILE_DPI(15),
+    gap: CHANGE_BY_MOBILE_DPI(12),
     marginHorizontal: CHANGE_BY_MOBILE_DPI(15),
   },
 });

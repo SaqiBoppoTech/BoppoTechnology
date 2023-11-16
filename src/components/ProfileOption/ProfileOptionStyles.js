@@ -6,10 +6,10 @@ export const styles = StyleSheet.create({
   mainView: {
     flex: 1,
     width: '50%',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.WHITE,
     height: CHANGE_BY_MOBILE_DPI(45),
     justifyContent: 'center',
-    borderRadius: CHANGE_BY_MOBILE_DPI(10),
+    borderRadius: CHANGE_BY_MOBILE_DPI(6),
   },
   text: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),

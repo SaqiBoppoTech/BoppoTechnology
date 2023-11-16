@@ -13,7 +13,7 @@ const SwitchToggle = ({title}) => {
 
   return (
     <View style={styles.toggleContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <View style={styles.textView}>
         <Text style={styles.text}>{title}</Text>
       </View>
@@ -22,12 +22,12 @@ const SwitchToggle = ({title}) => {
         <View
           style={{
             ...styles.toggle,
-            backgroundColor: isOn ? '#0174BE' : '#A9A9A9',
+            backgroundColor: isOn ? '#0174BE' : Colors.GRAY_MEDIUM,
           }}>
           <View
             style={{
               ...styles.toggleSmall,
-              backgroundColor: isOn ? '#279EFF' : '#ddd',
+              backgroundColor: isOn ? '#279EFF' : Colors.GREY_SHADE_500,
             }}></View>
         </View>
       </TouchableOpacity>
@@ -39,7 +39,7 @@ const NotificationSettings = () => {
   const {handleGoBack} = NotificationSettingHooks();
   return (
     <View>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Notification Setting'} onPress={handleGoBack} />
       <SwitchToggle title={'Orders Alert'} />
       <SwitchToggle title={'New Products Alert'} />
