@@ -42,6 +42,7 @@ import PaymentSuccess from '../screen/PaymentSuccess/PaymentSuccess';
 import Filter from '../screen/Filter/FilterScreen';
 import CustomToastedAlert from './CustomToastedAlert';
 import CategoryScreen from '../screen/Category/CategoryScreen';
+import ChangePassword from '../screen/ChangePassword/ChangePassword';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -194,6 +195,10 @@ const MainStack = () => {
           <Stack.Screen
             name={ScreenNames.PAYMENT_SUCCESS}
             component={PaymentSuccess}
+          />
+          <Stack.Screen
+            name={ScreenNames.CHANGE_PASSWORD}
+            component={ChangePassword}
           />
         </Stack.Navigator>
       </NavigationContainer>

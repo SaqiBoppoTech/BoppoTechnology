@@ -22,6 +22,10 @@ export const styles = StyleSheet.create({
   titleview: {
     flexDirection: 'row',
   },
+  titleMainView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   asterisk: {
     color: Colors.ALERT,
     fontSize: CHANGE_BY_MOBILE_DPI(14),

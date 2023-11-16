@@ -11,9 +11,13 @@ const EditProfileHooks = () => {
       message: 'Added successfully',
     });
   };
+  const navigateToChangePassword = () => {
+    navigation.navigate(ScreenNames.CHANGE_PASSWORD);
+  };
   return {
     handleGoBack,
     onSubmit,
+    navigateToChangePassword,
   };
 };
 

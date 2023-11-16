@@ -10,7 +10,7 @@ import {Colors} from '../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const EditProfileScreen = () => {
-  const {handleGoBack, onSubmit} = EditProfileHooks();
+  const {handleGoBack, onSubmit, navigateToChangePassword} = EditProfileHooks();
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
@@ -59,6 +59,9 @@ const EditProfileScreen = () => {
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Password'}
           showSecure={true}
+          showSuffixText={true}
+          suffixText={'Change Password'}
+          onPressSuffixText={navigateToChangePassword}
         />
       </ScrollView>
       <View style={styles.btn}>

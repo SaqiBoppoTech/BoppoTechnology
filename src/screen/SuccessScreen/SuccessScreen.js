@@ -8,13 +8,20 @@ import {SuccessHooks} from './SuccessHooks';
 import CheckFill from '../../assets/svgs/CheckFill';
 import {Colors} from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
+import CommonButton from '../../components/Button/CommonButton';
 
 const SuccessScreen = () => {
-  const {message} = SuccessHooks();
+  const {message, userAppBar, handleGoBack, navigateToEditProfile} =
+    SuccessHooks();
   return (
     <View style={styles.screenContainer}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
-      <CustomAppBar />
+      {userAppBar ? (
+        <SearchAppBar title={'Change Password'} onPress={handleGoBack} />
+      ) : (
+        <CustomAppBar />
+      )}
       <View style={styles.container}>
         <SuccessSvg
           heigth={CHANGE_BY_MOBILE_DPI(170)}
@@ -23,6 +30,12 @@ const SuccessScreen = () => {
         <View style={styles.flexContainer}>
           <Text style={styles.messageFontStyle}>{message}</Text>
         </View>
+      </View>
+      <View style={styles.btn}>
+        <CommonButton
+          onPress={navigateToEditProfile}
+          title={'Continue Editing'}
+        />
       </View>
     </View>
   );
