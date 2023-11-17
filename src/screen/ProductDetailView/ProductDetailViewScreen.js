@@ -15,9 +15,9 @@ const ProductDetailViewScreen = () => {
   const {
     renderTopBar,
     openCustomView,
-    navigateToCart,
     navigateToCheckOut,
     handleGoBack,
+    navigateToCartPage
   } = ProductDetailViewHooks();
   return (
     <View style={styles.mainContainer}>
@@ -29,6 +29,7 @@ const ProductDetailViewScreen = () => {
         showCartIcon={true}
         showCartCount={true}
         handleGoBack={handleGoBack}
+        onCartPress={navigateToCartPage}
       />
       <View style={styles.elevationContainer}>
         <View style={styles.carosalContainer}>
@@ -68,7 +69,7 @@ const ProductDetailViewScreen = () => {
         <View style={styles.addToContainer}>
           <View style={styles.flexContainer}>
             <TouchableOpacity
-              onPress={navigateToCart}
+              onPress={navigateToCartPage}
               style={styles.addToCartSubContainer}>
               <CartSvg
                 heigth={CHANGE_BY_MOBILE_DPI(23)}

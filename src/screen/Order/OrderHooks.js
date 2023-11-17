@@ -11,10 +11,8 @@ import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AllOrderScreen from '../AllOrders/AllOrdersScreen';
 import CancelReturnScreen from '../CancelReturn/CancelReturnScreen';
-import TopTabBar from '../../components/TopTabBar/TopTabBar';
 import {styles} from './OrderStyle';
-import Card from '../../components/Card/Card';
-import {Colors} from '../../global';
+import {Colors, ScreenNames} from '../../global';
 
 const OrderHooks = () => {
   //HOOKS
@@ -39,7 +37,7 @@ const OrderHooks = () => {
   const [selectedTab, setSelectTabs] = React.useState(0);
   const openCustomView = () => {
     return (
-      <View style={styles.marginBottomContainer}>
+      <View>
         {selectedTab == 0 ? (
           <AllOrderScreen />
         ) : selectedTab == 1 ? (
@@ -70,12 +68,17 @@ const OrderHooks = () => {
       </TouchableOpacity>
     );
   };
+  const navigation = useNavigation();
+  const navigateToCartPage = () => {
+    navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
+  };
 
   return {
     setCurrentTab,
     handleGoBack,
     openCustomView,
     renderTopBar,
+    navigateToCartPage
   };
 };
 

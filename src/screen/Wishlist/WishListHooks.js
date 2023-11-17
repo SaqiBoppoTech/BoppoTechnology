@@ -13,11 +13,16 @@ const WishListHooks = () => {
     navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
   };
 
+  const navigateToCartPage = () => {
+    navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
+  };
+
   return {
     handleGoBack,
     addToCartPress,
     removeFromCart,
     navigateToProductScreen,
+    navigateToCartPage
   };
 };
 

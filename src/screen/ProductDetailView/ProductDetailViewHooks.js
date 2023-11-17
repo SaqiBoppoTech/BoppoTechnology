@@ -27,12 +27,14 @@ const ProductDetailViewHooks = () => {
     );
   };
 
-  const navigateToCart = () => {
-    navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
-  };
+  //FUNCTION
 
   const navigateToCheckOut = () => {
     navigation.navigate(ScreenNames.ORDER_SUMMARY_SCREEN);
+  };
+
+  const navigateToCartPage = () => {
+    navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
   };
 
   const renderTopBar = ({item, index}) => {
@@ -64,9 +66,9 @@ const ProductDetailViewHooks = () => {
   return {
     renderTopBar,
     openCustomView,
-    navigateToCart,
     navigateToCheckOut,
     handleGoBack,
+    navigateToCartPage
   };
 };
 export {ProductDetailViewHooks};

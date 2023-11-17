@@ -21,7 +21,8 @@ const OrderScreen = () => {
   const {
     handleGoBack,
     openCustomView,
-    renderTopBar
+    renderTopBar,
+    navigateToCartPage
   } = OrderHooks();
 
   return (
@@ -38,6 +39,7 @@ const OrderScreen = () => {
           onPress={() => {
             handleGoBack();
           }}
+          onCartPress={navigateToCartPage}
         />
         <View>
           <FlatList
