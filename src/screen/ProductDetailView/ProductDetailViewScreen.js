@@ -17,7 +17,7 @@ const ProductDetailViewScreen = () => {
     openCustomView,
     navigateToCheckOut,
     handleGoBack,
-    navigateToCartPage
+    navigateToCartPage,
   } = ProductDetailViewHooks();
   return (
     <View style={styles.mainContainer}>
@@ -30,6 +30,7 @@ const ProductDetailViewScreen = () => {
         showCartCount={true}
         handleGoBack={handleGoBack}
         onCartPress={navigateToCartPage}
+        onPress={handleGoBack}
       />
       <View style={styles.elevationContainer}>
         <View style={styles.carosalContainer}>
