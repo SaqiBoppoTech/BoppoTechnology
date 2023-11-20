@@ -39,7 +39,7 @@ const FilterHooks = () => {
     },
   ];
 
-  const [filter, setFilter] = useState(0);
+  const [filter, setFilter] = useState(3);
 
   const renderItem = ({item}) => {
     return (

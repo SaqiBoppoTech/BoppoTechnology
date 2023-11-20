@@ -61,6 +61,7 @@ const ProductDetailViewHooks = () => {
 
   const handleGoBack = () => {
     navigation.goBack();
+    console.log('data');
   };
 
   return {
