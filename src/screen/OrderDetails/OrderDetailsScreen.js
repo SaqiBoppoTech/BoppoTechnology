@@ -8,8 +8,10 @@ import {ScrollView} from 'react-native-gesture-handler';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
+import { orderDetailHooks } from './OrderDetailsHooks';
 
 const OrderDetailsScreen = () => {
+  const {navigateToCartPage,handleGoBack} = orderDetailHooks();
   return (
     <ScrollView>
       <View style={styles.main}>
@@ -20,6 +22,8 @@ const OrderDetailsScreen = () => {
           showIcon={true}
           showSearchIcon={true}
           showCartCount={true}
+          onCartPress={navigateToCartPage}
+          onPress={handleGoBack}
         />
         <View style={styles.orderDetailView}>
           <Text style={styles.orderDetailTextTop}>ORDER DETAILS</Text>

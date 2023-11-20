@@ -23,6 +23,7 @@ const WishlistScreen = () => {
     addToCartPress,
     removeFromCart,
     navigateToProductScreen,
+    navigateToCartPage,
   } = WishListHooks();
   const data = [
     {
@@ -103,8 +104,8 @@ const WishlistScreen = () => {
             <View style={styles.ratingRowView}>
               <RatingComponent
                 initialRating={item.starCount}
-                starheight={15}
-                starwidth={15}
+                starheight={CHANGE_BY_MOBILE_DPI(15)}
+                starwidth={CHANGE_BY_MOBILE_DPI(15)}
                 width={CHANGE_BY_MOBILE_DPI(90)}
               />
               <Text style={styles.customer}>
@@ -127,14 +128,20 @@ const WishlistScreen = () => {
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
           <TouchableOpacity style={styles.editWrapper} onPress={addToCartPress}>
-            <ShoppingBag width="16" height="16" />
+            <ShoppingBag
+              width={CHANGE_BY_MOBILE_DPI(16)}
+              height={CHANGE_BY_MOBILE_DPI(16)}
+            />
             <Text style={styles.optionText}>Add to Cart</Text>
           </TouchableOpacity>
           <View style={styles.verticalLine}></View>
           <TouchableOpacity
             style={styles.removeWrapper}
             onPress={removeFromCart}>
-            <Cross width="14" height="14" />
+            <Cross
+              width={CHANGE_BY_MOBILE_DPI(14)}
+              height={CHANGE_BY_MOBILE_DPI(14)}
+            />
             <Text style={styles.optionText}>Remove</Text>
           </TouchableOpacity>
         </View>
@@ -143,13 +150,14 @@ const WishlistScreen = () => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{flex: 1, backgroundColor: Colors.WHITE}}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar
         title={'Your Wishlist'}
         onPress={handleGoBack}
         showCartCount={true}
         showCartIcon={true}
+        onCartPress={navigateToCartPage}
       />
       <FlatList
         data={data}

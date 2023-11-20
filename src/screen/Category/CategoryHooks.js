@@ -15,7 +15,7 @@ import {styles} from './CategoryStyle';
 import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import Arrow from '../../assets/svgs/ArrowCategorySvg.svg';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const CategoryHooks = () => {
   // VARIABLE
@@ -73,6 +73,10 @@ const CategoryHooks = () => {
     });
   };
 
+  const navigateToCartPage = () => {
+    navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
+  };
+
   const renderCategory = ({item}) => (
     <TouchableOpacity
       onPress={() => navigateToCategoryDetail(item)}
@@ -86,12 +90,15 @@ const CategoryHooks = () => {
           <Text style={styles.productText}>{item.quantity} products</Text>
         </View>
         <View style={styles.arrowWrapper}>
-          <Arrow height={CHANGE_BY_MOBILE_DPI(12)} width={CHANGE_BY_MOBILE_DPI(9)}/>
+          <Arrow
+            height={CHANGE_BY_MOBILE_DPI(12)}
+            width={CHANGE_BY_MOBILE_DPI(9)}
+          />
         </View>
       </View>
     </TouchableOpacity>
-  )
-  return {categoryData, categoryImg, navigateToCategoryDetail,renderCategory};
+  );
+  return {categoryData, categoryImg, navigateToCategoryDetail, renderCategory,navigateToCartPage};
 };
 
 export {CategoryHooks};
