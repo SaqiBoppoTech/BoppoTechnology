@@ -22,7 +22,7 @@ const SuccessHooks = () => {
     navigation.goBack();
   };
   const navigateToEditProfile = () => {
-    navigation.navigate(ScreenNames.EDIT_PROFILE_SCREEN);
+    navigation.navigate(ScreenNames.PROFILE_SCREEN);
   };
   const onTimeOutNaviagteToLogin = async () => {
     Animated.timing(Opacity, {
