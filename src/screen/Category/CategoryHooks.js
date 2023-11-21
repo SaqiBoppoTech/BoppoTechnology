@@ -25,45 +25,45 @@ const CategoryHooks = () => {
   const {categoryImg} = GlobalImage;
   const categoryData = [
     {
-      name: 'Personal Care',
+      name: 'Gold Earrings',
       quantity: '160',
-      image: categoryImg,
+      image: GlobalImage.TwoEarings,
     },
     {
-      name: 'Grocery',
+      name: 'Rose Gold Dimond rings',
       quantity: '160',
-      image: categoryImg,
+      image: GlobalImage.ring,
     },
     {
-      name: 'Beauty Products',
+      name: 'Silver Earrings',
       quantity: '160',
-      image: categoryImg,
+      image: GlobalImage.WhiteEarings,
     },
     {
-      name: 'Health Care',
+      name: 'Pendant',
       quantity: '160',
-      image: categoryImg,
+      image: GlobalImage.GoldenPendent,
     },
     {
-      name: 'Books & Toys',
+      name: 'Rose Gold ',
       quantity: '160',
-      image: categoryImg,
+      image: GlobalImage.Ring4,
     },
     {
-      name: 'Baby Products',
+      name: 'Earrings',
       quantity: '160',
-      image: categoryImg,
+      image: GlobalImage.Goldenearings,
     },
-    {
-      name: 'Beauty Products',
-      quantity: '160',
-      image: categoryImg,
-    },
-    {
-      name: 'Grocery',
-      quantity: '160',
-      image: categoryImg,
-    },
+    // {
+    //   name: 'Beauty Products',
+    //   quantity: '160',
+    //   image: categoryImg,
+    // },
+    // {
+    //   name: 'Grocery',
+    //   quantity: '160',
+    //   image: categoryImg,
+    // },
   ];
 
   //FUNCTION

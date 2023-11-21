@@ -11,7 +11,7 @@ const MyReviewCommonComponent = ({
 }) => {
   return (
     <View style={styles.rowWrapper}>
-      <Image source={{uri: productImage}} style={styles.imageWrapper} />
+      <Image source={ productImage} style={styles.imageWrapper} />
       <View style={styles.nameView}>
         <Text style={styles.name}>{productName}</Text>
         <RatingComponent

@@ -33,32 +33,32 @@ export const STATIC_DATA = {
   exploreItemData: [
     {
       key: '1',
-      image: GlobalImage.coffieImage,
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: GlobalImage.WhiteEarings,
+      name: 'Silver Earrings',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
     },
     {
       key: '2',
-      image: GlobalImage.detolImage,
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: GlobalImage.ring,
+      name: 'Rose Gold Dimond rings',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
     },
     {
       key: '3',
-      image: GlobalImage.coffieImage,
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: GlobalImage.circlePendant,
+      name: 'Diamond Necklace',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
     },
     {
       key: '4',
-      image: GlobalImage.detolImage,
-      name: 'Nescafe gold Cappuccino Coffee 8 Sachets X 15.5g',
+      image: GlobalImage.TwoEarings,
+      name: 'Gold Earrings',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -67,20 +67,20 @@ export const STATIC_DATA = {
   topDetailData: [
     {
       key: '1',
-      image: GlobalImage.coffieImage,
-      name: 'Coffee & Tea',
+      image: GlobalImage.Ring2,
+      name: 'Diamond Ring',
       category: 'Beverages',
     },
     {
       key: '2',
-      image: GlobalImage.coffieImage,
-      name: 'Coffee & Tea',
+      image: GlobalImage.Ring3,
+      name: 'Platinum',
       category: 'Beverages',
     },
     {
       key: '3',
-      image: GlobalImage.coffieImage,
-      name: 'Coffee & Tea',
+      image: GlobalImage.Ring4,
+      name: 'Rose Gold',
       category: 'Beverages',
     },
   ],
@@ -105,52 +105,52 @@ export const STATIC_DATA = {
   offerBannerData: [
     {
       key: '1',
-      bannerImage: GlobalImage.bannerOfferImage,
-      bannerName: 'Shop Baby Care',
+      bannerImage: GlobalImage.Set1,
+      bannerName: 'Dual Tone Rings',
     },
     {
       key: '2',
-      bannerImage: GlobalImage.bannerOfferImage2,
-      bannerName: 'Shop Diet &  Nutrition',
+      bannerImage: GlobalImage.Set2,
+      bannerName: 'Earrings',
     },
     {
       key: '3',
-      bannerImage: GlobalImage.bannerOfferImage,
-      bannerName: 'Shop Health Care',
+      bannerImage: GlobalImage.Set3,
+      bannerName: 'Necklaces',
     },
   ],
   shopByCategoryData: [
     {
       key: '1',
-      image: GlobalImage.coffieImage,
-      name: 'Baby Products',
+      image: GlobalImage.Goldenearings,
+      name: 'Earrings',
       offer: 'Up to 20% off',
     },
     {
       key: '2',
-      image: GlobalImage.detolImage,
-      name: 'Health Care',
+      image: GlobalImage.GoldenPendent,
+      name: 'Pendant',
       offer: 'Up to 20% off',
     },
     {
       key: '3',
-      image: GlobalImage.coffieImage,
-      name: 'Baby Products',
+      image: GlobalImage.GoldenRings,
+      name: 'Ring',
       offer: 'Up to 20% off',
     },
   ],
   productDetailCarosualData: [
     {
       key: '1',
-      image: GlobalImage.manFaceCreamImage,
+      image: GlobalImage.productDetail,
     },
     {
       key: '2',
-      image: GlobalImage.manFaceCreamImage,
+      image: GlobalImage.productDetail,
     },
     {
       key: '3',
-      image: GlobalImage.manFaceCreamImage,
+      image: GlobalImage.productDetail,
     },
   ],
   topTabData: ['Description', 'Details', 'Reviews', 'Q & As'],
@@ -189,9 +189,9 @@ export const STATIC_DATA = {
     {
       key: '1',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Coffee Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.GoldenPendent,
+      name: 'Pendant',
+      des: 'Pendant',
       productCount: '2',
       paid: '76.99',
       ratecount: 0,
@@ -199,9 +199,9 @@ export const STATIC_DATA = {
     {
       key: '2',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Dettol Products 123455678899',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.Ring3,
+      name: 'Rose Gold',
+      des: 'Rose Gold ',
       productCount: '2',
       paid: '76.99',
       ratecount: 0,
@@ -209,9 +209,9 @@ export const STATIC_DATA = {
     {
       key: '3',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Coffee Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.WhiteEarings,
+      name: 'Silver Earrings',
+      des: 'Silver Earrings',
       productCount: '2',
       paid: '76.99',
       ratecount: 0,
@@ -219,9 +219,9 @@ export const STATIC_DATA = {
     {
       key: '4',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Dettol Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.GoldenRings,
+      name: 'Ring',
+      des: 'Ring',
       productCount: '2',
       paid: '76.99',
       ratecount: 0,
@@ -229,9 +229,9 @@ export const STATIC_DATA = {
     {
       key: '5',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Coffee Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.Ring5,
+      name: 'Gold',
+      des: 'Gold',
       productCount: '2',
       paid: '76.99',
       ratecount: 0,
@@ -239,9 +239,9 @@ export const STATIC_DATA = {
     {
       key: '6',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Dettol Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.TwoEarings,
+      name: 'Gold Earrings',
+      des: 'Gold Earrings',
       productCount: '2',
       paid: '76.99',
       ratecount: 0,
@@ -249,9 +249,9 @@ export const STATIC_DATA = {
     {
       key: '7',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Coffee Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.Goldenearings,
+      name: 'Ring',
+      des: 'Ring',
       productCount: '2',
       paid: '76.99',
       ratecount: 0,
@@ -259,9 +259,9 @@ export const STATIC_DATA = {
     {
       key: '8',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Dettol Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.Ring6,
+      name: 'Rose Gold Dimond rings',
+      des: 'Rose Gold Dimond rings',
       productCount: '2',
       paid: '76.99',
       ratecount: 0,
@@ -340,49 +340,49 @@ export const STATIC_DATA = {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
     },
   ],
-  categoryTopTabData: ['Baby care', 'Body care', 'Hair care', 'Face care'],
+  categoryTopTabData: ['Earrings', 'Pendant', 'Rings', 'Platinum'],
   brandStoreData: [
     {
       key: '1',
-      image: GlobalImage.bannerOfferImage3,
-      name: 'Coffee & Tea',
+      image: GlobalImage.Brand1,
+      name: 'Birthday',
       price: 'Beverages',
     },
     {
       key: '2',
-      image: GlobalImage.bannerOfferImage4,
-      name: 'Coffee & Tea',
+      image: GlobalImage.Brand2,
+      name: 'Anniversary',
       price: 'Beverages',
     },
     {
       key: '3',
-      image: GlobalImage.bannerOfferImage3,
-      name: 'Coffee & Tea',
+      image: GlobalImage.Brand3,
+      name: 'Fastival',
       price: 'Beverages',
     },
     {
       key: '4',
-      image: GlobalImage.bannerOfferImage4,
-      name: 'Coffee & Tea',
+      image: GlobalImage.Brand4,
+      name: 'Valentine',
       price: 'Beverages',
     },
   ],
   categoryDetailTopTabData: [
     {
       key: 1,
-      name: 'Baby care',
+      name: 'Earrings',
     },
     {
       key: 2,
-      name: 'Body care',
+      name: 'Pendant',
     },
     {
       key: 3,
-      name: 'Hair care',
+      name: 'Rings',
     },
     {
       key: 4,
-      name: 'Face care',
+      name: 'Dimond Gold Ring',
     },
   ],
   orderDetailTopTabData: [
@@ -398,8 +398,8 @@ export const STATIC_DATA = {
   categoryData: [
     {
       key: '1',
-      image: GlobalImage.vanishImage,
-      name: 'Vanish Oxi Action..',
+      image: GlobalImage.ring,
+      name: 'Ring',
       price: '500',
       discountPrice: '18.44',
       percent: '20',
@@ -407,8 +407,8 @@ export const STATIC_DATA = {
     },
     {
       key: '2',
-      image: GlobalImage.vanishImage,
-      name: 'Vanish Oxi Action..',
+      image: GlobalImage.Ring6,
+      name: 'Rose Gold Dimond rings',
       price: '600',
       discountPrice: '18.44',
       percent: '20',
@@ -416,8 +416,8 @@ export const STATIC_DATA = {
     },
     {
       key: '3',
-      image: GlobalImage.vanishImage,
-      name: 'Vanish Oxi Action..',
+      image: GlobalImage.Ring3,
+      name: 'Rose Gold',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -425,8 +425,8 @@ export const STATIC_DATA = {
     },
     {
       key: '4',
-      image: GlobalImage.vanishImage,
-      name: 'Vanish Oxi Action..',
+      image: GlobalImage.Ring4,
+      name: 'Gold',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -434,8 +434,8 @@ export const STATIC_DATA = {
     },
     {
       key: '5',
-      image: GlobalImage.vanishImage,
-      name: 'Vanish Oxi Action..',
+      image: GlobalImage.Ring5,
+      name: 'Platinum ',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -443,7 +443,7 @@ export const STATIC_DATA = {
     },
     {
       key: '6',
-      image: GlobalImage.vanishImage,
+      image: GlobalImage.Ring2,
       name: 'Vanish Oxi Action..',
       price: '18.44',
       discountPrice: '18.44',
@@ -452,8 +452,8 @@ export const STATIC_DATA = {
     },
     {
       key: '7',
-      image: GlobalImage.vanishImage,
-      name: 'Vanish Oxi Action..',
+      image: GlobalImage.ring,
+      name: 'Diamond Ring',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -461,8 +461,8 @@ export const STATIC_DATA = {
     },
     {
       key: '8',
-      image: GlobalImage.vanishImage,
-      name: 'Vanish Oxi Action..',
+      image: GlobalImage.Ring3,
+      name: 'Rose Gold',
       price: '18.44',
       discountPrice: '18.44',
       percent: '20',
@@ -473,9 +473,9 @@ export const STATIC_DATA = {
   myReviewData: [
     {
       id: 1,
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
+      name: 'Pendant',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
+        GlobalImage.GoldenPendent,
       rate: 4,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
@@ -483,8 +483,8 @@ export const STATIC_DATA = {
 
     {
       id: 2,
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
-      image: GlobalImage.coffeeNetworkImage,
+      name: 'Rings',
+      image: GlobalImage.GoldenRings,
       rate: 5,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
@@ -492,8 +492,8 @@ export const STATIC_DATA = {
 
     {
       id: 3,
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
-      image: GlobalImage.coffeeNetworkImage,
+      name: 'Earrings',
+      image: GlobalImage.Goldenearings,
       rate: 2,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
@@ -501,8 +501,8 @@ export const STATIC_DATA = {
 
     {
       id: 4,
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
-      image: GlobalImage.coffeeNetworkImage,
+      name: 'Rose Gold Dimond rings',
+      image: GlobalImage.ring,
       rate: 3,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis...',
@@ -511,8 +511,8 @@ export const STATIC_DATA = {
   myQuestionAnswerData: [
     {
       id: 1,
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
-      image: GlobalImage.coffeeNetworkImage,
+      name: 'Platinum',
+      image: GlobalImage.Ring2,
       rate: 4,
       question:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
@@ -520,8 +520,8 @@ export const STATIC_DATA = {
 
     {
       id: 2,
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
-      image: GlobalImage.coffeeNetworkImage,
+      name: 'Rose Gold',
+      image: GlobalImage.Ring3,
       rate: 5,
       question:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
@@ -529,8 +529,8 @@ export const STATIC_DATA = {
 
     {
       id: 3,
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
-      image: GlobalImage.coffeeNetworkImage,
+      name: 'Gold ',
+      image: GlobalImage.Ring4,
       rate: 2,
       question:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
@@ -538,8 +538,8 @@ export const STATIC_DATA = {
 
     {
       id: 4,
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bar 105g',
-      image: GlobalImage.coffeeNetworkImage,
+      name: 'Dimond Gold Ring',
+      image: GlobalImage.Ring5,
       rate: 3,
       question:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt amet egestas tempor facilisi. In tincidunt amet egestas tempor facilis',
