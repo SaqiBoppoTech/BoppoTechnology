@@ -46,15 +46,19 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        <View style={styles.searchContainer}>
+        {/* <View style={styles.searchContainer}>
           <SearchField />
-        </View>
+        </View> */}
         <View style={styles.carousalContainer}>
-          <CustomCarousel width={Constant.SCREEN_WIDTH - 60} />
+          <CustomCarousel
+            width={Constant.SCREEN_WIDTH - 60}
+            resizeModeProperty={true}
+          />
         </View>
+        {/* //New arrival */}
         <View style={styles.backgroundColorStyle}>
           <View style={styles.dealOfTheDayStyle}>
-            <DealsOfTheDay title={`Deals Of the Day`} />
+            <DealsOfTheDay title={`New arrival`} />
           </View>
           <View style={styles.ExploreItemContainer}>
             <ExploreItems />

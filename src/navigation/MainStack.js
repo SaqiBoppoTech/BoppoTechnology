@@ -44,6 +44,8 @@ import CustomToastedAlert from './CustomToastedAlert';
 import CategoryScreen from '../screen/Category/CategoryScreen';
 import ChangePassword from '../screen/ChangePassword/ChangePassword';
 import { ORDER_SCREEN, PAYMENT_SUCCESS } from '../global/screeenName';
+import HomeScreen from '../screen/Home/HomeScreen';
+import CategoryDetailScreen from '../screen/CategoryDetail/CategoryDetailScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -142,10 +144,10 @@ const MainStack = () => {
             name={ScreenNames.WISHLIST_SCREEN}
             component={WishlistScreen}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name={ScreenNames.ORDER_SCREEN}
             component={OrderScreen}
-          />
+          /> */}
           <Stack.Screen
             name={ScreenNames.YOUR_CART_SCREEN}
             component={YourCart}

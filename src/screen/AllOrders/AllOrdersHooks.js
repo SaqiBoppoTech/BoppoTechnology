@@ -13,7 +13,7 @@ import {Constant, ScreenNames} from '../../global';
 import SelectStarSvg from '../../assets/svgs/SelectStarSvg.svg';
 import {useNavigation} from '@react-navigation/native';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const AllOrderHooks = () => {
   // VARIABLE
@@ -28,7 +28,7 @@ const AllOrderHooks = () => {
     <View style={styles.mainView}>
       <View style={styles.rowView}>
         <View style={styles.contaier}>
-          <Image source={{uri: item.image}} style={styles.imgcontainer} />
+          <Image source={item.image} style={styles.imgcontainer} />
         </View>
         <View style={styles.nameWrapper}>
           <View style={styles.textWrapper}>

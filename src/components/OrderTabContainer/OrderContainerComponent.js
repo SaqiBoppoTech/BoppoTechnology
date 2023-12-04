@@ -58,7 +58,7 @@ const OrderContainerComponent = ({
       }}>
       <View style={styles.rowView}>
         <View style={styles.contaier}>
-          <Image source={{uri: item.image}} style={styles.imgcontainer} />
+          <Image source={item.image} style={styles.imgcontainer} />
         </View>
         <View style={styles.nameWrapper}>
           {heading ? (

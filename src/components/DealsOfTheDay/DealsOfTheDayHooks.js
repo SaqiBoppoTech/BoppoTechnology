@@ -9,27 +9,27 @@ const DealsOfTheDayhHooks = () => {
   const data = [
     {
       key: '1',
-      image: require('../../assets/images/carasolimage.png'),
-      name: 'Personal care',
-      price: '18.44',
+      image: require('../../assets/images/EaringHeart.png'),
+      name: 'Earrings',
+      price: 'Upto 20% OFF ',
     },
     {
       key: '2',
-      image: require('../../assets/images/carasolimage.png'),
-      name: 'Grocery',
-      price: '18.44',
+      image: require('../../assets/images/EngagementRing.png'),
+      name: 'Engagement Ring',
+      price: '10-20% OFF ',
     },
     {
       key: '3',
-      image: require('../../assets/images/carasolimage.png'),
-      name: 'Dairy Prouct',
-      price: '18.44',
+      image: require('../../assets/images/Earings.png'),
+      name: 'Earrings',
+      price: 'Upto 20% OFF ',
     },
     {
       key: '4',
-      image: require('../../assets/images/carasolimage.png'),
-      name: 'Fishes',
-      price: '18.44',
+      image: require('../../assets/images/Pendant.png'),
+      name: 'Pendant',
+      price: 'Upto 20% OFF ',
     },
     // Add more items as needed
   ];

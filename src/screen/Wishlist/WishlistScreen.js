@@ -16,6 +16,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import ShoppingBag from '../../assets/svgs/Shopping_Bag.svg';
 import Cross from '../../assets/svgs/Cross.svg';
 import WishListHooks from './WishListHooks';
+import {GlobalImage} from '../../global/staticImage';
 
 const WishlistScreen = () => {
   const {
@@ -28,9 +29,8 @@ const WishlistScreen = () => {
   const data = [
     {
       id: 1,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      image: GlobalImage.ring,
+      name: 'Ring',
       numOfCustumer: 1,
       starCount: 3,
       price: 36.99,
@@ -39,9 +39,8 @@ const WishlistScreen = () => {
     },
     {
       id: 2,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      image: GlobalImage.GoldenRings,
+      name: 'Rose Gold ',
       numOfCustumer: 1,
       starCount: 3,
       price: 36.99,
@@ -50,9 +49,8 @@ const WishlistScreen = () => {
     },
     {
       id: 3,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      image: GlobalImage.Set3,
+      name: 'NeckLess',
       numOfCustumer: 1,
       starCount: 3,
       price: 36.99,
@@ -61,9 +59,8 @@ const WishlistScreen = () => {
     },
     {
       id: 4,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      image: GlobalImage.Ring6,
+      name: 'Combo Rings',
       numOfCustumer: 1,
       starCount: 3,
       price: 36.99,
@@ -72,9 +69,8 @@ const WishlistScreen = () => {
     },
     {
       id: 5,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      image: GlobalImage.GoldenPendent,
+      name: 'Pendant.',
       numOfCustumer: 1,
       starCount: 3,
       price: 36.99,
@@ -83,9 +79,8 @@ const WishlistScreen = () => {
     },
     {
       id: 6,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
+      image: GlobalImage.Set1,
+      name: 'Platinum',
       numOfCustumer: 1,
       starCount: 3,
       price: 36.99,
@@ -98,7 +93,7 @@ const WishlistScreen = () => {
     return (
       <View style={styles.renderMainView}>
         <View style={styles.imageViewWrapper}>
-          <Image source={{uri: item.image}} style={styles.imageWrapper} />
+          <Image source={item.image} style={styles.imageWrapper} />
           <View style={styles.containWrapper}>
             <Text style={styles.name}>{item.name}</Text>
             <View style={styles.ratingRowView}>
