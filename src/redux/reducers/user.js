@@ -8,7 +8,8 @@ const initialState = {
 			condition: false,
 			text: ''
 		}
-	}
+	},
+	globalAppData: null
 };
 const user = (state = initialState, action) => {
 	const { type, payload } = action;
@@ -27,6 +28,11 @@ const user = (state = initialState, action) => {
 			return {
 				...state,
 				loginWith: payload,
+			};
+		case actionTypes.APP_DATA:
+			return {
+				...state,
+				globalAppData: payload,
 			};
 		default:
 			return state;

@@ -11,3 +11,7 @@ export const setLoginWithEmailOrMobileNumber = payload => ({
   type: actionTypes.LOGIN_WITH,
   payload,
 });
+export const setAppData = payload => ({
+  type: actionTypes.APP_DATA,
+  payload,
+});

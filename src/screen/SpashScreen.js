@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
 import { Colors, Fonts, ScreenNames } from '../global';
-import { CommonActions, useNavigation } from '@react-navigation/native';
-import { CHANGE_BY_MOBILE_DPI } from '../global/constant';
+import { CommonActions, ThemeProvider, useNavigation } from '@react-navigation/native';
+import { CHANGE_BY_MOBILE_DPI, getTheme } from '../global/constant';
 import LogoSvg from '../assets/svgs/LogoSvg.svg';
 import FocusAwareStatusBar from '../components/AppBar/FocusAwareStatusBar';
+import { useSelector } from 'react-redux';
+
 const SplashScreen = () => {
+
   const navigation = useNavigation();
   const Opacity = React.useRef(new Animated.Value(1)).current;
   const resetStackAndGoToBottom = CommonActions.reset({
@@ -28,8 +31,8 @@ const SplashScreen = () => {
   }, []);
   return (
     <View style={{ flex: 1 }}>
-      <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
-      <View style={styles.container}>
+      <FocusAwareStatusBar barColor={appData?.primaryColor} />
+      <View style={{...styles.container,backgroundColor:appData?.primaryColor}}>
         <LogoSvg />
         <Text style={styles.text}>BoppoGo</Text>
       </View>
@@ -43,7 +46,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.PRIMARY,
     // backgroundColor:'#FF7427'
   },
   text: {

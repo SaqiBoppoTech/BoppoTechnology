@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {enableScreens} from 'react-native-screens';
-import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
-import {Colors, Constant, Fonts, ScreenNames} from '../global';
+import { enableScreens } from 'react-native-screens';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { Colors, Constant, Fonts, ScreenNames } from '../global';
 import SplashScreen from '../screen/SpashScreen';
 import BottomTabs from './BottomTabs/BottomTabs';
 import ProductDetailViewScreen from '../screen/ProductDetailView/ProductDetailViewScreen';
@@ -42,14 +42,32 @@ import PaymentSuccess from '../screen/PaymentSuccess/PaymentSuccess';
 import Filter from '../screen/Filter/FilterScreen';
 import CustomToastedAlert from './CustomToastedAlert';
 import CategoryScreen from '../screen/Category/CategoryScreen';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import * as UserAction from '../redux/actions/userActions'
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
+  const dispatch = useDispatch()
+  const getTheme = async () => {
+    let themeUrl = `http://stage-api.boppogo.com/auth/api/v1/customer/shop-customer-theme`
+    const response = await axios.get(themeUrl)
+    dispatch(UserAction.setAppData({
+      primaryColor: response.data?.data?.getShopTheme?.colors?.primaryColor ? response.data?.data?.getShopTheme?.colors?.primaryColor : '#3876bf',
+      secondaryColor: response.data?.data?.getShopTheme?.colors?.secondaryColor ? response.data?.data?.getShopTheme?.colors?.secondaryColor : '#040404',
+      ternaryColor: response.data?.data?.getShopTheme?.colors?.ternaryColor ? response.data?.data?.getShopTheme?.colors?.ternaryColor : null,
+      quaternaryColor: response.data?.data?.getShopTheme?.colors?.quaternaryColor ? response.data?.data?.getShopTheme?.colors?.quaternaryColor : null,
+      appLogo:response.data?.data?.getShopTheme?.main_logo_url
+    }))
+  }
+  React.useEffect(() => {
+    getTheme()
+  }, [])
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator
-          screenOptions={{headerShown: false}}
+          screenOptions={{ headerShown: false }}
           initialRouteName={ScreenNames.SPLASH_SCREEN}>
           <Stack.Screen
             name={ScreenNames.SPLASH_SCREEN}
