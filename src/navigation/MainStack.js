@@ -41,28 +41,9 @@ import PaymentScreen from '../screen/Payment/PaymentScreen';
 import PaymentSuccess from '../screen/PaymentSuccess/PaymentSuccess';
 import Filter from '../screen/Filter/FilterScreen';
 import CustomToastedAlert from './CustomToastedAlert';
-import CategoryScreen from '../screen/Category/CategoryScreen';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import * as UserAction from '../redux/actions/userActions'
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
-  const dispatch = useDispatch()
-  const getTheme = async () => {
-    let themeUrl = `http://stage-api.boppogo.com/auth/api/v1/customer/shop-customer-theme`
-    const response = await axios.get(themeUrl)
-    dispatch(UserAction.setAppData({
-      primaryColor: response.data?.data?.getShopTheme?.colors?.primaryColor ? response.data?.data?.getShopTheme?.colors?.primaryColor : '#3876bf',
-      secondaryColor: response.data?.data?.getShopTheme?.colors?.secondaryColor ? response.data?.data?.getShopTheme?.colors?.secondaryColor : '#040404',
-      ternaryColor: response.data?.data?.getShopTheme?.colors?.ternaryColor ? response.data?.data?.getShopTheme?.colors?.ternaryColor : null,
-      quaternaryColor: response.data?.data?.getShopTheme?.colors?.quaternaryColor ? response.data?.data?.getShopTheme?.colors?.quaternaryColor : null,
-      appLogo:response.data?.data?.getShopTheme?.main_logo_url
-    }))
-  }
-  React.useEffect(() => {
-    getTheme()
-  }, [])
   return (
     <>
       <NavigationContainer>
