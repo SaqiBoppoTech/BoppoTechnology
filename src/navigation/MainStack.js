@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {enableScreens} from 'react-native-screens';
-import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
-import {Colors, Constant, Fonts, ScreenNames} from '../global';
+import { enableScreens } from 'react-native-screens';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { Colors, Constant, Fonts, ScreenNames } from '../global';
 import SplashScreen from '../screen/SpashScreen';
 import BottomTabs from './BottomTabs/BottomTabs';
 import ProductDetailViewScreen from '../screen/ProductDetailView/ProductDetailViewScreen';
@@ -41,7 +41,6 @@ import PaymentScreen from '../screen/Payment/PaymentScreen';
 import PaymentSuccess from '../screen/PaymentSuccess/PaymentSuccess';
 import Filter from '../screen/Filter/FilterScreen';
 import CustomToastedAlert from './CustomToastedAlert';
-import CategoryScreen from '../screen/Category/CategoryScreen';
 import ChangePassword from '../screen/ChangePassword/ChangePassword';
 import { ORDER_SCREEN, PAYMENT_SUCCESS } from '../global/screeenName';
 import HomeScreen from '../screen/Home/HomeScreen';
@@ -53,7 +52,7 @@ const MainStack = () => {
     <>
       <NavigationContainer>
         <Stack.Navigator
-          screenOptions={{headerShown: false}}
+          screenOptions={{ headerShown: false }}
           initialRouteName={ScreenNames.SPLASH_SCREEN}>
           <Stack.Screen
             name={ScreenNames.SPLASH_SCREEN}

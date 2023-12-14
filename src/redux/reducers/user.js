@@ -1,5 +1,15 @@
 import * as actionTypes from '../actionTypes/actionType';
 const initialState = {
+	userData: null,
+	toastedAlert: {
+		condition: false,
+		toastedAlertText: '',
+		loginWith: {
+			condition: false,
+			text: ''
+		}
+	},
+	globalAppData: null
   userData: null,
   toastedAlert: {
     condition: false,
