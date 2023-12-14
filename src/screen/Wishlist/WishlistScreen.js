@@ -26,6 +26,7 @@ const WishlistScreen = () => {
     navigateToProductScreen,
     navigateToCartPage,
     wishListData,
+    deleteWishListData
   } = WishListHooks();
 
   const renderItem = ({item}) => {
@@ -76,7 +77,9 @@ const WishlistScreen = () => {
           <View style={styles.verticalLine}></View>
           <TouchableOpacity
             style={styles.removeWrapper}
-            onPress={removeFromCart}>
+            onPress={() => {
+              deleteWishListData(item.id) 
+              console.log('clicked')}}>
             <Cross
               width={CHANGE_BY_MOBILE_DPI(14)}
               height={CHANGE_BY_MOBILE_DPI(14)}

@@ -9,6 +9,16 @@ const initialState = {
 			text: ''
 		}
 	},
+	alertData: {
+		alertVisibility: false,
+		message: '',
+		description: '',
+		leftText: '',
+		rightText: '',
+		rightEvent: () => { },
+		leftEvent: () => { }
+	},
+	globalLoader: false,
 	globalAppData: null,
 	mobileNumberData: null
 };
@@ -34,6 +44,21 @@ const user = (state = initialState, action) => {
 			return {
 				...state,
 				globalAppData: payload,
+			};
+		case actionTypes.ALERT_DATA:
+			return {
+				...state,
+				alertData: payload,
+			};
+		case actionTypes.GLOBAL_LOADER:
+			return {
+				...state,
+				globalLoader: payload,
+			};
+		case actionTypes.MOBILE_NUMBER:
+			return {
+				...state,
+				mobileNumberData: payload,
 			};
 		default:
 			return state;

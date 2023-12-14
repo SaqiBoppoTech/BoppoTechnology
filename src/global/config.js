@@ -9,7 +9,7 @@ export const API_END_POINT = {
   GET_RESEND_OTP: `${AUTH}/customer/resend-otp`,
   REGISTERATION: `${AUTH}/customer/register`,
   FORGOT_PASSWORD: `${AUTH}/customer/forget-password`,
-  FORGOT_PASSWORD_OTP: `${AUTH}/customer/forget-password-verify-otp`
-
-
+  FORGOT_PASSWORD_OTP: `${AUTH}/customer/forget-password-verify-otp`,
+  GET_WISHLIST:`${AUTH}/customer/get-wishlist`,
+  GET_CART : `${AUTH}/customer/get-cart`
 };

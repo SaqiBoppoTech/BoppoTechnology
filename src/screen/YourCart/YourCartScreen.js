@@ -21,6 +21,7 @@ const YourCart = ({navigation}) => {
     wishListClick,
     navigateToOrderSummary,
     cartListData,
+    deleteCartListData,
   } = YourCartHook();
 
   const renderItem = ({item}) => {
@@ -37,7 +38,9 @@ const YourCart = ({navigation}) => {
             <Text style={styles.name}>{item.product.title}</Text>
             <View style={styles.priceContainer}>
               <Text style={styles.price}>{item.product_variant.price} USD</Text>
-              <Text style={styles.discount}>{item.product_variant.compare_price}USD</Text>
+              <Text style={styles.discount}>
+                {item.product_variant.compare_price}USD
+              </Text>
             </View>
             <Text style={styles.quantity}>Qty</Text>
             <BlackIncremnetButton />
@@ -54,8 +57,11 @@ const YourCart = ({navigation}) => {
           </TouchableOpacity>
           <View style={styles.verticalLine}></View>
           <TouchableOpacity
-            style={styles.removeWrapper}
-            onPress={removeFromCart}>
+            onPress={() => {
+              deleteCartListData(item.id);
+              console.log('clicked');
+            }}
+            style={styles.removeWrapper}>
             <Cross
               width={CHANGE_BY_MOBILE_DPI(12)}
               height={CHANGE_BY_MOBILE_DPI(12)}

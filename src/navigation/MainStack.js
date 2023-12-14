@@ -41,13 +41,14 @@ import PaymentScreen from '../screen/Payment/PaymentScreen';
 import PaymentSuccess from '../screen/PaymentSuccess/PaymentSuccess';
 import Filter from '../screen/Filter/FilterScreen';
 import CustomToastedAlert from './CustomToastedAlert';
+import GlobalAlert from '../components/GlobalAlert/GlobalAlert';
+import GlobalLoader from '../components/GlobalLoader/GlobalLoader';
+import { useSelector } from 'react-redux';
 import ChangePassword from '../screen/ChangePassword/ChangePassword';
-import { ORDER_SCREEN, PAYMENT_SUCCESS } from '../global/screeenName';
-import HomeScreen from '../screen/Home/HomeScreen';
-import CategoryDetailScreen from '../screen/CategoryDetail/CategoryDetailScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
+  let globalLoader = useSelector(e => e.user?.globalLoader)
   return (
     <>
       <NavigationContainer>
@@ -216,6 +217,10 @@ const MainStack = () => {
         </View>
       } 
       /> */}
+      {globalLoader &&
+        <GlobalLoader />
+      }
+      <GlobalAlert />
       <CustomToastedAlert />
     </>
   );
