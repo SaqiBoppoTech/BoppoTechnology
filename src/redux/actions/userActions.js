@@ -19,3 +19,11 @@ export const setMobileNumberData = payload => ({
   type: actionTypes.MOBILE_NUMBER,
   payload,
 });
+export const setGlobalLoader = payload => ({
+  type: actionTypes.GLOBAL_LOADER,
+  payload,
+});
+export const setAlertData = payload => ({
+  type: actionTypes.ALERT_DATA,
+  payload,
+});

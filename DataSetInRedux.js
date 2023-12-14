@@ -35,6 +35,8 @@ const DataSetInRedux = ({ children }) => {
         }))
         setDataLoaded(true)
     }
+    
+ 
     React.useEffect(() => {
         getTheme()
     }, [])

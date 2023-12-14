@@ -9,6 +9,7 @@ import { TRANSPARENT } from './src/global/colors';
 import DataSetInRedux from './DataSetInRedux';
 
 const App = () => {
+  
   return (
     <View style={styles.container}>
       <Provider store={store}>
