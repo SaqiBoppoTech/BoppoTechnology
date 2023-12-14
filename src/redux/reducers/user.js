@@ -20,7 +20,13 @@ const initialState = {
 	},
 	globalLoader: false,
 	globalAppData: null,
-	mobileNumberData: null
+	mobileNumberData: {
+		country_code: '+91',
+		mobileNumber: '',
+		email: '',
+		registerSessionToken: '',
+		otp: ''
+	}
 };
 const user = (state = initialState, action) => {
 	const { type, payload } = action;

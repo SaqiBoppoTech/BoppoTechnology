@@ -1,4 +1,4 @@
-export const BASE_URL = `http://stage-api.boppogo.com`;
+export const BASE_URL = `https://stage-api.boppogo.com`;
 let AUTH = '/auth/api/v1';
 // let HOME = '/home';
 export const CLIENT_ID = 'client_id=867748f4-2e27-445c-9ad1-069123dfb647';
