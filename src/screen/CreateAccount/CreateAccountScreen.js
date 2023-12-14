@@ -15,7 +15,13 @@ import { CreateAccountHooks } from './CreateAccountHooks';
 import { Colors } from '../../global';
 
 const CreateAccountScreen = () => {
-  const { renderCreateAccount, navigateToOtp ,navigateToLogin } = CreateAccountHooks()
+  const { renderCreateAccount, navigateToOtp ,navigateToLogin ,
+    firstName, setfirstName,
+    lastName, setLastName,
+    email, setEmail,
+    mobileNumber,setMobileNumber,
+    password, setPassword,
+    confirmPassword, setConfirmPassword} = CreateAccountHooks()
   return (
     <View style={styles.mainContainer}>
       <CustomAppBar />
@@ -30,6 +36,8 @@ const CreateAccountScreen = () => {
             placeholder={'Enter first name'}
             placeholderTextColor={Colors.GRAY_DARK}
             title={'First Name'}
+            onChangeText={setfirstName}
+            value={firstName}
             showAsterisk={true}
             externalContainer={styles.marginTopStyle}
           />
@@ -37,6 +45,8 @@ const CreateAccountScreen = () => {
             keyboardType={'default'}
             placeholder={'Enter last name'}
             title={'Last Name'}
+            onChangeText={setLastName}
+            value={lastName}
             showAsterisk={true}
             placeholderTextColor={Colors.GRAY_DARK}
             externalContainer={styles.marginTopStyle}
@@ -45,14 +55,19 @@ const CreateAccountScreen = () => {
             keyboardType={'default'}
             placeholder={'Enter email id '}
             title={'Email ID'}
+            onChangeText={setEmail}
+            value={email}
             showAsterisk={true}
             placeholderTextColor={Colors.GRAY_DARK}
             externalContainer={styles.marginTopStyle}
           />
           <CustomTextField
-            keyboardType={'default'}
+            keyboardType={'phone-pad'}
             placeholder={'Enter mobile number'}
             title={'Mobile Number'}
+            onChangeText={setMobileNumber}
+            value={mobileNumber}
+            maxLenght={10}
             showAsterisk={true}
             placeholderTextColor={Colors.GRAY_DARK}
             externalContainer={styles.marginTopStyle}
@@ -61,6 +76,8 @@ const CreateAccountScreen = () => {
             keyboardType={'default'}
             placeholder={'Enter password'}
             title={'Password'}
+            onChangeText={setPassword}
+            value={password}
             showAsterisk={true}
             placeholderTextColor={Colors.GRAY_DARK}
             externalContainer={styles.marginTopStyle}
@@ -69,6 +86,8 @@ const CreateAccountScreen = () => {
             keyboardType={'default'}
             placeholder={'Re - enter password'}
             title={'Confirm Password'}
+            onChangeText={setConfirmPassword}
+            value={confirmPassword}
             showAsterisk={true}
             placeholderTextColor={Colors.GRAY_DARK}
             externalContainer={styles.marginTopStyle}

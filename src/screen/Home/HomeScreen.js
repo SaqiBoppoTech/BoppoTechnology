@@ -6,7 +6,6 @@ import { styles } from './HomeStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import { Colors, Constant } from '../../global';
 import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
-import BoppoSvg from '../../assets/svgs/LogoSvg.svg';
 import LocationSvg from '../../assets/svgs/LocationSvg.svg';
 import SearchField from '../../components/SearchField';
 import CustomCarousel from '../../components/Carousel/CustomCarousel';
@@ -23,7 +22,7 @@ import YourBrowserHistory from '../../components/YourBrowserHistory/YourBrowserH
 import TopOffer from '../../components/TopOffer/TopOffer';
 
 const HomeScreen = () => {
-  const { isPopupVisible, setPopupVisible, togglePopup, navigateToLocation } =
+  const { isPopupVisible, setPopupVisible, togglePopup, navigateToLocation,appData } =
     HomeHooks();
   return (
     <View style={styles.mainContainer}>
@@ -31,10 +30,7 @@ const HomeScreen = () => {
       <View style={styles.boppoHeaderContainer}>
         <View style={styles.flexContainer}>
           <TouchableOpacity>
-            <BoppoSvg
-              heigth={CHANGE_BY_MOBILE_DPI(35)}
-              width={CHANGE_BY_MOBILE_DPI(35)}
-            />
+            {appData?.appLogo(CHANGE_BY_MOBILE_DPI(35), CHANGE_BY_MOBILE_DPI(35))}
           </TouchableOpacity>
           <Text style={styles.headerFontStyle}>Boppo</Text>
         </View>

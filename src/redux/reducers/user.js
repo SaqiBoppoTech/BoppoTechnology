@@ -9,7 +9,8 @@ const initialState = {
 			text: ''
 		}
 	},
-	globalAppData: null
+	globalAppData: null,
+	mobileNumberData: null
 };
 const user = (state = initialState, action) => {
 	const { type, payload } = action;
@@ -33,6 +34,11 @@ const user = (state = initialState, action) => {
 			return {
 				...state,
 				globalAppData: payload,
+			};
+		case actionTypes.MOBILE_NUMBER:
+			return {
+				...state,
+				mobileNumberData: payload,
 			};
 		default:
 			return state;

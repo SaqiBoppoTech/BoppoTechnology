@@ -1,9 +1,11 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {ScreenNames} from '../../global';
+import {Colors, ScreenNames} from '../../global';
+import { useSelector } from 'react-redux';
 
 const HomeHooks = () => {
   const navigation = useNavigation();
+  const appData = useSelector(e => e?.user?.globalAppData)
   const handleGoBack = () => {
     navigation.goBack();
   };
@@ -25,6 +27,7 @@ const HomeHooks = () => {
     setPopupVisible,
     togglePopup,
     navigateToLocation,
+    appData
   };
 };
 export {HomeHooks};

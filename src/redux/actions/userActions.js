@@ -15,3 +15,7 @@ export const setAppData = payload => ({
   type: actionTypes.APP_DATA,
   payload,
 });
+export const setMobileNumberData = payload => ({
+  type: actionTypes.MOBILE_NUMBER,
+  payload,
+});

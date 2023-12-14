@@ -41,7 +41,7 @@ const OnBoardingScreen = () => {
                             <FlatList horizontal data={STATIC_DATA.sliderData} renderItem={renderSliderStatusBar} />
                         </View>
                         <TouchableOpacity onPress={handleNext} style={styles.boxContainer}>
-                            <RightButtomSvg heigth={CHANGE_BY_MOBILE_DPI(55)} width={CHANGE_BY_MOBILE_DPI(55)}/>
+                            <RightButtomSvg heigth={CHANGE_BY_MOBILE_DPI(60)} width={CHANGE_BY_MOBILE_DPI(60)}/>
                         </TouchableOpacity>
             </View>
                     </View>
