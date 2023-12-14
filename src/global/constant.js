@@ -9,7 +9,12 @@ export const regex = {
     mobileNumber: /^(\+91[\\-\s]?)?[0]?(91)?[6789]\d{9}$/,
     userName: /^([a-zA-Z]+\s)*[a-zA-Z0-9]+$/,
     specialNotAccept: /[\s#.,-]/,
-    analyisStartingFirst: /\d{10}/g
+    analyisStartingFirst: /\d{10}/g,
+    loginValidation: {
+        nameRegex: /^[a-zA-Z]+$/,
+        emailRegex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        mobileRegex: /^\d{10}$/
+    }
 };
 
 // change dpi

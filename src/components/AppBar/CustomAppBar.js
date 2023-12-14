@@ -1,11 +1,12 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import LogoSvg from '../../assets/svgs/LogoSvg.svg';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import FocusAwareStatusBar from './FocusAwareStatusBar';
-import {Colors, Fonts} from '../../global';
-import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import { Colors, Fonts } from '../../global';
+import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import { useSelector } from 'react-redux';
+
 
 const CustomAppBar = ({
   showIcons,
@@ -13,16 +14,15 @@ const CustomAppBar = ({
   onPressLocation,
   showCartIcon,
   onPressCartIcon,
+  
 }) => {
+  const appData = useSelector(e => e?.user?.globalAppData)
   return (
     <View style={styles.mainContainer}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <View style={styles.container}>
         <View style={styles.containerWrapper}>
-          <LogoSvg
-            height={CHANGE_BY_MOBILE_DPI(35)}
-            width={CHANGE_BY_MOBILE_DPI(35)}
-          />
+          {appData?.appLogo(CHANGE_BY_MOBILE_DPI(35), CHANGE_BY_MOBILE_DPI(35))}
           <Text style={styles.text}>BoppoGo</Text>
         </View>
         {showIcons && (

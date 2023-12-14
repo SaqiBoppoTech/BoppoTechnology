@@ -25,77 +25,21 @@ const WishlistScreen = () => {
     removeFromCart,
     navigateToProductScreen,
     navigateToCartPage,
+    wishListData,
   } = WishListHooks();
-  const data = [
-    {
-      id: 1,
-      image: GlobalImage.ring,
-      name: 'Ring',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      image: GlobalImage.GoldenRings,
-      name: 'Rose Gold ',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 3,
-      image: GlobalImage.Set3,
-      name: 'NeckLess',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 4,
-      image: GlobalImage.Ring6,
-      name: 'Combo Rings',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 5,
-      image: GlobalImage.GoldenPendent,
-      name: 'Pendant.',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 6,
-      image: GlobalImage.Set1,
-      name: 'Platinum',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-  ];
 
   const renderItem = ({item}) => {
     return (
       <View style={styles.renderMainView}>
         <View style={styles.imageViewWrapper}>
-          <Image source={item.image} style={styles.imageWrapper} />
+          <Image
+            source={{
+              uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
+            }}
+            style={styles.imageWrapper}
+          />
           <View style={styles.containWrapper}>
-            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.name}>{item.product.title}</Text>
             <View style={styles.ratingRowView}>
               <RatingComponent
                 initialRating={item.starCount}
@@ -108,11 +52,11 @@ const WishlistScreen = () => {
               </Text>
             </View>
             <View style={styles.priceContainer}>
-              <Text style={styles.price}>{item.price} USD</Text>
+              <Text style={styles.price}>{item.product_variant.price} USD</Text>
               <View style={styles.circle}></View>
               <Text style={styles.quantity}>{item.quantity}Qty</Text>
             </View>
-            <Text style={styles.discount}>{item.discount} USD</Text>
+            <Text style={styles.discount}>{item.product_variant.compare_price} USD</Text>
             <TouchableOpacity
               style={styles.btn}
               onPress={navigateToProductScreen}>
@@ -155,7 +99,7 @@ const WishlistScreen = () => {
         onCartPress={navigateToCartPage}
       />
       <FlatList
-        data={data}
+        data={wishListData}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
