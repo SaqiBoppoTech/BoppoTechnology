@@ -50,6 +50,29 @@ const YourCartHook = () => {
     }
   };
 
+  ///API OF ADDTOWISHLIST
+  const addToWishList = async (productID, productVariantId) => {
+    console.log(productID, productVariantId);
+    try {
+      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/add-wishlist`;
+      const response = await axios.post(
+        url,
+        {
+          productId: productID,
+          productVariantId: productVariantId,
+        },
+        {
+          headers: {
+            Authorization: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVqd2FsLnlhZGF2QGJvcHBvdGVjaG5vbG9naWVzLmNvbSIsImNvbnRhY3Rfbm8iOiI5OTg3Nzc5NDA3IiwidG9rZW5fdHlwZSI6IkFDQ0VTU19UT0tFTiIsImlhdCI6MTcwMjU0ODIxMSwiZXhwIjoxNzAyNjM0NjExLCJhdWQiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIiwiaXNzIjoiQm9wcG8gR28iLCJzdWIiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIn0.OEWV0HwknoQkeIF5Gvph85wpyzEOlS85xgENd3pAQDoP4NG7jUr2yFBrJcNKhEkP0YYC71W293SaUDD0RK1Su2exTXDZymzVrmscOuDHn65z7vkJNb-kSVAAHDq9cjxBOm-BfZKKm5l606T92HbFvte7uE-vJa5XxeIbgKRCmHjO4RICqoCNUAZOugA1B07nG5brVBb0K8esX5V6ITIyIOP12xBOhmI8SsZGny6YaSi-uO1dHCS-MC8Nd-NTRnoN1wHXeSJEnGyTko1xHlqVYSK4MjaJSAASUyjXnBpCHeCN7nMSoueDoH-3iQYbzHJmJPprlthPAyHswU09AOtFRg`,
+          },
+        },
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log('error Add to WishList', error.message);
+    }
+  };
+
   useEffect(() => {
     getCartListData();
   }, [deleteCartListData]);
@@ -61,7 +84,8 @@ const YourCartHook = () => {
     navigateToProductScreen,
     navigateToOrderSummary,
     cartListData,
-    deleteCartListData
+    deleteCartListData,
+    addToWishList,
   };
 };
 

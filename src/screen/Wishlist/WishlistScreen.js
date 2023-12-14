@@ -26,7 +26,8 @@ const WishlistScreen = () => {
     navigateToProductScreen,
     navigateToCartPage,
     wishListData,
-    deleteWishListData
+    deleteWishListData,
+    addToCart,
   } = WishListHooks();
 
   const renderItem = ({item}) => {
@@ -57,7 +58,9 @@ const WishlistScreen = () => {
               <View style={styles.circle}></View>
               <Text style={styles.quantity}>{item.quantity}Qty</Text>
             </View>
-            <Text style={styles.discount}>{item.product_variant.compare_price} USD</Text>
+            <Text style={styles.discount}>
+              {item.product_variant.compare_price} USD
+            </Text>
             <TouchableOpacity
               style={styles.btn}
               onPress={navigateToProductScreen}>
@@ -67,7 +70,9 @@ const WishlistScreen = () => {
         </View>
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.editWrapper} onPress={addToCartPress}>
+          <TouchableOpacity
+            style={styles.editWrapper}
+            onPress={() => addToCart(item.product_id, item.product_variant_id)}>
             <ShoppingBag
               width={CHANGE_BY_MOBILE_DPI(16)}
               height={CHANGE_BY_MOBILE_DPI(16)}
@@ -78,8 +83,9 @@ const WishlistScreen = () => {
           <TouchableOpacity
             style={styles.removeWrapper}
             onPress={() => {
-              deleteWishListData(item.id) 
-              console.log('clicked')}}>
+              deleteWishListData(item.id);
+              console.log('clicked');
+            }}>
             <Cross
               width={CHANGE_BY_MOBILE_DPI(14)}
               height={CHANGE_BY_MOBILE_DPI(14)}

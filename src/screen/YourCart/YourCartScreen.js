@@ -22,6 +22,7 @@ const YourCart = ({navigation}) => {
     navigateToOrderSummary,
     cartListData,
     deleteCartListData,
+    addToWishList,
   } = YourCartHook();
 
   const renderItem = ({item}) => {
@@ -48,7 +49,11 @@ const YourCart = ({navigation}) => {
         </View>
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.editWrapper} onPress={wishListClick}>
+          <TouchableOpacity
+            style={styles.editWrapper}
+            onPress={() =>
+              addToWishList(item.product_id, item.product_variant_id)
+            }>
             <Heart
               width={CHANGE_BY_MOBILE_DPI(14)}
               height={CHANGE_BY_MOBILE_DPI(14)}
