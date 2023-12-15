@@ -12,7 +12,7 @@ const ContactUsScreen = () => {
   const {handleGoBack, navigateToProfile} = ConatctUsHooks();
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Contact Us'} onPress={handleGoBack} />
       <View style={styles.containerWrapper}>
         <CustomTextField

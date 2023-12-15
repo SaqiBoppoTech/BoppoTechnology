@@ -44,6 +44,7 @@ import CustomToastedAlert from './CustomToastedAlert';
 import GlobalAlert from '../components/GlobalAlert/GlobalAlert';
 import GlobalLoader from '../components/GlobalLoader/GlobalLoader';
 import { useSelector } from 'react-redux';
+import ChangePassword from '../screen/ChangePassword/ChangePassword';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -143,10 +144,10 @@ const MainStack = () => {
             name={ScreenNames.WISHLIST_SCREEN}
             component={WishlistScreen}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name={ScreenNames.ORDER_SCREEN}
             component={OrderScreen}
-          />
+          /> */}
           <Stack.Screen
             name={ScreenNames.YOUR_CART_SCREEN}
             component={YourCart}
@@ -193,10 +194,13 @@ const MainStack = () => {
             name={ScreenNames.PAYMENT_SCREEN}
             component={PaymentScreen}
           />
-
           <Stack.Screen
             name={ScreenNames.PAYMENT_SUCCESS}
             component={PaymentSuccess}
+          />
+          <Stack.Screen
+            name={ScreenNames.CHANGE_PASSWORD}
+            component={ChangePassword}
           />
         </Stack.Navigator>
       </NavigationContainer>

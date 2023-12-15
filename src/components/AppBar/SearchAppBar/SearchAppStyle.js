@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors, Fonts} from '../../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../../global/constant';
-import {MANROPE_BOLD} from '../../../global/typography';
 
 export const styles = StyleSheet.create({
   container: {

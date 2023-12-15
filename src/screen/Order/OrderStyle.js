@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   mainContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.WHITE,
     flex: 1,
   },
   screenContainer: {},
@@ -34,7 +34,8 @@ export const styles = StyleSheet.create({
     elevation: CHANGE_BY_MOBILE_DPI(2),
     marginVertical: CHANGE_BY_MOBILE_DPI(2),
     paddingTop: CHANGE_BY_MOBILE_DPI(10),
-    flex:1
+    flex:1,
+    justifyContent:'space-between'
   },
   barContainerStyle: {
     marginRight: CHANGE_BY_MOBILE_DPI(30),

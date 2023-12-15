@@ -15,7 +15,7 @@ const AddNewAddress = () => {
 
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Add Address'} onPress={handleGoBack} />
       <ScrollView style={styles.margin}>
         <CustomTextField
@@ -23,18 +23,21 @@ const AddNewAddress = () => {
           placeholder={'Street	1221 W Boise Ave, Boise,	Illinois'}
           title={'Street Address'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           keyboardType={'default'}
           placeholder={'Boise'}
           title={'City'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           keyboardType={'default'}
           placeholder={'Illinois'}
           title={'State'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CountryDropdownComponent />
 
@@ -43,6 +46,7 @@ const AddNewAddress = () => {
           placeholder={'enter zip code'}
           title={'Zip / Post Code'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
 
         <View style={styles.titleWrapper}>

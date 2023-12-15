@@ -1,20 +1,29 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
-import Paypal from '../../assets/svgs/Paypal.svg'
+import Paypal from '../../assets/svgs/Paypal.svg';
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
 import {ScrollView} from 'react-native-gesture-handler';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
 import {styles} from '../Cancel-ReturnDetails/Cancel-ReturnDetailStyles';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
+import { CancelReturnDetailHooks } from './Cancel-ReturnDetailHooks';
 
 const CancelReturnDetailScreen = () => {
+  const {navigateToCartPage,handleGoBack} = CancelReturnDetailHooks();
   return (
     <ScrollView>
       <View style={styles.main}>
         <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
-        <SearchAppBar title={'Cancel/Return Detail'} showCartIcon={true} showIcon={true} showSearchIcon={true}/>
+        <SearchAppBar
+          title={'Cancel/Return Detail'}
+          showCartIcon={true}
+          showIcon={true}
+          showSearchIcon={true}
+          onCartPress={navigateToCartPage}
+          onPress={handleGoBack}
+        />
         <View style={styles.cancelDetailView}>
           <Text style={styles.cancelDetailTextTop}>CANCEL/RETURN DETAILS</Text>
           <Text style={styles.cancelId}>RETURN ID 123456789</Text>

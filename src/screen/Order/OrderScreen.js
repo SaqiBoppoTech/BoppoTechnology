@@ -19,10 +19,10 @@ import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
 
 const OrderScreen = () => {
   const {
-    setCurrentTab,
     handleGoBack,
     openCustomView,
-    renderTopBar
+    renderTopBar,
+    navigateToCartPage
   } = OrderHooks();
 
   return (
@@ -39,6 +39,7 @@ const OrderScreen = () => {
           onPress={() => {
             handleGoBack();
           }}
+          onCartPress={navigateToCartPage}
         />
         <View>
           <FlatList

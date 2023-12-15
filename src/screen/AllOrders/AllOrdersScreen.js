@@ -10,14 +10,15 @@ import {
 import RatingComponent from '../../components/RatingStar';
 import {styles} from './AllOrdersStyles';
 import {AllOrderHooks} from './AllOrdersHooks';
+import {STATIC_DATA} from '../../global/staticdata';
 
 const AllOrderScreen = () => {
-  const {data, renderItem} = AllOrderHooks();
+  const {renderItem} = AllOrderHooks();
 
   return (
     <View style={styles.background}>
       <FlatList
-        data={data}
+        data={STATIC_DATA.orderScreen}
         renderItem={renderItem}
         keyExtractor={item => item.key}
         showsHorizontalScrollIndicator={false}

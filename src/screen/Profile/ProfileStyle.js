@@ -5,7 +5,8 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 export const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    marginBottom: CHANGE_BY_MOBILE_DPI(70),
+    marginBottom: CHANGE_BY_MOBILE_DPI(65),
+    backgroundColor: Colors.WHITE,
   },
 
   btn: {
@@ -38,5 +39,9 @@ export const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontFamily: Fonts.LATO_BOLD,
     includeFontPadding: false,
+  },
+  line: {
+    backgroundColor: Colors.GRAY_SHADE_100,
+    height: CHANGE_BY_MOBILE_DPI(1.5),
   },
 });

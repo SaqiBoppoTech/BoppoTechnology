@@ -33,8 +33,8 @@ export const styles = StyleSheet.create({
         marginBottom:CHANGE_BY_MOBILE_DPI(10)
     },
     carousalContainer:{
-        marginHorizontal:CHANGE_BY_MOBILE_DPI(17),
-        marginBottom:CHANGE_BY_MOBILE_DPI(7)
+        // marginHorizontal:CHANGE_BY_MOBILE_DPI(17),
+        marginBottom:CHANGE_BY_MOBILE_DPI(7),
     },
     backgroundColorStyle:{
         flex:1,

@@ -7,10 +7,17 @@ import Brand from '../../components/BrandFilter/BrandScreen';
 import {FilterHooks} from './FilterHooks';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
-import { style } from './FilterStyles';
+import {style} from './FilterStyles';
 
 const Filter = () => {
-  const {DATA, renderItem, handleGoBack, filter, setFilter,navigateToFilterPage} = FilterHooks();
+  const {
+    DATA,
+    renderItem,
+    handleGoBack,
+    filter,
+    setFilter,
+    navigateToFilterPage,
+  } = FilterHooks();
   return (
     <View style={{flex: 1}}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
@@ -33,19 +40,19 @@ const Filter = () => {
         </View>
         <View style={style.filterContent}>
           {filter == 1 ? (
-            <Text>SORT</Text>
+            <Brand />
           ) : filter == 2 ? (
-            <Text>PRICE</Text>
+            <Brand />
           ) : filter == 3 ? (
             <Brand />
           ) : filter == 4 ? (
-            <Text>CUSTOMER RATING</Text>
+            <Brand />
           ) : filter == 5 ? (
-            <Text>CATEGORIES</Text>
+            <Brand />
           ) : filter == 6 ? (
-            <Text>Availaibility</Text>
+            <Brand />
           ) : filter == 7 ? (
-            <Text>Discount</Text>
+            <Brand />
           ) : (
             ''
           )}

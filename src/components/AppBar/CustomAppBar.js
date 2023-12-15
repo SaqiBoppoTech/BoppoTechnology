@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
@@ -19,7 +19,7 @@ const CustomAppBar = ({
   const appData = useSelector(e => e?.user?.globalAppData)
   return (
     <View style={styles.mainContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <View style={styles.container}>
         <View style={styles.containerWrapper}>
           {appData?.appLogo(CHANGE_BY_MOBILE_DPI(35), CHANGE_BY_MOBILE_DPI(35))}
@@ -47,38 +47,36 @@ const CustomAppBar = ({
         )}
       </View>
     </View>
-
   );
 };
 
 export default CustomAppBar;
 
 const styles = StyleSheet.create({
-  mainContainer: {
-  },
+  mainContainer: {},
   container: {
-    top:CHANGE_BY_MOBILE_DPI(0),
+    top: CHANGE_BY_MOBILE_DPI(0),
     height: CHANGE_BY_MOBILE_DPI(70),
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomLeftRadius:CHANGE_BY_MOBILE_DPI(15),
-    borderBottomEndRadius:CHANGE_BY_MOBILE_DPI(15),
-    paddingHorizontal:CHANGE_BY_MOBILE_DPI(30),
+    borderBottomLeftRadius: CHANGE_BY_MOBILE_DPI(15),
+    borderBottomEndRadius: CHANGE_BY_MOBILE_DPI(15),
+    paddingHorizontal: CHANGE_BY_MOBILE_DPI(30),
     justifyContent: 'space-between',
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.20,
+    shadowOpacity: 0.2,
     shadowRadius: 1.41,
     elevation: 2,
-    backgroundColor:Colors.WHITE
+    backgroundColor: Colors.WHITE,
   },
   text: {
     fontSize: CHANGE_BY_MOBILE_DPI(20.21),
-    color:Colors.BLACK,
-    fontFamily:Fonts.INTER_BOLD,
+    color: Colors.BLACK,
+    fontFamily: Fonts.INTER_BOLD,
     marginLeft: CHANGE_BY_MOBILE_DPI(15),
     textAlign: 'center',
   },
@@ -89,6 +87,5 @@ const styles = StyleSheet.create({
   containerWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-
   },
 });

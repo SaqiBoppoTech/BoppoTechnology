@@ -1,8 +1,8 @@
 //import liraries
-import React, { Component, useState } from 'react';
-import { View, Text, ScrollView, Modal, TouchableOpacity } from 'react-native';
-import { HomeHooks } from './HomeHooks';
-import { styles } from './HomeStyle';
+import React, {Component, useState} from 'react';
+import {View, Text, ScrollView, Modal, TouchableOpacity} from 'react-native';
+import {HomeHooks} from './HomeHooks';
+import {styles} from './HomeStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import { Colors, Constant } from '../../global';
 import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
@@ -26,7 +26,7 @@ const HomeScreen = () => {
     HomeHooks();
   return (
     <View style={styles.mainContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <View style={styles.boppoHeaderContainer}>
         <View style={styles.flexContainer}>
           <TouchableOpacity>
@@ -42,15 +42,19 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        <View style={styles.searchContainer}>
+        {/* <View style={styles.searchContainer}>
           <SearchField />
-        </View>
+        </View> */}
         <View style={styles.carousalContainer}>
-          <CustomCarousel width={Constant.SCREEN_WIDTH - 60} />
+          <CustomCarousel
+            width={Constant.SCREEN_WIDTH - 60}
+            resizeModeProperty={true}
+          />
         </View>
+        {/* //New arrival */}
         <View style={styles.backgroundColorStyle}>
           <View style={styles.dealOfTheDayStyle}>
-            <DealsOfTheDay title={`Deals Of the Day`} />
+            <DealsOfTheDay title={`New arrival`} />
           </View>
           <View style={styles.ExploreItemContainer}>
             <ExploreItems />
@@ -92,13 +96,13 @@ const HomeScreen = () => {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={{ color: 'black', margin: 50 }}>
+              <Text style={{color: 'black', margin: 50}}>
                 Your Popup Content Goes Here
               </Text>
               <TouchableOpacity
                 onPress={togglePopup}
                 style={styles.closeButton}>
-                <Text style={{ color: 'black' }}>X</Text>
+                <Text style={{color: 'black'}}>X</Text>
               </TouchableOpacity>
             </View>
           </View>

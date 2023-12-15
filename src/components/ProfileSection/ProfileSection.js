@@ -3,8 +3,10 @@ import React from 'react';
 import ProfileOptionComponent from '../ProfileOption/ProfileOptionComponent';
 import {styles} from './ProfileSectionStyle';
 import {ProfileSectionHooks} from './ProfileSectionHooks';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import {GlobalImage} from '../../global/staticImage';
 
-const ProfileSection = () => {
+const ProfileSection = ({profileName}) => {
   const {
     navigateToChatWithUs,
     navigateToEditProfile,
@@ -17,12 +19,12 @@ const ProfileSection = () => {
         <View style={styles.ProfileWrapper}>
           <View style={styles.Imagecontainer}>
             <Image
-              source={require('../../assets/images/avatar.png')}
+              source={GlobalImage.profileImage}
               style={styles.circleImage}
             />
           </View>
           <View>
-            <Text style={styles.name}>Hello Serena!</Text>
+            <Text style={styles.name}>Hello {profileName}!</Text>
             <Text style={styles.updateprofile}>
               View and update your profile
             </Text>
@@ -39,8 +41,8 @@ const ProfileSection = () => {
         <View
           style={{
             ...styles.itemWrapper,
-            marginTop: 10,
-            marginBottom: 15,
+            marginTop: CHANGE_BY_MOBILE_DPI(12),
+            marginBottom: CHANGE_BY_MOBILE_DPI(16),
           }}>
           <ProfileOptionComponent
             title={'Edit Profile'}

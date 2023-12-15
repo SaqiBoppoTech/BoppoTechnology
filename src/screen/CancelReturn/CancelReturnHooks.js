@@ -12,14 +12,15 @@ import SelectStarSvg from '../../assets/svgs/SelectStarSvg.svg';
 import {ScreenNames} from '../../global';
 import {useNavigation} from '@react-navigation/native';
 import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import { GlobalImage } from '../../global/staticImage';
 
 const CancelReturnHooks = () => {
   const data = [
     {
       key: '1',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.GoldenRings,
+      name: 'Gold Rings',
       productCount: '2',
       discountPrice: '36.99 USD',
       qty: '1',
@@ -29,8 +30,8 @@ const CancelReturnHooks = () => {
     {
       key: '2',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 ',
+        GlobalImage.Ring2,
+      name: 'Rose Gold ',
       productCount: '2',
       discountPrice: '36.99 USD',
       qty: '1',
@@ -40,8 +41,8 @@ const CancelReturnHooks = () => {
     {
       key: '3',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 ',
+       GlobalImage.Ring4,
+      name: 'Dimond Gold Ring',
       productCount: '2',
       paid: '76.99',
       discountPrice: '36.99 USD',
@@ -51,8 +52,8 @@ const CancelReturnHooks = () => {
     {
       key: '4',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 ',
+        GlobalImage.Set1,
+      name: 'Dimond',
       productCount: '2',
       paid: '76.99',
       discountPrice: '36.99 USD',
@@ -62,8 +63,8 @@ const CancelReturnHooks = () => {
     {
       key: '5',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5',
+       GlobalImage.TwoEarings,
+      name: 'Earrings',
       productCount: '2',
       paid: '76.99',
       discountPrice: '36.99 USD',
@@ -73,8 +74,8 @@ const CancelReturnHooks = () => {
     {
       key: '6',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.Set2,
+      name: 'Dimond',
       productCount: '2',
       paid: '76.99',
       discountPrice: '36.99 USD',
@@ -84,8 +85,8 @@ const CancelReturnHooks = () => {
     {
       key: '7',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5',
+        GlobalImage.GoldenPendent,
+      name: 'Pendant',
       productCount: '2',
       paid: '76.99',
       discountPrice: '36.99 USD',
@@ -95,8 +96,8 @@ const CancelReturnHooks = () => {
     {
       key: '8',
       image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5',
+       GlobalImage.Ring6,
+      name: 'Ring',
       productCount: '2',
       paid: '76.99',
       discountPrice: '36.99 USD',
@@ -120,7 +121,7 @@ const CancelReturnHooks = () => {
     <View style={styles.itemContainer}>
       <View style={styles.alignContent}>
         <View style={styles.imgWrapper}>
-          <Image source={{uri: item.image}} style={styles.imgcontainer} />
+          <Image source={ item.image} style={styles.imgcontainer} />
         </View>
         <View style={styles.colWrapper}>
           <View style={styles.textWrapper}>

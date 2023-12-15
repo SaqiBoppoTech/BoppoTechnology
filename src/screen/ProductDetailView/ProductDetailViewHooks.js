@@ -6,11 +6,11 @@ import ProductDescription from '../../components/ProductDescription/ProductDescr
 import ProductReview from '../../components/ProductReview/ProductReview';
 import ProductDetail from '../../components/ProductDetail/ProductDetail';
 import QuestionAndAnswer from '../../components/QuestionAndAnswer/QuestionAndAnswer';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const ProductDetailViewHooks = () => {
   const [selectedTab, setSelectTabs] = React.useState(0);
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const openCustomView = () => {
     return (
       <View style={styles.marginBottomContainer}>
@@ -27,13 +27,15 @@ const ProductDetailViewHooks = () => {
     );
   };
 
-  const navigateToCart = () => {
-    navigation.navigate(ScreenNames.YOUR_CART_SCREEN)
-  }
+  //FUNCTION
 
   const navigateToCheckOut = () => {
-    navigation.navigate(ScreenNames.ORDER_SUMMARY_SCREEN)
-  }
+    navigation.navigate(ScreenNames.ORDER_SUMMARY_SCREEN);
+  };
+
+  const navigateToCartPage = () => {
+    navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
+  };
 
   const renderTopBar = ({item, index}) => {
     const addIndexOntState = () => {
@@ -56,11 +58,18 @@ const ProductDetailViewHooks = () => {
       </TouchableOpacity>
     );
   };
+
+  const handleGoBack = () => {
+    navigation.goBack();
+    console.log('data');
+  };
+
   return {
     renderTopBar,
     openCustomView,
-    navigateToCart,
-    navigateToCheckOut
+    navigateToCheckOut,
+    handleGoBack,
+    navigateToCartPage
   };
 };
 export {ProductDetailViewHooks};

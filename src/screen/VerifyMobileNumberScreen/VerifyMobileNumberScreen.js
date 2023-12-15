@@ -15,7 +15,7 @@ const VerifyMobileNumberScreen = () => {
     VerifyMobileNumberHooks();
   return (
     <View style={styles.mainContainer}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <ScrollView>
         <View style={styles.imageContainer}>
           <View

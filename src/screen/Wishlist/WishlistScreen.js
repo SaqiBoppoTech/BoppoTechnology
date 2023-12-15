@@ -16,6 +16,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import ShoppingBag from '../../assets/svgs/Shopping_Bag.svg';
 import Cross from '../../assets/svgs/Cross.svg';
 import WishListHooks from './WishListHooks';
+import {GlobalImage} from '../../global/staticImage';
 
 const WishlistScreen = () => {
   const {
@@ -23,88 +24,29 @@ const WishlistScreen = () => {
     addToCartPress,
     removeFromCart,
     navigateToProductScreen,
+    navigateToCartPage,
+    wishListData,
+    deleteWishListData,
+    addToCart,
   } = WishListHooks();
-  const data = [
-    {
-      id: 1,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 3,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 4,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 5,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 6,
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Kinder Happy Hippo Cocoa Cream 5 Bars....',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-  ];
 
   const renderItem = ({item}) => {
     return (
       <View style={styles.renderMainView}>
         <View style={styles.imageViewWrapper}>
-          <Image source={{uri: item.image}} style={styles.imageWrapper} />
+          <Image
+            source={{
+              uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
+            }}
+            style={styles.imageWrapper}
+          />
           <View style={styles.containWrapper}>
-            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.name}>{item.product.title}</Text>
             <View style={styles.ratingRowView}>
               <RatingComponent
                 initialRating={item.starCount}
-                starheight={15}
-                starwidth={15}
+                starheight={CHANGE_BY_MOBILE_DPI(15)}
+                starwidth={CHANGE_BY_MOBILE_DPI(15)}
                 width={CHANGE_BY_MOBILE_DPI(90)}
               />
               <Text style={styles.customer}>
@@ -112,11 +54,13 @@ const WishlistScreen = () => {
               </Text>
             </View>
             <View style={styles.priceContainer}>
-              <Text style={styles.price}>{item.price} USD</Text>
+              <Text style={styles.price}>{item.product_variant.price} USD</Text>
               <View style={styles.circle}></View>
               <Text style={styles.quantity}>{item.quantity}Qty</Text>
             </View>
-            <Text style={styles.discount}>{item.discount} USD</Text>
+            <Text style={styles.discount}>
+              {item.product_variant.compare_price} USD
+            </Text>
             <TouchableOpacity
               style={styles.btn}
               onPress={navigateToProductScreen}>
@@ -126,15 +70,26 @@ const WishlistScreen = () => {
         </View>
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.editWrapper} onPress={addToCartPress}>
-            <ShoppingBag width="16" height="16" />
+          <TouchableOpacity
+            style={styles.editWrapper}
+            onPress={() => addToCart(item.product_id, item.product_variant_id)}>
+            <ShoppingBag
+              width={CHANGE_BY_MOBILE_DPI(16)}
+              height={CHANGE_BY_MOBILE_DPI(16)}
+            />
             <Text style={styles.optionText}>Add to Cart</Text>
           </TouchableOpacity>
           <View style={styles.verticalLine}></View>
           <TouchableOpacity
             style={styles.removeWrapper}
-            onPress={removeFromCart}>
-            <Cross width="14" height="14" />
+            onPress={() => {
+              deleteWishListData(item.id);
+              console.log('clicked');
+            }}>
+            <Cross
+              width={CHANGE_BY_MOBILE_DPI(14)}
+              height={CHANGE_BY_MOBILE_DPI(14)}
+            />
             <Text style={styles.optionText}>Remove</Text>
           </TouchableOpacity>
         </View>
@@ -143,11 +98,17 @@ const WishlistScreen = () => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
-      <SearchAppBar title={'Your Wishlist'} onPress={handleGoBack} showCartCount={true} showCartIcon={true}/>
+    <View style={{flex: 1, backgroundColor: Colors.WHITE}}>
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
+      <SearchAppBar
+        title={'Your Wishlist'}
+        onPress={handleGoBack}
+        showCartCount={true}
+        showCartIcon={true}
+        onCartPress={navigateToCartPage}
+      />
       <FlatList
-        data={data}
+        data={wishListData}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}

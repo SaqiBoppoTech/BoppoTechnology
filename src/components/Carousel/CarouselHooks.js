@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import {FlatList} from 'react-native-gesture-handler';
-import { styles } from './CarouselStyle';
-import { Colors } from '../../global';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import {styles} from './CarouselStyle';
+import {Colors} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const CarouselHooks = () => {
   const width = Dimensions.get('window').width;
@@ -20,9 +20,9 @@ const CarouselHooks = () => {
   const [isFocused, setIsFocused] = useState(0);
 
   const carasolimagedata = [
-    {id: 1, image: require('../../assets/images/carasolimage.png')},
-    {id: 2, image: require('../../assets/images/carasolimage.png')},
-    {id: 3, image: require('../../assets/images/carasolimage.png')},
+    {id: 1, image: require('../../assets/images/CarouselImage.png')},
+    {id: 2, image: require('../../assets/images/CarouselImage.png')},
+    {id: 3, image: require('../../assets/images/CarouselImage.png')},
     // Add more items here
   ];
 
@@ -42,13 +42,20 @@ const CarouselHooks = () => {
   ];
 
   const renderItem = ({item, index}) => {
-    let focusStyle = isFocused === index ?  { backgroundColor: Colors.BLACK} : {backgroundColor:Colors.WHITE,borderWidth:CHANGE_BY_MOBILE_DPI(0.5),borderColor:Colors.GRAY_MEDIUM}
+    let focusStyle =
+      isFocused === index
+        ? {backgroundColor: Colors.BLACK}
+        : {
+            backgroundColor: Colors.WHITE,
+            borderWidth: CHANGE_BY_MOBILE_DPI(0.5),
+            borderColor: Colors.GRAY_MEDIUM,
+          };
     return (
       <View>
         <View
           style={{
             ...styles.indicator,
-             ...focusStyle
+            ...focusStyle,
           }}></View>
       </View>
     );

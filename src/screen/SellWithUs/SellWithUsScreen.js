@@ -12,7 +12,7 @@ const SellWithUsScreen = () => {
   const {handleGoBack, onSubmit} = SellWithUsHooks();
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Sell With Us'} onPress={handleGoBack} />
       <ScrollView style={styles.scroll}>
         <CustomTextField
@@ -20,32 +20,38 @@ const SellWithUsScreen = () => {
           showAsterisk={true}
           placeholder={'enter full name'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           title={'Business Email ID'}
           showAsterisk={true}
           placeholder={'ednasparro@gmail.com'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           title={'Mobile Number'}
           placeholder={'+ 00 8380000000'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           title={'Zip / Post Code'}
           placeholder={'enter zip code'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           title={'City'}
           placeholder={'enter city'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           title={'State'}
           placeholder={'enter state'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
 
         <Text style={styles.businessHeader}>YOUR BUSINESS DETAILS-</Text>
@@ -53,21 +59,25 @@ const SellWithUsScreen = () => {
           title={'Company Type'}
           placeholder={'enter type'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           title={'Company Name'}
           placeholder={'enter name'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           title={'Company Address'}
           placeholder={'enter company address'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
         <CustomTextField
           title={'Business Mobile No.'}
           placeholder={'enter business phone number'}
           placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
         />
       </ScrollView>
       <View style={styles.btn}>

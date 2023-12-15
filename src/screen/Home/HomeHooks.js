@@ -19,7 +19,7 @@ const HomeHooks = () => {
   };
 
   const navigateToLocation = () => {
-    navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
+    // navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
   };
 
   return {

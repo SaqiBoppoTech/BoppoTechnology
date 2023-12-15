@@ -1,5 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
+import {useEffect, useState} from 'react';
+import axios from 'axios';
+import {TOKEN} from '../../global/config';
 
 const ProfileHooks = () => {
   // VARIABLE
@@ -42,6 +45,27 @@ const ProfileHooks = () => {
     navigation.navigate(ScreenNames.SHIPPING_POLICY_SCREEN);
   };
 
+  ///API CODE GETPROFILE
+  const [profile, setProfile] = useState(null);
+
+  const getProfileData = async () => {
+    try {
+      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/profile`;
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: TOKEN,
+        },
+      });
+      setProfile(response.data.data.customerDetails);
+    } catch (error) {
+      console.log('error getProfile', error.message);
+    }
+  };
+
+  useEffect(() => {
+    getProfileData();
+  }, []);
+
   return {
     navigateToMyAddress,
     navigateToCurrency,
@@ -54,6 +78,7 @@ const ProfileHooks = () => {
     navigateToContactUs,
     navigateToRefundPolicy,
     navigateToShippingPolicy,
+    profile,
   };
 };
 

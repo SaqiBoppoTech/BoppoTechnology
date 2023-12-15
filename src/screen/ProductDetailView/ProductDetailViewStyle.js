@@ -67,15 +67,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: CHANGE_BY_MOBILE_DPI(61),
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1,
+    // },
+    // shadowOpacity: 0.22,
+    // shadowRadius: 2.22,
 
-    elevation: 3,
+    // elevation: 0,
     backgroundColor: Colors.WHITE
   },
   flexContainer: {

@@ -19,7 +19,8 @@ export const styles = StyleSheet.create({
   },
   imageMainContainer:{
     height:CHANGE_BY_MOBILE_DPI(165),
-    width:CHANGE_BY_MOBILE_DPI(165)
+    width:CHANGE_BY_MOBILE_DPI(165),
+    backgroundColor:Colors.WHITE
   },
   sizeContainer:{
     width:CHANGE_BY_MOBILE_DPI(165)

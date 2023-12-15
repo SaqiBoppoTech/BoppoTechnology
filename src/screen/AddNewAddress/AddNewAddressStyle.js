@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   btn: {
-    marginTop: CHANGE_BY_MOBILE_DPI(20),
+    marginTop: CHANGE_BY_MOBILE_DPI(30),
   },
   titleWrapper: {
     marginTop: CHANGE_BY_MOBILE_DPI(10),
@@ -27,6 +27,9 @@ export const styles = StyleSheet.create({
     includeFontPadding: false,
   },
   margin: {
-    marginTop: CHANGE_BY_MOBILE_DPI(10),
+    marginTop: CHANGE_BY_MOBILE_DPI(20),
+  },
+  space: {
+    marginBottom: CHANGE_BY_MOBILE_DPI(15),
   },
 });

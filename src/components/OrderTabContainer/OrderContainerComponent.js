@@ -16,6 +16,7 @@ import SelectStarSvg from '../../assets/svgs/SelectStarSvg.svg';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import PopupSvg from '../../assets/svgs/PopupSvg.svg';
 import CustomBottomSheet from '../CustomBottomsheetorderDetails/CustomBottomsheetorderDetails';
+import { STATIC_DATA } from '../../global/staticdata';
 
 const OrderContainerComponent = ({
   heading,
@@ -26,89 +27,9 @@ const OrderContainerComponent = ({
   showOrderDetailButton,
   showDivider,
   containerHeight,
+  screenName
 }) => {
-  const data = [
-    {
-      key: '1',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Coffee Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
-      productCount: '2',
-      paid: '76.99',
-      ratecount: 0,
-    },
-    {
-      key: '2',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Dettol Products 123455678899',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
-      productCount: '2',
-      paid: '76.99',
-      ratecount: 0,
-    },
-    {
-      key: '3',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Coffee Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
-      productCount: '2',
-      paid: '76.99',
-      ratecount: 0,
-    },
-    {
-      key: '4',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Dettol Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
-      productCount: '2',
-      paid: '76.99',
-      ratecount: 0,
-    },
-    {
-      key: '5',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Coffee Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
-      productCount: '2',
-      paid: '76.99',
-      ratecount: 0,
-    },
-    {
-      key: '6',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Dettol Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
-      productCount: '2',
-      paid: '76.99',
-      ratecount: 0,
-    },
-    {
-      key: '7',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Coffee Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
-      productCount: '2',
-      paid: '76.99',
-      ratecount: 0,
-    },
-    {
-      key: '8',
-      image:
-        'https://res.cloudinary.com/dawhb2mne/image/upload/v1698040599/haridwar-mart-bru-coffee_xkr9a1.png',
-      name: 'Dettol Products',
-      des: 'Kinder Happy Hippo Cocoa Cream 5',
-      productCount: '2',
-      paid: '76.99',
-      ratecount: 0,
-    },
-  ];
+
   // VARIABLE
   const navigation = useNavigation();
 
@@ -137,7 +58,7 @@ const OrderContainerComponent = ({
       }}>
       <View style={styles.rowView}>
         <View style={styles.contaier}>
-          <Image source={{uri: item.image}} style={styles.imgcontainer} />
+          <Image source={item.image} style={styles.imgcontainer} />
         </View>
         <View style={styles.nameWrapper}>
           {heading ? (
@@ -191,10 +112,23 @@ const OrderContainerComponent = ({
           </View>
         ) : null}
       </TouchableOpacity>
-      <CustomBottomSheet
-              isVisible={isBottomSheetVisible}
-              onClose={closeBottomSheet}
-            />
+      {screenName === 'OrderDetail' ? (
+        <CustomBottomSheet
+          isVisible={isBottomSheetVisible}
+          onClose={closeBottomSheet}
+          writeAProductreview={true}
+          deliveryDetails={true}
+          returnOrReplaceItem={true}
+        />
+      ) : (
+        <CustomBottomSheet
+          isVisible={isBottomSheetVisible}
+          onClose={closeBottomSheet}
+          addProductReview={true}
+          cancelThisReturn={true}
+          productDetails={true}
+        />
+      )}
     </View>
   );
   return (
@@ -204,7 +138,7 @@ const OrderContainerComponent = ({
         marginBottom: margingBottomSize ? CHANGE_BY_MOBILE_DPI(117) : 0,
       }}>
       <FlatList
-        data={data}
+        data={STATIC_DATA.orderScreen}
         renderItem={renderItem}
         keyExtractor={item => item.key}
         showsHorizontalScrollIndicator={false}

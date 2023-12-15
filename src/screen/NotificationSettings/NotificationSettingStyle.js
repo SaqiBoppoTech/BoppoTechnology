@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   toggleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.GRAY_LIGHT,
+    backgroundColor: Colors.LIGHT_WHITE,
     justifyContent: 'space-between',
     marginHorizontal: CHANGE_BY_MOBILE_DPI(20),
     paddingVertical: CHANGE_BY_MOBILE_DPI(10),

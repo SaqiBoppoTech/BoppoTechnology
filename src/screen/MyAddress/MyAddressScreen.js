@@ -17,7 +17,7 @@ const MyAddressScreen = () => {
   } = MyAddressHooks();
   return (
     <View style={styles.main}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'My Addresses'} onPress={handleGoBack} />
       <View style={styles.marginWrapper}>
         <AddressTypeComponent

@@ -11,7 +11,7 @@ const BillingAddressScreen = () => {
   const {handleGoBack, editAddress, removeAddress} = BillingAddressHooks();
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.WHITE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Billing address'} onPress={handleGoBack} />
       <AddressContainerComponenet
         onEditPress={editAddress}
@@ -19,6 +19,7 @@ const BillingAddressScreen = () => {
         showBottomOptions={true}
         showLine={true}
         typeOfAddress={'Billing Address'}
+        showdefault={true}
       />
     </View>
   );

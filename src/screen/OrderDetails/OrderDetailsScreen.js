@@ -2,19 +2,29 @@ import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './OrderDetailsStyles';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
-import Paypal from '../../assets/svgs/Paypal.svg'
+import Paypal from '../../assets/svgs/Paypal.svg';
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
 import {ScrollView} from 'react-native-gesture-handler';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
+import { orderDetailHooks } from './OrderDetailsHooks';
 
 const OrderDetailsScreen = () => {
+  const {navigateToCartPage,handleGoBack} = orderDetailHooks();
   return (
     <ScrollView>
       <View style={styles.main}>
         <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
-        <SearchAppBar title={'View Order Detail'} showCartIcon={true} showIcon={true} showSearchIcon={true} showCartCount={true}/>
+        <SearchAppBar
+          title={'View Order Detail'}
+          showCartIcon={true}
+          showIcon={true}
+          showSearchIcon={true}
+          showCartCount={true}
+          onCartPress={navigateToCartPage}
+          onPress={handleGoBack}
+        />
         <View style={styles.orderDetailView}>
           <Text style={styles.orderDetailTextTop}>ORDER DETAILS</Text>
           <Text style={styles.orderId}>Order ID 123456789</Text>
@@ -25,7 +35,7 @@ const OrderDetailsScreen = () => {
           </View>
         </View>
         <View style={styles.productContainer}>
-          <OrderContainerComponent showPopup={true} showQuantity={true} />
+          <OrderContainerComponent showPopup={true} showQuantity={true} screenName={'OrderDetail'}/>
         </View>
         <View style={styles.orderTrackingWrappe}>
           <Text>Order Tracking YET TO DEVELOP</Text>
