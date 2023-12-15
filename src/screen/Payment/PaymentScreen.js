@@ -8,14 +8,16 @@ import {PaymentHooks} from './PaymentHooks';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import CheckoutNavigationBar from '../../components/CheckoutNavigationBar/CheckoutNavigationBar';
 import {styles} from './PaymentScreenStyle';
+import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const PaymentScreen = () => {
   const {handleGoBack, orderReceivedSuccess} = PaymentHooks();
 
   return (
     <View style={styles.mainView}>
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Checkout'} onPress={handleGoBack} />
-      {/* <CheckoutNavigationBar /> */}
+      <CheckoutNavigationBar />
       <ScrollView>
         <PaymentDetails />
         <PaymentMethod />

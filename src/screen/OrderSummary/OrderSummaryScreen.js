@@ -1,6 +1,6 @@
-import { ScrollView, Text, View } from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import React from 'react';
-import { styles } from './OrderSummaryStyles';
+import {styles} from './OrderSummaryStyles';
 import CheckoutNavigationBar from '../../components/CheckoutNavigationBar/CheckoutNavigationBar';
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
 import CommonButton from '../../components/Button/CommonButton';
@@ -10,7 +10,7 @@ import ShippingMethod from '../../components/ShippingMethod/ShippingMethod';
 import ShippingType from '../../components/ShippingType/ShippingType';
 import ApplyCode from '../../components/ApplyCode/ApplyCode';
 import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
-import { Colors } from '../../global';
+import {Colors} from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 
 const OrderSummary = () => {
@@ -24,9 +24,9 @@ const OrderSummary = () => {
   } = OrderSummaryHooks();
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.GRAY_MEDIUM} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Checkout'} onPress={handleGoBack} />
-      {/* <CheckoutNavigationBar /> */}
+      <CheckoutNavigationBar />
       <ScrollView>
         <Text style={styles.text}>Delivery Address</Text>
         <AddressContainerComponenet

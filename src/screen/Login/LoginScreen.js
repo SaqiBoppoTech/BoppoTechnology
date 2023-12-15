@@ -18,6 +18,7 @@ const LoginScreen = () => {
     navigateToBottom,
     navigateToCreateAccount,
     checkLoginWithEmailOrMobileNumber,
+    handleLogin,
   } = LoginHooks();
   return (
     <View style={styles.mainContainer}>
@@ -59,7 +60,7 @@ const LoginScreen = () => {
           externalFontStyle={styles.externalFontStyle}
           externalContainer={styles.loginContainer}
           title={'Login'}
-          onPress={navigateToBottom}
+          onPress={handleLogin}
         />
         <View style={styles.bottomContainer}>
           <Text style={styles.newCustomerFontStyle}>New Customer?</Text>

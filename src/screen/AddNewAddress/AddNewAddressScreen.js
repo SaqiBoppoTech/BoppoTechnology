@@ -11,7 +11,23 @@ import CountryDropdownComponent from '../../components/CountryDropDown/CountryDr
 import CustomCheckbox from '../../components/CustomCheckBox/CustomCheckBox';
 
 const AddNewAddress = () => {
-  const {handleGoBack, navigateToDeliveryAddress} = AddNewAddressHooks();
+  const {
+    saveAddress,
+    handleGoBack,
+    navigateToDeliveryAddress,
+    addressLine1,
+    setAddressLine1,
+    city,
+    setCity,
+    province,
+    setProvince,
+    zipCode,
+    setZipCode,
+    typeOfAddress,
+    setTypeOfAddress,
+    setAsDefault,
+    setsetAsDefault,
+  } = AddNewAddressHooks();
 
   return (
     <View style={styles.mainView}>
@@ -19,6 +35,8 @@ const AddNewAddress = () => {
       <SearchAppBar title={'Add Address'} onPress={handleGoBack} />
       <ScrollView style={styles.margin}>
         <CustomTextField
+          value={addressLine1}
+          onChangeText={setAddressLine1}
           keyboardType={'default'}
           placeholder={'Street	1221 W Boise Ave, Boise,	Illinois'}
           title={'Street Address'}
@@ -26,6 +44,8 @@ const AddNewAddress = () => {
           externalContainer={styles.space}
         />
         <CustomTextField
+          value={city}
+          onChangeText={setCity}
           keyboardType={'default'}
           placeholder={'Boise'}
           title={'City'}
@@ -33,6 +53,8 @@ const AddNewAddress = () => {
           externalContainer={styles.space}
         />
         <CustomTextField
+          value={province}
+          onChangeText={setProvince}
           keyboardType={'default'}
           placeholder={'Illinois'}
           title={'State'}
@@ -42,6 +64,8 @@ const AddNewAddress = () => {
         <CountryDropdownComponent />
 
         <CustomTextField
+          value={zipCode}
+          onChangeText={setZipCode}
           keyboardType={'default'}
           placeholder={'enter zip code'}
           title={'Zip / Post Code'}
@@ -50,13 +74,33 @@ const AddNewAddress = () => {
         />
 
         <View style={styles.titleWrapper}>
-          <CustomCheckbox title={'Apply as Billing Address'} />
-          <CustomCheckbox title={'Apply as Delivery Address'} />
+          <CustomCheckbox
+            title={'Apply as Billing Address'}
+            type={'Billing'}
+            onToggle={(type, isChecked) => {
+              if (isChecked) {
+                setTypeOfAddress(type);
+              } else {
+                setTypeOfAddress(null);
+              }
+            }}
+          />
+          <CustomCheckbox
+            title={'Apply as Delivery Address'}
+            type={'Shipping'}
+            onToggle={(type, isChecked) => {
+              if (isChecked) {
+                setTypeOfAddress(type);
+              } else {
+                setTypeOfAddress(null);
+              }
+            }}
+          />
         </View>
         <View style={styles.btn}>
           <CommonButton
             title={'Save'}
-            onPress={navigateToDeliveryAddress}
+            onPress={saveAddress}
             externalFontStyle={styles.externalFontStyle}
             externalContainer={styles.loginContainer}
           />

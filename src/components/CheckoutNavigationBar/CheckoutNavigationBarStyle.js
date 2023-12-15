@@ -5,19 +5,18 @@ import {Colors, Constant, Fonts} from '../../global';
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     backgroundColor: Colors.WHITE,
     alignItems: 'center',
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    shadowColor: Colors.BLACK,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
+    marginBottom: CHANGE_BY_MOBILE_DPI(10),
+  },
+  dottedLine: {
+    height: CHANGE_BY_MOBILE_DPI(1),
+    width: CHANGE_BY_MOBILE_DPI(90),
+    borderWidth: CHANGE_BY_MOBILE_DPI(0.8),
+    borderColor: Colors.BLACK,
+    borderStyle: 'dashed',
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(5),
   },
   stepContainer: {
     justifyContent: 'center',
@@ -29,11 +28,10 @@ export const styles = StyleSheet.create({
     width: CHANGE_BY_MOBILE_DPI(30),
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: CHANGE_BY_MOBILE_DPI(5),
   },
   stepNumber: {
     textAlign: 'center',
-    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    fontSize: CHANGE_BY_MOBILE_DPI(12),
     color: Colors.WHITE,
     fontFamily: Fonts.MANROPE_BOLD,
   },
@@ -43,10 +41,15 @@ export const styles = StyleSheet.create({
     color: Colors.BLACK,
     fontFamily: Fonts.MANROPE_BOLD,
   },
-  barContainer:{
-    width:Constant.SCREEN_WIDTH / 4,
-    borderWidth:CHANGE_BY_MOBILE_DPI(1),
-    borderStyle:'dashed',
-    borderColor:Colors.BLACK,
-  }
+
+  text: {
+    color: Colors.BLACK,
+  },
+  textWrapper: {
+    backgroundColor: Colors.WHITE,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: CHANGE_BY_MOBILE_DPI(55),
+  },
 });

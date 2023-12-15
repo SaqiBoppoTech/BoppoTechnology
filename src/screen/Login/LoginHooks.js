@@ -75,15 +75,21 @@ const LoginHooks = () => {
   const handleLogin = () => {
     const validationErrors = {};
     if (!email.match(regex.email)) {
-      validationErrors.email = 'Invalid email address';
+      validationErrors.email = 'Enter valid email address';
     }
-    if (!password.match(regex.password)) {
-      validationErrors.password =
-        'Password must be at least 8 characters long and contain letters and numbers.';
-    }
+    // if (!password.match(regex.password)) {
+    //   validationErrors.password =
+    //     'Password must be at least 8 characters long and contain letters and numbers.';
+    // }
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
-      console.warn("ksasadhjsadjsaj");
+      dispatch(
+        UserAction.setLoginWithEmailOrMobileNumber({
+          condition: checkLoginWithEmailOrMobileNumber ? true : false,
+          text: email,
+        }),
+      );
+      navigation.navigate(ScreenNames.MOBILE_OTP_SCREEN);
     }
   };
   return {

@@ -13,7 +13,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {GlobalImage} from '../../global/staticImage';
 
-const YourCart = ({navigation}) => {
+const YourCart = () => {
   const {
     handleGoBack,
     navigateToProductScreen,
@@ -82,7 +82,7 @@ const YourCart = ({navigation}) => {
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Cart'} onPress={handleGoBack} />
-      {/* <CheckoutNavigationBar /> */}
+      <CheckoutNavigationBar />
       <View style={styles.flatlistView}>
         <FlatList
           data={cartListData}

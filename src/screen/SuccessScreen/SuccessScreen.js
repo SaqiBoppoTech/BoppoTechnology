@@ -18,7 +18,7 @@ const SuccessScreen = () => {
     <View style={styles.screenContainer}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       {userAppBar ? (
-        <SearchAppBar title={'Change Password'} onPress={handleGoBack} />
+        <SearchAppBar title={'Profile'} onPress={handleGoBack} />
       ) : (
         <CustomAppBar />
       )}
