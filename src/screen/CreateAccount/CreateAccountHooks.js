@@ -77,7 +77,10 @@ const CreateAccountHooks = () => {
                         mobileNumber: mobileNumber,
                         email: email,
                         registerSessionToken: response?.data?.data?.registerSessionToken,
-                        otp: response?.data?.data?.otp
+                        otp: response?.data?.data?.otp,
+                        firstname: firstName,
+                        lastname: lastName,
+                        password: password,
                     }
                     dispatch(UserAction.setMobileNumberData(a))
                     dispatch(UserAction.setGlobalLoader(false))

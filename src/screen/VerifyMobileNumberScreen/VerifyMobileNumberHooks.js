@@ -9,8 +9,8 @@ import OTPInput from '../../components/CustomOTPField/CustomOTPField';
 import React from 'react';
 const VerifyMobileNumberHooks = () => {
     let loginData = useSelector(e => e?.user?.mobileNumberData)
+    console.warn("sadsadsad", loginData?.otp);
     const [otpValue, setOtpValue] = React.useState('')
-    // console.warn("====>>",otpValue.join(''));
     const navigation = useNavigation()
     const dispatch = useDispatch()
     const checkLoginWithEmailOrMobileNumber = useSelector(e => e.user?.loginWith)
@@ -42,41 +42,43 @@ const VerifyMobileNumberHooks = () => {
         dispatch(UserAction.setGlobalLoader(false))
     }
     const getVerifyOtp = async () => {
-        try {
-            const otpData = { otp: otpValue?.join('') };
-            const response = await fetch(`${BASE_URL}${API_END_POINT.VERIFY_OTP}`, {
-              method: 'POST',
-              body: JSON.stringify(otpData),
-              headers: {
-                'Content-Type': 'application/json',
-              },
+        if (loginData?.otp == otpValue?.join('')) {
+            var myHeaders = new Headers();
+            myHeaders.append("registersessiontoken", loginData?.registerSessionToken);
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Authorization", `Bearer ${loginData?.registerSessionToken}`);
+            var raw = JSON.stringify({
+                "registersessiontoken": loginData?.registerSessionToken,
+                "otp": otpValue?.join('')
             });
-            const data = await response.json();
-            console.warn("asdasdsad",data);
-          } catch (error) {
-            console.error('Error:', error);
-          }
-        // try {
-        //     if (loginData?.otp == otpValue?.join('')) {
-        //         dispatch(UserAction.setGlobalLoader(true))
-        //         let otpData = { "otp": otpValue?.join('') }
-        //         const response = await axios.post(`${BASE_URL}${API_END_POINT.VERIFY_OTP}`, otpData, {
-        //             headers: {
-        //                 Authorization: `Bearer ${loginData?.registerSessionToken}`
-        //             }
-        //         })
-        //         if (response?.data?.success == true) {
-        //             dispatch(UserAction.setGlobalLoader(false))
-        //             navigation.dispatch(resetStackAndGoToBottom);
-        //         }
-        //     } else {
-        //         dispatch(UserAction.setGlobalLoader(false))
-        //         openGlobalModal('Invalid Otp')
-        //     }
-        // } catch (error) {
-        //     console.log('getVerifyOtp', error.message)
-        //     dispatch(UserAction.setGlobalLoader(false))
-        // }
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            try {
+                const response = await fetch(`${BASE_URL}${API_END_POINT.VERIFY_OTP}`, requestOptions);
+                const result = await response.json();
+                if (result?.success === true) {
+                    dispatch(UserAction.setGlobalLoader(false))
+                    dispatch(UserAction.setToastedAlert({
+                        condition: true,
+                        toastedAlertText: `User register successfully`
+                    }))
+                    navigation.dispatch(resetStackAndGoToBottom);
+                } else {
+                    dispatch(UserAction.setGlobalLoader(false))
+                    openGlobalModal(result?.message)
+                }
+            } catch (error) {
+                dispatch(UserAction.setGlobalLoader(false))
+                console.log('sadsad',error.message)
+            }
+        } else {
+            dispatch(UserAction.setGlobalLoader(false))
+            openGlobalModal('Invalid Otp')
+        }
     }
     const navigateToHomePage = () => {
         navigation.navigate(ScreenNames.BOTTOM_TAB)

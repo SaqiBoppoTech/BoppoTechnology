@@ -1,9 +1,12 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {ScreenNames} from '../../global';
-import {regex} from '../../global/constant';
-import {useDispatch} from 'react-redux';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { ScreenNames } from '../../global';
+import { regex } from '../../global/constant';
+import { useDispatch, useSelector } from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
+import { loginValidation, signUpValidation } from '../../global/validation';
+import axios from 'axios';
+import { BASE_URL } from '../../global/config';
 
 const LoginHooks = () => {
   // VARIABLE
@@ -20,15 +23,50 @@ const LoginHooks = () => {
   const navigateToForgotPassword = () => {
     navigation.navigate(ScreenNames.FORGET_PASSWORD_SCREEN);
   };
-  const navigateToBottom = () => {
-    if (email) {
-      dispatch(
-        UserAction.setLoginWithEmailOrMobileNumber({
-          condition: checkLoginWithEmailOrMobileNumber ? true : false,
-          text: email,
-        }),
-      );
-      navigation.navigate(ScreenNames.MOBILE_OTP_SCREEN);
+  const openGlobalModal = ({ title }) => {
+    dispatch(UserAction.setAlertData(
+      {
+        alertVisibility: true,
+        message: 'Alert',
+        description: title,
+        leftText: 'OK',
+        rightEvent: () => { },
+        leftEvent: () => { }
+      }
+    ))
+    dispatch(UserAction.setGlobalLoader(false))
+  }
+  const resetStackAndGoToBottom = CommonActions.reset({
+    index: 0,
+    routes: [{ name: ScreenNames.BOTTOM_TAB }],
+});
+  const navigateToBottom = async () => {
+    try {
+      let loginData = {
+        "country_code": "+91",
+        "contact_no": email,
+        "password": password
+      }
+      if (loginValidation({ email, password, openGlobalModal })) {
+        dispatch(UserAction.setGlobalLoader(true))
+        const response = await axios.post(`${BASE_URL}/auth/api/v1/customer/login`, loginData)
+        if (response?.data?.success) {
+          dispatch(UserAction.setUserData(response?.data?.data))
+          dispatch(UserAction.setGlobalLoader(false))
+          dispatch(UserAction.setLoginWithEmailOrMobileNumber({
+              condition: checkLoginWithEmailOrMobileNumber ? true : false,
+              text: email,
+            }),
+          );
+          navigation.dispatch(resetStackAndGoToBottom);
+        } else {
+          dispatch(UserAction.setGlobalLoader(false))
+          openGlobalModal({ title: response?.data?.message })
+        }
+      }
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false))
+      console.log('error', error.message)
     }
   };
   const navigateToCreateAccount = () => {
@@ -45,7 +83,7 @@ const LoginHooks = () => {
     }
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
-      navigation.navigate('Tabs');
+      console.warn("ksasadhjsadjsaj");
     }
   };
   return {
@@ -64,4 +102,4 @@ const LoginHooks = () => {
   };
 };
 
-export {LoginHooks};
+export { LoginHooks };
