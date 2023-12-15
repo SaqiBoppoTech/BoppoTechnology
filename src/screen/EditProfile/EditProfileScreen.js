@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, ScrollView} from 'react-native';
 import CommonButton from '../../components/Button/CommonButton';
 import {styles} from './EditProfileStyle';
@@ -10,7 +10,20 @@ import {Colors} from '../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const EditProfileScreen = () => {
-  const {handleGoBack, onSubmit, navigateToChangePassword} = EditProfileHooks();
+  const {
+    handleGoBack,
+    onSubmit,
+    navigateToChangePassword,
+    firstName,
+    setfirstName,
+    lastname,
+    setLastname,
+    contactNo,
+    setContactNo,
+    email,
+    setEmail,
+  } = EditProfileHooks();
+
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
@@ -22,6 +35,8 @@ const EditProfileScreen = () => {
           placeholderTextColor={Colors.GRAY_DARK}
           title={'First Name'}
           showAsterisk={true}
+          value={firstName}
+          onChangeText={setfirstName}
           externalContainer={{
             ...styles.space,
             marginTop: CHANGE_BY_MOBILE_DPI(5),
@@ -34,6 +49,8 @@ const EditProfileScreen = () => {
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Last Name'}
           showAsterisk={true}
+          value={lastname}
+          onChangeText={setLastname}
           externalContainer={styles.space}
         />
 
@@ -44,6 +61,8 @@ const EditProfileScreen = () => {
           title={'Email ID'}
           showAsterisk={true}
           externalContainer={styles.space}
+          value={email}
+          onChangeText={setEmail}
         />
         <CustomTextField
           keyboardType={'default'}
@@ -51,6 +70,8 @@ const EditProfileScreen = () => {
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Mobile Number'}
           externalContainer={styles.space}
+          value={contactNo}
+          onChangeText={setContactNo}
         />
 
         <CustomTextField

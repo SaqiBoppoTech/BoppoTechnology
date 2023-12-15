@@ -22,12 +22,13 @@ const ProfileScreen = () => {
     navigateToContactUs,
     navigateToRefundPolicy,
     navigateToShippingPolicy,
+    profile
   } = ProfileHooks();
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <ScrollView>
-        <ProfileSection />
+        <ProfileSection profileName={profile?.firstname}/>
         <View
           style={{
             ...styles.settingWrapper,
