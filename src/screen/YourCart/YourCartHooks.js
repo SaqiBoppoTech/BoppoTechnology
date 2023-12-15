@@ -3,12 +3,16 @@ import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {TOKEN} from '../../global/config';
+import {useDispatch} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
 
 const YourCartHook = () => {
   const navigation = useNavigation();
   const handleGoBack = () => {
     navigation.goBack();
   };
+
+  const dispatch = useDispatch();
 
   const wishListClick = () => {};
   const removeFromCart = () => {};
@@ -24,14 +28,19 @@ const YourCartHook = () => {
 
   const getCartListData = async () => {
     try {
+      dispatch(UserAction.setGlobalLoader(true));
       let url = `https://stage-api.boppogo.com/auth/api/v1/customer/get-cart`;
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
         },
       });
-      setCartListData(response.data.data.customerCartDetails);
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setCartListData(response.data.data.customerCartDetails);
+      }
     } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
       console.log('error getCartList', error.message);
     }
   };
@@ -45,6 +54,9 @@ const YourCartHook = () => {
           Authorization: TOKEN,
         },
       });
+      if (response.data.success == true) {
+        getCartListData();
+      }
       console.log(response.data);
     } catch (error) {
       console.log('error deleteCartList', error.message);
@@ -76,7 +88,7 @@ const YourCartHook = () => {
 
   useEffect(() => {
     getCartListData();
-  }, [deleteCartListData]);
+  }, []);
 
   return {
     handleGoBack,

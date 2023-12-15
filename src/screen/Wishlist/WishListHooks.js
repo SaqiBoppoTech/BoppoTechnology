@@ -3,6 +3,8 @@ import {ScreenNames} from '../../global';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import {API_END_POINT, BASE_URL, TOKEN} from '../../global/config';
+import {useDispatch} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
 
 const WishListHooks = () => {
   const navigation = useNavigation();
@@ -20,19 +22,26 @@ const WishListHooks = () => {
     navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
   };
 
+  const dispatch = useDispatch();
+
   ///API CODE GETWISHLIST
   const [wishListData, setWishListData] = useState(null);
 
   const getWishListData = async () => {
     try {
+      dispatch(UserAction.setGlobalLoader(true));
       let url = `https://stage-api.boppogo.com/auth/api/v1/customer/get-wishlist`;
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
         },
       });
-      setWishListData(response.data.data.customerWishlistDetails);
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setWishListData(response.data.data.customerWishlistDetails);
+      }
     } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
       console.log('error getWishList', error.message);
     }
   };
@@ -46,6 +55,9 @@ const WishListHooks = () => {
           Authorization: TOKEN,
         },
       });
+      if (response.data.success == true) {
+        getWishListData();
+      }
       console.log(response.data);
     } catch (error) {
       console.log('error deleteWishList', error.message);
@@ -78,7 +90,7 @@ const WishListHooks = () => {
 
   useEffect(() => {
     getWishListData();
-  }, [deleteWishListData]);
+  }, []);
 
   return {
     handleGoBack,
