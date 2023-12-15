@@ -11,7 +11,7 @@ import YourCartHook from './YourCartHooks';
 import {Colors} from '../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import { GlobalImage } from '../../global/staticImage';
+import {GlobalImage} from '../../global/staticImage';
 
 const YourCart = () => {
   const {
@@ -20,86 +20,28 @@ const YourCart = () => {
     removeFromCart,
     wishListClick,
     navigateToOrderSummary,
+    cartListData,
+    deleteCartListData,
+    addToWishList,
   } = YourCartHook();
-  const data = [
-    {
-      id: 1,
-      image:
-        GlobalImage.Goldenearings,
-      name: 'Gold Earrings',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      image:
-        GlobalImage.Ring2,
-      name: 'Rings',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 3,
-      image:
-        GlobalImage.Set1,
-      name: 'Platinum',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 4,
-      image:
-       GlobalImage.TwoEarings,
-      name: 'Earrings',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 5,
-      image:
-       GlobalImage.GoldenPendent,
-      name: 'Pendant',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-    {
-      id: 6,
-      image:
-        GlobalImage.WhiteEarings,
-      name: 'Diamond Earring',
-      numOfCustumer: 1,
-      starCount: 3,
-      price: 36.99,
-      discount: 48.56,
-      quantity: 1,
-    },
-  ];
 
   const renderItem = ({item}) => {
     return (
       <View style={styles.renderMainView}>
         <View style={styles.imageViewWrapper}>
-          <Image source={item.image} style={styles.imageWrapper} />
+          <Image
+            source={{
+              uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
+            }}
+            style={styles.imageWrapper}
+          />
           <View style={styles.containWrapper}>
-            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.name}>{item.product.title}</Text>
             <View style={styles.priceContainer}>
-              <Text style={styles.price}>{item.price} USD</Text>
-              <Text style={styles.discount}>{item.discount}USD</Text>
+              <Text style={styles.price}>{item.product_variant.price} USD</Text>
+              <Text style={styles.discount}>
+                {item.product_variant.compare_price}USD
+              </Text>
             </View>
             <Text style={styles.quantity}>Qty</Text>
             <BlackIncremnetButton />
@@ -107,7 +49,11 @@ const YourCart = () => {
         </View>
         <View style={styles.line}></View>
         <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.editWrapper} onPress={wishListClick}>
+          <TouchableOpacity
+            style={styles.editWrapper}
+            onPress={() =>
+              addToWishList(item.product_id, item.product_variant_id)
+            }>
             <Heart
               width={CHANGE_BY_MOBILE_DPI(14)}
               height={CHANGE_BY_MOBILE_DPI(14)}
@@ -116,8 +62,11 @@ const YourCart = () => {
           </TouchableOpacity>
           <View style={styles.verticalLine}></View>
           <TouchableOpacity
-            style={styles.removeWrapper}
-            onPress={removeFromCart}>
+            onPress={() => {
+              deleteCartListData(item.id);
+              console.log('clicked');
+            }}
+            style={styles.removeWrapper}>
             <Cross
               width={CHANGE_BY_MOBILE_DPI(12)}
               height={CHANGE_BY_MOBILE_DPI(12)}
@@ -136,7 +85,7 @@ const YourCart = () => {
       <CheckoutNavigationBar />
       <View style={styles.flatlistView}>
         <FlatList
-          data={data}
+          data={cartListData}
           renderItem={renderItem}
           keyExtractor={item => item.key}
           showsHorizontalScrollIndicator={false}

@@ -11,7 +11,19 @@ export const setLoginWithEmailOrMobileNumber = payload => ({
   type: actionTypes.LOGIN_WITH,
   payload,
 });
-export const setAppBar = payload => ({
-  type: actionTypes.APPBAR,
+export const setAppData = payload => ({
+  type: actionTypes.APP_DATA,
+  payload,
+});
+export const setMobileNumberData = payload => ({
+  type: actionTypes.MOBILE_NUMBER,
+  payload,
+});
+export const setGlobalLoader = payload => ({
+  type: actionTypes.GLOBAL_LOADER,
+  payload,
+});
+export const setAlertData = payload => ({
+  type: actionTypes.ALERT_DATA,
   payload,
 });

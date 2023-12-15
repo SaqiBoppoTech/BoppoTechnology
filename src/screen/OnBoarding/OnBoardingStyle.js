@@ -58,7 +58,6 @@ export const styles = StyleSheet.create({
     borderRadius: CHANGE_BY_MOBILE_DPI(9),
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.BLACK
 
   },
   flexDirectionContainer: {
