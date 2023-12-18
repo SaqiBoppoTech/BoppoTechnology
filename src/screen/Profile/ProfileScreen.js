@@ -8,6 +8,7 @@ import {ProfileHooks} from './ProfileHooks';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import {Colors} from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ProfileScreen = () => {
   const {
@@ -22,13 +23,14 @@ const ProfileScreen = () => {
     navigateToContactUs,
     navigateToRefundPolicy,
     navigateToShippingPolicy,
-    profile
+    navigateToLogin,
+    profile,
   } = ProfileHooks();
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <ScrollView>
-        <ProfileSection profileName={profile?.firstname}/>
+        <ProfileSection profileName={profile?.firstname} />
         <View
           style={{
             ...styles.settingWrapper,
@@ -109,11 +111,13 @@ const ProfileScreen = () => {
           />
         </View>
         <View style={styles.btn}>
-          <CommonButton
-            externalFontStyle={styles.externalFontStyle}
-            externalContainer={styles.loginContainer}
-            title={'Log Out'}
-          />
+          <TouchableOpacity  onPress={navigateToLogin}>
+            <CommonButton
+              externalFontStyle={styles.externalFontStyle}
+              externalContainer={styles.loginContainer}
+              title={'Log Out'}
+            />
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
