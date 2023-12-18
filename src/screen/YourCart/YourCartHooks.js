@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {TOKEN} from '../../global/config';
+import {BASE_URL, TOKEN} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 
@@ -29,7 +29,7 @@ const YourCartHook = () => {
   const getCartListData = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/get-cart`;
+      let url = `${BASE_URL}/auth/api/v1/customer/get-cart`;
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
@@ -48,7 +48,7 @@ const YourCartHook = () => {
   ///API CODE OF DELETECART
   const deleteCartListData = async id => {
     try {
-      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/delete-cart-items/${id}`;
+      let url = `${BASE_URL}/auth/api/v1/customer/delete-cart-items/${id}`;
       const response = await axios.delete(url, {
         headers: {
           Authorization: TOKEN,
@@ -67,7 +67,7 @@ const YourCartHook = () => {
   const addToWishList = async (productID, productVariantId) => {
     console.log(productID, productVariantId);
     try {
-      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/add-wishlist`;
+      const url = `${BASE_URL}/auth/api/v1/customer/add-wishlist`;
       const response = await axios.post(
         url,
         {

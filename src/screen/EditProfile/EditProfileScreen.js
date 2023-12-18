@@ -8,6 +8,7 @@ import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {Colors} from '../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const EditProfileScreen = () => {
   const {
@@ -22,6 +23,7 @@ const EditProfileScreen = () => {
     setContactNo,
     email,
     setEmail,
+    navigateToSuccessScreen
   } = EditProfileHooks();
 
   return (
@@ -88,7 +90,7 @@ const EditProfileScreen = () => {
       <View style={styles.btn}>
         <CommonButton
           title={'Submit'}
-          onPress={onSubmit}
+          onPress={navigateToSuccessScreen}
           externalFontStyle={styles.externalFontStyle}
           externalContainer={styles.loginContainer}
         />

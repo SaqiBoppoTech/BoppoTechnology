@@ -2,7 +2,7 @@ import {CommonActions, useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {TOKEN} from '../../global/config';
+import {BASE_URL, TOKEN} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 
@@ -48,7 +48,6 @@ const ProfileHooks = () => {
   };
 
   const gotoLogin = CommonActions.reset({
-    index: 0,
     routes: [{name: ScreenNames.LOGIN_SCREEN}],
   });
 
@@ -77,7 +76,7 @@ const ProfileHooks = () => {
   ///API OF GET PROFILE
   const getProfileData = async () => {
     try {
-      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/profile`;
+      let url = `${BASE_URL}/auth/api/v1/customer/profile`;
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,

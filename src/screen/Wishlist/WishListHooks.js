@@ -30,7 +30,7 @@ const WishListHooks = () => {
   const getWishListData = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/get-wishlist`;
+      let url = `${BASE_URL}/auth/api/v1/customer/get-wishlist`;
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
@@ -49,7 +49,7 @@ const WishListHooks = () => {
   ///API CODE OF DELETEWISHLIST
   const deleteWishListData = async id => {
     try {
-      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/delete-wishlist-items/${id}`;
+      let url = `${BASE_URL}/auth/api/v1/customer/delete-wishlist-items/${id}`;
       const response = await axios.delete(url, {
         headers: {
           Authorization: TOKEN,
@@ -68,7 +68,7 @@ const WishListHooks = () => {
   const addToCart = async (productID, productVariantId, productQuantity) => {
     console.log(productID, productVariantId);
     try {
-      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/add-update-cart`;
+      const url = `${BASE_URL}/auth/api/v1/customer/add-update-cart`;
       const response = await axios.post(
         url,
         {

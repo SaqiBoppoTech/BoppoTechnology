@@ -41,6 +41,7 @@ const LoginHooks = () => {
     routes: [{ name: ScreenNames.BOTTOM_TAB }],
 });
   const navigateToBottom = async () => {
+    navigation.dispatch(resetStackAndGoToBottom);
     try {
       let loginData = {
         "country_code": "+91",

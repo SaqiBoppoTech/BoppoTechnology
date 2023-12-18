@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {TOKEN} from '../../global/config';
+import {BASE_URL, TOKEN} from '../../global/config';
 const EditProfileHooks = () => {
   const navigation = useNavigation();
   const handleGoBack = () => {
@@ -13,7 +13,7 @@ const EditProfileHooks = () => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    dispatch(UserAction.setAppBar(true));
+    // dispatch(UserAction.setAppBar(true));
     navigation.navigate(ScreenNames.SUCCESS_SCREEN, {
       message: `Profile Edited \nSuccessfully`,
     });
@@ -21,13 +21,16 @@ const EditProfileHooks = () => {
   const navigateToChangePassword = () => {
     navigation.navigate(ScreenNames.CHANGE_PASSWORD);
   };
+  const navigateToSuccessScreen = () => {
+    updateUserProfile();
+  };
 
   ///API CODE GETPROFILE
   const [profile, setProfile] = useState(null);
 
   const getProfileData = async () => {
     try {
-      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/profile`;
+      let url = `${BASE_URL}/auth/api/v1/customer/profile`;
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
@@ -48,6 +51,34 @@ const EditProfileHooks = () => {
   const [contactNo, setContactNo] = useState('');
   const [email, setEmail] = useState('');
 
+  ///API OF UPDATE PROFILE
+  const updateUserProfile = async () => {
+    try {
+      let url =
+        `${BASE_URL}/auth/api/v1/customer/update-profile`;
+      const response = await axios.patch(
+        url,
+        {
+          firstname: firstName,
+          lastname: lastname,
+          email: email,
+          date_of_birth: '2000-12-5',
+          gender: 'Male',
+        },
+        {
+          headers: {
+            Authorization: TOKEN,
+          },
+        },
+      );
+      if (response.data.success == true) {
+        onSubmit();
+      }
+    } catch (error) {
+      console.log('error UpdateUserProfile', error.message);
+    }
+  };
+
   useEffect(() => {
     getProfileData();
   }, []);
@@ -64,6 +95,7 @@ const EditProfileHooks = () => {
     setContactNo,
     email,
     setEmail,
+    navigateToSuccessScreen,
   };
 };
 
