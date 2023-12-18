@@ -12,8 +12,8 @@ const MyAddressHooks = () => {
   const navigateToBillingScreen = () => {
     navigation.navigate(ScreenNames.BILLING_ADDRESS);
   };
-  const navigateToAddToNewAddress = () => {
-    navigation.navigate(ScreenNames.ADD_NEW_ADDRESS);
+  const navigateToAddToNewAddress = ({item}) => {
+    navigation.navigate(ScreenNames.ADD_NEW_ADDRESS, {item: null});
   };
 
   return {

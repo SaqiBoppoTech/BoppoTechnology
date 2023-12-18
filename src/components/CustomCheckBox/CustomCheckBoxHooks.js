@@ -1,8 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
-const CustomCheckBoxHooks = () => {
+const CustomCheckBoxHooks = isCheckBox => {
   // HOOKS
   const [isChecked, setChecked] = useState(false);
+
+  useEffect(() => {
+    setChecked(isCheckBox);
+  }, [isCheckBox]);
 
   return {
     isChecked,
