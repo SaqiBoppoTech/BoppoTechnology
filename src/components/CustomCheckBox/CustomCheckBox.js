@@ -5,13 +5,17 @@ import {styles} from './CustomCheckBoxStyle';
 import {CustomCheckBoxHooks} from './CustomCheckBoxHooks';
 import Check from '../../assets/svgs/Check.svg';
 
-const CustomCheckbox = ({title}) => {
+const CustomCheckbox = ({title, type, onToggle}) => {
   const {isChecked, setChecked} = CustomCheckBoxHooks();
+  const handleToggle = () => {
+    setChecked(!isChecked);
+    onToggle(type, !isChecked);
+  };
   return (
     <View style={styles.mainView}>
       <TouchableOpacity
         style={[styles.checkbox, isChecked ? styles.checked : null]}
-        onPress={() => setChecked(!isChecked)}>
+        onPress={handleToggle}>
         <View style={styles.checkWrapper}>
           {isChecked && <Check width="14" height="14" />}
         </View>

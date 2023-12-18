@@ -18,6 +18,7 @@ const LoginScreen = () => {
     navigateToBottom,
     navigateToCreateAccount,
     checkLoginWithEmailOrMobileNumber,
+    handleLogin,
   } = LoginHooks();
   return (
     <View style={styles.mainContainer}>
@@ -38,7 +39,7 @@ const LoginScreen = () => {
           maxLenght={checkLoginWithEmailOrMobileNumber ? 10 : null}
           value={email}
           onChangeText={setEmail}
-          error={errors.email}
+          // error={errors.email}
           externalContainer={styles.marginTopStyle}
         />
         <CustomTextField

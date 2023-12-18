@@ -4,7 +4,7 @@ import React from 'react';
 import {styles} from './AddressContainerStyles';
 import Edit from '../../assets/svgs/Edit.svg';
 import Remove from '../../assets/svgs/Remove.svg';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const AddressContainerComponenet = ({
   onEditPress,
@@ -14,6 +14,10 @@ const AddressContainerComponenet = ({
   showIconRight,
   showLine,
   showdefault,
+  addressline1,
+  zipcode,
+  city,
+  province,
 }) => {
   return (
     <View style={styles.mainContainer}>
@@ -28,21 +32,25 @@ const AddressContainerComponenet = ({
         {showIconRight && (
           <View style={styles.iconWrapper}>
             <TouchableOpacity onPress={onEditPress}>
-              <Edit width={CHANGE_BY_MOBILE_DPI(18)} height={CHANGE_BY_MOBILE_DPI(18)}/>
+              <Edit
+                width={CHANGE_BY_MOBILE_DPI(18)}
+                height={CHANGE_BY_MOBILE_DPI(18)}
+              />
             </TouchableOpacity>
-            <TouchableOpacity onPress={onEditPress}>
-              <Remove width={CHANGE_BY_MOBILE_DPI(18)} height={CHANGE_BY_MOBILE_DPI(18)} />
+            <TouchableOpacity onPress={onRemovePress}>
+              <Remove
+                width={CHANGE_BY_MOBILE_DPI(18)}
+                height={CHANGE_BY_MOBILE_DPI(18)}
+              />
             </TouchableOpacity>
           </View>
         )}
       </View>
       <View style={styles.addressView}>
-        <Text style={styles.streetAddress}>
-          Street 1221 W Boise Ave, Boise, Illinois
-        </Text>
-        <Text style={styles.streetAddress}>Zip/Postal Code 83706</Text>
-        <Text style={styles.streetAddress}>Phone Number (208) 258-3871</Text>
-        <Text style={styles.streetAddress}>Country- United States</Text>
+        <Text style={styles.streetAddress}>{addressline1}</Text>
+        <Text style={styles.streetAddress}>{zipcode}</Text>
+        <Text style={styles.streetAddress}>{city}</Text>
+        <Text style={styles.streetAddress}>{province}</Text>
       </View>
       {showLine && <View style={styles.line}></View>}
 

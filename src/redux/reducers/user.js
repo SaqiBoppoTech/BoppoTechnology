@@ -1,6 +1,5 @@
 import * as actionTypes from '../actionTypes/actionType';
 const initialState = {
-	userData: null,
 	toastedAlert: {
 		condition: false,
 		toastedAlertText: '',
@@ -20,7 +19,17 @@ const initialState = {
 	},
 	globalLoader: false,
 	globalAppData: null,
-	mobileNumberData: null
+	mobileNumberData: {
+		country_code: '+91',
+		mobileNumber: '',
+		email: '',
+		registerSessionToken: '',
+		otp: '',
+		firstname: '',
+		lastname: '',
+		password: '',
+	},
+	userData: {}
 };
 const user = (state = initialState, action) => {
 	const { type, payload } = action;

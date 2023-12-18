@@ -70,15 +70,19 @@ const CreateAccountHooks = () => {
             }
             if (signUpValidation({ ...regestarationData, confirmPassword, openGlobalModal })) {
                 dispatch(UserAction.setGlobalLoader(true))
-                const response = await axios.post(`${BASE_URL}${API_END_POINT.REGISTERATION}`, regestarationData)
+                const response = await axios.post(`${BASE_URL}/auth/api/v1/customer/register`, regestarationData)
                 if (response?.data?.success) {
-                    dispatch(UserAction.setMobileNumberData({
-                            country_code: '+91',
-                            mobileNumber: mobileNumber,
-                            email: email,
-                            registerSessionToken: response?.data?.data?.registerSessionToken,
-                            otp: response?.data?.data?.otp
-                        }))
+                    let a = {
+                        country_code: '+91',
+                        mobileNumber: mobileNumber,
+                        email: email,
+                        registerSessionToken: response?.data?.data?.registerSessionToken,
+                        otp: response?.data?.data?.otp,
+                        firstname: firstName,
+                        lastname: lastName,
+                        password: password,
+                    }
+                    dispatch(UserAction.setMobileNumberData(a))
                     dispatch(UserAction.setGlobalLoader(false))
                     navigation.navigate(ScreenNames.MOBILE_OTP_SCREEN);
                 } else {
@@ -104,7 +108,8 @@ const CreateAccountHooks = () => {
         email, setEmail,
         mobileNumber, setMobileNumber,
         password, setPassword,
-        confirmPassword, setConfirmPassword
+        confirmPassword, setConfirmPassword,
+
     }
 }
 export { CreateAccountHooks }

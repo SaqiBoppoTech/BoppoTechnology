@@ -11,16 +11,16 @@ import { Colors } from '../../global';
 
 const ForgetPasswordOtpScreen = () => {
   const { sendToData, password, setPassword,
-    retryPassword, setRetryPassword,navigateToSuccess } = ForgetPasswordHooks()
+    retryPassword, setRetryPassword,navigateToSuccess ,setOtpValue,loginData} = ForgetPasswordHooks()
   return (
       <View style={styles.mainContainer}>
         <CustomAppBar />
         <View style={styles.marginContainer}>
           <Text style={styles.otpFontStyle}>The OTP has been sent to</Text>
-          <Text style={styles.sendToFontStyle}>{sendToData}</Text>
+          <Text style={styles.sendToFontStyle}>{loginData?.contact_us}</Text>
         </View>
         <Text style={styles.enterOtpFontStyle}>Please enter the OTP</Text>
-        <OTPInput arrayCount={6} />
+        <OTPInput arrayCount={6} setData={setOtpValue}/>
         <Text style={styles.resendotp}>Resend OTP</Text>
         <CustomTextField
           keyboardType={'default'}
