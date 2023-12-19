@@ -16,7 +16,7 @@ const SuccessScreen = () => {
     SuccessHooks();
   return (
     <View style={styles.screenContainer}>
-      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
+      <FocusAwareStatusBar barColor={Colors.CONCRETE} isTopSpace={false} />
       {userAppBar ? (
         <SearchAppBar title={'Profile'} onPress={handleGoBack} />
       ) : (

@@ -41,8 +41,9 @@ const ForgetPasswordHooks = () => {
             let checkRegex = checkThisIsMobileNumber ? regex.mobileNumber.test(emailAndPhoneNumber) : regex.email.test(emailAndPhoneNumber)
             if (checkRegex) {
                 const response = await axios.post(`${BASE_URL}/auth/api/v1/customer/forget-password`, forgotPasswordData)
-               console.warn("Asdsad",response.data);
-                if (response?.data?.success) {
+                if (response?.data?.success == true) {
+                    dispatch(UserAction.setGlobalLoader(true))
+                    console.warn("Asdsad", response.data);
                     let a = {
                         country_code: '+91',
                         mobileNumber: emailAndPhoneNumber,
@@ -58,6 +59,7 @@ const ForgetPasswordHooks = () => {
                         condition: true,
                         toastedAlertText: `OTP has been send to\n${checkThisIsMobileNumber ? '+' : ''}${emailAndPhoneNumber}`
                     }))
+                    dispatch(UserAction.setGlobalLoader(false))
                     navigation.navigate(ScreenNames.FORGET_PASSWORD_OTP_SCREEN, { sendTo: emailAndPhoneNumber });
                 } else {
                     dispatch(UserAction.setGlobalLoader(false))
@@ -69,23 +71,10 @@ const ForgetPasswordHooks = () => {
             }
         } catch (error) {
             dispatch(UserAction.setGlobalLoader(false))
+            openGlobalModal({ title: error.response?.data?.message })
             console.log('error', error.response.data)
         }
     };
-    // const navigationToForgotPasswordOtp = () => {
-    //     let checkRegex = checkThisIsMobileNumber ? regex.mobileNumber.test(emailAndPhoneNumber) : regex.email.test(emailAndPhoneNumber)
-    //     if (checkRegex) {
-    //         navigation.navigate(ScreenNames.FORGET_PASSWORD_OTP_SCREEN, { sendTo: emailAndPhoneNumber });
-    //         dispatch(UserAction.setToastedAlert({
-    //             condition: true,
-    //             toastedAlertText: `OTP has been send to\n${checkThisIsMobileNumber ? '+' : ''}${emailAndPhoneNumber}`
-    //         }))
-    //     } else {
-    //         Alert.alert('Alert', 'In Valid')
-    //     }
-    // }
-
-
     return { navigationToForgotPasswordOtp, emailAndPhoneNumber, setEmailAndPhoneNumber, checkThisIsMobileNumber, checkLengthOfInput }
 }
 export { ForgetPasswordHooks }

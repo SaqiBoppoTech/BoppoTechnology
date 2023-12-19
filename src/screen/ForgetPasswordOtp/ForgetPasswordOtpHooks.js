@@ -70,9 +70,11 @@ const ForgetPasswordHooks = () => {
             openGlobalModal('Invalid Otp')
         }
     }
-    // const navigateToSuccess = () => {
-    //     navigation.navigate(ScreenNames.SUCCESS_SCREEN, { message: `Password updated ${'\n'}successfully`});
-    // }
+    React.useEffect(() => {
+        if (loginData?.otp) {
+            openGlobalModal({ title: `Your Otp for registeration is \n${loginData?.otp}` })
+        }
+    }, [])
     return {
         sendToData,
         password, setPassword,

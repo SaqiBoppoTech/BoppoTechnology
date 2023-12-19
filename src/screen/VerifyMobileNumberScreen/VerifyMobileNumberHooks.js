@@ -7,6 +7,8 @@ import axios from 'axios';
 import { API_END_POINT, BASE_URL } from '../../global/config';
 import OTPInput from '../../components/CustomOTPField/CustomOTPField';
 import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axiosInstance from '../../global/api-core';
 const VerifyMobileNumberHooks = () => {
     let loginData = useSelector(e => e?.user?.mobileNumberData)
     console.warn("sadsadsad", loginData?.otp);
@@ -66,6 +68,15 @@ const VerifyMobileNumberHooks = () => {
                         condition: true,
                         toastedAlertText: `User register successfully`
                     }))
+                    console.warn("==========1111======",result);
+                    let mobileNumberDataWithToken = {
+                        accessToken: result?.accessToken,
+                        contatcNumber: loginData?.mobileNumber,
+                        refreshToken: result?.refreshToken
+                    }
+                    console.warn("=======22222======",mobileNumberDataWithToken);
+                    await AsyncStorage.setItem("userData", JSON.stringify(mobileNumberDataWithToken))
+                    axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + result?.accessToken;
                     navigation.dispatch(resetStackAndGoToBottom);
                 } else {
                     dispatch(UserAction.setGlobalLoader(false))
@@ -73,7 +84,7 @@ const VerifyMobileNumberHooks = () => {
                 }
             } catch (error) {
                 dispatch(UserAction.setGlobalLoader(false))
-                console.log('sadsad',error.message)
+                console.log('sadsad', error.message)
             }
         } else {
             dispatch(UserAction.setGlobalLoader(false))

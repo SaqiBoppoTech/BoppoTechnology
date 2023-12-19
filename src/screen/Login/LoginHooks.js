@@ -7,6 +7,8 @@ import * as UserAction from '../../redux/actions/userActions';
 import { loginValidation, signUpValidation } from '../../global/validation';
 import axios from 'axios';
 import { BASE_URL } from '../../global/config';
+import axiosInstance from '../../global/api-core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginHooks = () => {
   // VARIABLE
@@ -39,7 +41,7 @@ const LoginHooks = () => {
   const resetStackAndGoToBottom = CommonActions.reset({
     index: 0,
     routes: [{ name: ScreenNames.BOTTOM_TAB }],
-});
+  });
   const navigateToBottom = async () => {
     try {
       let loginData = {
@@ -54,10 +56,17 @@ const LoginHooks = () => {
           dispatch(UserAction.setUserData(response?.data?.data))
           dispatch(UserAction.setGlobalLoader(false))
           dispatch(UserAction.setLoginWithEmailOrMobileNumber({
-              condition: checkLoginWithEmailOrMobileNumber ? true : false,
-              text: email,
-            }),
+            condition: checkLoginWithEmailOrMobileNumber ? true : false,
+            text: email,
+          }),
           );
+          let mobileNumberDataWithToken = {
+            accessToken: response?.data?.data?.accessToken,
+            contatcNumber: email,
+            refreshToken: response?.data?.data?.refreshToken
+          }
+          await AsyncStorage.setItem("userData", JSON.stringify(mobileNumberDataWithToken))
+          axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + response?.data?.data?.accessToken;
           navigation.dispatch(resetStackAndGoToBottom);
         } else {
           dispatch(UserAction.setGlobalLoader(false))

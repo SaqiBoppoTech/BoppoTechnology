@@ -15,7 +15,7 @@ const ForgetPasswordScreen = () => {
       <KeyboardAvoidingView style={styles.flexContainer}>
         <Text style={styles.selectioFontStyle}>Make Selection</Text>
         <CustomTextField
-        titleExternalStyle={styles.titleExternalStyle}
+          titleExternalStyle={styles.titleExternalStyle}
           maxLenght={checkThisIsMobileNumber ? 10 : null}
           keyboardType={'default'}
           placeholderTextColor={Colors.GRAY_DARK}
@@ -25,7 +25,6 @@ const ForgetPasswordScreen = () => {
           onChangeText={setEmailAndPhoneNumber}
         />
       </KeyboardAvoidingView>
-
       <CommonButton
         color={checkLengthOfInput ? Colors.BLACK : Colors.GRAY_MEDIUM}
         externalCustomButtonStyle={styles.externalCustomButtonStyle}

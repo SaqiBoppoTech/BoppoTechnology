@@ -22,28 +22,33 @@ const SuccessHooks = () => {
     navigation.goBack();
   };
   const navigateToEditProfile = () => {
-    navigation.navigate(ScreenNames.PROFILE_SCREEN);
-  };
-  const onTimeOutNaviagteToLogin = async () => {
-    Animated.timing(Opacity, {
-      toValue: 0,
-      duration: 1500,
-      useNativeDriver: true,
-    }).start(async ({finished}) => {
-      if (finished) {
-        navigation.dispatch(resetStackAndGoToLogin);
-        dispatch(
-          UserAction.setToastedAlert({
-            condition: true,
-            toastedAlertText: `Your password is successfully \nupdated. Please Login here to\n continue`,
-          }),
-        );
-      }
-    });
-  };
-  React.useEffect(() => {
-    // onTimeOutNaviagteToLogin();
-  }, []);
+    navigation.dispatch(resetStackAndGoToLogin);
+    dispatch(
+      UserAction.setToastedAlert({
+        condition: true,
+        toastedAlertText: `Your password is successfully \nupdated. Please Login here to\n continue`,
+      }),
+    )};
+  // const onTimeOutNaviagteToLogin = async () => {
+  //   Animated.timing(Opacity, {
+  //     toValue: 0,
+  //     duration: 1500,
+  //     useNativeDriver: true,
+  //   }).start(async ({finished}) => {
+  //     if (finished) {
+  //       navigation.dispatch(resetStackAndGoToLogin);
+  //       dispatch(
+  //         UserAction.setToastedAlert({
+  //           condition: true,
+  //           toastedAlertText: `Your password is successfully \nupdated. Please Login here to\n continue`,
+  //         }),
+  //       );
+  //     }
+  //   });
+  // };
+  // React.useEffect(() => {
+  //   // onTimeOutNaviagteToLogin();
+  // }, []);
   return {
     message,
     userAppBar,
