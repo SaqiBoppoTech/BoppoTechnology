@@ -36,6 +36,7 @@ const SplashScreen = () => {
         let userExistUrl = `${BASE_URL}/auth/api/v1/customer/refresh`
         const response = await axios.post(userExistUrl,refreshTokenData)
         console.warn(
+          
           "Asdasdasdasd",response.data
         );
         if (response?.data?.success == true) {
