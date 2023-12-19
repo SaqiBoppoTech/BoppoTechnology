@@ -27,3 +27,7 @@ export const setAlertData = payload => ({
   type: actionTypes.ALERT_DATA,
   payload,
 });
+export const setChangePasswordOtp = payload => ({
+  type: actionTypes.CHANGEPASS_ALERT,
+  payload,
+});

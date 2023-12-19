@@ -18,9 +18,10 @@ const EditProfileHooks = () => {
       message: `Profile Edited \nSuccessfully`,
     });
   };
-  const navigateToChangePassword = () => {
-    navigation.navigate(ScreenNames.CHANGE_PASSWORD);
-  };
+  // const navigateToChangePassword = () => {
+  //   navigation.navigate(ScreenNames.CHANGE_PASSWORD);
+  // };
+
   const navigateToSuccessScreen = () => {
     updateUserProfile();
   };
@@ -54,8 +55,7 @@ const EditProfileHooks = () => {
   ///API OF UPDATE PROFILE
   const updateUserProfile = async () => {
     try {
-      let url =
-        `${BASE_URL}/auth/api/v1/customer/update-profile`;
+      let url = `${BASE_URL}/auth/api/v1/customer/update-profile`;
       const response = await axios.patch(
         url,
         {
@@ -76,6 +76,31 @@ const EditProfileHooks = () => {
       }
     } catch (error) {
       console.log('error UpdateUserProfile', error.message);
+    }
+  };
+
+  ///API OF CHANGE PASSWORD
+  const navigateToChangePassword = async () => {
+    try {
+      var myHeaders = new Headers();
+      myHeaders.append('authorization', TOKEN);
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        redirect: 'follow',
+      };
+      const response = await fetch(
+        `${BASE_URL}/auth/api/v1/customer/change-password`,
+        requestOptions,
+      );
+      const result = await response.json();
+      if (result.success == true) {
+        navigation.navigate(ScreenNames.CHANGE_PASSWORD);
+        console.log(`abcccccccc ${result.data.otp}`);
+        dispatch(UserAction.setChangePasswordOtp(result.data.otp))
+      }
+    } catch (error) {
+      console.log('error ChangePassword', error.message);
     }
   };
 
