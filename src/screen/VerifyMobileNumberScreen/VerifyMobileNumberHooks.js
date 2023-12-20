@@ -68,15 +68,6 @@ const VerifyMobileNumberHooks = () => {
                         condition: true,
                         toastedAlertText: `User register successfully`
                     }))
-                    console.warn("==========1111======",result);
-                    let mobileNumberDataWithToken = {
-                        accessToken: result?.accessToken,
-                        contatcNumber: loginData?.mobileNumber,
-                        refreshToken: result?.refreshToken
-                    }
-                    console.warn("=======22222======",mobileNumberDataWithToken);
-                    await AsyncStorage.setItem("userData", JSON.stringify(mobileNumberDataWithToken))
-                    axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + result?.accessToken;
                     navigation.dispatch(resetStackAndGoToBottom);
                 } else {
                     dispatch(UserAction.setGlobalLoader(false))

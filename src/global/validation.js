@@ -1,7 +1,7 @@
 import { Alert } from "react-native";
 import { Constant } from ".";
 export const signUpValidation = ({ firstname, lastname, email, contact_no, password, confirmPassword, openGlobalModal }) => {
-  if (!Constant.regex.loginValidation.nameRegex.test(firstname) || !Constant.regex.loginValidation.nameRegex.test(lastname)) {
+  if (firstname.length == 0 || lastname.length == 0 ) {
     openGlobalModal({ title: 'Please enter a valid first and last name' })
     return false;
   }

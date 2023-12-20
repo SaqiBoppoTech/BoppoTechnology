@@ -17,11 +17,11 @@ const SplashScreen = () => {
   const appData = useSelector(e => e?.user?.globalAppData)
   const resetStackAndGoToBottom = CommonActions.reset({
     index: 0,
-    routes: [{ name: ScreenNames.ONBOARDING_SCREEN }],
+    routes: [{ name: ScreenNames.BOTTOM_TAB }],
   });
   const resetStackAndGoToLogin = CommonActions.reset({
     index: 0,
-    routes: [{ name: ScreenNames.LOGIN_SCREEN }],
+    routes: [{ name: ScreenNames.ONBOARDING_SCREEN }],
   });
 
   const checkUserExistOrNot = async () => {
@@ -29,30 +29,26 @@ const SplashScreen = () => {
     let convertIntoParse = JSON.parse(getUserMobileNumberByAsyncStorge)
     let userPhoneNumber = convertIntoParse?.contatcNumber
     if (userPhoneNumber) {
-    try {
-     let refreshTokenData =   {
-        "refresh_token": convertIntoParse?.refreshToken
-      }
+      try {
+        let refreshTokenData = { "refresh_token": convertIntoParse?.refreshToken }
         let userExistUrl = `${BASE_URL}/auth/api/v1/customer/refresh`
-        const response = await axios.post(userExistUrl,refreshTokenData)
-        console.warn(
-          
-          "Asdasdasdasd",response.data
-        );
+        const response = await axios.post(userExistUrl, refreshTokenData)
         if (response?.data?.success == true) {
+          let mobileNumberDataWithToken = {
+            accessToken: response?.data?.data?.accessToken,
+            contatcNumber: userPhoneNumber,
+            refreshToken: response?.data?.data?.refreshToken
+          }
+          await AsyncStorage.setItem("userData", JSON.stringify(mobileNumberDataWithToken));
+          axiosInstance.defaults.headers['Authorization'] =  response.data.data.accessToken;
           navigation.dispatch(resetStackAndGoToBottom);
         }
-        // await AsyncStorage.setItem("userData", JSON.stringify(response.data.userData));
-        // axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + response.data.token.token;
-        // let tokenUrl = `/${END_POINT.GET_USER}/${response.data.userData.userId}/token/${messagingToken}`
-        // const tokenUpdate = await axiosInstance.put(tokenUrl, {})
-        // navigation.dispatch(resetStackAndGoToBottom);
-    } catch (error) {
-      console.log('====SplashScreen===>>',error.message )
+      } catch (error) {
+        console.log('====SplashScreen===>>', error.message)
+      }
+    } else {
+      navigation.dispatch(resetStackAndGoToLogin);
     }
-  } else {
-    navigation.dispatch(resetStackAndGoToLogin);
-  }
   }
   const onLoad = async () => {
     Animated.timing(Opacity, {
@@ -73,9 +69,9 @@ const SplashScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <FocusAwareStatusBar barColor={Colors.PRIMARY} />
-      <View style={{...styles.container,backgroundColor:Colors.PRIMARY}}>
+      <View style={{ ...styles.container, backgroundColor: Colors.PRIMARY }}>
         {appData?.appLogo(CHANGE_BY_MOBILE_DPI(70), CHANGE_BY_MOBILE_DPI(70))}
-        <Text style={{ ...styles.text,color:Colors.BLACK }}>BoppoGo</Text>
+        <Text style={{ ...styles.text, color: Colors.BLACK }}>BoppoGo</Text>
       </View>
     </View>
   );

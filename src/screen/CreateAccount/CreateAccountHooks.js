@@ -17,15 +17,12 @@ const CreateAccountHooks = () => {
     const dispatch = useDispatch()
     // HOOK 
     const [selectOption, setSelectOption] = React.useState(0)
-
     const [firstName, setfirstName] = React.useState('')
     const [lastName, setLastName] = React.useState('')
     const [email, setEmail] = React.useState('')
     const [mobileNumber, setMobileNumber] = React.useState('')
     const [password, setPassword] = React.useState('')
     const [confirmPassword, setConfirmPassword] = React.useState('')
-
-
 
     //  FUNCTIONs
     const renderCreateAccount = ({ item, index }) => {
