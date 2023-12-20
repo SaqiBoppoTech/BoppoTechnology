@@ -8,6 +8,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
+import {BearerToken} from '../../global/config';
 
 const AllOrderHooks = () => {
   const [orders, setorders] = useState(null);
@@ -34,7 +35,7 @@ const AllOrderHooks = () => {
         },
         {
           headers: {
-            Authorization: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVqd2FsLnlhZGF2QGJvcHBvdGVjaG5vbG9naWVzLmNvbSIsImNvbnRhY3Rfbm8iOiI5OTg3Nzc5NDA3IiwidG9rZW5fdHlwZSI6IkFDQ0VTU19UT0tFTiIsImlhdCI6MTcwMzA0NjY5OSwiZXhwIjoxNzAzMTMzMDk5LCJhdWQiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIiwiaXNzIjoiQm9wcG8gR28iLCJzdWIiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIn0.nIhtgAWovVfg7cDnknC1zO7jWTJqKa7b2amdRKXHWF4lju6_Gq6pM5XojHoSUMzUPEX8A9nmcTtPcwLyIV0Xb3yIywabb_ztW8M5l1LdkNrFLFtSXavEh9T5XbnS2q3jeFgItEe0Tmz9fwFGV8_Yq90R-FLJDpX3sF8Ssu8-3uqZ6J6PzqnL2NTtfO92xaf24KV0KLFuYB1uLIuvaoR35r7ERpgREGlmrErky0z4qIv7XzzmuyTz8oitZdrJBsrSVTKzpophBgpN5fsESRR5vxiSpAQ-GXTLg4SYIjPVAxzmFeZ2gmLaaVss3TY9CO5Nk46TW90pJJ4AohAb0ZblXg`,
+            Authorization: BearerToken,
           },
         },
       );

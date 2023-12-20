@@ -14,8 +14,6 @@ const YourCartHook = () => {
 
   const dispatch = useDispatch();
 
-  const wishListClick = () => {};
-  const removeFromCart = () => {};
   const navigateToProductScreen = () => {
     navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
   };
@@ -25,6 +23,7 @@ const YourCartHook = () => {
 
   ///API CODE
   const [cartListData, setCartListData] = useState(null);
+  const [paymentDataList, setpaymentDataList] = useState(null);
 
   const getCartListData = async () => {
     try {
@@ -86,14 +85,35 @@ const YourCartHook = () => {
     }
   };
 
+  const shopPaymentProviders = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `https://stage-api.boppogo.com/payment/api/v1/providers/shop-payment-providers`;
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: TOKEN,
+        },
+      });
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setpaymentDataList(response.data);
+        console.log('payment list', response.data);
+      }
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error paymentlist', error.message);
+    }
+  };
+
+  console.log('bopoooososos poayment', paymentDataList);
+
   useEffect(() => {
     getCartListData();
+    shopPaymentProviders();
   }, []);
 
   return {
     handleGoBack,
-    wishListClick,
-    removeFromCart,
     navigateToProductScreen,
     navigateToOrderSummary,
     cartListData,

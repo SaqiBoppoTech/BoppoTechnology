@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 import {useRoute} from '@react-navigation/native';
+import {BearerToken} from '../../global/config';
 
 const AddNewAddressHooks = () => {
   const [countryCode, setcountryCode] = useState('');
@@ -58,12 +59,12 @@ const AddNewAddressHooks = () => {
           type: typeOfAddress,
           recepient_name: name,
           recepient_contact: contact,
-          set_as_default: defaultAddress,
+          set_as_default: false, //defaultAddress,
         },
 
         {
           headers: {
-            Authorization: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cmFqLnlhZGF2QGJvcHBvdGVjaG5vbG9naWVzLmNvbSIsImNvbnRhY3Rfbm8iOiI4Nzg3ODc4Nzg3IiwidG9rZW5fdHlwZSI6IkFDQ0VTU19UT0tFTiIsImlhdCI6MTcwMjg3MzQ4MCwiZXhwIjoxNzAyOTU5ODgwLCJhdWQiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIiwiaXNzIjoiQm9wcG8gR28iLCJzdWIiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIn0.CnBBZJHQTfXmgwR7JpMnBduIJIBARX_FkanFQHUUW2z62TtivaeZKo16ANvQAs5_L-SefZBqcalHXu35T95jpAsQiElZZZnCGwEceMXb_M8pWqJVjSo9S4Vw7EWR2mga_AYq996YMjBWt7qKbefQn4Yp1COzZ5AsEmLska-PRN82WhOkUbE_Zd9ze06rZeHlXzPmu4y7kDeMfVw8Mppt91CYA93b9IctvbQoex3cU8sa3ZO4y8Qs_cgCDlH0pQPWqSWOaioTVZ4TuAfHjYcpj4zgAFGCvySfVamRbKsS8-rjFNF9pmmWk9R6s6YtAsnHQ3mOGBw_oTvefKcIiN-18A`,
+            Authorization: BearerToken,
           },
         },
       );
@@ -97,7 +98,7 @@ const AddNewAddressHooks = () => {
           type: typeOfAddress,
           recepient_name: name,
           recepient_contact: contact,
-          set_as_default: defaultAddress,
+          set_as_default: false, //defaultAddress,
           country_code: '+91',
         },
 

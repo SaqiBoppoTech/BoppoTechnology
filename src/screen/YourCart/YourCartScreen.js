@@ -17,8 +17,6 @@ const YourCart = () => {
   const {
     handleGoBack,
     navigateToProductScreen,
-    removeFromCart,
-    wishListClick,
     navigateToOrderSummary,
     cartListData,
     deleteCartListData,
@@ -26,6 +24,7 @@ const YourCart = () => {
   } = YourCartHook();
 
   const renderItem = ({item}) => {
+    // console.log(item);
     return (
       <View style={styles.renderMainView}>
         <View style={styles.imageViewWrapper}>
