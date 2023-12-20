@@ -1,27 +1,54 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import RatingComponent from '../../components/RatingStar';
+import React, {useState, useEffect} from 'react';
+import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
 import {styles} from './AllOrdersStyles';
-import {Constant, ScreenNames} from '../../global';
+import {ScreenNames} from '../../global';
 import SelectStarSvg from '../../assets/svgs/SelectStarSvg.svg';
 import {useNavigation} from '@react-navigation/native';
-import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import axios from 'axios';
+import {useDispatch} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
 
 const AllOrderHooks = () => {
+  const [orders, setorders] = useState(null);
   // VARIABLE
   const navigation = useNavigation();
 
   // FUNCTION
   const navigateToOrderDetails = () => {
     navigation.navigate(ScreenNames.ORDERDETAIL_SCREEN);
+  };
+
+  const dispatch = useDispatch();
+
+  const getOrders = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      const url = `https://stage-api.boppogo.com/order/api/v1/customer/orders`;
+      const response = await axios.post(
+        url,
+        {
+          page: 1,
+          limit: 50,
+          order_status: ['Active'],
+        },
+        {
+          headers: {
+            Authorization: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVqd2FsLnlhZGF2QGJvcHBvdGVjaG5vbG9naWVzLmNvbSIsImNvbnRhY3Rfbm8iOiI5OTg3Nzc5NDA3IiwidG9rZW5fdHlwZSI6IkFDQ0VTU19UT0tFTiIsImlhdCI6MTcwMzA0NjY5OSwiZXhwIjoxNzAzMTMzMDk5LCJhdWQiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIiwiaXNzIjoiQm9wcG8gR28iLCJzdWIiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIn0.nIhtgAWovVfg7cDnknC1zO7jWTJqKa7b2amdRKXHWF4lju6_Gq6pM5XojHoSUMzUPEX8A9nmcTtPcwLyIV0Xb3yIywabb_ztW8M5l1LdkNrFLFtSXavEh9T5XbnS2q3jeFgItEe0Tmz9fwFGV8_Yq90R-FLJDpX3sF8Ssu8-3uqZ6J6PzqnL2NTtfO92xaf24KV0KLFuYB1uLIuvaoR35r7ERpgREGlmrErky0z4qIv7XzzmuyTz8oitZdrJBsrSVTKzpophBgpN5fsESRR5vxiSpAQ-GXTLg4SYIjPVAxzmFeZ2gmLaaVss3TY9CO5Nk46TW90pJJ4AohAb0ZblXg`,
+          },
+        },
+      );
+      dispatch(UserAction.setGlobalLoader(false));
+      const orderList = response.data;
+      setorders(orderList);
+      // if (response.data.success == true) {
+
+      // }
+      console.log('ordersList', response.data);
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error orders Api', error.message);
+    }
   };
 
   const renderItem = ({item}) => (
@@ -86,6 +113,12 @@ const AllOrderHooks = () => {
     //   containerHeight={true}
     // />
   );
+
+  useEffect(() => {
+    getOrders();
+    console.log('useeffect ke andar');
+  }, []);
+
   return {
     renderItem,
   };
