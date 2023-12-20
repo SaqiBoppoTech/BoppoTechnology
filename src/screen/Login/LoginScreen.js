@@ -39,7 +39,7 @@ const LoginScreen = () => {
           maxLenght={checkLoginWithEmailOrMobileNumber ? 10 : null}
           value={email}
           onChangeText={setEmail}
-          error={errors.email}
+          // error={errors.email}
           externalContainer={styles.marginTopStyle}
         />
         <CustomTextField
@@ -60,7 +60,7 @@ const LoginScreen = () => {
           externalFontStyle={styles.externalFontStyle}
           externalContainer={styles.loginContainer}
           title={'Login'}
-          onPress={handleLogin}
+          onPress={navigateToBottom}
         />
         <View style={styles.bottomContainer}>
           <Text style={styles.newCustomerFontStyle}>New Customer?</Text>

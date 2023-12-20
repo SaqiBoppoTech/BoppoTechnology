@@ -7,14 +7,28 @@ import CustomTextField from '../../components/CustomTextField/CustomTextFieldCom
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import ChangePasswordHooks from './ChangePasswordHooks';
+import OTPInput from '../../components/CustomOTPField/CustomOTPField';
 
 const ChangePassword = () => {
-  const {handleGoBack, onPressCancel, onPressSave} = ChangePasswordHooks();
+  const {
+    handleGoBack,
+    onPressCancel,
+    onPressSave,
+    setOtpValue,
+    otpValue,
+    currentPassword,
+    setCurrentPassword,
+    confirmPassword,
+    setConfirmPassword,
+  } = ChangePasswordHooks();
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Change Password'} onPress={handleGoBack} />
       <ScrollView style={styles.bg}>
+        <Text style={styles.enterOtpFontStyle}>Please enter the OTP</Text>
+        <OTPInput arrayCount={6} setData={setOtpValue} />
+        <Text style={styles.resendotp}>Resend OTP</Text>
         <CustomTextField
           keyboardType={'default'}
           placeholder={'enter current password'}
@@ -25,6 +39,8 @@ const ChangePassword = () => {
             ...styles.space,
             marginTop: CHANGE_BY_MOBILE_DPI(15),
           }}
+          value={currentPassword}
+          onChangeText={setCurrentPassword}
         />
 
         <CustomTextField
@@ -43,6 +59,8 @@ const ChangePassword = () => {
           title={'Confirm New Password'}
           showAsterisk={true}
           externalContainer={styles.space}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
         />
       </ScrollView>
       <View style={styles.btn}>

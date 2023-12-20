@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {styles} from './CustomOTPStyle';
 
-const OTPInput = ({arrayCount = 4}) => {
+const OTPInput = ({arrayCount = 4,setData}) => {
   const [otp, setOtp] = useState([...new Array(arrayCount)]);
   const inputRefs = [];
   const handleChange = (text, index) => {
@@ -10,6 +10,7 @@ const OTPInput = ({arrayCount = 4}) => {
     const updatedOtp = [...otp];
     updatedOtp[index] = text;
     setOtp(updatedOtp);
+    setData(updatedOtp)
     if (index < otp.length - 1 && text.length === 1) {
       inputRefs[index + 1].focus();
     }

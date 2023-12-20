@@ -32,4 +32,19 @@ export const styles = StyleSheet.create({
   space: {
     marginBottom: CHANGE_BY_MOBILE_DPI(20),
   },
+  enterOtpFontStyle:{
+    fontSize:CHANGE_BY_MOBILE_DPI(16),
+    color:Colors.BLACK,
+    fontFamily:Fonts.MANROPE_BOLD  ,
+    alignSelf:'center',
+    marginVertical:CHANGE_BY_MOBILE_DPI(20)
+  },
+  resendotp: {
+    fontSize:CHANGE_BY_MOBILE_DPI(14),
+    color:Colors.BLACK,
+    fontFamily:Fonts.INTER_REGULAR,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    marginVertical:CHANGE_BY_MOBILE_DPI(20)
+  },
 });

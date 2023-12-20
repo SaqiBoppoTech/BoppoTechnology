@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import SearchField from '../../components/SearchField';
@@ -16,55 +16,16 @@ import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import Arrow from '../../assets/svgs/ArrowCategorySvg.svg';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import {useDispatch} from 'react-redux';
+import axios from 'axios';
+import * as UserAction from '../../redux/actions/userActions';
+import { BASE_URL } from '../../global/config';
 
 const CategoryHooks = () => {
   // VARIABLE
   const navigation = useNavigation();
 
-  //HOOKS
-  const {categoryImg} = GlobalImage;
-  const categoryData = [
-    {
-      name: 'Gold Earrings',
-      quantity: '160',
-      image: GlobalImage.TwoEarings,
-    },
-    {
-      name: 'Rose Gold Dimond rings',
-      quantity: '160',
-      image: GlobalImage.ring,
-    },
-    {
-      name: 'Silver Earrings',
-      quantity: '160',
-      image: GlobalImage.WhiteEarings,
-    },
-    {
-      name: 'Pendant',
-      quantity: '160',
-      image: GlobalImage.GoldenPendent,
-    },
-    {
-      name: 'Rose Gold ',
-      quantity: '160',
-      image: GlobalImage.Ring4,
-    },
-    {
-      name: 'Earrings',
-      quantity: '160',
-      image: GlobalImage.Goldenearings,
-    },
-    // {
-    //   name: 'Beauty Products',
-    //   quantity: '160',
-    //   image: categoryImg,
-    // },
-    // {
-    //   name: 'Grocery',
-    //   quantity: '160',
-    //   image: categoryImg,
-    // },
-  ];
+  const dispatch = useDispatch();
 
   //FUNCTION
   const navigateToCategoryDetail = item => {
@@ -77,28 +38,34 @@ const CategoryHooks = () => {
     navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
   };
 
-  const renderCategory = ({item}) => (
-    <TouchableOpacity
-      onPress={() => navigateToCategoryDetail(item)}
-      activeOpacity={1}>
-      <View style={styles.productWrapper}>
-        <Image source={item.image} style={styles.imageWrapper} />
-        <View style={styles.titleWrapper}>
-          <Text numberOfLines={1} style={styles.textWrapper}>
-            {item.name}
-          </Text>
-          <Text style={styles.productText}>{item.quantity} products</Text>
-        </View>
-        <View style={styles.arrowWrapper}>
-          <Arrow
-            height={CHANGE_BY_MOBILE_DPI(12)}
-            width={CHANGE_BY_MOBILE_DPI(9)}
-          />
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-  return {categoryData, categoryImg, navigateToCategoryDetail, renderCategory,navigateToCartPage};
+  const [categoriesList, setCategoriesList] = useState(null);
+
+  //API OF Customer Collection Menu i.e Get Category
+  const getCategories = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `${BASE_URL}/product/api/v1/customer/collection/menu`;
+      const response = await axios.get(url);
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setCategoriesList(response.data.data.shop_collections);
+        console.log(response.data.data.shop_collections);
+      }
+    } catch (error) {
+      console.log('error GetCategories', error.message);
+    }
+  };
+
+  useEffect(() => {
+    console.log('FETCHED');
+    getCategories();
+  }, []);
+
+  return {
+    navigateToCategoryDetail,
+    navigateToCartPage,
+    categoriesList,
+  };
 };
 
 export {CategoryHooks};

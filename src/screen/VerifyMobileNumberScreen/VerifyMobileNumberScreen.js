@@ -11,7 +11,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import {VerifyMobileNumberHooks} from './VerifyMobileNumberHooks';
 
 const VerifyMobileNumberScreen = () => {
-  const {goBackToLogin, checkLoginWithEmailOrMobileNumber, navigateToHomePage} =
+  const {goBackToLogin, checkLoginWithEmailOrMobileNumber,navigateToHomePage,setOtpValue,getVerifyOtp} =
     VerifyMobileNumberHooks();
   return (
     <View style={styles.mainContainer}>
@@ -50,14 +50,14 @@ const VerifyMobileNumberScreen = () => {
           </Text>
         </View>
         <Text style={styles.enterOtpStyle}>Please enter the OTP</Text>
-        <OTPInput />
+        <OTPInput setData={setOtpValue} arrayCount={6}/>
         <Text style={styles.resendotp}>Resend OTP</Text>
         <CommonButton
           externalCustomButtonStyle={styles.externalCustomButtonStyle}
           externalContainer={styles.externalContainer}
           externalFontStyle={styles.externalFontStyle}
           title={'Continue'}
-          onPress={navigateToHomePage}
+          onPress={getVerifyOtp}
           // onPress={() => goBackToLogin(2,true)}
         />
       </ScrollView>

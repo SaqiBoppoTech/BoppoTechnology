@@ -5,7 +5,7 @@ import {Colors} from '../../global';
 
 const CustomTextField = ({
   keyboardType,
-  placeholder,
+  placeholder = '',
   title = '',
   showAsterisk,
   showSecure,
