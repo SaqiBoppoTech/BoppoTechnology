@@ -83,7 +83,6 @@ const CreateAccountHooks = () => {
                     dispatch(UserAction.setGlobalLoader(false))
                     navigation.navigate(ScreenNames.MOBILE_OTP_SCREEN);
                 } else {
-                    console.warn("asdsa", response?.data);
                     dispatch(UserAction.setGlobalLoader(false))
                     openGlobalModal({ title: response?.data?.message })
                 }

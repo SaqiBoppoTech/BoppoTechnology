@@ -3,6 +3,7 @@ import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {TOKEN} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const ProfileHooks = () => {
   // VARIABLE
@@ -51,11 +52,7 @@ const ProfileHooks = () => {
   const getProfileData = async () => {
     try {
       let url = `https://stage-api.boppogo.com/auth/api/v1/customer/profile`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: TOKEN,
-        },
-      });
+      const response = await axiosInstance.get(url)
       setProfile(response.data.data.customerDetails);
     } catch (error) {
       console.log('error getProfile', error.message);

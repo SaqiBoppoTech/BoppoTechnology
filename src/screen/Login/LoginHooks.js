@@ -66,7 +66,7 @@ const LoginHooks = () => {
             refreshToken: response?.data?.data?.refreshToken
           }
           await AsyncStorage.setItem("userData", JSON.stringify(mobileNumberDataWithToken))
-          axiosInstance.defaults.headers['Authorization'] = 'Bearer ' + response?.data?.data?.accessToken;
+          axiosInstance.defaults.headers['Authorization'] = response?.data?.data?.accessToken;
           navigation.dispatch(resetStackAndGoToBottom);
         } else {
           dispatch(UserAction.setGlobalLoader(false))
