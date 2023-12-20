@@ -18,9 +18,9 @@ const EditProfileHooks = () => {
       message: `Profile Edited \nSuccessfully`,
     });
   };
-  // const navigateToChangePassword = () => {
-  //   navigation.navigate(ScreenNames.CHANGE_PASSWORD);
-  // };
+  const navigateToVerifyMobileNumberScreen = () => {
+    navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
+  };
 
   const navigateToSuccessScreen = () => {
     updateUserProfile();
@@ -96,7 +96,6 @@ const EditProfileHooks = () => {
       const result = await response.json();
       if (result.success == true) {
         navigation.navigate(ScreenNames.CHANGE_PASSWORD);
-        console.log(`abcccccccc ${result.data.otp}`);
         dispatch(UserAction.setChangePasswordOtp(result.data.otp))
       }
     } catch (error) {
@@ -121,6 +120,7 @@ const EditProfileHooks = () => {
     email,
     setEmail,
     navigateToSuccessScreen,
+    navigateToVerifyMobileNumberScreen
   };
 };
 
