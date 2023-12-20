@@ -8,7 +8,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import {BearerToken} from '../../global/config';
+import {BearerToken, ORIGIN} from '../../global/config';
 
 const AllOrderHooks = () => {
   const [orders, setorders] = useState(null);
@@ -36,6 +36,7 @@ const AllOrderHooks = () => {
         {
           headers: {
             Authorization: BearerToken,
+            origin: ORIGIN,
           },
         },
       );

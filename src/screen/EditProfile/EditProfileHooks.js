@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {BASE_URL, TOKEN} from '../../global/config';
+import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 const EditProfileHooks = () => {
   const navigation = useNavigation();
   const handleGoBack = () => {
@@ -35,6 +35,7 @@ const EditProfileHooks = () => {
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       setProfile(response.data.data.customerDetails);
@@ -68,6 +69,7 @@ const EditProfileHooks = () => {
         {
           headers: {
             Authorization: TOKEN,
+            origin: ORIGIN,
           },
         },
       );
@@ -92,12 +94,13 @@ const EditProfileHooks = () => {
       const response = await fetch(
         `${BASE_URL}/auth/api/v1/customer/change-password`,
         requestOptions,
+        {headers: {origin: ORIGIN}},
       );
       const result = await response.json();
       if (result.success == true) {
         navigation.navigate(ScreenNames.CHANGE_PASSWORD);
         console.log(`abcccccccc ${result.data.otp}`);
-        dispatch(UserAction.setChangePasswordOtp(result.data.otp))
+        dispatch(UserAction.setChangePasswordOtp(result.data.otp));
       }
     } catch (error) {
       console.log('error ChangePassword', error.message);

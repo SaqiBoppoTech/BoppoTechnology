@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 import axios from 'axios';
-import {BearerToken} from '../../global/config';
+import {BearerToken, ORIGIN} from '../../global/config';
 
 const BillingAddressHooks = () => {
   const [allAddress, setAllAddress] = useState([]);
@@ -33,6 +33,7 @@ const BillingAddressHooks = () => {
       const response = await axios.get(url, {
         headers: {
           Authorization: BearerToken,
+          origin: ORIGIN,
         },
       });
       if (response.data.success == true) {
@@ -62,6 +63,7 @@ const BillingAddressHooks = () => {
       const response = await axios.delete(url, {
         headers: {
           Authorization: BearerToken,
+          origin: ORIGIN,
         },
       });
       console.log('rmeovesssss', response.data);

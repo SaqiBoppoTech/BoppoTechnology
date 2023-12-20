@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {BASE_URL, TOKEN} from '../../global/config';
+import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 
@@ -32,6 +32,7 @@ const YourCartHook = () => {
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       if (response.data.success == true) {
@@ -51,6 +52,7 @@ const YourCartHook = () => {
       const response = await axios.delete(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       if (response.data.success == true) {
@@ -76,6 +78,7 @@ const YourCartHook = () => {
         {
           headers: {
             Authorization: TOKEN,
+            origin: ORIGIN,
           },
         },
       );
@@ -92,6 +95,7 @@ const YourCartHook = () => {
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       if (response.data.success == true) {
