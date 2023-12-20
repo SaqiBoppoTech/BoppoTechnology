@@ -17,7 +17,7 @@ import Arrow from '../../assets/svgs/ArrowCategorySvg.svg';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const CategoryScreen = () => {
-  const {navigateToCartPage, categoriesList} = CategoryHooks();
+  const {navigateToCartPage, categoriesList,navigateToCategoryDetail} = CategoryHooks();
 
   const renderCategory = ({item}) => (
     <TouchableOpacity
