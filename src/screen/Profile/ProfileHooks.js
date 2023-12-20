@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {TOKEN} from '../../global/config';
+import {API_END_POINT, BASE_URL, TOKEN} from '../../global/config';
 import axiosInstance from '../../global/api-core';
 
 const ProfileHooks = () => {
@@ -51,8 +51,7 @@ const ProfileHooks = () => {
 
   const getProfileData = async () => {
     try {
-      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/profile`;
-      const response = await axiosInstance.get(url)
+      const response = await axiosInstance.get(API_END_POINT.PROFILE)
       setProfile(response.data.data.customerDetails);
     } catch (error) {
       console.log('error getProfile', error.message);
