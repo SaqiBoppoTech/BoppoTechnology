@@ -12,7 +12,7 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import SearchField from '../../components/SearchField';
 import {GlobalImage} from '../../global/staticImage';
 import {styles} from './CategoryStyle';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import Arrow from '../../assets/svgs/ArrowCategorySvg.svg';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
@@ -31,6 +31,7 @@ const CategoryHooks = () => {
   const navigateToCategoryDetail = item => {
     navigation.navigate(ScreenNames.CATEGORY_DETAIL_SCREEN, {
       name: item.name,
+      handle: item.handle
     });
   };
 
@@ -57,7 +58,6 @@ const CategoryHooks = () => {
   };
 
   useEffect(() => {
-    console.log('FETCHED');
     getCategories();
   }, []);
 
