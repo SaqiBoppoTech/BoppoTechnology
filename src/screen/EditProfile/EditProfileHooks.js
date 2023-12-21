@@ -133,6 +133,7 @@ const EditProfileHooks = () => {
       if (result.success == true) {
         navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
         dispatch(UserAction.setChangeMobileOtp(result.data.otp));
+        dispatch(UserAction.setChangeMobileOtpToken(result.data.changeContactNoToken));
       }
     } catch (error) {
       console.log('error ChangeMobileNumber', error.message);

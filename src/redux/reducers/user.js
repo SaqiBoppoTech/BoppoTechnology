@@ -32,6 +32,7 @@ const initialState = {
   userData: {},
   changePasswordData: null,
   changeMobileOtpData : null,
+  changeMobileOtpTokenData : null,
 };
 const user = (state = initialState, action) => {
   const {type, payload} = action;
@@ -75,6 +76,11 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         changeMobileOtpData: payload,
+      };
+    case actionTypes.CHANGEMOBILETOKEN_ALERT:
+      return {
+        ...state,
+        changeMobileOtpTokenData: payload,
       };
     case actionTypes.MOBILE_NUMBER:
       return {
