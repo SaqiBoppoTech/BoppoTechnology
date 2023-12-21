@@ -31,3 +31,7 @@ export const setChangePasswordOtp = payload => ({
   type: actionTypes.CHANGEPASS_ALERT,
   payload,
 });
+export const setCheckoutData = payload => ({
+  type: actionTypes.CHECKOUT_DATA,
+  payload,
+});

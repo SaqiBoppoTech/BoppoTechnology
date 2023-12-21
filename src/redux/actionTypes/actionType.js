@@ -6,13 +6,4 @@ export const MOBILE_NUMBER = 'MOBILE_NUMBER';
 export const ALERT_DATA = 'ALERT_DATA';
 export const GLOBAL_LOADER = 'GLOBAL_LOADER';
 export const CHANGEPASS_ALERT = 'CHANGEPASS_ALERT';
-
-
-
-
-
-
-
-
-
-
+export const CHECKOUT_DATA = 'CHECKOUT_DATA';

@@ -29,6 +29,7 @@ const initialState = {
     lastname: '',
     password: '',
   },
+  checkoutData: '',
   userData: {},
   changePasswordData: null,
 };
@@ -74,6 +75,11 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         mobileNumberData: payload,
+      };
+    case actionTypes.CHECKOUT_DATA:
+      return {
+        ...state,
+        checkoutData: payload,
       };
     default:
       return state;

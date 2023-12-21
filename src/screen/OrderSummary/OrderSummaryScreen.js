@@ -21,7 +21,38 @@ const OrderSummary = () => {
     onEditClick,
     onRemoveClick,
     navigateToPayment,
+    checkoutInfo,
   } = OrderSummaryHooks();
+
+  console.log('datatatatatta', checkoutInfo);
+
+  const checkInfoData = checkoutInfo?.checkoutDetails || [];
+  const shippingAddressData =
+    checkoutInfo?.checkoutDetails[0]?.shop_customer_checkout
+      ?.shop_customer_shipping_address || {};
+  const billingAddressData =
+    checkoutInfo?.checkoutDetails[0]?.shop_customer_checkout
+      ?.shop_customer_billing_address || {};
+  const productPaymentDetail =
+    checkoutInfo?.checkoutDetails[0]?.shop_customer_checkout || {};
+
+  const discountAmount =
+    productPaymentDetail.total_price - productPaymentDetail.sub_total_price;
+
+  console.log('================================', checkInfoData);
+  console.log(
+    '++++++++++++++++++++++++++++++++ shippingAddress data ',
+    shippingAddressData,
+  );
+  console.log(
+    '-------------------------------- billingAddress data ',
+    billingAddressData,
+  );
+  console.log(
+    '********************************* payment data ',
+    productPaymentDetail,
+  );
+
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
@@ -35,6 +66,11 @@ const OrderSummary = () => {
           showLine={false}
           onEditPress={onEditClick}
           onRemovePress={onRemoveClick}
+          addressline1={shippingAddressData.address_line1}
+          city={shippingAddressData.city}
+          province={shippingAddressData.province}
+          zipcode={shippingAddressData.zipcode}
+          name={shippingAddressData.recepient_name}
         />
         <View style={styles.addressbtnStyle}>
           <CommonButton
@@ -51,7 +87,14 @@ const OrderSummary = () => {
         <View style={styles.line} />
         <ShippingType />
         <ApplyCode />
-        <PaymentDetails />
+        <PaymentDetails
+          productCost={productPaymentDetail.total_price}
+          discount={discountAmount}
+          subTotal={productPaymentDetail.sub_total_price}
+          tax={productPaymentDetail.tax}
+          shippingCost={'0'}
+          totalAmount={productPaymentDetail.sub_total_price}
+        />
 
         <Text style={styles.text}>Billing Address</Text>
         <AddressContainerComponenet
@@ -60,6 +103,11 @@ const OrderSummary = () => {
           showLine={false}
           onEditPress={onEditClick}
           onRemovePress={onRemoveClick}
+          addressline1={billingAddressData.address_line1}
+          city={billingAddressData.city}
+          province={billingAddressData.province}
+          zipcode={billingAddressData.zipcode}
+          name={billingAddressData.recepient_name}
         />
         <View style={styles.addressbtnStyle}>
           <CommonButton

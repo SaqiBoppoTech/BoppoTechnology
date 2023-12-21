@@ -18,11 +18,12 @@ const AddressContainerComponenet = ({
   zipcode,
   city,
   province,
+  name,
 }) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.rowWrapper}>
-        <Text style={styles.name}>Miss Edna Hayes II</Text>
+        <Text style={styles.name}>{name}</Text>
         {showdefault && (
           <View style={styles.defaultTitle}>
             <Text style={styles.typeofAddressStyle}>{typeOfAddress}</Text>

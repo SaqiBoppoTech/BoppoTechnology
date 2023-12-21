@@ -13,17 +13,25 @@ const PaymentComponent = ({type, price}) => {
   );
 };
 
-const PaymentDetails = () => {
+const PaymentDetails = ({
+  productCost,
+  discount,
+  tax,
+  shippingCost,
+  totalAmount,
+  subTotal,
+}) => {
   return (
     <View style={style.mainView}>
       <Text style={style.txt}>Payment Detail</Text>
-      <PaymentComponent type={'Product Cost'} price={'36.99 USD'} />
-      <PaymentComponent type={'Discount'} price={'-20.00 USD'} />
-      <PaymentComponent type={'Tax'} price={'3.11 USD'} />
-      <PaymentComponent type={'Shipping Cost'} price={'10.21 USD'} />
+      <PaymentComponent type={'Product Cost'} price={`₹${productCost}`} />
+      <PaymentComponent type={'Discount'} price={`₹${discount}`} />
+      <PaymentComponent type={'Sub total'} price={`₹${subTotal}`} />
+      <PaymentComponent type={'Tax'} price={`₹${tax}`} />
+      <PaymentComponent type={'Shipping Cost'} price={`₹${shippingCost}`} />
       <View style={style.totalContainer}>
         <Text style={style.type}>Total Amount</Text>
-        <Text style={style.total}>30.31 USD</Text>
+        <Text style={style.total}>{`₹${totalAmount}`}</Text>
       </View>
     </View>
   );

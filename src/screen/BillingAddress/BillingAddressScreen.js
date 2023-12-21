@@ -42,6 +42,7 @@ const BillingAddressScreen = () => {
           city={`city ${item.city}`}
           province={`state ${item.province}`}
           zipcode={`Zip/Postal ${item.zipcode}`}
+          name={`${item.recepient_name}`}
         />
       );
     } else {

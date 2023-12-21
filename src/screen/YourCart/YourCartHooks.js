@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
+import {BASE_URL, BearerToken, ORIGIN, TOKEN} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 
@@ -24,6 +24,7 @@ const YourCartHook = () => {
   ///API CODE
   const [cartListData, setCartListData] = useState(null);
   const [paymentDataList, setpaymentDataList] = useState(null);
+  const [checkoutData, setCheckoutData] = useState(null);
 
   const getCartListData = async () => {
     try {
@@ -109,7 +110,37 @@ const YourCartHook = () => {
     }
   };
 
-  console.log('bopoooososos poayment', paymentDataList);
+  const createCheckout = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `https://stage-api.boppogo.com/order/api/v1/checkout/customer/create-checkout`;
+      const response = await axios.post(
+        url,
+        {
+          payment_mode: 'Cash On Delivery(COD)',
+          payment_provider_id: 3,
+        },
+        {
+          headers: {
+            Authorization: BearerToken,
+            origin: ORIGIN,
+          },
+        },
+      );
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setCheckoutData(response.data.data.checkout_id);
+        dispatch(UserAction.setCheckoutData(response.data.data.checkout_id));
+        navigateToOrderSummary();
+        console.log('checkout response', response.data.data.checkout_id);
+      }
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error checkout api', error.message);
+    }
+  };
+
+  console.log('checkout =>>>>>>>>>>>>> ', checkoutData);
 
   useEffect(() => {
     getCartListData();
@@ -123,6 +154,7 @@ const YourCartHook = () => {
     cartListData,
     deleteCartListData,
     addToWishList,
+    createCheckout,
   };
 };
 

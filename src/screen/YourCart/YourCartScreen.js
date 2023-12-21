@@ -21,6 +21,7 @@ const YourCart = () => {
     cartListData,
     deleteCartListData,
     addToWishList,
+    createCheckout,
   } = YourCartHook();
 
   const renderItem = ({item}) => {
@@ -99,7 +100,7 @@ const YourCart = () => {
           externalContainer={styles.externalContainer}
           externalFontStyle={styles.externalFontStyle}
           title={'Continue'}
-          onPress={navigateToOrderSummary}
+          onPress={createCheckout}
         />
       </View>
     </View>
