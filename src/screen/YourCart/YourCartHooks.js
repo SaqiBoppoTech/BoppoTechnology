@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {BASE_URL, TOKEN} from '../../global/config';
+import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 
@@ -14,8 +14,6 @@ const YourCartHook = () => {
 
   const dispatch = useDispatch();
 
-  const wishListClick = () => {};
-  const removeFromCart = () => {};
   const navigateToProductScreen = () => {
     navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
   };
@@ -25,6 +23,7 @@ const YourCartHook = () => {
 
   ///API CODE
   const [cartListData, setCartListData] = useState(null);
+  const [paymentDataList, setpaymentDataList] = useState(null);
 
   const getCartListData = async () => {
     try {
@@ -33,6 +32,7 @@ const YourCartHook = () => {
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       if (response.data.success == true) {
@@ -52,6 +52,7 @@ const YourCartHook = () => {
       const response = await axios.delete(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       if (response.data.success == true) {
@@ -77,6 +78,7 @@ const YourCartHook = () => {
         {
           headers: {
             Authorization: TOKEN,
+            origin: ORIGIN,
           },
         },
       );
@@ -86,14 +88,36 @@ const YourCartHook = () => {
     }
   };
 
+  const shopPaymentProviders = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `https://stage-api.boppogo.com/payment/api/v1/providers/shop-payment-providers`;
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: TOKEN,
+          origin: ORIGIN,
+        },
+      });
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setpaymentDataList(response.data);
+        console.log('payment list', response.data);
+      }
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error paymentlist', error.message);
+    }
+  };
+
+  console.log('bopoooososos poayment', paymentDataList);
+
   useEffect(() => {
     getCartListData();
+    shopPaymentProviders();
   }, []);
 
   return {
     handleGoBack,
-    wishListClick,
-    removeFromCart,
     navigateToProductScreen,
     navigateToOrderSummary,
     cartListData,

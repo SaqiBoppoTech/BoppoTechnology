@@ -8,7 +8,7 @@ import {ScreenNames} from '../../global';
 import Filter from '../Filter/FilterScreen';
 import TopTabBar from '../../components/TopTabBar/TopTabBar';
 import {useDispatch} from 'react-redux';
-import {BASE_URL} from '../../global/config';
+import {BASE_URL, ORIGIN} from '../../global/config';
 import * as UserAction from '../../redux/actions/userActions';
 import axios from 'axios';
 
@@ -41,7 +41,11 @@ const CategoryDetailHooks = () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}/product/api/v1/customer/collection/get-collection/${route?.params?.handle}`;
-      const response = await axios.post(url);
+      const response = await axios.post(url, {
+        headers: {
+          origin: ORIGIN,
+        },
+      });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCollectionByHandel(response.data.data.products);

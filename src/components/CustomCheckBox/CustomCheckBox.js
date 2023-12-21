@@ -5,8 +5,8 @@ import {styles} from './CustomCheckBoxStyle';
 import {CustomCheckBoxHooks} from './CustomCheckBoxHooks';
 import Check from '../../assets/svgs/Check.svg';
 
-const CustomCheckbox = ({title, type, onToggle}) => {
-  const {isChecked, setChecked} = CustomCheckBoxHooks();
+const CustomCheckbox = ({title, type, onToggle, isCheckBox}) => {
+  const {isChecked, setChecked} = CustomCheckBoxHooks(isCheckBox);
   const handleToggle = () => {
     setChecked(!isChecked);
     onToggle(type, !isChecked);

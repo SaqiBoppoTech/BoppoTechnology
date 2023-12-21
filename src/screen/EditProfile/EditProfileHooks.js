@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {BASE_URL, TOKEN} from '../../global/config';
+import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 const EditProfileHooks = () => {
   const navigation = useNavigation();
   const handleGoBack = () => {
@@ -35,6 +35,7 @@ const EditProfileHooks = () => {
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       setProfile(response.data.data.customerDetails);
@@ -68,6 +69,7 @@ const EditProfileHooks = () => {
         {
           headers: {
             Authorization: TOKEN,
+            origin: ORIGIN,
           },
         },
       );
@@ -84,6 +86,7 @@ const EditProfileHooks = () => {
     try {
       var myHeaders = new Headers();
       myHeaders.append('authorization', TOKEN);
+      myHeaders.append('origin', ORIGIN);
       var requestOptions = {
         method: 'POST',
         headers: myHeaders,
@@ -108,16 +111,28 @@ const EditProfileHooks = () => {
     try {
       var myHeaders = new Headers();
       myHeaders.append('authorization', TOKEN);
+      myHeaders.append('origin', ORIGIN);
+      myHeaders.append('Content-Type', 'application/json');
+
+      console.log('Contact Number:', contactNo);
+
+      const body = JSON.stringify({
+        new_contact_no: contactNo,
+        new_country_code: '+91',
+      });
+
       var requestOptions = {
         method: 'POST',
         headers: myHeaders,
+        body: body,
         redirect: 'follow',
       };
       const response = await fetch(
-        `https://stage-api.boppogo.com/auth/api/v1/customer/change-contact-no`,
+        `${BASE_URL}/auth/api/v1/customer/change-contact-no`,
         requestOptions,
       );
       const result = await response.json();
+      console.log(result);
       if (result.success == true) {
         navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
       }

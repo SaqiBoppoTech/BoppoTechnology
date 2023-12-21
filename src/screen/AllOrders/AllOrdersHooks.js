@@ -1,27 +1,56 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import RatingComponent from '../../components/RatingStar';
+import React, {useState, useEffect} from 'react';
+import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
 import {styles} from './AllOrdersStyles';
-import {Constant, ScreenNames} from '../../global';
+import {ScreenNames} from '../../global';
 import SelectStarSvg from '../../assets/svgs/SelectStarSvg.svg';
 import {useNavigation} from '@react-navigation/native';
-import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import axios from 'axios';
+import {useDispatch} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
+import {BearerToken, ORIGIN} from '../../global/config';
 
 const AllOrderHooks = () => {
+  const [orders, setorders] = useState(null);
   // VARIABLE
   const navigation = useNavigation();
 
   // FUNCTION
   const navigateToOrderDetails = () => {
     navigation.navigate(ScreenNames.ORDERDETAIL_SCREEN);
+  };
+
+  const dispatch = useDispatch();
+
+  const getOrders = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      const url = `https://stage-api.boppogo.com/order/api/v1/customer/orders`;
+      const response = await axios.post(
+        url,
+        {
+          page: 1,
+          limit: 50,
+          order_status: ['Active'],
+        },
+        {
+          headers: {
+            Authorization: BearerToken,
+            origin: ORIGIN,
+          },
+        },
+      );
+      dispatch(UserAction.setGlobalLoader(false));
+      const orderList = response.data;
+      setorders(orderList);
+      // if (response.data.success == true) {
+
+      // }
+      console.log('ordersList', response.data);
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error orders Api', error.message);
+    }
   };
 
   const renderItem = ({item}) => (
@@ -86,6 +115,12 @@ const AllOrderHooks = () => {
     //   containerHeight={true}
     // />
   );
+
+  useEffect(() => {
+    getOrders();
+    console.log('useeffect ke andar');
+  }, []);
+
   return {
     renderItem,
   };

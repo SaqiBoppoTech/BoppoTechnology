@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
-import {API_END_POINT, BASE_URL, TOKEN} from '../../global/config';
+import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 
@@ -34,6 +34,7 @@ const WishListHooks = () => {
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       if (response.data.success == true) {
@@ -53,6 +54,7 @@ const WishListHooks = () => {
       const response = await axios.delete(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       if (response.data.success == true) {
@@ -79,6 +81,7 @@ const WishListHooks = () => {
         {
           headers: {
             Authorization: TOKEN,
+            origin: ORIGIN,
           },
         },
       );

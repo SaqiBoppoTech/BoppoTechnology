@@ -2,7 +2,7 @@ import {CommonActions, useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {BASE_URL, TOKEN} from '../../global/config';
+import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 
@@ -80,6 +80,7 @@ const ProfileHooks = () => {
       const response = await axios.get(url, {
         headers: {
           Authorization: TOKEN,
+          origin: ORIGIN,
         },
       });
       setProfile(response.data.data.customerDetails);
@@ -105,6 +106,7 @@ const ProfileHooks = () => {
       const response = await fetch(
         `https://stage-api.boppogo.com/auth/api/v1/customer/logout`,
         requestOptions,
+        {headers: {origin: ORIGIN}},
       );
       const result = await response.json();
       console.log(result);

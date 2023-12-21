@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 import SearchField from '../../components/SearchField';
@@ -19,7 +19,7 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import {useDispatch} from 'react-redux';
 import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
-import { BASE_URL } from '../../global/config';
+import {BASE_URL, ORIGIN} from '../../global/config';
 
 const CategoryHooks = () => {
   // VARIABLE
@@ -31,7 +31,7 @@ const CategoryHooks = () => {
   const navigateToCategoryDetail = item => {
     navigation.navigate(ScreenNames.CATEGORY_DETAIL_SCREEN, {
       name: item.name,
-      handle: item.handle
+      handle: item.handle,
     });
   };
 
@@ -46,7 +46,11 @@ const CategoryHooks = () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}/product/api/v1/customer/collection/menu`;
-      const response = await axios.get(url);
+      const response = await axios.get(url, {
+        headers: {
+          origin: ORIGIN,
+        },
+      });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCategoriesList(response.data.data.shop_collections);

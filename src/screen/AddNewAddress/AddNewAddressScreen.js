@@ -1,5 +1,5 @@
 import {ScrollView, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import CommonButton from '../../components/Button/CommonButton';
 import {styles} from './AddNewAddressStyle';
@@ -14,7 +14,6 @@ const AddNewAddress = () => {
   const {
     saveAddress,
     handleGoBack,
-    navigateToDeliveryAddress,
     addressLine1,
     setAddressLine1,
     city,
@@ -25,8 +24,14 @@ const AddNewAddress = () => {
     setZipCode,
     typeOfAddress,
     setTypeOfAddress,
-    setAsDefault,
-    setsetAsDefault,
+    defaultAddress,
+    setDefaultAddress,
+    addressId,
+    editAddress,
+    name,
+    setName,
+    contact,
+    setContact,
   } = AddNewAddressHooks();
 
   return (
@@ -34,6 +39,25 @@ const AddNewAddress = () => {
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Add Address'} onPress={handleGoBack} />
       <ScrollView style={styles.margin}>
+        <CustomTextField
+          value={name}
+          onChangeText={setName}
+          keyboardType={'default'}
+          placeholder={'Name'}
+          title={'Name'}
+          placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
+        />
+        <CustomTextField
+          value={contact}
+          onChangeText={setContact}
+          keyboardType={'phone-pad'}
+          placeholder={'9876543212'}
+          title={'Contact Number'}
+          maxLenght={10}
+          placeholderTextColor={Colors.GRAY_DARK}
+          externalContainer={styles.space}
+        />
         <CustomTextField
           value={addressLine1}
           onChangeText={setAddressLine1}
@@ -66,9 +90,10 @@ const AddNewAddress = () => {
         <CustomTextField
           value={zipCode}
           onChangeText={setZipCode}
-          keyboardType={'default'}
+          keyboardType={'phone-pad'}
           placeholder={'enter zip code'}
           title={'Zip / Post Code'}
+          maxLenght={6}
           placeholderTextColor={Colors.GRAY_DARK}
           externalContainer={styles.space}
         />
@@ -96,11 +121,22 @@ const AddNewAddress = () => {
               }
             }}
           />
+          <CustomCheckbox
+            title={'Apply as Default Address'}
+            isCheckBox={defaultAddress}
+            onToggle={isChecked => {
+              if (isChecked) {
+                setDefaultAddress(true);
+              } else {
+                setDefaultAddress(false);
+              }
+            }}
+          />
         </View>
         <View style={styles.btn}>
           <CommonButton
             title={'Save'}
-            onPress={saveAddress}
+            onPress={addressId ? editAddress : saveAddress}
             externalFontStyle={styles.externalFontStyle}
             externalContainer={styles.loginContainer}
           />

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { enableScreens } from 'react-native-screens';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import { Colors, Constant, Fonts, ScreenNames } from '../global';
+import {enableScreens} from 'react-native-screens';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {Colors, Constant, Fonts, ScreenNames} from '../global';
 import SplashScreen from '../screen/SpashScreen';
 import BottomTabs from './BottomTabs/BottomTabs';
 import ProductDetailViewScreen from '../screen/ProductDetailView/ProductDetailViewScreen';
@@ -43,19 +43,19 @@ import Filter from '../screen/Filter/FilterScreen';
 import CustomToastedAlert from './CustomToastedAlert';
 import GlobalAlert from '../components/GlobalAlert/GlobalAlert';
 import GlobalLoader from '../components/GlobalLoader/GlobalLoader';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import ChangePassword from '../screen/ChangePassword/ChangePassword';
 import VerifyNumberEditProfile from '../screen/VerifyMobileNumberEditProfile/VerifyMobileNumberEditProfileScreen';
 import SuccessScreenVerifyNumber from '../screen/SuccessScreenVerifyNumber/SuccessScreenVerifyNumberScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
-  let globalLoader = useSelector(e => e.user?.globalLoader)
+  let globalLoader = useSelector(e => e.user?.globalLoader);
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator
-          screenOptions={{ headerShown: false }}
+          screenOptions={{headerShown: false}}
           initialRouteName={ScreenNames.SPLASH_SCREEN}>
           <Stack.Screen
             name={ScreenNames.SPLASH_SCREEN}
@@ -146,10 +146,10 @@ const MainStack = () => {
             name={ScreenNames.WISHLIST_SCREEN}
             component={WishlistScreen}
           />
-          {/* <Stack.Screen
+          <Stack.Screen
             name={ScreenNames.ORDER_SCREEN}
             component={OrderScreen}
-          /> */}
+          />
           <Stack.Screen
             name={ScreenNames.YOUR_CART_SCREEN}
             component={YourCart}
@@ -227,9 +227,7 @@ const MainStack = () => {
         </View>
       } 
       /> */}
-      {globalLoader &&
-        <GlobalLoader />
-      }
+      {globalLoader && <GlobalLoader />}
       <GlobalAlert />
       <CustomToastedAlert />
     </>

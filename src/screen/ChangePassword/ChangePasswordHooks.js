@@ -3,7 +3,7 @@ import {ScreenNames} from '../../global';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-import {BASE_URL, TOKEN} from '../../global/config';
+import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import {useState} from 'react';
 
 const ChangePasswordHooks = () => {
@@ -46,6 +46,7 @@ const ChangePasswordHooks = () => {
         {
           headers: {
             Authorization: TOKEN,
+            origin: ORIGIN,
           },
         },
       );

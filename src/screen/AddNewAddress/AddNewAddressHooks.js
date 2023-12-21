@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
+import {useRoute} from '@react-navigation/native';
+import {BearerToken, ORIGIN} from '../../global/config';
 
 const AddNewAddressHooks = () => {
   const [countryCode, setcountryCode] = useState('');
@@ -12,13 +14,15 @@ const AddNewAddressHooks = () => {
   const [city, setCity] = useState('');
   const [province, setProvince] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
   const [countryId, setCountryId] = useState(0);
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [typeOfAddress, setTypeOfAddress] = useState('');
   const [recepientName, setRecepientName] = useState('');
   const [recepientContact, setrecepientContact] = useState('');
-  const [setAsDefault, setsetAsDefault] = useState(false);
+  const [defaultAddress, setDefaultAddress] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -26,10 +30,15 @@ const AddNewAddressHooks = () => {
   const handleGoBack = () => {
     navigation.goBack();
   };
-
+  console.log(typeOfAddress, 'typeOfAddress');
   const navigateToDeliveryAddress = () => {
     navigation.navigate(ScreenNames.MY_ADDRESSES);
   };
+
+  let route = useRoute();
+  console.warn(route?.params?.item);
+  let {item} = route?.params;
+  let addressId = item?.id;
 
   const saveAddress = async () => {
     try {
@@ -48,14 +57,15 @@ const AddNewAddressHooks = () => {
           latitude: '1234',
           longitude: '2345',
           type: typeOfAddress,
-          recepient_name: 'Leo',
-          recepient_contact: '1234567890',
-          set_as_default: false,
+          recepient_name: name,
+          recepient_contact: contact,
+          set_as_default: false, //defaultAddress,
         },
 
         {
           headers: {
-            Authorization: `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVqd2FsLnlhZGF2QGJvcHBvdGVjaG5vbG9naWVzLmNvbSIsImNvbnRhY3Rfbm8iOiI5OTg3Nzc5NDA3IiwidG9rZW5fdHlwZSI6IkFDQ0VTU19UT0tFTiIsImlhdCI6MTcwMjYxNDYzMiwiZXhwIjoxNzAyNzAxMDMyLCJhdWQiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIiwiaXNzIjoiQm9wcG8gR28iLCJzdWIiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIn0.c_n31qVq_pDaZj-41sl1m9O6HePpHKTVsEx1ZGdeV8w5lZ9vTiOLaA3wvrllsyHdfNPSIcvNx6dicoi4gXOVHAXVxXMolF2RxeghLLMqodo9ArSaZ0VQsMDyICWrxWuj6ZcHHHj3u_OaZE4DMfIWdW6wuwKfQVNQWpi3RuZBjqs-ZruaISJII0SxwCo9Y3h1SBoSpbKAmoZ1cnNRpjChlGI377qcLVZ7AOF3XuZeH2souMwQlvl4hNzlO-wWTFQeNZ9MT8GVlEEUVgUyF8XckzA-sOrOTgupKwoSRQGFOyBfffxGyben8OtDmWW_QSQH4H3dsPQxynpMfiX7WApyiQ`,
+            Authorization: BearerToken,
+            origin: ORIGIN,
           },
         },
       );
@@ -69,6 +79,58 @@ const AddNewAddressHooks = () => {
       console.log('error Save address Api', error.message);
     }
   };
+
+  const editAddress = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/edit-address`;
+      const response = await axios.patch(
+        url,
+        {
+          address_id: addressId,
+          address_line1: addressLine1,
+          address_line2: 'road line way',
+          city: city,
+          province: province,
+          zipcode: zipCode,
+          country_id: '1',
+          latitude: '',
+          longitude: '',
+          type: typeOfAddress,
+          recepient_name: name,
+          recepient_contact: contact,
+          set_as_default: false, //defaultAddress,
+          country_code: '+91',
+        },
+
+        {
+          headers: {
+            Authorization: BearerToken,
+            origin: ORIGIN,
+          },
+        },
+      );
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        navigateToDeliveryAddress();
+      }
+      console.log('edit address', response.data);
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error edit address Api', error.message);
+    }
+  };
+
+  useEffect(() => {
+    setAddressLine1(item?.address_line1);
+    setCity(item?.city);
+    setProvince(item?.province);
+    setZipCode(item?.zipcode);
+    setTypeOfAddress(item?.type);
+    setContact(item?.recepient_contact);
+    setName(item?.recepient_name);
+    setDefaultAddress(item?.is_default == 1 ? true : false);
+  }, []);
 
   return {
     saveAddress,
@@ -98,8 +160,14 @@ const AddNewAddressHooks = () => {
     setRecepientName,
     recepientContact,
     setrecepientContact,
-    setAsDefault,
-    setsetAsDefault,
+    defaultAddress,
+    setDefaultAddress,
+    addressId,
+    editAddress,
+    contact,
+    setContact,
+    name,
+    setName,
   };
 };
 
