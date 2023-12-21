@@ -31,3 +31,7 @@ export const setChangePasswordOtp = payload => ({
   type: actionTypes.CHANGEPASS_ALERT,
   payload,
 });
+export const setChangeMobileOtp = payload => ({
+  type: actionTypes.CHANGEMOBILE_ALERT,
+  payload,
+});

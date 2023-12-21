@@ -8,7 +8,7 @@ import {useState} from 'react';
 import { styles } from './VerifyMobileNumberEditProfileStyles';
 
 const VerifyNumberEditProfileHooks = () => {
-  const userData = useSelector(e => e.user?.changePasswordData);
+  const userData = useSelector(e => e.user?.changeMobileOtpData);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const handleGoBack = () => {

@@ -114,8 +114,6 @@ const EditProfileHooks = () => {
       myHeaders.append('origin', ORIGIN);
       myHeaders.append('Content-Type', 'application/json');
 
-      console.log('Contact Number:', contactNo);
-
       const body = JSON.stringify({
         new_contact_no: contactNo,
         new_country_code: '+91',
@@ -132,9 +130,9 @@ const EditProfileHooks = () => {
         requestOptions,
       );
       const result = await response.json();
-      console.log(result);
       if (result.success == true) {
         navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
+        dispatch(UserAction.setChangeMobileOtp(result.data.otp));
       }
     } catch (error) {
       console.log('error ChangeMobileNumber', error.message);
