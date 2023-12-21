@@ -18,9 +18,9 @@ const EditProfileHooks = () => {
       message: `Profile Edited \nSuccessfully`,
     });
   };
-  const navigateToVerifyMobileNumberScreen = () => {
-    navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
-  };
+  // const navigateToVerifyMobileNumberScreen = () => {
+  //   navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
+  // };
 
   const navigateToSuccessScreen = () => {
     updateUserProfile();
@@ -96,10 +96,33 @@ const EditProfileHooks = () => {
       const result = await response.json();
       if (result.success == true) {
         navigation.navigate(ScreenNames.CHANGE_PASSWORD);
-        dispatch(UserAction.setChangePasswordOtp(result.data.otp))
+        dispatch(UserAction.setChangePasswordOtp(result.data.otp));
       }
     } catch (error) {
       console.log('error ChangePassword', error.message);
+    }
+  };
+
+  //API OF CHANGE CONTACT NUMBER
+  const navigateToVerifyMobileNumberScreen = async () => {
+    try {
+      var myHeaders = new Headers();
+      myHeaders.append('authorization', TOKEN);
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        redirect: 'follow',
+      };
+      const response = await fetch(
+        `https://stage-api.boppogo.com/auth/api/v1/customer/change-contact-no`,
+        requestOptions,
+      );
+      const result = await response.json();
+      if (result.success == true) {
+        navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
+      }
+    } catch (error) {
+      console.log('error ChangeMobileNumber', error.message);
     }
   };
 
@@ -120,7 +143,7 @@ const EditProfileHooks = () => {
     email,
     setEmail,
     navigateToSuccessScreen,
-    navigateToVerifyMobileNumberScreen
+    navigateToVerifyMobileNumberScreen,
   };
 };
 
