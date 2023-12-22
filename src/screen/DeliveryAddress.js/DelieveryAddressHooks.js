@@ -40,14 +40,8 @@ const DeliveryAddressHooks = () => {
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         const addressList = response.data.data.addressList;
-        // console.log('count', response.data.data.count);
-        // console.log('totalPage', response.data.data.totalPages);
-        // console.log('length', addressList.length);
-        // console.log('page', page);
-        // setAllAddress(prevAddresses => [...prevAddresses, ...addressList]);
         setAllAddress(addressList);
         setHasMore(addressList.length === 10);
-        // setPage(prevPage => prevPage + 1);
       }
     } catch (error) {
       dispatch(UserAction.setGlobalLoader(false));

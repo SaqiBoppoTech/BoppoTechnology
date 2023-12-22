@@ -9,6 +9,7 @@ import {BearerToken, ORIGIN} from '../../global/config';
 const OrderSummaryHooks = () => {
   const [orderData, setOrderData] = useState(null);
   const [checkoutInfo, setCheckoutInfo] = useState(null);
+  const [showList, setShowList] = useState(false);
   const navigation = useNavigation();
   const handleGoBack = () => {
     navigation.goBack();
@@ -83,6 +84,7 @@ const OrderSummaryHooks = () => {
     }
   };
   console.log('checkpoutInfo', checkoutInfo);
+
   useEffect(() => {
     // getOrderDetail();
     getCheckoutInfo();
@@ -96,6 +98,8 @@ const OrderSummaryHooks = () => {
     onRemoveClick,
     navigateToPayment,
     checkoutInfo,
+    setShowList,
+    showList,
   };
 };
 

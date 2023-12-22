@@ -22,9 +22,14 @@ const OrderSummary = () => {
     onRemoveClick,
     navigateToPayment,
     checkoutInfo,
+    setShowList,
+    showList,
   } = OrderSummaryHooks();
 
   console.log('datatatatatta', checkoutInfo);
+  const handleButtonPress = () => {
+    setShowList(!showList);
+  };
 
   const checkInfoData = checkoutInfo?.checkoutDetails || [];
   const shippingAddressData =
@@ -72,6 +77,18 @@ const OrderSummary = () => {
           zipcode={shippingAddressData.zipcode}
           name={shippingAddressData.recepient_name}
         />
+        {/* <CommonButton
+          title={'Change address'}
+          onPress={handleButtonPress}
+          externalFontStyle={styles.externalFontStyle}
+          externalContainer={styles.loginContainer}
+        /> */}
+
+        {/* {showList && (
+          <View
+            style={{height: 100, width: '100%', backgroundColor: 'red'}}></View>
+        )} */}
+
         <View style={styles.addressbtnStyle}>
           <CommonButton
             color={Colors.BLACK}
