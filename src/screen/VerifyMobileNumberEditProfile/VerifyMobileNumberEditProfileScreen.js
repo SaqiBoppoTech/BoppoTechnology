@@ -29,7 +29,7 @@ const VerifyNumberEditProfile = () => {
         <Text style={styles.enterOtpFontStyle}>Please enter the OTP</Text>
         <OTPInput arrayCount={6} setData={setOtpValue} />
         <Text style={styles.resendotp}>Resend OTP</Text>
-        <CustomTextField
+        {/* <CustomTextField
           keyboardType={'default'}
           placeholder={'enter current number'}
           placeholderTextColor={Colors.GRAY_DARK}
@@ -61,7 +61,7 @@ const VerifyNumberEditProfile = () => {
           externalContainer={styles.space}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
-        />
+        /> */}
       </ScrollView>
       <View style={styles.btn}>
         <View

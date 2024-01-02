@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import {useState} from 'react';
-import {styles} from './VerifyMobileNumberEditProfileStyles';
 
 const VerifyNumberEditProfileHooks = () => {
   const userData = useSelector(e => e.user?.changeMobileOtpData);
@@ -24,13 +23,6 @@ const VerifyNumberEditProfileHooks = () => {
   const onPressCancel = () => {
     navigation.navigate(ScreenNames.EDIT_PROFILE_SCREEN);
   };
-
-  // const onPressSave = () => {
-  //   // dispatch(UserAction.setAppBar(true));
-  //   navigation.navigate(ScreenNames.SUCCESS_SCREEN_VERIFY_NUMBER, {
-  //     message: `Number updated\nsuccessfully`,
-  //   });
-  // };
 
   //API OF verify-otp-change-password
   console.warn('Your OTP is:', userData);
@@ -53,7 +45,6 @@ const VerifyNumberEditProfileHooks = () => {
           },
         },
       );
-      console.log(`UJWAL ${response.data}`);
       if (response.data.success == true) {
         navigation.navigate(ScreenNames.SUCCESS_SCREEN_VERIFY_NUMBER, {
           message: `Number updated\nsuccessfully`,
