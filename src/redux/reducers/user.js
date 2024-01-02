@@ -33,6 +33,7 @@ const initialState = {
   changePasswordData: null,
   changeMobileOtpData : null,
   changeMobileOtpTokenData : null,
+  logoutToken : null,
 };
 const user = (state = initialState, action) => {
   const {type, payload} = action;
@@ -86,6 +87,11 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         mobileNumberData: payload,
+      };
+    case actionTypes.LOGOUT_TOKEN:
+      return {
+        ...state,
+        logoutToken: payload,
       };
     default:
       return state;

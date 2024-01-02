@@ -39,3 +39,7 @@ export const setChangeMobileOtpToken = payload => ({
   type: actionTypes.CHANGEMOBILETOKEN_ALERT,
   payload,
 });
+export const setLogoutToken = payload => ({
+  type: actionTypes.LOGOUT_TOKEN,
+  payload,
+});

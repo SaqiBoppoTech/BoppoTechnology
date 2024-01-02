@@ -3,13 +3,15 @@ import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 
 const ProfileHooks = () => {
   // VARIABLE
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const userData = useSelector(e => e.user?.logoutToken);
+  console.log(`Access Token For LogOut Is : ${userData}`);
   // HOOKS
 
   // FUNCTION
@@ -93,10 +95,10 @@ const ProfileHooks = () => {
   const getUserLogout = async () => {
     try {
       var myHeaders = new Headers();
-      myHeaders.append(
-        'authorization',
-        'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVqd2FsLnlhZGF2QGJvcHBvdGVjaG5vbG9naWVzLmNvbSIsImNvbnRhY3Rfbm8iOiI5OTg3Nzc5NDA3IiwidG9rZW5fdHlwZSI6IkFDQ0VTU19UT0tFTiIsImlhdCI6MTcwMjg4MTE0NCwiZXhwIjoxNzAyOTY3NTQ0LCJhdWQiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIiwiaXNzIjoiQm9wcG8gR28iLCJzdWIiOiJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIn0.Wa8rFkjP91r1cvI8HPHv7R9Pi4LdsOuV1KHUO2WbGYCCYkNDtx_DXfB-Ig6bSYY3mIaR9FU5V9wPtsRAyPT6H-qYNSJyN-abwIgUzGlgSLxGdV2Ng5fUB-tHkNFKsemEc3dAMzdg6FbKiWzrqvUZutlCertouefFS60OOuVQH22WWXExUr6ZJV-wkL4rwpyad1YF5Ge2uA8hlV-W6Mz2Zp-ZAHKkVqzlTaNsAt0xIHrvn_MgYqt8J9HKcnC6QHtd5JXwrUIdnwjPSajE5Jz4ydEdj7qBVnCzlrK26PWW5gVSFklEh-YVvKDjhIk6nX3fdX1tuB8W4xqFnRijhz3FRQ',
-      );
+      myHeaders.append('authorization', userData);
+      myHeaders.append('origin', ORIGIN);
+      myHeaders.append('Content-Type', 'application/json');
+
       var requestOptions = {
         method: 'POST',
         headers: myHeaders,
@@ -104,9 +106,8 @@ const ProfileHooks = () => {
       };
 
       const response = await fetch(
-        `https://stage-api.boppogo.com/auth/api/v1/customer/logout`,
+        `${BASE_URL}/auth/api/v1/customer/logout`,
         requestOptions,
-        {headers: {origin: ORIGIN}},
       );
       const result = await response.json();
       console.log(result);

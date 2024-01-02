@@ -47,6 +47,7 @@ const VerifyMobileNumberHooks = () => {
     if (loginData?.otp == otpValue?.join('')) {
       var myHeaders = new Headers();
       myHeaders.append('registersessiontoken', loginData?.registerSessionToken);
+      myHeaders.append('origin', ORIGIN);
       myHeaders.append('Content-Type', 'application/json');
       myHeaders.append(
         'Authorization',
@@ -65,10 +66,9 @@ const VerifyMobileNumberHooks = () => {
       try {
         const response = await fetch(
           `${BASE_URL}${API_END_POINT.VERIFY_OTP}`,
-          requestOptions,
-          {headers: {origin: ORIGIN}},
+          requestOptions
         );
-        const result = await response.json();
+        const result = await response.json();  
         if (result?.success === true) {
           dispatch(UserAction.setGlobalLoader(false));
           dispatch(
