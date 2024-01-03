@@ -2,13 +2,13 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useState, useEffect} from 'react';
 import {ScreenNames} from '../../global';
 import {BearerToken, ORIGIN} from '../../global/config';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 import axios from 'axios';
 
 const PaymentHooks = () => {
   const [paymentData, setPaymentData] = useState(null);
-  const [selectedRadioPayment, setSelectedRadioPayment] = useState(1);
+  const [selectedRadioPayment, setSelectedRadioPayment] = useState(4);
 
   const navigation = useNavigation();
   const handleGoBack = () => {
@@ -16,6 +16,9 @@ const PaymentHooks = () => {
   };
 
   const dispatch = useDispatch();
+
+  const checkoutId = useSelector(e => e.user.checkoutData);
+  console.log('checkoutId', checkoutId);
 
   const orderReceivedSuccess = () => {
     navigation.navigate(ScreenNames.PAYMENT_SUCCESS);
@@ -43,6 +46,35 @@ const PaymentHooks = () => {
       console.log('error paymnet Api', error.message);
     }
   };
+
+  const changePaymentMethod = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      const url = `https://stage-api.boppogo.com/order/api/v1/checkout/customer/change-payment/${checkoutId}`;
+      const response = await axios.put(
+        url,
+        {
+          payment_id: 4,
+        },
+        {
+          headers: {
+            Authorization: BearerToken,
+            origin: ORIGIN,
+          },
+        },
+      );
+      console.log('url --------->', url);
+      if (response.data.success == true) {
+        console.log('inside change payment Method loop ');
+        dispatch(UserAction.setGlobalLoader(false));
+        console.log('paymentmethod message =>>>>', response.data.message);
+      }
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error change Payment Method Api', error.message);
+    }
+  };
+
   useEffect(() => {
     getPaymentInfo();
   }, []);
@@ -53,6 +85,7 @@ const PaymentHooks = () => {
     selectedRadioPayment,
     setSelectedRadioPayment,
     paymentData,
+    changePaymentMethod,
   };
 };
 
