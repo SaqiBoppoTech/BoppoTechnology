@@ -18,18 +18,12 @@ const OrderSummary = () => {
     handleGoBack,
     onAddNewBillingAddress,
     onAddNewDeliveryAddress,
-    onEditClick,
-    onRemoveClick,
     navigateToPayment,
     checkoutInfo,
-    setShowList,
-    showList,
+    onChangeDeliveryAddress,
   } = OrderSummaryHooks();
 
   console.log('datatatatatta', checkoutInfo);
-  const handleButtonPress = () => {
-    setShowList(!showList);
-  };
 
   const checkInfoData = checkoutInfo?.checkoutDetails || [];
   const shippingAddressData =
@@ -66,29 +60,25 @@ const OrderSummary = () => {
       <ScrollView>
         <Text style={styles.text}>Delivery Address</Text>
         <AddressContainerComponenet
-          showIconRight={true}
+          showIconRight={false}
           typeOfAddress={'Default'}
           showLine={false}
-          onEditPress={onEditClick}
-          onRemovePress={onRemoveClick}
           addressline1={shippingAddressData.address_line1}
           city={shippingAddressData.city}
           province={shippingAddressData.province}
           zipcode={shippingAddressData.zipcode}
           name={shippingAddressData.recepient_name}
         />
-        {/* <CommonButton
-          title={'Change address'}
-          onPress={handleButtonPress}
-          externalFontStyle={styles.externalFontStyle}
-          externalContainer={styles.loginContainer}
-        /> */}
-
-        {/* {showList && (
-          <View
-            style={{height: 100, width: '100%', backgroundColor: 'red'}}></View>
-        )} */}
-
+        <View style={styles.addressbtnStyle}>
+          <CommonButton
+            color={Colors.BLACK}
+            externalCustomButtonStyle={styles.externalCustomButtonStyle}
+            externalContainer={styles.loginContainer}
+            externalFontStyle={styles.externalFontStyle}
+            title={'Change Address'}
+            onPress={onChangeDeliveryAddress}
+          />
+        </View>
         <View style={styles.addressbtnStyle}>
           <CommonButton
             color={Colors.BLACK}
@@ -115,11 +105,9 @@ const OrderSummary = () => {
 
         <Text style={styles.text}>Billing Address</Text>
         <AddressContainerComponenet
-          showIconRight={true}
+          showIconRight={false}
           typeOfAddress={'Default'}
           showLine={false}
-          onEditPress={onEditClick}
-          onRemovePress={onRemoveClick}
           addressline1={billingAddressData.address_line1}
           city={billingAddressData.city}
           province={billingAddressData.province}

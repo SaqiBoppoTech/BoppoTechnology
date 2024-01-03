@@ -9,14 +9,15 @@ import {BearerToken, ORIGIN} from '../../global/config';
 const OrderSummaryHooks = () => {
   const [orderData, setOrderData] = useState(null);
   const [checkoutInfo, setCheckoutInfo] = useState(null);
-  const [showList, setShowList] = useState(false);
   const navigation = useNavigation();
   const handleGoBack = () => {
     navigation.goBack();
   };
 
-  const onEditClick = () => {};
-  const onRemoveClick = () => {};
+  const onChangeDeliveryAddress = () => {
+    navigation.navigate(ScreenNames.CHANGE_ADDRESS, {getCheckoutInfo});
+  };
+
   const onAddNewDeliveryAddress = () => {};
   const onAddNewBillingAddress = () => {};
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const OrderSummaryHooks = () => {
   console.log('checkoutId', checkoutId);
 
   const navigateToPayment = () => {
-    navigation.navigate(ScreenNames.PAYMENT_SCREEN);
+    navigation.navigate(ScreenNames.PAYMENT_SCREEN, {checkoutInfo});
   };
 
   const getOrderDetail = async () => {
@@ -94,12 +95,9 @@ const OrderSummaryHooks = () => {
     handleGoBack,
     onAddNewBillingAddress,
     onAddNewDeliveryAddress,
-    onEditClick,
-    onRemoveClick,
     navigateToPayment,
     checkoutInfo,
-    setShowList,
-    showList,
+    onChangeDeliveryAddress,
   };
 };
 

@@ -3,25 +3,26 @@ import {
   View,
   ActivityIndicator,
   TouchableOpacity,
+  Text,
 } from 'react-native';
 import React from 'react';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
-import DeliveryAddressHooks from './DelieveryAddressHooks';
-import {styles} from './DeliveryAddressStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
+import ChangeAddressHooks from './ChangeAddressHooks';
+import {styles} from './ChangeAddressStyle';
 
-const DelieveryAddressScreen = () => {
+const ChangeAddress = () => {
   const {
     handleGoBack,
-    editAddress,
-    removeAddress,
     allAddress,
     loadMoreAddresses,
     loading,
-    removeAddressFromList,
-  } = DeliveryAddressHooks();
+    setSelectedItem,
+    selectedItem,
+    onChangeAddress,
+  } = ChangeAddressHooks();
 
   const renderAddressItem = ({item}) => {
     const handleEditPress = () => {
@@ -34,31 +35,30 @@ const DelieveryAddressScreen = () => {
       removeAddressFromList(item.id);
     };
 
-    if (item.type == 'Shipping') {
-      return (
-        <TouchableOpacity
-          onPress={() => {
-            console.log('click', item.is_default);
-          }}>
-          <AddressContainerComponenet
-            onEditPress={handleEditPress}
-            onRemovePress={handleRemovePress}
-            showBottomOptions={true}
-            typeOfAddress={'default'}
-            showIconRight={false}
-            showLine={true}
-            showdefault={item.is_default == 1 ? true : false}
-            addressline1={item.address_line1}
-            city={`city ${item.city}`}
-            province={`state ${item.province}`}
-            zipcode={`Zip/Postal ${item.zipcode}`}
-            name={`${item.recepient_name}`}
-          />
-        </TouchableOpacity>
-      );
-    } else {
-      return null;
-    }
+    const handleItemClick = () => {
+      console.log('Clicked item:', item.id);
+      setSelectedItem(item.id);
+    };
+
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          onChangeAddress(item.id);
+        }}>
+        <AddressContainerComponenet
+          showBottomOptions={false}
+          typeOfAddress={'default'}
+          showIconRight={false}
+          showLine={true}
+          showdefault={false}
+          addressline1={item.address_line1}
+          city={`city ${item.city}`}
+          province={`state ${item.province}`}
+          zipcode={`Zip/Postal ${item.zipcode}`}
+          name={`${item.recepient_name}`}
+        />
+      </TouchableOpacity>
+    );
   };
 
   const renderFooter = () => {
@@ -70,7 +70,7 @@ const DelieveryAddressScreen = () => {
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
-      <SearchAppBar title={'Delivery address'} onPress={handleGoBack} />
+      <SearchAppBar title={'Change Address'} onPress={handleGoBack} />
       <FlatList
         data={allAddress}
         keyExtractor={item => item.id}
@@ -83,4 +83,4 @@ const DelieveryAddressScreen = () => {
   );
 };
 
-export default DelieveryAddressScreen;
+export default ChangeAddress;

@@ -45,6 +45,7 @@ import GlobalAlert from '../components/GlobalAlert/GlobalAlert';
 import GlobalLoader from '../components/GlobalLoader/GlobalLoader';
 import {useSelector} from 'react-redux';
 import ChangePassword from '../screen/ChangePassword/ChangePassword';
+import ChangeAddress from '../screen/ChangeAddress/ChangeAddress';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -201,6 +202,10 @@ const MainStack = () => {
           <Stack.Screen
             name={ScreenNames.CHANGE_PASSWORD}
             component={ChangePassword}
+          />
+          <Stack.Screen
+            name={ScreenNames.CHANGE_ADDRESS}
+            component={ChangeAddress}
           />
         </Stack.Navigator>
       </NavigationContainer>

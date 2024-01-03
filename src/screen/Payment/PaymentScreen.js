@@ -2,16 +2,73 @@ import React, {ScrollView} from 'react-native';
 import PaymentMethod from '../../components/PaymentMethod/PaymentMethod';
 import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
 import CommonButton from '../../components/Button/CommonButton';
-import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  FlatList,
+} from 'react-native';
 import {Colors} from '../../global';
+import Stripe from '../../assets/svgs/Stripe.svg';
 import {PaymentHooks} from './PaymentHooks';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import CheckoutNavigationBar from '../../components/CheckoutNavigationBar/CheckoutNavigationBar';
 import {styles} from './PaymentScreenStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import {useRoute} from '@react-navigation/native';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const PaymentScreen = () => {
-  const {handleGoBack, orderReceivedSuccess} = PaymentHooks();
+  const {
+    handleGoBack,
+    orderReceivedSuccess,
+    selectedRadioPayment,
+    setSelectedRadioPayment,
+    paymentData,
+  } = PaymentHooks();
+  let route = useRoute();
+  let a = route.params.checkoutInfo;
+  console.log('routedata from ordersummary for payment detail', a);
+
+  const productPaymentDetail =
+    route.params.checkoutInfo?.checkoutDetails[0]?.shop_customer_checkout || {};
+  const discountAmount =
+    productPaymentDetail.total_price - productPaymentDetail.sub_total_price;
+  console.log('***paymentscreen', productPaymentDetail);
+
+  const paymentInfo = paymentData?.payment_providers || [];
+  console.log('paymentInfooooo', paymentInfo);
+
+  const handleItemClick = ({item}) => {
+    console.log('item', item);
+    setSelectedRadioPayment(item.id);
+  };
+
+  const renderItem = ({item}) => (
+    <TouchableOpacity
+      onPress={() => handleItemClick({item})}
+      activeOpacity={0.4}
+      style={{width: '100%'}}>
+      <View style={styles.paymentDetailsButton}>
+        <View style={{flexDirection: 'row'}}>
+          <View
+            style={{
+              ...styles.radio,
+              marginEnd: CHANGE_BY_MOBILE_DPI(10),
+              marginTop: CHANGE_BY_MOBILE_DPI(3),
+            }}>
+            {selectedRadioPayment === item.id ? (
+              <View style={styles.radioBg} />
+            ) : null}
+          </View>
+          <Text style={styles.paymentText}>{item.name}</Text>
+        </View>
+        {/* <View style={styles.imagePosition}>{item.icon}</View> */}
+      </View>
+    </TouchableOpacity>
+  );
 
   return (
     <View style={styles.mainView}>
@@ -19,8 +76,23 @@ const PaymentScreen = () => {
       <SearchAppBar title={'Checkout'} onPress={handleGoBack} />
       <CheckoutNavigationBar />
       <ScrollView>
-        <PaymentDetails />
-        <PaymentMethod />
+        <PaymentDetails
+          productCost={productPaymentDetail.total_price}
+          discount={discountAmount}
+          subTotal={productPaymentDetail.sub_total_price}
+          tax={productPaymentDetail.tax}
+          shippingCost={'0'}
+          totalAmount={productPaymentDetail.sub_total_price}
+        />
+        <View style={styles.main}>
+          <Text style={styles.headingText}>Payment Detail</Text>
+          <Text style={styles.lightText}>Please enter your payment method</Text>
+          <FlatList
+            data={paymentInfo}
+            keyExtractor={item => item.id.toString()}
+            renderItem={renderItem}
+          />
+        </View>
         <CommonButton title={'Pay'} onPress={orderReceivedSuccess} />
       </ScrollView>
     </View>

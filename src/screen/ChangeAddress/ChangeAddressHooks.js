@@ -1,31 +1,39 @@
 import React, {useState, useEffect} from 'react';
 import {ScreenNames} from '../../global';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 import axios from 'axios';
 import {BearerToken, ORIGIN} from '../../global/config';
 
-const DeliveryAddressHooks = () => {
+const ChangeAddressHooks = () => {
+  let route = useRoute();
+
   const [allAddress, setAllAddress] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [removeAddress, setRemoveAddress] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const navigation = useNavigation();
   const handleGoBack = () => {
     navigation.goBack();
   };
+
+  const navigateToCategoryScreen = () => {
+    route.params.getCheckoutInfo();
+    navigation.navigate(ScreenNames.ORDER_SUMMARY_SCREEN);
+  };
+
   const dispatch = useDispatch();
 
-  const editAddress = ({item}) => {
-    navigation.navigate(ScreenNames.ADD_NEW_ADDRESS, {item: item});
-  };
   const queryParams = {
     page: page,
   };
-  console.log('pagenumber', queryParams.page);
+
+  const checkoutId = useSelector(e => e.user.checkoutData);
+  console.log('checkoutIdfromChangeAddress', checkoutId);
+
   //getaddress api
   const getAddressList = async () => {
     try {
@@ -50,29 +58,35 @@ const DeliveryAddressHooks = () => {
     }
   };
 
-  //delete address api
-  const removeAddressFromList = async address_id => {
-    console.log('address id', address_id);
+  //CHANGE ADDRESS API
+
+  const onChangeAddress = async id => {
+    setSelectedItem(id);
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/remove-address/${address_id}`;
-      const response = await axios.delete(url, {
-        headers: {
-          Authorization: BearerToken,
-          origin: ORIGIN,
+      const url = `https://stage-api.boppogo.com/order/api/v1/checkout/customer/change-address/${checkoutId}`;
+      const response = await axios.put(
+        url,
+        {
+          shop_customer_shipping_address_id: id,
+          shop_customer_billing_address_id: id,
         },
-      });
-      console.log('rmeovesssss', response.data);
+        {
+          headers: {
+            Authorization: BearerToken,
+            origin: ORIGIN,
+          },
+        },
+      );
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
-        const removeAddressData = response.data;
-        setRemoveAddress(removeAddressData);
-        console.log('remove', removeAddressData);
-        getAddressList();
+        const message = response.data.message;
+        console.log('this is change address api response message', message, id);
+        navigateToCategoryScreen();
       }
     } catch (error) {
       dispatch(UserAction.setGlobalLoader(false));
-      console.log('error remove address Api', error.message);
+      console.log('error Save address Api', error.message);
     }
   };
 
@@ -87,14 +101,14 @@ const DeliveryAddressHooks = () => {
   };
 
   return {
-    editAddress,
-    removeAddress,
     handleGoBack,
     allAddress,
     loadMoreAddresses,
     loading,
-    removeAddressFromList,
+    selectedItem,
+    setSelectedItem,
+    onChangeAddress,
   };
 };
 
-export default DeliveryAddressHooks;
+export default ChangeAddressHooks;
