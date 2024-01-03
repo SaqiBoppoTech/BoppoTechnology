@@ -13,16 +13,17 @@ import {AllOrderHooks} from './AllOrdersHooks';
 import {STATIC_DATA} from '../../global/staticdata';
 
 const AllOrderScreen = () => {
-  const {renderItem} = AllOrderHooks();
+  const {renderItem, orders} = AllOrderHooks();
 
   return (
     <View style={styles.background}>
-      <FlatList
-        data={STATIC_DATA.orderScreen}
-        renderItem={renderItem}
-        keyExtractor={item => item.key}
-        showsHorizontalScrollIndicator={false}
-      />
+      {orders && (
+        <FlatList
+          data={orders}
+          renderItem={renderItem}
+          showsHorizontalScrollIndicator={false}
+        />
+      )}
     </View>
   );
 };
