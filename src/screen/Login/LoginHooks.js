@@ -40,24 +40,37 @@ const LoginHooks = () => {
     index: 0,
     routes: [{name: ScreenNames.BOTTOM_TAB}],
   });
+
+  ///API OF LOGIN
   const navigateToBottom = async () => {
-    navigation.dispatch(resetStackAndGoToBottom);
     try {
-      let loginData = {
+      var myHeaders = new Headers();
+      myHeaders.append('origin', ORIGIN);
+      myHeaders.append('Content-Type', 'application/json');
+
+      const body = JSON.stringify({
         country_code: '+91',
         contact_no: email,
         password: password,
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: body,
+        redirect: 'follow',
       };
       if (loginValidation({email, password, openGlobalModal})) {
         dispatch(UserAction.setGlobalLoader(true));
-        const response = await axios.post(
+        const response = await fetch(
           `${BASE_URL}/auth/api/v1/customer/login`,
-          loginData,
-          {headers: {origin: ORIGIN}},
+          requestOptions
         );
-        if (response?.data?.success) {
-          dispatch(UserAction.setUserData(response?.data?.data));
+        const result = await response.json();
+        if (result.success) {
+          dispatch(UserAction.setUserData(result.data));
           dispatch(UserAction.setGlobalLoader(false));
+          dispatch(UserAction.setLogoutToken(result.data.accessToken));
           dispatch(
             UserAction.setLoginWithEmailOrMobileNumber({
               condition: checkLoginWithEmailOrMobileNumber ? true : false,
@@ -67,7 +80,7 @@ const LoginHooks = () => {
           navigation.dispatch(resetStackAndGoToBottom);
         } else {
           dispatch(UserAction.setGlobalLoader(false));
-          openGlobalModal({title: response?.data?.message});
+          openGlobalModal({title: result.message});
         }
       }
     } catch (error) {

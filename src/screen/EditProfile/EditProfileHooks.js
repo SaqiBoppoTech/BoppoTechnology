@@ -18,8 +18,8 @@ const EditProfileHooks = () => {
       message: `Profile Edited \nSuccessfully`,
     });
   };
-  // const navigateToChangePassword = () => {
-  //   navigation.navigate(ScreenNames.CHANGE_PASSWORD);
+  // const navigateToVerifyMobileNumberScreen = () => {
+  //   navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
   // };
 
   const navigateToSuccessScreen = () => {
@@ -86,6 +86,7 @@ const EditProfileHooks = () => {
     try {
       var myHeaders = new Headers();
       myHeaders.append('authorization', TOKEN);
+      myHeaders.append('origin', ORIGIN);
       var requestOptions = {
         method: 'POST',
         headers: myHeaders,
@@ -94,16 +95,48 @@ const EditProfileHooks = () => {
       const response = await fetch(
         `${BASE_URL}/auth/api/v1/customer/change-password`,
         requestOptions,
-        {headers: {origin: ORIGIN}},
       );
       const result = await response.json();
       if (result.success == true) {
         navigation.navigate(ScreenNames.CHANGE_PASSWORD);
-        console.log(`abcccccccc ${result.data.otp}`);
         dispatch(UserAction.setChangePasswordOtp(result.data.otp));
       }
     } catch (error) {
       console.log('error ChangePassword', error.message);
+    }
+  };
+
+  //API OF CHANGE CONTACT NUMBER
+  const navigateToVerifyMobileNumberScreen = async () => {
+    try {
+      var myHeaders = new Headers();
+      myHeaders.append('authorization', TOKEN);
+      myHeaders.append('origin', ORIGIN);
+      myHeaders.append('Content-Type', 'application/json');
+
+      const body = JSON.stringify({
+        new_contact_no: contactNo,
+        new_country_code: '+91',
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: body,
+        redirect: 'follow',
+      };
+      const response = await fetch(
+        `${BASE_URL}/auth/api/v1/customer/change-contact-no`,
+        requestOptions,
+      );
+      const result = await response.json();
+      if (result.success == true) {
+        navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
+        dispatch(UserAction.setChangeMobileOtp(result.data.otp));
+        dispatch(UserAction.setChangeMobileOtpToken(result.data.changeContactNoToken));
+      }
+    } catch (error) {
+      console.log('error ChangeMobileNumber', error.message);
     }
   };
 
@@ -124,6 +157,7 @@ const EditProfileHooks = () => {
     email,
     setEmail,
     navigateToSuccessScreen,
+    navigateToVerifyMobileNumberScreen,
   };
 };
 

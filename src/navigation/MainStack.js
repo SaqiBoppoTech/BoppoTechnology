@@ -46,6 +46,8 @@ import GlobalLoader from '../components/GlobalLoader/GlobalLoader';
 import {useSelector} from 'react-redux';
 import ChangePassword from '../screen/ChangePassword/ChangePassword';
 import ChangeAddress from '../screen/ChangeAddress/ChangeAddress';
+import VerifyNumberEditProfile from '../screen/VerifyMobileNumberEditProfile/VerifyMobileNumberEditProfileScreen';
+import SuccessScreenVerifyNumber from '../screen/SuccessScreenVerifyNumber/SuccessScreenVerifyNumberScreen';
 enableScreens();
 const Stack = createStackNavigator();
 const MainStack = () => {
@@ -182,6 +184,10 @@ const MainStack = () => {
             component={SuccessScreen}
           />
           <Stack.Screen
+            name={ScreenNames.SUCCESS_SCREEN_VERIFY_NUMBER}
+            component={SuccessScreenVerifyNumber}
+          />
+          <Stack.Screen
             name={ScreenNames.MOBILE_OTP_SCREEN}
             component={VerifyMobileNumberScreen}
           />
@@ -206,6 +212,10 @@ const MainStack = () => {
           <Stack.Screen
             name={ScreenNames.CHANGE_ADDRESS}
             component={ChangeAddress}
+          />
+          <Stack.Screen
+            name={ScreenNames.VERIFY_NUMBER_EDIT_PROFILE}
+            component={VerifyNumberEditProfile}
           />
         </Stack.Navigator>
       </NavigationContainer>

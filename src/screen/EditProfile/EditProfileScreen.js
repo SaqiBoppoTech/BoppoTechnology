@@ -23,7 +23,8 @@ const EditProfileScreen = () => {
     setContactNo,
     email,
     setEmail,
-    navigateToSuccessScreen
+    navigateToSuccessScreen,
+    navigateToVerifyMobileNumberScreen
   } = EditProfileHooks();
 
   return (
@@ -72,8 +73,11 @@ const EditProfileScreen = () => {
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Mobile Number'}
           externalContainer={styles.space}
-          value={contactNo}
+          value={contactNo}     
           onChangeText={setContactNo}
+          showSuffixText={true}
+          suffixText={'Verify Number'}
+          onPressSuffixText={navigateToVerifyMobileNumberScreen}
         />
 
         <CustomTextField

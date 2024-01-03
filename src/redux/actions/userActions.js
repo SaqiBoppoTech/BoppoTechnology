@@ -35,3 +35,15 @@ export const setCheckoutData = payload => ({
   type: actionTypes.CHECKOUT_DATA,
   payload,
 });
+export const setChangeMobileOtp = payload => ({
+  type: actionTypes.CHANGEMOBILE_ALERT,
+  payload,
+});
+export const setChangeMobileOtpToken = payload => ({
+  type: actionTypes.CHANGEMOBILETOKEN_ALERT,
+  payload,
+});
+export const setLogoutToken = payload => ({
+  type: actionTypes.LOGOUT_TOKEN,
+  payload,
+});

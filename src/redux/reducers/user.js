@@ -32,6 +32,9 @@ const initialState = {
   checkoutData: '',
   userData: {},
   changePasswordData: null,
+  changeMobileOtpData: null,
+  changeMobileOtpTokenData: null,
+  logoutToken: null,
 };
 const user = (state = initialState, action) => {
   const {type, payload} = action;
@@ -71,6 +74,16 @@ const user = (state = initialState, action) => {
         ...state,
         changePasswordData: payload,
       };
+    case actionTypes.CHANGEMOBILE_ALERT:
+      return {
+        ...state,
+        changeMobileOtpData: payload,
+      };
+    case actionTypes.CHANGEMOBILETOKEN_ALERT:
+      return {
+        ...state,
+        changeMobileOtpTokenData: payload,
+      };
     case actionTypes.MOBILE_NUMBER:
       return {
         ...state,
@@ -80,6 +93,11 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         checkoutData: payload,
+      };
+    case actionTypes.LOGOUT_TOKEN:
+      return {
+        ...state,
+        logoutToken: payload,
       };
     default:
       return state;

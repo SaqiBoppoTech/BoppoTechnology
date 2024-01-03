@@ -33,9 +33,9 @@ const LoginScreen = () => {
         <Text style={styles.title}>Login into your account</Text>
         <CustomTextField
           keyboardType={'default'}
-          placeholder={'enter email id / mobile number'}
+          placeholder={'mobile number'}
           placeholderTextColor={Colors.GRAY_DARK}
-          title={'Email ID / Mobile Number'}
+          title={'Mobile Number'}
           maxLenght={checkLoginWithEmailOrMobileNumber ? 10 : null}
           value={email}
           onChangeText={setEmail}
