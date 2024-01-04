@@ -52,7 +52,7 @@ const ProfileHooks = () => {
   const getProfileData = async () => {
     try {
       const response = await axiosInstance.get(API_END_POINT.PROFILE)
-      setProfile(response.  data.data.customerDetails);
+      setProfile(response.data.data.customerDetails);
     } catch (error) {
       console.log('error getProfile', error.message);
     }

@@ -33,13 +33,13 @@ const SplashScreen = () => {
         let refreshTokenData = { "refresh_token": convertIntoParse?.refreshToken }
         let userExistUrl = `/auth/api/v1/customer/refresh`
         const response = await axiosInstance.post(userExistUrl, refreshTokenData)
-        console.warn("====>>",response.data);
         if (response?.data?.success == true) {
           let mobileNumberDataWithToken = {
             accessToken: response?.data?.data?.accessToken,
             contatcNumber: userPhoneNumber,
             refreshToken: response?.data?.data?.refreshToken
           }
+          console.warn("response.data.data.accessToken",response.data.data.accessToken);
           await AsyncStorage.setItem("userData", JSON.stringify(mobileNumberDataWithToken));
           axiosInstance.defaults.headers['Authorization'] =  response.data.data.accessToken;
           navigation.dispatch(resetStackAndGoToBottom);

@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
+import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import { signUpValidation } from '../../global/validation';
 import axiosInstance from '../../global/api-core';
 const EditProfileHooks = () => {
@@ -36,13 +36,7 @@ const EditProfileHooks = () => {
 
   const getProfileData = async () => {
     try {
-      let url = `${BASE_URL}/auth/api/v1/customer/profile`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: TOKEN,
-          origin: ORIGIN,
-        },
-      });
+      const response = await axiosInstance.get(API_END_POINT.PROFILE)
       setProfile(response.data.data.customerDetails);
       setfirstName(response.data.data.customerDetails?.firstname);
       setLastname(response.data.data.customerDetails?.lastname);
@@ -52,6 +46,8 @@ const EditProfileHooks = () => {
       console.log('error getProfile', error.message);
     }
   };
+
+  console.warn("asdasda",profile && profile);
 
   const [firstName, setfirstName] = useState('');
   const [lastname, setLastname] = useState('');
@@ -72,6 +68,7 @@ const EditProfileHooks = () => {
     );
     dispatch(UserAction.setGlobalLoader(false));
   };
+  
   const updateUserProfile = async () => {
     let regestarationData = {
       firstname: firstName,
@@ -90,6 +87,13 @@ const EditProfileHooks = () => {
     ) {
     try {
       let url = `/auth/api/v1/customer/update-profile`;
+      // console.warn("====2====", url,{
+      //   firstname: firstName,
+      //   lastname: lastname,
+      //   email: email,
+      //   date_of_birth: '2000-12-5',
+      //   gender: 'Male',
+      // },);
       const response = await axiosInstance.patch(
         url,{
           firstname: firstName,

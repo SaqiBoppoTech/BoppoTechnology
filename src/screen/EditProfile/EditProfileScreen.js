@@ -29,7 +29,7 @@ const EditProfileScreen = () => {
 
   return (
     <View style={styles.mainView}>
-      <FocusAwareStatusBar barColor={Colors.CONCRETE} />
+      <FocusAwareStatusBar barColor={Colors.WHITE} />
       <SearchAppBar title={'Edit Profile'} onPress={handleGoBack} />
       <ScrollView style={styles.bg}>
         <CustomTextField
@@ -83,7 +83,7 @@ const EditProfileScreen = () => {
 
         <CustomTextField
           keyboardType={'default'}
-          placeholder={'enter password'}
+          placeholder={'......'}
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Password'}
           editable={false}
