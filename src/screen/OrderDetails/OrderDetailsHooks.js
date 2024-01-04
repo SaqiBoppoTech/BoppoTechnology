@@ -19,7 +19,6 @@ const orderDetailHooks = () => {
   };
 
   const [orderbyIdData, setOrderbyIdData] = useState(null);
-  console.log(`ujwal ${userDataOrderId}`);
 
   ///API OF Customer Order by ID
   const getOrderbyId = async () => {
@@ -39,6 +38,25 @@ const orderDetailHooks = () => {
       }
     } catch (error) {
       console.log('error GetOrderbyId', error.message);
+    }
+  };
+
+  ///API OF CANCEL ORDER BY ID
+  const cancelOrderbyId = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `${BASE_URL}/order/api/v1/customer/cancel-order/BGS-1`;
+      const response = await axios.post(url, {
+        headers: {
+          authorization: userData,
+          origin: ORIGIN,
+        },
+      });
+      if (response.data.success == true) {
+        
+      }
+    } catch (error) {
+      console.log('error CancelOrderbyId', error.message);
     }
   };
 

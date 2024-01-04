@@ -52,7 +52,7 @@ const AllOrderHooks = () => {
 
   const renderItem = ({item}) => {
     const navigateToOrderDetails = () => {
-      console.log(`ujwal 12345 ${item.order_id}`);
+      console.log(`${item.order_id}`);
       dispatch(UserAction.setorderId(item.order_id));
       navigation.navigate(ScreenNames.ORDERDETAIL_SCREEN);
     };

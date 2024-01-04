@@ -9,6 +9,7 @@ import OrderContainerComponent from '../../components/OrderTabContainer/OrderCon
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
 import { orderDetailHooks } from './OrderDetailsHooks';
+import { STATIC_DATA } from '../../global/staticdata';
 
 const OrderDetailsScreen = () => {
   const {navigateToCartPage,handleGoBack,orderbyIdData} = orderDetailHooks();
@@ -35,7 +36,7 @@ const OrderDetailsScreen = () => {
           </View>
         </View>
         <View style={styles.productContainer}>
-          <OrderContainerComponent showPopup={true} showQuantity={true} screenName={'OrderDetail'}/>
+          <OrderContainerComponent showPopup={true} showQuantity={true} screenName={'OrderDetail'} productsOrderDetail={orderbyIdData?.order_details_json}/>
         </View>
         <View style={styles.orderTrackingWrappe}>
           <Text>Order Tracking YET TO DEVELOP</Text>

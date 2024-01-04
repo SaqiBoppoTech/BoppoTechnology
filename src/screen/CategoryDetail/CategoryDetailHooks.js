@@ -41,11 +41,7 @@ const CategoryDetailHooks = () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}/product/api/v1/customer/collection/get-collection/${route?.params?.handle}`;
-      const response = await axios.post(url, {
-        headers: {
-          origin: ORIGIN,
-        },
-      });
+      const response = await axios.post(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCollectionByHandel(response.data.data.products);
