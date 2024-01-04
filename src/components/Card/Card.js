@@ -32,11 +32,6 @@ const Card = ({
       {image && (
         <View style={[styles.imageContainer, categoryDetailImageContainer]}>
           <Image resizeMode="contain" source={image} style={styles.image} />
-          {/* <Image
-            resizeMode="contain"
-            source={{uri: image}}
-            style={styles.image}
-          /> */}
         </View>
       )}
       <View style={[styles.paddingConmtainer, paddingContainerCategoryDetail]}>

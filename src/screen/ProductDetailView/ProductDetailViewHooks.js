@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
+import {useRoute} from '@react-navigation/native';
 import {styles} from './ProductDetailViewStyle';
 import {Colors, Fonts, ScreenNames} from '../../global';
 import ProductDescription from '../../components/ProductDescription/ProductDescription';
@@ -7,10 +8,24 @@ import ProductReview from '../../components/ProductReview/ProductReview';
 import ProductDetail from '../../components/ProductDetail/ProductDetail';
 import QuestionAndAnswer from '../../components/QuestionAndAnswer/QuestionAndAnswer';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
+import axios from 'axios';
 
 const ProductDetailViewHooks = () => {
   const [selectedTab, setSelectTabs] = React.useState(0);
+  const [selectedProduct, setSelectedProduct] = React.useState(null);
+
+  const dispatch = useDispatch();
+
   const navigation = useNavigation();
+
+  let route = useRoute();
+  let routeProductHandle = route?.params?.productHandle;
+  let routeProductId = route?.params?.productId;
+  console.log('routeProductHandle', routeProductHandle);
+  console.log('routeProductId', routeProductId);
+
   const openCustomView = () => {
     return (
       <View style={styles.marginBottomContainer}>
@@ -59,17 +74,40 @@ const ProductDetailViewHooks = () => {
     );
   };
 
+  const getSingleProduct = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `https://stage-api.boppogo.com/product/api/v1/product/${routeProductHandle}/${routeProductId}`;
+      console.log('categorydetailurl', url);
+      const response = await axios.get(url, {});
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setSelectedProduct(response.data.data);
+        console.log(
+          `response of single product by id  ${response.data.data.shop_product_variants.handle}`,
+        );
+      }
+    } catch (error) {
+      console.log('error getsingleProduct data', error.message);
+    }
+  };
+
   const handleGoBack = () => {
     navigation.goBack();
     console.log('data');
   };
+
+  useEffect(() => {
+    getSingleProduct();
+  }, []);
 
   return {
     renderTopBar,
     openCustomView,
     navigateToCheckOut,
     handleGoBack,
-    navigateToCartPage
+    navigateToCartPage,
+    selectedProduct,
   };
 };
 export {ProductDetailViewHooks};

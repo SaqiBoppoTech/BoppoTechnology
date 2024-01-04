@@ -21,9 +21,14 @@ const CategoryDetailHooks = () => {
 
   let route = useRoute();
 
-  const navigateToProdiuctDetail = () => {
-    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
+  const navigateToProdiuctDetail = (productHandle, productId) => {
+    console.log('pratikkkkk', productHandle, productId);
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN, {
+      productHandle,
+      productId,
+    });
   };
+
   const redirect = useNavigation();
   const handleGoBack = () => {
     redirect.goBack();
@@ -41,10 +46,12 @@ const CategoryDetailHooks = () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}/product/api/v1/customer/collection/get-collection/${route?.params?.handle}`;
+      // let url = `https://stage-api.boppogo.com/product/api/v1/customer/collection/get-collection/shoes-`;
+      console.log('categorydetailurl', url);
       const response = await axios.post(url, {
-        headers: {
-          origin: ORIGIN,
-        },
+        // headers: {
+        //   origin: ORIGIN,
+        // },
       });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));

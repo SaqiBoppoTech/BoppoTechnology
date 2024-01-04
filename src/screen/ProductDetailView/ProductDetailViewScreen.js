@@ -18,7 +18,12 @@ const ProductDetailViewScreen = () => {
     navigateToCheckOut,
     handleGoBack,
     navigateToCartPage,
+    selectedProduct,
   } = ProductDetailViewHooks();
+
+  const productData = selectedProduct?.productMedia || {};
+  console.log('pprprprpprprprprprrp', productData);
+
   return (
     <View style={styles.mainContainer}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
@@ -37,7 +42,7 @@ const ProductDetailViewScreen = () => {
           <CustomCarousel
             autoPlay={false}
             externalCarsoualContainer={styles.marginContainer}
-            externalData={STATIC_DATA.productDetailCarosualData}
+            externalData={productData.url}
             externalIndicatorPositionContainer={styles.positionAlignment}
             defaultWidth={Constant.SCREEN_WIDTH}
             defaultHeigth={CHANGE_BY_MOBILE_DPI(240)}

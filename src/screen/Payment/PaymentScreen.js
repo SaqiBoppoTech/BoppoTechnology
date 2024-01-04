@@ -90,7 +90,7 @@ const PaymentScreen = () => {
       image: 'https://your-image-url.com/logo.png',
       currency: 'INR',
       key: razorpayKey,
-      amount: '1000',
+      amount: productPaymentDetail.sub_total_price * 100,
       name: 'Pratik Singh',
       prefill: {
         email: 'user@email.com',
@@ -103,12 +103,21 @@ const PaymentScreen = () => {
     RazorpayCheckout.open(options)
       .then(data => {
         console.log('Payment Successful:', data);
+        orderReceivedSuccess();
       })
       .catch(error => {
         console.log('Payment Error:', error);
         Alert.alert('Payment Failed', 'Please try again later.');
       });
   }, [selectedRadioPayment, paymentInfo]);
+
+  const handlePay = () => {
+    if (selectedRadioPayment == 4) {
+      orderReceivedSuccess();
+    } else {
+      RazorpayInfo();
+    }
+  };
 
   return (
     <View style={styles.mainView}>
@@ -133,7 +142,7 @@ const PaymentScreen = () => {
             renderItem={renderItem}
           />
         </View>
-        <CommonButton title={'Pay'} onPress={RazorpayInfo} />
+        <CommonButton title={'Pay'} onPress={handlePay} />
       </ScrollView>
     </View>
   );
