@@ -17,9 +17,6 @@ const AllOrderHooks = () => {
   const navigation = useNavigation();
 
   // FUNCTION
-  const navigateToOrderDetails = () => {
-    navigation.navigate(ScreenNames.ORDERDETAIL_SCREEN);
-  };
 
   const dispatch = useDispatch();
 
@@ -54,6 +51,11 @@ const AllOrderHooks = () => {
   };
 
   const renderItem = ({item}) => {
+    const navigateToOrderDetails = () => {
+      console.log(`ujwal 12345 ${item.order_id}`);
+      dispatch(UserAction.setorderId(item.order_id));
+      navigation.navigate(ScreenNames.ORDERDETAIL_SCREEN);
+    };
     return (
       <View style={styles.mainView}>
         <View style={styles.rowView}>
@@ -120,7 +122,6 @@ const AllOrderHooks = () => {
 
   useEffect(() => {
     getOrders();
-    console.log('useeffect ke andar');
   }, []);
 
   return {

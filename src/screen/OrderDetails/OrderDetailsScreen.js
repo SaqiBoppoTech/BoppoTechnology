@@ -11,7 +11,7 @@ import {Colors} from '../../global';
 import { orderDetailHooks } from './OrderDetailsHooks';
 
 const OrderDetailsScreen = () => {
-  const {navigateToCartPage,handleGoBack} = orderDetailHooks();
+  const {navigateToCartPage,handleGoBack,orderbyIdData} = orderDetailHooks();
   return (
     <ScrollView>
       <View style={styles.main}>
@@ -27,11 +27,11 @@ const OrderDetailsScreen = () => {
         />
         <View style={styles.orderDetailView}>
           <Text style={styles.orderDetailTextTop}>ORDER DETAILS</Text>
-          <Text style={styles.orderId}>Order ID 123456789</Text>
+          <Text style={styles.orderId}>Order ID {orderbyIdData?.order_id}</Text>
           <View style={styles.paymentModeWrapper}>
             <Text style={styles.paymentModeText}>Payment Mode</Text>
             <Paypal />
-            <Text style={styles.paypal}>Paypal</Text>
+            <Text style={styles.paypal}>{orderbyIdData?.payment_mode}</Text>
           </View>
         </View>
         <View style={styles.productContainer}>

@@ -35,6 +35,7 @@ const initialState = {
   changeMobileOtpData: null,
   changeMobileOtpTokenData: null,
   logoutToken: null,
+  orderId: null,
 };
 const user = (state = initialState, action) => {
   const {type, payload} = action;
@@ -98,6 +99,11 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         logoutToken: payload,
+      };
+    case actionTypes.ORDER_ID:
+      return {
+        ...state,
+        orderId: payload,
       };
     default:
       return state;
