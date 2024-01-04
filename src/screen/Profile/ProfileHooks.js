@@ -1,18 +1,16 @@
-import {CommonActions, useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
-import {useDispatch, useSelector} from 'react-redux';
-import * as UserAction from '../../redux/actions/userActions';
+import {API_END_POINT, BASE_URL, TOKEN} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const ProfileHooks = () => {
   // VARIABLE
   const navigation = useNavigation();
-  const dispatch = useDispatch();
-  const userData = useSelector(e => e.user?.logoutToken);
-  console.log(`Access Token For LogOut Is : ${userData}`);
+
   // HOOKS
+  const [profile, setProfile] = useState(null);
 
   // FUNCTION
   const navigateToMyAddress = () => {
@@ -49,73 +47,14 @@ const ProfileHooks = () => {
     navigation.navigate(ScreenNames.SHIPPING_POLICY_SCREEN);
   };
 
-  const gotoLogin = CommonActions.reset({
-    routes: [{name: ScreenNames.LOGIN_SCREEN}],
-  });
-
-  const navigateToLogin = () => {
-    getUserLogout();
-  };
-
   ///API CODE GETPROFILE
-  const [profile, setProfile] = useState(null);
 
-  const openGlobalModal = ({title, leftEvent}) => {
-    dispatch(
-      UserAction.setAlertData({
-        alertVisibility: true,
-        message: 'LogOut',
-        description: title,
-        leftText: 'OK',
-        rightText: 'Cancel',
-        rightEvent: () => {},
-        leftEvent: () => {},
-      }),
-    );
-    dispatch(UserAction.setGlobalLoader(false));
-  };
-
-  ///API OF GET PROFILE
   const getProfileData = async () => {
     try {
-      let url = `${BASE_URL}/auth/api/v1/customer/profile`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: TOKEN,
-          origin: ORIGIN,
-        },
-      });
-      setProfile(response.data.data.customerDetails);
+      const response = await axiosInstance.get(API_END_POINT.PROFILE)
+      setProfile(response.  data.data.customerDetails);
     } catch (error) {
       console.log('error getProfile', error.message);
-    }
-  };
-
-  ///API OF LOGOUT
-  const getUserLogout = async () => {
-    try {
-      var myHeaders = new Headers();
-      myHeaders.append('authorization', userData);
-      myHeaders.append('origin', ORIGIN);
-      myHeaders.append('Content-Type', 'application/json');
-
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        redirect: 'follow',
-      };
-
-      const response = await fetch(
-        `${BASE_URL}/auth/api/v1/customer/logout`,
-        requestOptions,
-      );
-      const result = await response.json();
-      console.log(result);
-      if (result.success == true) {
-        navigation.dispatch(gotoLogin);
-      }
-    } catch (error) {
-      console.log('error getUserLogOut', error.response.data);
     }
   };
 
@@ -136,7 +75,6 @@ const ProfileHooks = () => {
     navigateToRefundPolicy,
     navigateToShippingPolicy,
     profile,
-    navigateToLogin,
   };
 };
 

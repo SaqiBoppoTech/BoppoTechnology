@@ -70,6 +70,7 @@ const EditProfileScreen = () => {
         <CustomTextField
           keyboardType={'default'}
           placeholder={'enter mobile number'}
+          editable={false}
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Mobile Number'}
           externalContainer={styles.space}
@@ -85,6 +86,7 @@ const EditProfileScreen = () => {
           placeholder={'enter password'}
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Password'}
+          editable={false}
           showSecure={true}
           showSuffixText={true}
           suffixText={'Change Password'}

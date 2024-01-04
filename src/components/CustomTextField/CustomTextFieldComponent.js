@@ -18,6 +18,7 @@ const CustomTextField = ({
   showSuffixText,
   onPressSuffixText,
   suffixText,
+  editable,
   onChangeText = () => {},
 }) => {
   return (
@@ -35,6 +36,7 @@ const CustomTextField = ({
       </View>
 
       <TextInput
+      editable={editable}
         maxLength={maxLenght}
         style={[styles.input, error && styles.inputError]}
         placeholder={placeholder}
