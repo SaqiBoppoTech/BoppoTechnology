@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
-import Paypal from '../../assets/svgs/PayPal.svg'
+import Paypal from '../../assets/svgs/Paypal.svg'
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
 import {ScrollView} from 'react-native-gesture-handler';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
