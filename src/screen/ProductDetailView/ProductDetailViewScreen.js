@@ -22,7 +22,11 @@ const ProductDetailViewScreen = () => {
   } = ProductDetailViewHooks();
 
   const productData = selectedProduct?.productMedia || {};
-  console.log('pprprprpprprprprprrp', productData);
+  const productInfo = selectedProduct?.shop_product_variants || {};
+  const productDescription = productInfo?.description || '';
+  const productPrice = productInfo?.price || '';
+  console.log('productData', productData);
+  console.log('productInfo', productInfo);
 
   return (
     <View style={styles.mainContainer}>
@@ -69,7 +73,7 @@ const ProductDetailViewScreen = () => {
         </View>
       </View>
       <View style={{flex: 1, paddingTop: CHANGE_BY_MOBILE_DPI(2)}}>
-        {openCustomView()}
+        {openCustomView(productDescription, productPrice)}
       </View>
       <View style={styles.positionContainer}>
         <View style={styles.addToContainer}>

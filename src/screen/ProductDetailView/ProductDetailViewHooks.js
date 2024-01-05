@@ -26,11 +26,12 @@ const ProductDetailViewHooks = () => {
   console.log('routeProductHandle', routeProductHandle);
   console.log('routeProductId', routeProductId);
 
-  const openCustomView = () => {
+  const openCustomView = (description, price) => {
+    console.log({description});
     return (
       <View style={styles.marginBottomContainer}>
         {selectedTab == 0 ? (
-          <ProductDescription />
+          <ProductDescription description={description} price={price} />
         ) : selectedTab == 1 ? (
           <ProductDetail />
         ) : selectedTab == 2 ? (
@@ -80,6 +81,32 @@ const ProductDetailViewHooks = () => {
       let url = `https://stage-api.boppogo.com/product/api/v1/product/${routeProductHandle}/${routeProductId}`;
       console.log('categorydetailurl', url);
       const response = await axios.get(url, {});
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setSelectedProduct(response.data.data);
+        console.log(
+          `response of single product by id  ${response.data.data.shop_product_variants.handle}`,
+        );
+      }
+    } catch (error) {
+      console.log('error getsingleProduct data', error.message);
+    }
+  };
+
+  const addToCart = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/add-update-cart`;
+      console.log('categorydetailurl', url);
+      const response = await axios.post(
+        url,
+        {
+          productId: 1,
+          productVariantId: 1,
+          productQuantity: 1,
+        },
+        {},
+      );
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setSelectedProduct(response.data.data);
