@@ -39,7 +39,7 @@ const CategoryDetailHooks = () => {
     navigation.navigate(ScreenNames.FILTER);
   };
 
-  const [collectionByHandel, setCollectionByHandel] = useState(null);
+  const [collectionByHandel, setCollectionByHandel] = useState([]);
 
   ///API of Collection By Handel
   const getCollectionByHandel = async () => {

@@ -1,4 +1,11 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import {styles} from './ProductDetailViewStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
@@ -19,14 +26,19 @@ const ProductDetailViewScreen = () => {
     handleGoBack,
     navigateToCartPage,
     selectedProduct,
+    addToCart,
   } = ProductDetailViewHooks();
 
-  const productData = selectedProduct?.productMedia || {};
+  const productData = selectedProduct?.productMedia || [];
   const productInfo = selectedProduct?.shop_product_variants || {};
   const productDescription = productInfo?.description || '';
   const productPrice = productInfo?.price || '';
+  const productId = productInfo?.product_id || '';
+  const id = productInfo?.id || '';
+  const Imageurl = productData.length > 0 ? productData[0].url || '' : '';
   console.log('productData', productData);
-  console.log('productInfo', productInfo);
+  console.log('productInfo', productInfo, 'yyyyyyyyyyyyyyyyyy', Imageurl);
+  console.log('pratik data', selectedProduct);
 
   return (
     <View style={styles.mainContainer}>
@@ -43,13 +55,9 @@ const ProductDetailViewScreen = () => {
       />
       <View style={styles.elevationContainer}>
         <View style={styles.carosalContainer}>
-          <CustomCarousel
-            autoPlay={false}
-            externalCarsoualContainer={styles.marginContainer}
-            externalData={productData.url}
-            externalIndicatorPositionContainer={styles.positionAlignment}
-            defaultWidth={Constant.SCREEN_WIDTH}
-            defaultHeigth={CHANGE_BY_MOBILE_DPI(240)}
+          <Image
+            source={{uri: `https://cdn-stage.boppogo.com/${Imageurl}`}}
+            style={styles.img}
           />
           <View style={styles.iconPositionContainer}>
             <HeartSvg
@@ -79,7 +87,7 @@ const ProductDetailViewScreen = () => {
         <View style={styles.addToContainer}>
           <View style={styles.flexContainer}>
             <TouchableOpacity
-              onPress={navigateToCartPage}
+              onPress={() => addToCart(productId, id)}
               style={styles.addToCartSubContainer}>
               <CartSvg
                 heigth={CHANGE_BY_MOBILE_DPI(23)}

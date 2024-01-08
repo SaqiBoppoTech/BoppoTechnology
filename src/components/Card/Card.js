@@ -35,21 +35,18 @@ const Card = ({
         </View>
       )}
       <View style={[styles.paddingConmtainer, paddingContainerCategoryDetail]}>
-        {name && (
-          <Text
-            style={[styles.titleFontStyle, titleFontStyleCategoryDetail]}
-            numberOfLines={3}>
-            {name}
-          </Text>
-        )}
+        <Text
+          style={[styles.titleFontStyle, titleFontStyleCategoryDetail]}
+          numberOfLines={3}>
+          {name}
+        </Text>
+
         <View style={styles.priceContainer}>
-          {price && <Text style={styles.priceFontStyle}>${price}</Text>}
-          {discountPrice && (
-            <Text style={styles.discountFontStyle}>${discountPrice}</Text>
-          )}
-          {percent && (
-            <Text style={styles.percentageFontStyle}>{percent}% OFF </Text>
-          )}
+          <Text style={styles.priceFontStyle}>${price}</Text>
+
+          <Text style={styles.discountFontStyle}>${discountPrice}</Text>
+
+          <Text style={styles.percentageFontStyle}>{percent}% OFF </Text>
         </View>
         {categoryDetailRatingStar ? (
           <View style={styles.starWrapper}>

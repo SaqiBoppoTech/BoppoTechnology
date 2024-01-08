@@ -22,33 +22,28 @@ const CategoryDetailScreen = ({route}) => {
   const {categoriesList} = CategoryHooks();
 
   const renderItem = ({item}) => (
-    console.log(
-      `https://cdn-stage.boppogo.com/${item.shop_product_variant.shop_product_media.url}`,
-    ),
-    (
-      <Card
-        categoryCardContainer={styles.categoryCardContainer}
-        image={`https://cdn-stage.boppogo.com/${item.shop_product_variant.shop_product_media.url}`}
-        categoryDetailImageContainer={styles.categoryDetailImageContainer}
-        paddingContainerCategoryDetail={styles.paddingContainerCategoryDetail}
-        name={item.shop_product.title}
-        titleFontStyleCategoryDetail={styles.titleFontStyleCategoryDetail}
-        price={item.shop_product_variant.price}
-        discountPrice={item.shop_product_variant.compare_price}
-        percent={item.percent}
-        categoryDetailRatingStar={true}
-        freeDelivery={true}
-        plusSvgVisibility={true}
-        onPress={() => {
-          const productHandle = item.shop_product_variant.handle;
-          const productId = item.shop_product_variant.id;
-          navigateToProdiuctDetail(productHandle, productId);
-          console.log('productandle and productid', productHandle, productId);
-        }}
-      />
-    )
+    <Card
+      categoryCardContainer={styles.categoryCardContainer}
+      image={`https://cdn-stage.boppogo.com/${item.shop_product_variant.shop_product_media.url}`}
+      categoryDetailImageContainer={styles.categoryDetailImageContainer}
+      paddingContainerCategoryDetail={styles.paddingContainerCategoryDetail}
+      name={item.shop_product.title}
+      titleFontStyleCategoryDetail={styles.titleFontStyleCategoryDetail}
+      price={item.shop_product_variant.price}
+      discountPrice={item.shop_product_variant.compare_price}
+      percent={item.percent}
+      categoryDetailRatingStar={true}
+      freeDelivery={true}
+      plusSvgVisibility={true}
+      onPress={() => {
+        const productHandle = item.shop_product_variant.handle;
+        const productId = item.shop_product_variant.id;
+        navigateToProdiuctDetail(productHandle, productId);
+        console.log('productandle and productid', productHandle, productId);
+      }}
+    />
   );
-
+  console.log('sdfdsf', collectionByHandel);
   return (
     <View style={styles.main}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
@@ -71,12 +66,14 @@ const CategoryDetailScreen = ({route}) => {
         />
       </View>
       <View style={styles.listWrapper}>
-        <FlatList
-          data={collectionByHandel}
-          renderItem={renderItem}
-          keyExtractor={item => item.key}
-          numColumns={2}
-        />
+        {collectionByHandel && (
+          <FlatList
+            data={collectionByHandel}
+            renderItem={renderItem}
+            keyExtractor={item => item.key}
+            numColumns={2}
+          />
+        )}
       </View>
     </View>
   );

@@ -9,6 +9,7 @@ import axios from 'axios';
 const PaymentHooks = () => {
   const [paymentData, setPaymentData] = useState(null);
   const [selectedRadioPayment, setSelectedRadioPayment] = useState(4);
+  const [createOrderData, setCreateOrderData] = useState(null);
 
   const navigation = useNavigation();
   const handleGoBack = () => {
@@ -75,6 +76,38 @@ const PaymentHooks = () => {
     }
   };
 
+  const createOrder = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      const url = `https://stage-api.boppogo.com/order/api/v1/customer/create-order`;
+      const response = await axios.post(
+        url,
+        {
+          checkout_id: checkoutId.toString(),
+        },
+        {
+          headers: {
+            Authorization: BearerToken,
+            Origin: ORIGIN,
+          },
+        },
+      );
+      console.log('url --------->', url);
+      if (response.data.success == true) {
+        console.log('create order inside  ');
+        dispatch(UserAction.setGlobalLoader(false));
+        let data = response.data.data;
+        setCreateOrderData(data);
+        console.log('create order message =>>>>', data);
+      }
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error crete eorder Method Api', error.message);
+    }
+  };
+
+  console.log('crrate order data ', createOrderData);
+
   useEffect(() => {
     getPaymentInfo();
   }, []);
@@ -86,6 +119,8 @@ const PaymentHooks = () => {
     setSelectedRadioPayment,
     paymentData,
     changePaymentMethod,
+    createOrder,
+    createOrderData,
   };
 };
 

@@ -30,6 +30,8 @@ const PaymentScreen = () => {
     setSelectedRadioPayment,
     paymentData,
     changePaymentMethod,
+    createOrder,
+    createOrderData,
   } = PaymentHooks();
   let route = useRoute();
   let a = route.params.checkoutInfo;
@@ -44,11 +46,15 @@ const PaymentScreen = () => {
   const paymentInfo = paymentData?.payment_providers || [];
   console.log('paymentInfooooo', paymentInfo);
 
+  const customerInfo = createOrderData.notes || {};
+
   const handleItemClick = ({item}) => {
     console.log('item', item);
     setSelectedRadioPayment(item.id);
     changePaymentMethod();
   };
+
+  console.log('final payment data', createOrderData);
 
   const renderItem = ({item}) => (
     <TouchableOpacity
@@ -88,14 +94,14 @@ const PaymentScreen = () => {
     const options = {
       description: 'Payment for your product',
       image: 'https://your-image-url.com/logo.png',
-      currency: 'INR',
+      currency: createOrderData.currency,
       key: razorpayKey,
-      amount: productPaymentDetail.sub_total_price * 100,
-      name: 'Pratik Singh',
+      amount: createOrderData.amount,
+      name: customerInfo.customer_name,
       prefill: {
-        email: 'user@email.com',
-        contact: '1234567890',
-        name: 'John Doe',
+        email: customerInfo.customer_email,
+        contact: customerInfo.customer_mobile,
+        name: customerInfo.customer_name,
       },
       theme: {color: '#3399cc'},
     };
@@ -117,6 +123,13 @@ const PaymentScreen = () => {
     } else {
       RazorpayInfo();
     }
+  };
+
+  const handleCreateOrder = () => {
+    createOrder().then(res => {
+      console.log('handle created done', res);
+      handlePay();
+    });
   };
 
   return (
@@ -142,7 +155,7 @@ const PaymentScreen = () => {
             renderItem={renderItem}
           />
         </View>
-        <CommonButton title={'Pay'} onPress={handlePay} />
+        <CommonButton title={'Pay'} onPress={handleCreateOrder} />
       </ScrollView>
     </View>
   );

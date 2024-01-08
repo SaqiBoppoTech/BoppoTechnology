@@ -11,6 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 import axios from 'axios';
+import {BearerToken, ORIGIN} from '../../global/config';
 
 const ProductDetailViewHooks = () => {
   const [selectedTab, setSelectTabs] = React.useState(0);
@@ -93,7 +94,15 @@ const ProductDetailViewHooks = () => {
     }
   };
 
-  const addToCart = async () => {
+  const addToCart = async (productId, id) => {
+    console.log('aaaazzzzziddd', productId, id);
+    console.log('before', selectedProduct);
+    dispatch(
+      UserAction.setToastedAlert({
+        condition: true,
+        toastedAlertText: `${response.data.message}`,
+      }),
+    );
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `https://stage-api.boppogo.com/auth/api/v1/customer/add-update-cart`;
@@ -101,23 +110,33 @@ const ProductDetailViewHooks = () => {
       const response = await axios.post(
         url,
         {
-          productId: 1,
-          productVariantId: 1,
+          productId: id,
+          productVariantId: productId,
           productQuantity: 1,
         },
-        {},
+        {
+          headers: {
+            Authorization: BearerToken,
+            origin: ORIGIN,
+          },
+        },
       );
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setSelectedProduct(response.data.data);
+        getSingleProduct();
+        // navigateToCartPage();
         console.log(
-          `response of single product by id  ${response.data.data.shop_product_variants.handle}`,
+          `response of add to card product by id  ${response.data.message}`,
         );
       }
+      console.log('after', selectedProduct);
     } catch (error) {
-      console.log('error getsingleProduct data', error.message);
+      console.log('error add to card data', error.message);
     }
   };
+
+  console.log('oooooooooooooo', selectedProduct);
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -135,6 +154,7 @@ const ProductDetailViewHooks = () => {
     handleGoBack,
     navigateToCartPage,
     selectedProduct,
+    addToCart,
   };
 };
 export {ProductDetailViewHooks};
