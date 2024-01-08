@@ -8,9 +8,10 @@ import {ScreenNames} from '../../global';
 import Filter from '../Filter/FilterScreen';
 import TopTabBar from '../../components/TopTabBar/TopTabBar';
 import {useDispatch} from 'react-redux';
-import {BASE_URL, ORIGIN} from '../../global/config';
+import {API_END_POINT, BASE_URL, ORIGIN} from '../../global/config';
 import * as UserAction from '../../redux/actions/userActions';
 import axios from 'axios';
+import axiosInstance from '../../global/api-core';
 
 const CategoryDetailHooks = () => {
   // VARIABLE
@@ -45,7 +46,6 @@ const CategoryDetailHooks = () => {
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCollectionByHandel(response.data.data.products);
-        console.log(`ujwal - ${response.data.data.products}`);
       }
     } catch (error) {
       console.log('error GetCollectionHandel', error.message);

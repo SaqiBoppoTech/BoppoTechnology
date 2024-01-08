@@ -29,6 +29,7 @@ const OrderContainerComponent = ({
   containerHeight,
   screenName,
   productsOrderDetail,
+  navigateToOrderScreen
 }) => {
   // VARIABLE
   const navigation = useNavigation();
@@ -133,6 +134,7 @@ const OrderContainerComponent = ({
           writeAProductreview={true}
           deliveryDetails={true}
           returnOrReplaceItem={true}
+          navigateToOrderScreen={navigateToOrderScreen}    
         />
       ) : (
         <CustomBottomSheet

@@ -51,3 +51,7 @@ export const setorderId = payload => ({
   type: actionTypes.ORDER_ID,
   payload,
 });
+export const setRegistrationToken = payload => ({
+  type: actionTypes.REGISTRATIONTOKEN,
+  payload,
+});

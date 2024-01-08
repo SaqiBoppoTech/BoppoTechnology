@@ -13,6 +13,7 @@ const CustomBottomSheet = ({
   addProductReview,
   cancelThisReturn,
   productDetails,
+  navigateToOrderScreen
 }) => {
   return (
     <Modal
@@ -26,7 +27,7 @@ const CustomBottomSheet = ({
       <View style={style.mainBottomsheetWrapper}>
         <View style={style.bottomSheetWrapper}>
           {returnOrReplaceItem && (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigateToOrderScreen}>
               <View style={style.buttonsWrapper}>
                 <Text style={style.buttonText}>Return or replace items</Text>
               </View>

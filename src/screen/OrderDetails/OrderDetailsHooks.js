@@ -2,9 +2,10 @@ import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useDispatch, useSelector} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
+import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import axiosInstance from '../../global/api-core';
 
 const orderDetailHooks = () => {
   const dispatch = useDispatch();
@@ -14,23 +15,20 @@ const orderDetailHooks = () => {
   const navigateToCartPage = () => {
     navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
   };
+
   const handleGoBack = () => {
     navigation.goBack();
   };
 
   const [orderbyIdData, setOrderbyIdData] = useState(null);
+  console.warn(userDataOrderId);
 
   ///API OF Customer Order by ID
   const getOrderbyId = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `${BASE_URL}/order/api/v1/customer/order/${userDataOrderId}`;
-      const response = await axios.get(url, {
-        headers: {
-          authorization: userData,
-          origin: ORIGIN,
-        },
-      });
+      let url = `${API_END_POINT.ORDER_BY_ID}/${userDataOrderId}`;
+      let response = await axiosInstance.get(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setOrderbyIdData(response.data.data.order_details);
@@ -42,18 +40,13 @@ const orderDetailHooks = () => {
   };
 
   ///API OF CANCEL ORDER BY ID
-  const cancelOrderbyId = async () => {
+  const navigateToOrderScreen = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `${BASE_URL}/order/api/v1/customer/cancel-order/BGS-1`;
-      const response = await axios.post(url, {
-        headers: {
-          authorization: userData,
-          origin: ORIGIN,
-        },
-      });
+      let url = `${API_END_POINT.CANCEL_ORDER}/${userDataOrderId}`;
+      let response = await axiosInstance.post(url);
       if (response.data.success == true) {
-        
+        navigation.navigate(ScreenNames.ORDER_SCREEN);
       }
     } catch (error) {
       console.log('error CancelOrderbyId', error.message);
@@ -68,6 +61,7 @@ const orderDetailHooks = () => {
     navigateToCartPage,
     handleGoBack,
     orderbyIdData,
+    navigateToOrderScreen,
   };
 };
 

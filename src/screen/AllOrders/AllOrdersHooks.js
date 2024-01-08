@@ -8,7 +8,8 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import {BearerToken, ORIGIN, TOKEN} from '../../global/config';
+import {API_END_POINT, BearerToken, ORIGIN, TOKEN} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const AllOrderHooks = () => {
   const [orders, setorders] = useState(null);
@@ -24,22 +25,14 @@ const AllOrderHooks = () => {
   const getOrders = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/order/api/v1/customer/orders`;
-      const response = await axios.post(
-        url,
-        {
-          page: 1,
-          limit: 50,
-          order_status: ['Active'],
-        },
-        {
-          headers: {
-            Authorization: userData,
-            origin: ORIGIN,
-          },
-        },
-      );
+      let url = `${API_END_POINT.ORDER}`;
+      let response = await axiosInstance.post(url, {
+        page: 1,
+        limit: 50,
+        order_status: ['Active'],
+      });
       dispatch(UserAction.setGlobalLoader(false));
+      console.log(`${response.data.data.customerOrderList}`);
       const orderList = response.data.data.customerOrderList;
       if (response.data.success == true) {
         setorders(orderList);

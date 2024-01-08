@@ -1,16 +1,19 @@
-import {useNavigation} from '@react-navigation/native';
+import {CommonActions, useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {API_END_POINT, BASE_URL, TOKEN} from '../../global/config';
+import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
+import {useDispatch, useSelector} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
 import axiosInstance from '../../global/api-core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileHooks = () => {
   // VARIABLE
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
+  const userData = useSelector(e => e.user?.logoutToken);
   // HOOKS
-  const [profile, setProfile] = useState(null);
 
   // FUNCTION
   const navigateToMyAddress = () => {
@@ -47,14 +50,57 @@ const ProfileHooks = () => {
     navigation.navigate(ScreenNames.SHIPPING_POLICY_SCREEN);
   };
 
-  ///API CODE GETPROFILE
+  const gotoLogin = CommonActions.reset({
+    routes: [{name: ScreenNames.LOGIN_SCREEN}],
+  });
 
+  const navigateToLogin = () => {
+    getUserLogout();
+  };
+
+  ///API CODE GETPROFILE
+  const [profile, setProfile] = useState(null);
+
+  const openGlobalModal = ({title, leftEvent}) => {
+    dispatch(
+      UserAction.setAlertData({
+        alertVisibility: true,
+        message: 'LogOut',
+        description: title,
+        leftText: 'OK',
+        rightText: 'Cancel',
+        rightEvent: () => {},
+        leftEvent: () => {},
+      }),
+    );
+    dispatch(UserAction.setGlobalLoader(false));
+  };
+
+  ///API OF GET PROFILE
   const getProfileData = async () => {
     try {
-      const response = await axiosInstance.get(API_END_POINT.PROFILE)
-      setProfile(response.data.data.customerDetails);
+      let url = `${API_END_POINT.PROFILE}`;
+      let response = await axiosInstance.get(url);
+      if (response.data.success == true) {
+        setProfile(response.data.data.customerDetails);
+      }
     } catch (error) {
       console.log('error getProfile', error.message);
+    }
+  };
+
+  ///API OF LOGOUT
+  const getUserLogout = async () => {
+    try {
+      let url = `${API_END_POINT.LOGOUT}`;
+      let response = await axiosInstance.post(url)
+      console.log(response.data);
+      if (response.data.success == true) {
+        await AsyncStorage.clear()
+        navigation.dispatch(gotoLogin);
+      }
+    } catch (error) {
+      console.log('error getUserLogOut', error.response.data);
     }
   };
 
@@ -75,6 +121,7 @@ const ProfileHooks = () => {
     navigateToRefundPolicy,
     navigateToShippingPolicy,
     profile,
+    navigateToLogin,
   };
 };
 

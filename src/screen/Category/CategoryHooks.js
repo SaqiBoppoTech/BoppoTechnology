@@ -19,7 +19,8 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import {useDispatch} from 'react-redux';
 import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
-import {BASE_URL, ORIGIN} from '../../global/config';
+import {API_END_POINT, BASE_URL, ORIGIN} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const CategoryHooks = () => {
   // VARIABLE
@@ -45,12 +46,8 @@ const CategoryHooks = () => {
   const getCategories = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `${BASE_URL}/product/api/v1/customer/collection/menu`;
-      const response = await axios.get(url, {
-        headers: {
-          origin: ORIGIN,
-        },
-      });
+      let url = `${API_END_POINT.CATEGORIES}`;
+      let response = await axiosInstance.get(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCategoriesList(response.data.data.shop_collections);

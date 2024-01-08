@@ -24,7 +24,7 @@ const CategoryDetailScreen = ({route}) => {
   const renderItem = ({item}) => (
     <Card
       categoryCardContainer={styles.categoryCardContainer}
-      image={`https://cdn-stage.boppogo.com/${item.shop_collection.collection_image_url}`}
+      image={`https://cdn-stage.boppogo.com/${item?.shop_collection?.collection_image_url}`}
       categoryDetailImageContainer={styles.categoryDetailImageContainer}
       paddingContainerCategoryDetail={styles.paddingContainerCategoryDetail}
       name={item.shop_product.title}
