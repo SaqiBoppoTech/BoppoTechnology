@@ -2,16 +2,22 @@ import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './OrderDetailsStyles';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
-import Paypal from '../../assets/svgs/Paypal.svg';
+import Paypal from '../../assets/svgs/PayPal.svg';
 import AddressContainerComponenet from '../../components/AddressContainer/AddressContainerComponent';
 import {ScrollView} from 'react-native-gesture-handler';
 import OrderContainerComponent from '../../components/OrderTabContainer/OrderContainerComponent';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
-import { orderDetailHooks } from './OrderDetailsHooks';
+import {orderDetailHooks} from './OrderDetailsHooks';
+import {STATIC_DATA} from '../../global/staticdata';
 
 const OrderDetailsScreen = () => {
-  const {navigateToCartPage,handleGoBack} = orderDetailHooks();
+  const {
+    navigateToCartPage,
+    handleGoBack,
+    orderbyIdData,
+    navigateToOrderScreen,
+  } = orderDetailHooks();
   return (
     <ScrollView>
       <View style={styles.main}>
@@ -27,15 +33,21 @@ const OrderDetailsScreen = () => {
         />
         <View style={styles.orderDetailView}>
           <Text style={styles.orderDetailTextTop}>ORDER DETAILS</Text>
-          <Text style={styles.orderId}>Order ID 123456789</Text>
+          <Text style={styles.orderId}>Order ID {orderbyIdData?.order_id}</Text>
           <View style={styles.paymentModeWrapper}>
             <Text style={styles.paymentModeText}>Payment Mode</Text>
             <Paypal />
-            <Text style={styles.paypal}>Paypal</Text>
+            <Text style={styles.paypal}>{orderbyIdData?.payment_mode}</Text>
           </View>
         </View>
         <View style={styles.productContainer}>
-          <OrderContainerComponent showPopup={true} showQuantity={true} screenName={'OrderDetail'}/>
+          <OrderContainerComponent
+            showPopup={true}
+            showQuantity={true}
+            screenName={'OrderDetail'}
+            productsOrderDetail={orderbyIdData?.order_details_json}
+            navigateToOrderScreen={navigateToOrderScreen}
+          />
         </View>
         <View style={styles.orderTrackingWrappe}>
           <Text>Order Tracking YET TO DEVELOP</Text>

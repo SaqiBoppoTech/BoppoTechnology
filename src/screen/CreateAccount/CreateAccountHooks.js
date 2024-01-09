@@ -99,6 +99,7 @@ const CreateAccountHooks = () => {
           dispatch(UserAction.setMobileNumberData(a));
           dispatch(UserAction.setGlobalLoader(false));
           navigation.navigate(ScreenNames.MOBILE_OTP_SCREEN);
+          dispatch(UserAction.setRegistrationToken(response?.data?.data?.registerSessionToken))
         } else {
           console.warn('asdsa', response?.data);
           dispatch(UserAction.setGlobalLoader(false));

@@ -9,7 +9,8 @@ import OTPInput from '../../components/CustomOTPField/CustomOTPField';
 import React from 'react';
 const VerifyMobileNumberHooks = () => {
   let loginData = useSelector(e => e?.user?.mobileNumberData);
-  console.warn('sadsadsad', loginData?.otp);
+  const userData = useSelector(e => e.user?.registrationToken);
+  console.log(`User Registration Access Token is : ${userData}`);;
   const [otpValue, setOtpValue] = React.useState('');
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -66,9 +67,9 @@ const VerifyMobileNumberHooks = () => {
       try {
         const response = await fetch(
           `${BASE_URL}${API_END_POINT.VERIFY_OTP}`,
-          requestOptions
+          requestOptions,
         );
-        const result = await response.json();  
+        const result = await response.json();
         if (result?.success === true) {
           dispatch(UserAction.setGlobalLoader(false));
           dispatch(
@@ -91,9 +92,42 @@ const VerifyMobileNumberHooks = () => {
       openGlobalModal('Invalid Otp');
     }
   };
+
+  //API OF RESEND OTP
+  const resendOtp = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      var myHeaders = new Headers();
+      myHeaders.append(
+        'registersessiontoken', userData,);
+      myHeaders.append('origin', ORIGIN);
+      myHeaders.append('Content-Type', 'application/json');
+
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow',
+      };
+
+      const response = await fetch(
+        `${BASE_URL}/auth/api/v1/customer/resend-otp`,
+        requestOptions,
+      );
+      const result = await response.json();
+      console.log(result);
+      if (result.success == true) {
+        console.warn(`Your Resend Otp is : ${result.data?.otp}`);
+        dispatch(UserAction.setGlobalLoader(false));
+      }
+    } catch (error) {
+      console.log('error GetResendOtp', error.message);
+    }
+  };
+
   const navigateToHomePage = () => {
     navigation.navigate(ScreenNames.BOTTOM_TAB);
   };
+
   React.useEffect(() => {
     if (loginData?.otp) {
       openGlobalModal({
@@ -101,6 +135,7 @@ const VerifyMobileNumberHooks = () => {
       });
     }
   }, []);
+
   return {
     goBackToLogin,
     invokeToastAlert,
@@ -108,6 +143,7 @@ const VerifyMobileNumberHooks = () => {
     navigateToHomePage,
     getVerifyOtp,
     setOtpValue,
+    resendOtp,
   };
 };
 export {VerifyMobileNumberHooks};

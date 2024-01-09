@@ -4,9 +4,14 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
+import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
+import { signUpValidation } from '../../global/validation';
+import axiosInstance from '../../global/api-core';
 const EditProfileHooks = () => {
   const navigation = useNavigation();
+  let userData = useSelector(e => e?.user?.userData);
+  console.warn("asdasd",userData);
+
   const handleGoBack = () => {
     navigation.goBack();
   };
@@ -31,13 +36,7 @@ const EditProfileHooks = () => {
 
   const getProfileData = async () => {
     try {
-      let url = `${BASE_URL}/auth/api/v1/customer/profile`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: TOKEN,
-          origin: ORIGIN,
-        },
-      });
+      const response = await axiosInstance.get(API_END_POINT.PROFILE)
       setProfile(response.data.data.customerDetails);
       setfirstName(response.data.data.customerDetails?.firstname);
       setLastname(response.data.data.customerDetails?.lastname);
@@ -48,29 +47,60 @@ const EditProfileHooks = () => {
     }
   };
 
+  console.warn("asdasda",profile && profile);
+
   const [firstName, setfirstName] = useState('');
   const [lastname, setLastname] = useState('');
   const [contactNo, setContactNo] = useState('');
   const [email, setEmail] = useState('');
 
   ///API OF UPDATE PROFILE
+  const openGlobalModal = ({title}) => {
+    dispatch(
+      UserAction.setAlertData({
+        alertVisibility: true,
+        message: 'Alert',
+        description: title,
+        leftText: 'OK',
+        rightEvent: () => {},
+        leftEvent: () => {},
+      }),
+    );
+    dispatch(UserAction.setGlobalLoader(false));
+  };
+  
   const updateUserProfile = async () => {
+    let regestarationData = {
+      firstname: firstName,
+      lastname: lastname,
+      email: email,
+      password: 'Saqi@123',
+      country_code: '+91',
+      contact_no: 9999988888,
+    };
+    if (
+      signUpValidation({
+        ...regestarationData,
+        confirmPassword : 'Saqi@123',
+        openGlobalModal,
+      })
+    ) {
     try {
-      let url = `${BASE_URL}/auth/api/v1/customer/update-profile`;
-      const response = await axios.patch(
-        url,
-        {
+      let url = `/auth/api/v1/customer/update-profile`;
+      // console.warn("====2====", url,{
+      //   firstname: firstName,
+      //   lastname: lastname,
+      //   email: email,
+      //   date_of_birth: '2000-12-5',
+      //   gender: 'Male',
+      // },);
+      const response = await axiosInstance.patch(
+        url,{
           firstname: firstName,
           lastname: lastname,
           email: email,
           date_of_birth: '2000-12-5',
           gender: 'Male',
-        },
-        {
-          headers: {
-            Authorization: TOKEN,
-            origin: ORIGIN,
-          },
         },
       );
       if (response.data.success == true) {
@@ -79,6 +109,7 @@ const EditProfileHooks = () => {
     } catch (error) {
       console.log('error UpdateUserProfile', error.message);
     }
+  }
   };
 
   ///API OF CHANGE PASSWORD

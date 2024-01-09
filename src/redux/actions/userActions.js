@@ -47,3 +47,11 @@ export const setLogoutToken = payload => ({
   type: actionTypes.LOGOUT_TOKEN,
   payload,
 });
+export const setorderId = payload => ({
+  type: actionTypes.ORDER_ID,
+  payload,
+});
+export const setRegistrationToken = payload => ({
+  type: actionTypes.REGISTRATIONTOKEN,
+  payload,
+});

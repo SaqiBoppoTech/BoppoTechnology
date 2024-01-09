@@ -1,12 +1,14 @@
-import {CommonActions, useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {ScreenNames} from '../../global';
-import {regex} from '../../global/constant';
-import {useDispatch, useSelector} from 'react-redux';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { ScreenNames } from '../../global';
+import { regex } from '../../global/constant';
+import { useDispatch, useSelector } from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import {loginValidation, signUpValidation} from '../../global/validation';
+import { loginValidation, signUpValidation } from '../../global/validation';
 import axios from 'axios';
-import {BASE_URL, ORIGIN} from '../../global/config';
+import { API_END_POINT, BASE_URL } from '../../global/config';
+import axiosInstance from '../../global/api-core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginHooks = () => {
   // VARIABLE
@@ -23,69 +25,57 @@ const LoginHooks = () => {
   const navigateToForgotPassword = () => {
     navigation.navigate(ScreenNames.FORGET_PASSWORD_SCREEN);
   };
-  const openGlobalModal = ({title}) => {
-    dispatch(
-      UserAction.setAlertData({
+  const openGlobalModal = ({ title }) => {
+    dispatch(UserAction.setAlertData(
+      {
         alertVisibility: true,
         message: 'Alert',
         description: title,
         leftText: 'OK',
-        rightEvent: () => {},
-        leftEvent: () => {},
-      }),
-    );
-    dispatch(UserAction.setGlobalLoader(false));
-  };
+        rightEvent: () => { },
+        leftEvent: () => { }
+      }
+    ))
+    dispatch(UserAction.setGlobalLoader(false))
+  }
   const resetStackAndGoToBottom = CommonActions.reset({
     index: 0,
-    routes: [{name: ScreenNames.BOTTOM_TAB}],
+    routes: [{ name: ScreenNames.BOTTOM_TAB }],
   });
-
-  ///API OF LOGIN
   const navigateToBottom = async () => {
     try {
-      var myHeaders = new Headers();
-      myHeaders.append('origin', ORIGIN);
-      myHeaders.append('Content-Type', 'application/json');
-
-      const body = JSON.stringify({
-        country_code: '+91',
-        contact_no: email,
-        password: password,
-      });
-
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: body,
-        redirect: 'follow',
-      };
-      if (loginValidation({email, password, openGlobalModal})) {
-        dispatch(UserAction.setGlobalLoader(true));
-        const response = await fetch(
-          `${BASE_URL}/auth/api/v1/customer/login`,
-          requestOptions
-        );
-        const result = await response.json();
-        if (result.success) {
-          dispatch(UserAction.setUserData(result.data));
-          dispatch(UserAction.setGlobalLoader(false));
-          dispatch(UserAction.setLogoutToken(result.data.accessToken));
-          dispatch(
-            UserAction.setLoginWithEmailOrMobileNumber({
-              condition: checkLoginWithEmailOrMobileNumber ? true : false,
-              text: email,
-            }),
+      let loginData = {
+        "country_code": "+91",
+        "contact_no": email,
+        "password": password
+      }
+      if (loginValidation({ email, password, openGlobalModal })) {
+        dispatch(UserAction.setGlobalLoader(true))
+        const response = await axiosInstance.post(API_END_POINT.LOGIN_USER, loginData)
+        if (response?.data?.success) {
+          dispatch(UserAction.setUserData(response?.data?.data))
+          dispatch(UserAction.setGlobalLoader(false))
+          dispatch(UserAction.setLoginWithEmailOrMobileNumber({
+            condition: checkLoginWithEmailOrMobileNumber ? true : false,
+            text: email,
+          }),
           );
+          let mobileNumberDataWithToken = {
+            accessToken: response?.data?.data?.accessToken,
+            contatcNumber: email,
+            refreshToken: response?.data?.data?.refreshToken
+          }
+          await AsyncStorage.setItem("userData", JSON.stringify(mobileNumberDataWithToken))
+          axiosInstance.defaults.headers['Authorization'] = response?.data?.data?.accessToken;
           navigation.dispatch(resetStackAndGoToBottom);
         } else {
-          dispatch(UserAction.setGlobalLoader(false));
-          openGlobalModal({title: result.message});
+          dispatch(UserAction.setGlobalLoader(false))
+          openGlobalModal({ title: response?.data?.message })
         }
       }
     } catch (error) {
-      dispatch(UserAction.setGlobalLoader(false));
-      console.log('error', error.message);
+      dispatch(UserAction.setGlobalLoader(false))
+      console.log('error', error.message)
     }
   };
   const navigateToCreateAccount = () => {
@@ -127,4 +117,4 @@ const LoginHooks = () => {
   };
 };
 
-export {LoginHooks};
+export { LoginHooks };
