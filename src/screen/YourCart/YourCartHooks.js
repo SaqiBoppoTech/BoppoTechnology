@@ -27,6 +27,9 @@ const YourCartHook = () => {
   const [checkoutData, setCheckoutData] = useState(null);
 
   const getCartListData = async () => {
+    let abc = `${BASE_URL}${API_END_POINT.GET_CART}`;
+    console.log('222222222222222222222', abc);
+
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}${API_END_POINT.GET_CART}`;
@@ -87,8 +90,8 @@ const YourCartHook = () => {
   };
 
   const createCheckout = async () => {
-    let url = `${BASE_URL}${API_END_POINT.CREATE_CHECKOUT}`;
-    console.log('uuuuuuuuuuuuuuuu', url);
+    let aaa = `${BASE_URL}${API_END_POINT.CREATE_CHECKOUT}`;
+    console.log('uuuuuuuuuuuuuuuu', aaa);
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}${API_END_POINT.CREATE_CHECKOUT}`;
@@ -113,7 +116,6 @@ const YourCartHook = () => {
 
   useEffect(() => {
     getCartListData();
-    shopPaymentProviders();
   }, []);
 
   return {

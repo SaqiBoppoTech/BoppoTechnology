@@ -97,19 +97,13 @@ const ProductDetailViewHooks = () => {
   const addToCart = async (productId, id) => {
     console.log('aaaazzzzziddd', productId, id);
     console.log('before', selectedProduct);
-    dispatch(
-      UserAction.setToastedAlert({
-        condition: true,
-        toastedAlertText: `${response.data.message}`,
-      }),
-    );
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}${API_END_POINT.ADD_TO_CART}`;
       console.log('categorydetailurl', url);
       const response = await axiosInstance.post(url, {
-        productId: id,
-        productVariantId: productId,
+        productId: productId,
+        productVariantId: id,
         productQuantity: 1,
       });
       if (response.data.success == true) {
