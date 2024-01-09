@@ -1,16 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import CircleIncrementButton from '../../components/Button/CircleIncrementButton';
-import RatingComponent from '../../components/RatingStar';
 import {styles} from './CategoryDetailStyle';
 import {ScreenNames} from '../../global';
-import Filter from '../Filter/FilterScreen';
 import TopTabBar from '../../components/TopTabBar/TopTabBar';
 import {useDispatch} from 'react-redux';
-import {API_END_POINT, BASE_URL, ORIGIN} from '../../global/config';
+import {BASE_URL, API_END_POINT} from '../../global/config';
 import * as UserAction from '../../redux/actions/userActions';
-import axios from 'axios';
 import axiosInstance from '../../global/api-core';
 
 const CategoryDetailHooks = () => {
@@ -46,14 +41,9 @@ const CategoryDetailHooks = () => {
   const getCollectionByHandel = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `${BASE_URL}/product/api/v1/customer/collection/get-collection/${route?.params?.handle}`;
-      // let url = `https://stage-api.boppogo.com/product/api/v1/customer/collection/get-collection/shoes-`;
+      let url = `${BASE_URL}${API_END_POINT.CATEGORIESBYID}/${route?.params?.handle}`;
       console.log('categorydetailurl', url);
-      const response = await axios.post(url, {
-        // headers: {
-        //   origin: ORIGIN,
-        // },
-      });
+      const response = await axiosInstance.post(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCollectionByHandel(response.data.data.products);

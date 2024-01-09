@@ -46,7 +46,7 @@ const PaymentScreen = () => {
   const paymentInfo = paymentData?.payment_providers || [];
   console.log('paymentInfooooo', paymentInfo);
 
-  const customerInfo = createOrderData.notes || {};
+  const customerInfo = createOrderData?.notes || {};
 
   const handleItemClick = ({item}) => {
     console.log('item', item);

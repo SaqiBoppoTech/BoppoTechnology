@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import {styles} from './ProductDetailViewStyle';
-import {Colors, Fonts, ScreenNames} from '../../global';
+import {Colors, ScreenNames} from '../../global';
 import ProductDescription from '../../components/ProductDescription/ProductDescription';
 import ProductReview from '../../components/ProductReview/ProductReview';
 import ProductDetail from '../../components/ProductDetail/ProductDetail';
@@ -10,8 +10,8 @@ import QuestionAndAnswer from '../../components/QuestionAndAnswer/QuestionAndAns
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import axios from 'axios';
-import {BearerToken, ORIGIN} from '../../global/config';
+import {BASE_URL, API_END_POINT} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const ProductDetailViewHooks = () => {
   const [selectedTab, setSelectTabs] = React.useState(0);
@@ -79,9 +79,9 @@ const ProductDetailViewHooks = () => {
   const getSingleProduct = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `https://stage-api.boppogo.com/product/api/v1/product/${routeProductHandle}/${routeProductId}`;
+      let url = `${BASE_URL}${API_END_POINT.SINGLE_PRODUCT_BY_ID}/${routeProductHandle}/${routeProductId}`;
       console.log('categorydetailurl', url);
-      const response = await axios.get(url, {});
+      const response = await axiosInstance.get(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setSelectedProduct(response.data.data);
@@ -105,22 +105,13 @@ const ProductDetailViewHooks = () => {
     );
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `https://stage-api.boppogo.com/auth/api/v1/customer/add-update-cart`;
+      let url = `${BASE_URL}${API_END_POINT.ADD_TO_CART}`;
       console.log('categorydetailurl', url);
-      const response = await axios.post(
-        url,
-        {
-          productId: id,
-          productVariantId: productId,
-          productQuantity: 1,
-        },
-        {
-          headers: {
-            Authorization: BearerToken,
-            origin: ORIGIN,
-          },
-        },
-      );
+      const response = await axiosInstance.post(url, {
+        productId: id,
+        productVariantId: productId,
+        productQuantity: 1,
+      });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setSelectedProduct(response.data.data);

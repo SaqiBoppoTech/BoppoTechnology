@@ -100,7 +100,9 @@ const YourCart = () => {
           externalContainer={styles.externalContainer}
           externalFontStyle={styles.externalFontStyle}
           title={'Continue'}
-          onPress={createCheckout}
+          onPress={() => {
+            createCheckout();
+          }}
         />
       </View>
     </View>

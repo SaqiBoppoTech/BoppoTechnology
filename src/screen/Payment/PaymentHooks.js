@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState, useEffect} from 'react';
 import {ScreenNames} from '../../global';
-import {BearerToken, ORIGIN} from '../../global/config';
+import {BASE_URL, API_END_POINT} from '../../global/config';
 import {useDispatch, useSelector} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import axios from 'axios';
+import axiosInstance from '../../global/api-core';
 
 const PaymentHooks = () => {
   const [paymentData, setPaymentData] = useState(null);
@@ -28,13 +28,8 @@ const PaymentHooks = () => {
   const getPaymentInfo = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/payment/api/v1/providers/shop-payment-providers`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: BearerToken,
-          origin: ORIGIN,
-        },
-      });
+      const url = `${BASE_URL}${API_END_POINT.PAYMENT_PROVIDER}`;
+      const response = await axiosInstance.get(url);
       console.log('url --------->', url);
       if (response.data.success == true) {
         console.log('inside payment loop ');
@@ -51,19 +46,10 @@ const PaymentHooks = () => {
   const changePaymentMethod = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/order/api/v1/checkout/customer/change-payment/${checkoutId}`;
-      const response = await axios.put(
-        url,
-        {
-          payment_id: 4,
-        },
-        {
-          headers: {
-            Authorization: BearerToken,
-            origin: ORIGIN,
-          },
-        },
-      );
+      const url = `${BASE_URL}${API_END_POINT.CHANGE_PAYMENT}/${checkoutId}`;
+      const response = await axiosInstance.put(url, {
+        payment_id: 4,
+      });
       console.log('url --------->', url);
       if (response.data.success == true) {
         console.log('inside change payment Method loop ');
@@ -79,19 +65,10 @@ const PaymentHooks = () => {
   const createOrder = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/order/api/v1/customer/create-order`;
-      const response = await axios.post(
-        url,
-        {
-          checkout_id: checkoutId.toString(),
-        },
-        {
-          headers: {
-            Authorization: BearerToken,
-            Origin: ORIGIN,
-          },
-        },
-      );
+      const url = `${BASE_URL}${API_END_POINT.CREATE_ORDER}`;
+      const response = await axiosInstance.post(url, {
+        checkout_id: checkoutId.toString(),
+      });
       console.log('url --------->', url);
       if (response.data.success == true) {
         console.log('create order inside  ');

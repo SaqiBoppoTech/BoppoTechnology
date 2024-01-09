@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
-import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
 import {useRoute} from '@react-navigation/native';
-import {BearerToken, ORIGIN} from '../../global/config';
+import {BASE_URL, API_END_POINT} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const AddNewAddressHooks = () => {
   const [countryCode, setcountryCode] = useState('');
@@ -43,32 +43,22 @@ const AddNewAddressHooks = () => {
   const saveAddress = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/save-address`;
-      const response = await axios.post(
-        url,
-        {
-          country_code: '+91',
-          address_line1: addressLine1,
-          address_line2: 'address line 2',
-          city: city,
-          province: province,
-          zipcode: zipCode,
-          country_id: 1,
-          latitude: '1234',
-          longitude: '2345',
-          type: typeOfAddress,
-          recepient_name: name,
-          recepient_contact: contact,
-          set_as_default: false, //defaultAddress,
-        },
-
-        {
-          headers: {
-            Authorization: BearerToken,
-            origin: ORIGIN,
-          },
-        },
-      );
+      let url = `${BASE_URL}${API_END_POINT.SAVEADDRESS}`;
+      const response = await axiosInstance.post(url, {
+        country_code: '+91',
+        address_line1: addressLine1,
+        address_line2: 'address line 2',
+        city: city,
+        province: province,
+        zipcode: zipCode,
+        country_id: 1,
+        latitude: '1234',
+        longitude: '2345',
+        type: typeOfAddress,
+        recepient_name: name,
+        recepient_contact: contact,
+        set_as_default: false, //defaultAddress,
+      });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         navigateToDeliveryAddress();
@@ -83,33 +73,24 @@ const AddNewAddressHooks = () => {
   const editAddress = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/edit-address`;
-      const response = await axios.patch(
-        url,
-        {
-          address_id: addressId,
-          address_line1: addressLine1,
-          address_line2: 'road line way',
-          city: city,
-          province: province,
-          zipcode: zipCode,
-          country_id: '1',
-          latitude: '',
-          longitude: '',
-          type: typeOfAddress,
-          recepient_name: name,
-          recepient_contact: contact,
-          set_as_default: false, //defaultAddress,
-          country_code: '+91',
-        },
 
-        {
-          headers: {
-            Authorization: BearerToken,
-            origin: ORIGIN,
-          },
-        },
-      );
+      let url = `${BASE_URL}${API_END_POINT.EDITADDRESS}`;
+      const response = await axiosInstance.patch(url, {
+        address_id: addressId,
+        address_line1: addressLine1,
+        address_line2: 'road line way',
+        city: city,
+        province: province,
+        zipcode: zipCode,
+        country_id: '1',
+        latitude: '',
+        longitude: '',
+        type: typeOfAddress,
+        recepient_name: name,
+        recepient_contact: contact,
+        set_as_default: false, //defaultAddress,
+        country_code: '+91',
+      });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         navigateToDeliveryAddress();
