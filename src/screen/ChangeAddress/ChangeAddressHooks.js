@@ -3,8 +3,8 @@ import {ScreenNames} from '../../global';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import axios from 'axios';
-import {BearerToken, ORIGIN} from '../../global/config';
+import {BASE_URL, API_END_POINT} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const ChangeAddressHooks = () => {
   let route = useRoute();
@@ -38,13 +38,8 @@ const ChangeAddressHooks = () => {
   const getAddressList = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/get-address-list?page=${queryParams.page}&limit=100`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: BearerToken,
-          origin: ORIGIN,
-        },
-      });
+      const url = `${BASE_URL}${API_END_POINT.GETADDRESSLIST}?page=${queryParams.page}&limit=100`;
+      const response = await axiosInstance.get(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         const addressList = response.data.data.addressList;
@@ -64,20 +59,11 @@ const ChangeAddressHooks = () => {
     setSelectedItem(id);
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/order/api/v1/checkout/customer/change-address/${checkoutId}`;
-      const response = await axios.put(
-        url,
-        {
-          shop_customer_shipping_address_id: id,
-          shop_customer_billing_address_id: id,
-        },
-        {
-          headers: {
-            Authorization: BearerToken,
-            origin: ORIGIN,
-          },
-        },
-      );
+      const url = `${BASE_URL}${API_END_POINT.CHANGE_ADDRESS}/${checkoutId}`;
+      const response = await axiosInstance.put(url, {
+        shop_customer_shipping_address_id: id,
+        shop_customer_billing_address_id: id,
+      });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         const message = response.data.message;

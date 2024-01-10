@@ -3,8 +3,8 @@ import {ScreenNames} from '../../global';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import axios from 'axios';
-import {BearerToken, ORIGIN} from '../../global/config';
+import {BASE_URL, API_END_POINT} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const BillingAddressHooks = () => {
   const [allAddress, setAllAddress] = useState([]);
@@ -29,24 +29,14 @@ const BillingAddressHooks = () => {
   const getAddressList = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/get-address-list?page=${queryParams.page}&limit=100`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: BearerToken,
-          origin: ORIGIN,
-        },
-      });
+      const url = `${BASE_URL}${API_END_POINT.GETADDRESSLIST}?page=${queryParams.page}&limit=100`;
+      const response = await axiosInstance.get(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         const addressList = response.data.data.addressList;
-        // console.log('count', response.data.data.count);
-        // console.log('totalPage', response.data.data.totalPages);
-        // console.log('length', addressList.length);
-        // console.log('page', page);
-        // setAllAddress(prevAddresses => [...prevAddresses, ...addressList]);
+
         setAllAddress(addressList);
         setHasMore(addressList.length === 10);
-        // setPage(prevPage => prevPage + 1);
       }
     } catch (error) {
       dispatch(UserAction.setGlobalLoader(false));
@@ -59,13 +49,8 @@ const BillingAddressHooks = () => {
     console.log('address id', address_id);
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/auth/api/v1/customer/remove-address/${address_id}`;
-      const response = await axios.delete(url, {
-        headers: {
-          Authorization: BearerToken,
-          origin: ORIGIN,
-        },
-      });
+      const url = `${BASE_URL}${API_END_POINT.REMOVEADDRESS}${address_id}`;
+      const response = await axiosInstance.delete(url);
       console.log('rmeovesssss', response.data);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));

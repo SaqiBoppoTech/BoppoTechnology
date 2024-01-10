@@ -1,4 +1,4 @@
-import React, {ScrollView} from 'react-native';
+import React, {useState, useEffect, useCallback} from 'react';
 import PaymentMethod from '../../components/PaymentMethod/PaymentMethod';
 import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
 import CommonButton from '../../components/Button/CommonButton';
@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
+  ScrollView,
 } from 'react-native';
 import {Colors} from '../../global';
 import Stripe from '../../assets/svgs/Stripe.svg';
@@ -19,6 +20,7 @@ import {styles} from './PaymentScreenStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {useRoute} from '@react-navigation/native';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import RazorpayCheckout from 'react-native-razorpay';
 
 const PaymentScreen = () => {
   const {
@@ -27,6 +29,9 @@ const PaymentScreen = () => {
     selectedRadioPayment,
     setSelectedRadioPayment,
     paymentData,
+    changePaymentMethod,
+    createOrder,
+    createOrderData,
   } = PaymentHooks();
   let route = useRoute();
   let a = route.params.checkoutInfo;
@@ -41,10 +46,15 @@ const PaymentScreen = () => {
   const paymentInfo = paymentData?.payment_providers || [];
   console.log('paymentInfooooo', paymentInfo);
 
+  const customerInfo = createOrderData?.notes || {};
+
   const handleItemClick = ({item}) => {
     console.log('item', item);
     setSelectedRadioPayment(item.id);
+    changePaymentMethod();
   };
+
+  console.log('final payment data', createOrderData);
 
   const renderItem = ({item}) => (
     <TouchableOpacity
@@ -70,6 +80,58 @@ const PaymentScreen = () => {
     </TouchableOpacity>
   );
 
+  const RazorpayInfo = useCallback(() => {
+    const selectedPaymentMethod = paymentInfo.find(
+      item => item.id === selectedRadioPayment,
+    );
+    if (!selectedPaymentMethod) {
+      console.log('Selected payment method not found');
+      return;
+    }
+
+    const razorpayKey = selectedPaymentMethod.credentials.key;
+    console.log('razorpayyyyyyyyyyyyyyyyyyyy', razorpayKey);
+    const options = {
+      description: 'Payment for your product',
+      image: 'https://your-image-url.com/logo.png',
+      currency: createOrderData.currency,
+      key: razorpayKey,
+      amount: createOrderData.amount,
+      name: customerInfo.customer_name,
+      prefill: {
+        email: customerInfo.customer_email,
+        contact: customerInfo.customer_mobile,
+        name: customerInfo.customer_name,
+      },
+      theme: {color: '#3399cc'},
+    };
+
+    RazorpayCheckout.open(options)
+      .then(data => {
+        console.log('Payment Successful:', data);
+        orderReceivedSuccess();
+      })
+      .catch(error => {
+        console.log('Payment Error:', error);
+        Alert.alert('Payment Failed', 'Please try again later.');
+      });
+  }, [selectedRadioPayment, paymentInfo]);
+
+  const handlePay = () => {
+    if (selectedRadioPayment == 4) {
+      orderReceivedSuccess();
+    } else {
+      RazorpayInfo();
+    }
+  };
+
+  const handleCreateOrder = () => {
+    createOrder().then(res => {
+      console.log('handle created done', res);
+      handlePay();
+    });
+  };
+
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
@@ -93,7 +155,7 @@ const PaymentScreen = () => {
             renderItem={renderItem}
           />
         </View>
-        <CommonButton title={'Pay'} onPress={orderReceivedSuccess} />
+        <CommonButton title={'Pay'} onPress={handleCreateOrder} />
       </ScrollView>
     </View>
   );

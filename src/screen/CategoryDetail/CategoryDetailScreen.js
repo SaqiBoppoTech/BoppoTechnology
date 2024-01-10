@@ -10,21 +10,21 @@ import {CategoryHooks} from '../Category/CategoryHooks';
 import Card from '../../components/Card/Card';
 
 const CategoryDetailScreen = ({route}) => {
-  const {name,handle,index} = route.params;
+  const {name,handle,index,data} = route.params;
   const {
     handleGoBack,
     navigateToFilterPage,
     renderItemTopTab,
     collectionByHandel,
     setCollectionByHandel,
-    navigateToProdiuctDetail
+    navigateToProdiuctDetail,
   } = CategoryDetailHooks();
   const {categoriesList} = CategoryHooks();
 
   const renderItem = ({item}) => (
     <Card
       categoryCardContainer={styles.categoryCardContainer}
-      image={`https://cdn-stage.boppogo.com/${item?.shop_collection?.collection_image_url}`}
+      image={`https://cdn-stage.boppogo.com/${item.shop_product_variant.shop_product_media.url}`}
       categoryDetailImageContainer={styles.categoryDetailImageContainer}
       paddingContainerCategoryDetail={styles.paddingContainerCategoryDetail}
       name={item.shop_product.title}
@@ -35,10 +35,15 @@ const CategoryDetailScreen = ({route}) => {
       categoryDetailRatingStar={true}
       freeDelivery={true}
       plusSvgVisibility={true}
-      onPress={navigateToProdiuctDetail}
+      onPress={() => {
+        const productHandle = item.shop_product_variant.handle;
+        const productId = item.shop_product_variant.id;
+        navigateToProdiuctDetail(productHandle, productId);
+        console.log('productandle and productid', productHandle, productId);
+      }}
     />
   );
-
+  console.log('sdfdsf', collectionByHandel);
   return (
     <View style={styles.main}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
@@ -61,12 +66,14 @@ const CategoryDetailScreen = ({route}) => {
         />
       </View>
       <View style={styles.listWrapper}>
-        <FlatList
-          data={collectionByHandel}
-          renderItem={renderItem}
-          keyExtractor={item => item.key}
-          numColumns={2}
-        />
+        {collectionByHandel && (
+          <FlatList
+            data={collectionByHandel}
+            renderItem={renderItem}
+            keyExtractor={item => item.key}
+            numColumns={2}
+          />
+        )}
       </View>
     </View>
   );

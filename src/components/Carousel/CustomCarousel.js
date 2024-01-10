@@ -60,7 +60,7 @@ const CustomCarousel = ({
             <View style={styles.carousel}>
               <Image
                 resizeMode={'cover'}
-                source={item.image}
+                source={externalData ? {uri: item.image} : item.image}
                 style={styles.imageStyle}
               />
             </View>
@@ -68,7 +68,7 @@ const CustomCarousel = ({
             <View style={styles.carousel}>
               <Image
                 resizeMode={'cover'}
-                source={item.image}
+                source={externalData ? {uri: item.image} : item.image}
                 style={styles.imageStyle}
               />
             </View>

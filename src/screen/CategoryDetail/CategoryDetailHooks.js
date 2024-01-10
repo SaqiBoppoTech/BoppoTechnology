@@ -1,16 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import CircleIncrementButton from '../../components/Button/CircleIncrementButton';
-import RatingComponent from '../../components/RatingStar';
 import {styles} from './CategoryDetailStyle';
 import {ScreenNames} from '../../global';
-import Filter from '../Filter/FilterScreen';
 import TopTabBar from '../../components/TopTabBar/TopTabBar';
 import {useDispatch} from 'react-redux';
-import {API_END_POINT, BASE_URL, ORIGIN} from '../../global/config';
+import {BASE_URL, API_END_POINT} from '../../global/config';
 import * as UserAction from '../../redux/actions/userActions';
-import axios from 'axios';
 import axiosInstance from '../../global/api-core';
 
 const CategoryDetailHooks = () => {
@@ -18,13 +13,18 @@ const CategoryDetailHooks = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const [selectedtopTab, setSelectedTopTab] = React.useState(0);
-
   let route = useRoute();
+  const [selectedtopTab, setSelectedTopTab] = React.useState(route.params.index);
 
-  const navigateToProdiuctDetail = () => {
-    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
+
+  const navigateToProdiuctDetail = (productHandle, productId) => {
+    console.log('pratikkkkk', productHandle, productId);
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN, {
+      productHandle,
+      productId,
+    });
   };
+
   const redirect = useNavigation();
   const handleGoBack = () => {
     redirect.goBack();
@@ -35,15 +35,15 @@ const CategoryDetailHooks = () => {
     navigation.navigate(ScreenNames.FILTER);
   };
 
-  const [collectionByHandel, setCollectionByHandel] = useState(null);
+  const [collectionByHandel, setCollectionByHandel] = useState([]);
 
   ///API of Collection By Handel
   const getCollectionByHandel = async () => {
-    setSelectedTopTab(route.params.index)
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `${BASE_URL}/product/api/v1/customer/collection/get-collection/${route?.params?.handle}`;
-      const response = await axios.post(url);
+      let url = `${BASE_URL}${API_END_POINT.CATEGORIESBYID}/${route?.params?.data[selectedtopTab].handle}`;
+      console.log('categorydetailurl', url);
+      const response = await axiosInstance.post(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCollectionByHandel(response.data.data.products);
@@ -59,6 +59,7 @@ const CategoryDetailHooks = () => {
         item={item}
         index={index}
         value={selectedtopTab}
+        setValue={setSelectedTopTab}
         name={'name'}
         externalTopTabContainerStyle={styles.externalTopTabContainerStyle}
         externalTopTabStyle={styles.externalTopTabStyle}
@@ -68,7 +69,7 @@ const CategoryDetailHooks = () => {
 
   useEffect(() => {
     getCollectionByHandel();
-  }, [route?.params?.handle,route.params.name,route.params.index]);
+  }, [selectedtopTab]);
 
   return {
     handleGoBack,

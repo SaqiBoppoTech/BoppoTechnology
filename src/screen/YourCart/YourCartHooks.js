@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import {useEffect, useState} from 'react';
-import axios from 'axios';
-import {BASE_URL, BearerToken, ORIGIN, TOKEN} from '../../global/config';
+import {BASE_URL, API_END_POINT} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
+import axiosInstance from '../../global/api-core';
 
 const YourCartHook = () => {
   const navigation = useNavigation();
@@ -29,13 +29,8 @@ const YourCartHook = () => {
   const getCartListData = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `${BASE_URL}/auth/api/v1/customer/get-cart`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: TOKEN,
-          origin: ORIGIN,
-        },
-      });
+      let url = `${BASE_URL}${API_END_POINT.GET_CART}`;
+      const response = await axiosInstance.get(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCartListData(response.data.data.customerCartDetails);
@@ -49,13 +44,8 @@ const YourCartHook = () => {
   ///API CODE OF DELETECART
   const deleteCartListData = async id => {
     try {
-      let url = `${BASE_URL}/auth/api/v1/customer/delete-cart-items/${id}`;
-      const response = await axios.delete(url, {
-        headers: {
-          Authorization: TOKEN,
-          origin: ORIGIN,
-        },
-      });
+      let url = `${BASE_URL}${API_END_POINT.DELETE_FROM_CART}/${id}`;
+      const response = await axiosInstance.delete(url);
       if (response.data.success == true) {
         getCartListData();
       }
@@ -69,20 +59,11 @@ const YourCartHook = () => {
   const addToWishList = async (productID, productVariantId) => {
     console.log(productID, productVariantId);
     try {
-      const url = `${BASE_URL}/auth/api/v1/customer/add-wishlist`;
-      const response = await axios.post(
-        url,
-        {
-          productId: productID,
-          productVariantId: productVariantId,
-        },
-        {
-          headers: {
-            Authorization: TOKEN,
-            origin: ORIGIN,
-          },
-        },
-      );
+      const url = `${BASE_URL}${API_END_POINT.ADD_WISHLIST}`;
+      const response = await axiosInstance.post(url, {
+        productId: productID,
+        productVariantId: productVariantId,
+      });
       console.log(response.data);
     } catch (error) {
       console.log('error Add to WishList', error.message);
@@ -92,13 +73,8 @@ const YourCartHook = () => {
   const shopPaymentProviders = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `https://stage-api.boppogo.com/payment/api/v1/providers/shop-payment-providers`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: TOKEN,
-          origin: ORIGIN,
-        },
-      });
+      let url = `${BASE_URL}${API_END_POINT.PAYMENT_PROVIDER}`;
+      const response = await axiosInstance.get(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setpaymentDataList(response.data);
@@ -111,22 +87,15 @@ const YourCartHook = () => {
   };
 
   const createCheckout = async () => {
+    let url = `${BASE_URL}${API_END_POINT.CREATE_CHECKOUT}`;
+    console.log('uuuuuuuuuuuuuuuu', url);
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `https://stage-api.boppogo.com/order/api/v1/checkout/customer/create-checkout`;
-      const response = await axios.post(
-        url,
-        {
-          payment_mode: 'Cash On Delivery(COD)',
-          payment_provider_id: 3,
-        },
-        {
-          headers: {
-            Authorization: BearerToken,
-            origin: ORIGIN,
-          },
-        },
-      );
+      let url = `${BASE_URL}${API_END_POINT.CREATE_CHECKOUT}`;
+      const response = await axiosInstance.post(url, {
+        payment_mode: 'Cash On Delivery(COD)',
+        payment_provider_id: 3,
+      });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setCheckoutData(response.data.data.checkout_id);

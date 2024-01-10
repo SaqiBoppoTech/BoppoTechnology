@@ -90,9 +90,9 @@ const OrderSummary = () => {
           />
         </View>
         <View style={styles.underLine}></View>
-        <ShippingMethod />
+        {/* <ShippingMethod />
         <View style={styles.line} />
-        <ShippingType />
+        <ShippingType /> */}
         <ApplyCode />
         <PaymentDetails
           productCost={productPaymentDetail.total_price}

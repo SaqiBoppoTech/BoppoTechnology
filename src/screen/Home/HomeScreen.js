@@ -4,8 +4,8 @@ import {View, Text, ScrollView, Modal, TouchableOpacity} from 'react-native';
 import {HomeHooks} from './HomeHooks';
 import {styles} from './HomeStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import { Colors, Constant } from '../../global';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import {Colors, Constant} from '../../global';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import LocationSvg from '../../assets/svgs/LocationSvg.svg';
 import SearchField from '../../components/SearchField';
 import CustomCarousel from '../../components/Carousel/CustomCarousel';
@@ -22,15 +22,23 @@ import YourBrowserHistory from '../../components/YourBrowserHistory/YourBrowserH
 import TopOffer from '../../components/TopOffer/TopOffer';
 
 const HomeScreen = () => {
-  const { isPopupVisible, setPopupVisible, togglePopup, navigateToLocation,appData } =
-    HomeHooks();
+  const {
+    isPopupVisible,
+    setPopupVisible,
+    togglePopup,
+    navigateToLocation,
+    appData,
+  } = HomeHooks();
   return (
     <View style={styles.mainContainer}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <View style={styles.boppoHeaderContainer}>
         <View style={styles.flexContainer}>
           <TouchableOpacity>
-            {appData?.appLogo(CHANGE_BY_MOBILE_DPI(35), CHANGE_BY_MOBILE_DPI(35))}
+            {appData?.appLogo(
+              CHANGE_BY_MOBILE_DPI(35),
+              CHANGE_BY_MOBILE_DPI(35),
+            )}
           </TouchableOpacity>
           <Text style={styles.headerFontStyle}>Boppo</Text>
         </View>

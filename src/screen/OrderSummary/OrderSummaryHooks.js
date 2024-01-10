@@ -4,7 +4,13 @@ import {ScreenNames} from '../../global';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
-import {BearerToken, ORIGIN} from '../../global/config';
+import {
+  BASE_URL,
+  API_END_POINT,
+  BearerToken,
+  ORIGIN,
+} from '../../global/config';
+import axiosInstance from '../../global/api-core';
 
 const OrderSummaryHooks = () => {
   const [orderData, setOrderData] = useState(null);
@@ -65,13 +71,8 @@ const OrderSummaryHooks = () => {
   const getCheckoutInfo = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      const url = `https://stage-api.boppogo.com/order/api/v1/checkout/customer/${checkoutId}`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: BearerToken,
-          origin: ORIGIN,
-        },
-      });
+      const url = `${BASE_URL}${API_END_POINT.CHECKOUT_INFO}/${checkoutId}`;
+      const response = await axiosInstance.get(url);
       console.log('url --------->', url);
       if (response.data.success == true) {
         console.log('inside checkpout ');
