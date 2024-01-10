@@ -13,9 +13,9 @@ const CategoryDetailHooks = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const [selectedtopTab, setSelectedTopTab] = React.useState(0);
-
   let route = useRoute();
+  const [selectedtopTab, setSelectedTopTab] = React.useState(route.params.index);
+
 
   const navigateToProdiuctDetail = (productHandle, productId) => {
     console.log('pratikkkkk', productHandle, productId);
@@ -41,7 +41,7 @@ const CategoryDetailHooks = () => {
   const getCollectionByHandel = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `${BASE_URL}${API_END_POINT.CATEGORIESBYID}/${route?.params?.handle}`;
+      let url = `${BASE_URL}${API_END_POINT.CATEGORIESBYID}/${route?.params?.data[selectedtopTab].handle}`;
       console.log('categorydetailurl', url);
       const response = await axiosInstance.post(url);
       if (response.data.success == true) {
@@ -58,8 +58,8 @@ const CategoryDetailHooks = () => {
       <TopTabBar
         item={item}
         index={index}
-        setValue={setSelectedTopTab}
         value={selectedtopTab}
+        setValue={setSelectedTopTab}
         name={'name'}
         externalTopTabContainerStyle={styles.externalTopTabContainerStyle}
         externalTopTabStyle={styles.externalTopTabStyle}
@@ -69,7 +69,7 @@ const CategoryDetailHooks = () => {
 
   useEffect(() => {
     getCollectionByHandel();
-  }, []);
+  }, [selectedtopTab]);
 
   return {
     handleGoBack,

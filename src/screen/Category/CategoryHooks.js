@@ -27,12 +27,14 @@ const CategoryHooks = () => {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
-
+  const [categoriesList, setCategoriesList] = useState(null);
   //FUNCTION
-  const navigateToCategoryDetail = item => {
+  const navigateToCategoryDetail = (item,index) => {
     navigation.navigate(ScreenNames.CATEGORY_DETAIL_SCREEN, {
       name: item.name,
       handle: item.handle,
+      index : index,
+      data: categoriesList
     });
   };
 
@@ -40,7 +42,7 @@ const CategoryHooks = () => {
     navigation.navigate(ScreenNames.YOUR_CART_SCREEN);
   };
 
-  const [categoriesList, setCategoriesList] = useState(null);
+
 
   //API OF Customer Collection Menu i.e Get Category
   const getCategories = async () => {

@@ -37,7 +37,7 @@ const Card = ({
       <View style={[styles.paddingConmtainer, paddingContainerCategoryDetail]}>
         <Text
           style={[styles.titleFontStyle, titleFontStyleCategoryDetail]}
-          numberOfLines={3}>
+          numberOfLines={1}>
           {name}
         </Text>
 

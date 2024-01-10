@@ -14,6 +14,8 @@ export const API_END_POINT = {
   FORGOT_PASSWORD: `${AUTH}/customer/forget-password`,
   FORGOT_PASSWORD_OTP: `${AUTH}/customer/forget-password-verify-otp`,
   GET_WISHLIST: `${AUTH}/customer/get-wishlist`,
+  ADD_CART : `${AUTH}/customer/add-update-cart`,
+  DELETE_WISHLIST : `${AUTH}/customer/delete-wishlist-items`,
   GET_CART: `${AUTH}/customer/get-cart`,
   PROFILE: `${AUTH}/customer/profile`,
   ORDER: `${ORDER}/customer/orders`,
