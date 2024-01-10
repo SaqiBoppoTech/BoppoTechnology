@@ -15,8 +15,12 @@ const WishListHooks = () => {
 
   const addToCartPress = () => {};
   const removeFromCart = () => {};
-  const navigateToProductScreen = () => {
-    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN);
+  const navigateToProductScreen = (productHandle, productId) => {
+    console.log('pratikkkkk wishlist', productHandle, productId);
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN, {
+      productHandle,
+      productId,
+    });
   };
 
   const navigateToCartPage = () => {

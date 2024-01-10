@@ -19,8 +19,8 @@ const BillingAddressHooks = () => {
   };
   const dispatch = useDispatch();
 
-  const editAddress = () => {
-    navigation.navigate(ScreenNames.ADD_NEW_ADDRESS);
+  const editAddress = ({item}) => {
+    navigation.navigate(ScreenNames.ADD_NEW_ADDRESS, {item: item});
   };
   const queryParams = {
     page: page,

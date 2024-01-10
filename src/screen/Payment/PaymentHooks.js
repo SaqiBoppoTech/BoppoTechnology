@@ -43,12 +43,13 @@ const PaymentHooks = () => {
     }
   };
 
-  const changePaymentMethod = async () => {
+  const changePaymentMethod = async payment_provider_id => {
+    console.log('payment_provider_id', payment_provider_id);
     try {
       dispatch(UserAction.setGlobalLoader(true));
       const url = `${BASE_URL}${API_END_POINT.CHANGE_PAYMENT}/${checkoutId}`;
       const response = await axiosInstance.put(url, {
-        payment_id: 4,
+        payment_id: payment_provider_id,
       });
       console.log('url --------->', url);
       if (response.data.success == true) {
@@ -63,6 +64,7 @@ const PaymentHooks = () => {
   };
 
   const createOrder = async () => {
+    console.log('create order ');
     try {
       dispatch(UserAction.setGlobalLoader(true));
       const url = `${BASE_URL}${API_END_POINT.CREATE_ORDER}`;

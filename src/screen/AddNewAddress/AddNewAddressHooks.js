@@ -36,11 +36,14 @@ const AddNewAddressHooks = () => {
   };
 
   let route = useRoute();
-  console.warn(route?.params?.item);
   let {item} = route?.params;
   let addressId = item?.id;
-
   const saveAddress = async () => {
+    console.log(
+      'defaultAddresssssssssssssssssssssssssssssssssssssssss',
+      defaultAddress,
+    );
+
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}${API_END_POINT.SAVEADDRESS}`;
@@ -57,7 +60,7 @@ const AddNewAddressHooks = () => {
         type: typeOfAddress,
         recepient_name: name,
         recepient_contact: contact,
-        set_as_default: false, //defaultAddress,
+        set_as_default: defaultAddress, //defaultAddress,
       });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
@@ -111,6 +114,7 @@ const AddNewAddressHooks = () => {
     setContact(item?.recepient_contact);
     setName(item?.recepient_name);
     setDefaultAddress(item?.is_default == 1 ? true : false);
+    console.log('type of address', item?.type);
   }, []);
 
   return {

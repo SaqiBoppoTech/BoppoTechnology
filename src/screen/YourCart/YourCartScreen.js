@@ -86,7 +86,7 @@ const YourCart = () => {
       <SearchAppBar title={'Cart'} onPress={handleGoBack} />
       <CheckoutNavigationBar />
       <View style={styles.flatlistView}>
-        {cartListData.length > 1 ? (
+        {cartListData.length > 0 ? (
           <FlatList
             data={cartListData}
             renderItem={renderItem}
@@ -103,13 +103,13 @@ const YourCart = () => {
       <View style={styles.btnStyle}>
         {/* <CommonButton title={'Continue'} onPress={navigateToOrderSummary} /> */}
         <CommonButton
-          color={cartListData.length > 1 ? Colors.BLACK : Colors.GRAY}
+          color={cartListData.length > 0 ? Colors.BLACK : Colors.GRAY}
           externalCustomButtonStyle={styles.externalCustomButtonStyle}
           externalContainer={styles.externalContainer}
           externalFontStyle={styles.externalFontStyle}
           title={'Continue'}
           onPress={() => {
-            cartListData.length > 1 ? createCheckout() : null;
+            cartListData.length > 0 ? createCheckout() : null;
           }}
         />
       </View>

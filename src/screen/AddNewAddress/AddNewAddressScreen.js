@@ -34,6 +34,8 @@ const AddNewAddress = () => {
     setContact,
   } = AddNewAddressHooks();
 
+  console.log('..................', typeOfAddress);
+
   return (
     <View style={styles.mainView}>
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
@@ -85,7 +87,7 @@ const AddNewAddress = () => {
           placeholderTextColor={Colors.GRAY_DARK}
           externalContainer={styles.space}
         />
-        <CountryDropdownComponent />
+        {/* <CountryDropdownComponent /> */}
 
         <CustomTextField
           value={zipCode}
@@ -101,6 +103,7 @@ const AddNewAddress = () => {
         <View style={styles.titleWrapper}>
           <CustomCheckbox
             title={'Apply as Billing Address'}
+            isCheckBox={typeOfAddress == 'Billing' ? true : false}
             type={'Billing'}
             onToggle={(type, isChecked) => {
               if (isChecked) {
@@ -112,8 +115,16 @@ const AddNewAddress = () => {
           />
           <CustomCheckbox
             title={'Apply as Delivery Address'}
+            isCheckBox={typeOfAddress == 'Shipping' ? true : false}
             type={'Shipping'}
             onToggle={(type, isChecked) => {
+              console.log(
+                'aaaaaaaaaaaapppppppppp',
+                type,
+                'aaaaaaaaaaaa',
+                isChecked,
+              );
+
               if (isChecked) {
                 setTypeOfAddress(type);
               } else {
@@ -124,11 +135,14 @@ const AddNewAddress = () => {
           <CustomCheckbox
             title={'Apply as Default Address'}
             isCheckBox={defaultAddress}
-            onToggle={isChecked => {
+            onToggle={(type, isChecked) => {
+              console.log('pppppppppppppppp', isChecked, 'dss', type);
               if (isChecked) {
                 setDefaultAddress(true);
+                console.log('issisiisisisis', defaultAddress);
               } else {
                 setDefaultAddress(false);
+                console.log('000000000000000', defaultAddress);
               }
             }}
           />

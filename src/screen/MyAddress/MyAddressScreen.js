@@ -21,7 +21,7 @@ const MyAddressScreen = () => {
       <SearchAppBar title={'My Addresses'} onPress={handleGoBack} />
       <View style={styles.marginWrapper}>
         <AddressTypeComponent
-          showDefault={true}
+          showDefault={false}
           title={'Delivery Address'}
           onPress={navigateToDeliveryScreen}
         />

@@ -63,7 +63,16 @@ const WishlistScreen = () => {
             </Text>
             <TouchableOpacity
               style={styles.btn}
-              onPress={navigateToProductScreen}>
+              onPress={() => {
+                const productHandle = item?.product_variant?.handle;
+                const productId = item?.product_variant?.id;
+                navigateToProductScreen(productHandle, productId);
+                console.log(
+                  'productandle and productid',
+                  productHandle,
+                  productId,
+                );
+              }}>
               <Text style={styles.btnText}>View Product</Text>
             </TouchableOpacity>
           </View>

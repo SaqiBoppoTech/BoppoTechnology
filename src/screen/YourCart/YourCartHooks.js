@@ -22,14 +22,13 @@ const YourCartHook = () => {
   };
 
   ///API CODE
-  const [cartListData, setCartListData] = useState(null);
+  const [cartListData, setCartListData] = useState([]);
   const [paymentDataList, setpaymentDataList] = useState(null);
   const [checkoutData, setCheckoutData] = useState(null);
 
   const getCartListData = async () => {
     let abc = `${BASE_URL}${API_END_POINT.GET_CART}`;
     console.log('222222222222222222222', abc);
-
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}${API_END_POINT.GET_CART}`;
@@ -38,6 +37,7 @@ const YourCartHook = () => {
         dispatch(UserAction.setGlobalLoader(false));
         setCartListData(response.data.data.customerCartDetails);
       }
+      console.log('0000000000000000000000000000000', response.data.data);
     } catch (error) {
       dispatch(UserAction.setGlobalLoader(false));
       console.log('error getCartList', error.message);
@@ -46,14 +46,17 @@ const YourCartHook = () => {
 
   ///API CODE OF DELETECART
   const deleteCartListData = async id => {
+    dispatch(UserAction.setGlobalLoader(true));
     try {
       let url = `${BASE_URL}${API_END_POINT.DELETE_FROM_CART}/${id}`;
       const response = await axiosInstance.delete(url);
       if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
         getCartListData();
       }
       console.log(response.data);
     } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
       console.log('error deleteCartList', error.message);
     }
   };
@@ -62,13 +65,18 @@ const YourCartHook = () => {
   const addToWishList = async (productID, productVariantId) => {
     console.log(productID, productVariantId);
     try {
+      dispatch(UserAction.setGlobalLoader(true));
       const url = `${BASE_URL}${API_END_POINT.ADD_WISHLIST}`;
       const response = await axiosInstance.post(url, {
         productId: productID,
         productVariantId: productVariantId,
       });
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+      }
       console.log(response.data);
     } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
       console.log('error Add to WishList', error.message);
     }
   };
