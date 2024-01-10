@@ -233,7 +233,6 @@ const MainStack = () => {
       } 
       /> */}
       {globalLoader && <GlobalLoader />}
-      <GlobalAlert />
       <CustomToastedAlert />
     </>
   );

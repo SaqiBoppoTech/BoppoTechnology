@@ -53,12 +53,21 @@ const AllOrderHooks = () => {
       <View style={styles.mainView}>
         <View style={styles.rowView}>
           <View style={styles.contaier}>
-            <Image
-              source={{
-                uri: `https://cdn-stage.boppogo.com/${item.products[0].product_image_url}`,
-              }}
-              style={styles.imgcontainer}
-            />
+            {`https://cdn-stage.boppogo.com/${item.products[0].product_image_url}` !=
+            null ? (
+              <Image
+                source={{
+                  uri: `https://cdn-stage.boppogo.com/${item.products[0].product_image_url}`,
+                }}
+                style={styles.imgcontainer}
+              />
+            ) : (
+              <Image
+                resizeMode="contain"
+                source={'../../assets/images/Logo.png'}
+                style={styles.imageWrapper}
+              />
+            )}
           </View>
           <View style={styles.nameWrapper}>
             <View style={styles.textWrapper}>

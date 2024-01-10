@@ -16,7 +16,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {ScreenNames} from '../../global';
 import Arrow from '../../assets/svgs/ArrowCategorySvg.svg';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
 import {API_END_POINT, BASE_URL, ORIGIN} from '../../global/config';
@@ -25,6 +25,7 @@ import axiosInstance from '../../global/api-core';
 const CategoryHooks = () => {
   // VARIABLE
   const navigation = useNavigation();
+  const appData = useSelector(e => e?.user?.globalAppData);
 
   const dispatch = useDispatch();
   const [categoriesList, setCategoriesList] = useState(null);
@@ -68,6 +69,7 @@ const CategoryHooks = () => {
     navigateToCategoryDetail,
     navigateToCartPage,
     categoriesList,
+    appData
   };
 };
 

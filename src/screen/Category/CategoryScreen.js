@@ -17,19 +17,33 @@ import Arrow from '../../assets/svgs/ArrowCategorySvg.svg';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const CategoryScreen = () => {
-  const {navigateToCartPage, categoriesList,navigateToCategoryDetail} = CategoryHooks();
+  const {
+    navigateToCartPage,
+    categoriesList,
+    navigateToCategoryDetail,
+    appData,
+  } = CategoryHooks();
 
-  const renderCategory = ({item,index}) => (
+  const renderCategory = ({item, index}) => (
     <TouchableOpacity
-      onPress={() => navigateToCategoryDetail(item,index)}
+      onPress={() => navigateToCategoryDetail(item, index)}
       activeOpacity={1}>
       <View style={styles.productWrapper}>
-        <Image
-          source={{
-            uri: `https://cdn-stage.boppogo.com/${item.collection_image_url}`,
-          }}
-          style={styles.imageWrapper}
-        />
+        {`https://cdn-stage.boppogo.com/${item.collection_image_url}` !=
+        null ? (
+          <Image
+            source={{
+              uri: `https://cdn-stage.boppogo.com/${item.collection_image_url}`,
+            }}
+            style={styles.imageWrapper}
+          />
+        ) : (
+          <Image
+            resizeMode="contain"
+            source={'../../assets/images/Logo.png'}
+            style={styles.imageWrapper}
+          />
+        )}
         <View style={styles.titleWrapper}>
           <Text numberOfLines={1} style={styles.textWrapper}>
             {item.name}

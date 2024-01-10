@@ -115,22 +115,11 @@ const EditProfileHooks = () => {
   ///API OF CHANGE PASSWORD
   const navigateToChangePassword = async () => {
     try {
-      var myHeaders = new Headers();
-      myHeaders.append('authorization', TOKEN);
-      myHeaders.append('origin', ORIGIN);
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        redirect: 'follow',
-      };
-      const response = await fetch(
-        `${BASE_URL}/auth/api/v1/customer/change-password`,
-        requestOptions,
-      );
-      const result = await response.json();
-      if (result.success == true) {
+      let url = `${API_END_POINT.CHANGE_PASSWORD}`;
+      let response = await axiosInstance.post(url);
+      if (response.data.success == true) {
         navigation.navigate(ScreenNames.CHANGE_PASSWORD);
-        dispatch(UserAction.setChangePasswordOtp(result.data.otp));
+        dispatch(UserAction.setChangePasswordOtp(response.data.data.otp));
       }
     } catch (error) {
       console.log('error ChangePassword', error.message);
