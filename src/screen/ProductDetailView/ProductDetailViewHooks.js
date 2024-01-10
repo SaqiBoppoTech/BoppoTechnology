@@ -27,12 +27,16 @@ const ProductDetailViewHooks = () => {
   console.log('routeProductHandle', routeProductHandle);
   console.log('routeProductId', routeProductId);
 
-  const openCustomView = (description, price) => {
+  const openCustomView = (description, price, stockCount) => {
     console.log({description});
     return (
       <View style={styles.marginBottomContainer}>
         {selectedTab == 0 ? (
-          <ProductDescription description={description} price={price} />
+          <ProductDescription
+            description={description}
+            price={price}
+            stockCount={stockCount}
+          />
         ) : selectedTab == 1 ? (
           <ProductDetail />
         ) : selectedTab == 2 ? (

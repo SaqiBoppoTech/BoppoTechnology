@@ -24,6 +24,8 @@ const YourCart = () => {
     createCheckout,
   } = YourCartHook();
 
+  console.log('hello cartitem', cartListData);
+
   const renderItem = ({item}) => {
     // console.log(item);
     return (
@@ -84,24 +86,30 @@ const YourCart = () => {
       <SearchAppBar title={'Cart'} onPress={handleGoBack} />
       <CheckoutNavigationBar />
       <View style={styles.flatlistView}>
-        <FlatList
-          data={cartListData}
-          renderItem={renderItem}
-          keyExtractor={item => item.key}
-          showsHorizontalScrollIndicator={false}
-        />
+        {cartListData.length > 1 ? (
+          <FlatList
+            data={cartListData}
+            renderItem={renderItem}
+            keyExtractor={item => item.key}
+            showsHorizontalScrollIndicator={false}
+          />
+        ) : (
+          <View style={styles.noItemView}>
+            <Text style={styles.noItemText}>No item Added in a Cart</Text>
+          </View>
+        )}
       </View>
 
       <View style={styles.btnStyle}>
         {/* <CommonButton title={'Continue'} onPress={navigateToOrderSummary} /> */}
         <CommonButton
-          color={Colors.BLACK}
+          color={cartListData.length > 1 ? Colors.BLACK : Colors.GRAY}
           externalCustomButtonStyle={styles.externalCustomButtonStyle}
           externalContainer={styles.externalContainer}
           externalFontStyle={styles.externalFontStyle}
           title={'Continue'}
           onPress={() => {
-            createCheckout();
+            cartListData.length > 1 ? createCheckout() : null;
           }}
         />
       </View>

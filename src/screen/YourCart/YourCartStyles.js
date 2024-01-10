@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     marginLeft: CHANGE_BY_MOBILE_DPI(10),
     marginRight: CHANGE_BY_MOBILE_DPI(5),
     gap: CHANGE_BY_MOBILE_DPI(4),
-    paddingVertical:CHANGE_BY_MOBILE_DPI(5)
+    paddingVertical: CHANGE_BY_MOBILE_DPI(5),
   },
   name: {
     fontSize: CHANGE_BY_MOBILE_DPI(14),
@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: CHANGE_BY_MOBILE_DPI(10),
   },
   editWrapper: {
-    flex:1,
+    flex: 1,
     backgroundColor: Colors.LIGHT_WHITE,
     flexDirection: 'row',
     alignItems: 'center',
@@ -92,7 +92,7 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: CHANGE_BY_MOBILE_DPI(10),
   },
   removeWrapper: {
-    flex:1,
+    flex: 1,
     backgroundColor: Colors.LIGHT_WHITE,
     alignItems: 'center',
     flexDirection: 'row',
@@ -123,20 +123,21 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     bottom: CHANGE_BY_MOBILE_DPI(0),
     left: 0,
-    width:Constant.SCREEN_WIDTH
+    width: Constant.SCREEN_WIDTH,
   },
-  externalCustomButtonStyle:{
-    marginBottom:CHANGE_BY_MOBILE_DPI(10),
-    marginTop:CHANGE_BY_MOBILE_DPI(10)
+  externalCustomButtonStyle: {
+    marginBottom: CHANGE_BY_MOBILE_DPI(10),
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
   },
   externalContainer: {
     borderRadius: CHANGE_BY_MOBILE_DPI(10),
-    
   },
   externalFontStyle: {
     fontSize: CHANGE_BY_MOBILE_DPI(16),
     fontFamily: Fonts.MANROPE_BOLD,
     color: Colors.WHITE,
-    includeFontPadding: false
+    includeFontPadding: false,
   },
+  noItemView: {alignItems: 'center', justifyContent: 'center', flex: 1},
+  noItemText: {fontSize: CHANGE_BY_MOBILE_DPI(16), color: Colors.BLACK},
 });
