@@ -39,6 +39,7 @@ const CategoryDetailHooks = () => {
 
   ///API of Collection By Handel
   const getCollectionByHandel = async () => {
+    setSelectedTopTab(route.params.index)
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}/product/api/v1/customer/collection/get-collection/${route?.params?.handle}`;
@@ -57,7 +58,6 @@ const CategoryDetailHooks = () => {
       <TopTabBar
         item={item}
         index={index}
-        setValue={setSelectedTopTab}
         value={selectedtopTab}
         name={'name'}
         externalTopTabContainerStyle={styles.externalTopTabContainerStyle}
@@ -68,7 +68,7 @@ const CategoryDetailHooks = () => {
 
   useEffect(() => {
     getCollectionByHandel();
-  }, []);
+  }, [route?.params?.handle,route.params.name,route.params.index]);
 
   return {
     handleGoBack,

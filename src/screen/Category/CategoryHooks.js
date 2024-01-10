@@ -29,10 +29,11 @@ const CategoryHooks = () => {
   const dispatch = useDispatch();
 
   //FUNCTION
-  const navigateToCategoryDetail = item => {
+  const navigateToCategoryDetail = (item,index) => {
     navigation.navigate(ScreenNames.CATEGORY_DETAIL_SCREEN, {
       name: item.name,
       handle: item.handle,
+      index : index
     });
   };
 

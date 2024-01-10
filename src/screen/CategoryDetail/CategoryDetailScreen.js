@@ -10,7 +10,7 @@ import {CategoryHooks} from '../Category/CategoryHooks';
 import Card from '../../components/Card/Card';
 
 const CategoryDetailScreen = ({route}) => {
-  const {name,handle} = route.params;
+  const {name,handle,index} = route.params;
   const {
     handleGoBack,
     navigateToFilterPage,

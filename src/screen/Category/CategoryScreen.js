@@ -19,9 +19,9 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 const CategoryScreen = () => {
   const {navigateToCartPage, categoriesList,navigateToCategoryDetail} = CategoryHooks();
 
-  const renderCategory = ({item}) => (
+  const renderCategory = ({item,index}) => (
     <TouchableOpacity
-      onPress={() => navigateToCategoryDetail(item)}
+      onPress={() => navigateToCategoryDetail(item,index)}
       activeOpacity={1}>
       <View style={styles.productWrapper}>
         <Image

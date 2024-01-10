@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react';
 import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import {useDispatch} from 'react-redux';
 import * as UserAction from '../../redux/actions/userActions';
+import axiosInstance from '../../global/api-core';
 
 const WishListHooks = () => {
   const navigation = useNavigation();
@@ -30,13 +31,8 @@ const WishListHooks = () => {
   const getWishListData = async () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
-      let url = `${BASE_URL}/auth/api/v1/customer/get-wishlist`;
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: TOKEN,
-          origin: ORIGIN,
-        },
-      });
+      let url = `${API_END_POINT.GET_WISHLIST}`;
+      let response = await axiosInstance.get(url);
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
         setWishListData(response.data.data.customerWishlistDetails);
@@ -50,17 +46,12 @@ const WishListHooks = () => {
   ///API CODE OF DELETEWISHLIST
   const deleteWishListData = async id => {
     try {
-      let url = `${BASE_URL}/auth/api/v1/customer/delete-wishlist-items/${id}`;
-      const response = await axios.delete(url, {
-        headers: {
-          Authorization: TOKEN,
-          origin: ORIGIN,
-        },
-      });
+      let url = `${API_END_POINT.DELETE_WISHLIST}/${id}`;
+      let response = await axiosInstance.delete(url);
       if (response.data.success == true) {
         getWishListData();
+        console.log(response.data);
       }
-      console.log(response.data);
     } catch (error) {
       console.log('error deleteWishList', error.message);
     }
@@ -70,22 +61,15 @@ const WishListHooks = () => {
   const addToCart = async (productID, productVariantId, productQuantity) => {
     console.log(productID, productVariantId);
     try {
-      const url = `${BASE_URL}/auth/api/v1/customer/add-update-cart`;
-      const response = await axios.post(
-        url,
-        {
-          productId: productID,
-          productVariantId: productVariantId,
-          productQuantity: 1,
-        },
-        {
-          headers: {
-            Authorization: TOKEN,
-            origin: ORIGIN,
-          },
-        },
-      );
-      console.log(response.data);
+      let url = `${API_END_POINT.ADD_CART}`;
+      let response = await axiosInstance.post(url, {
+        productId: productID,
+        productVariantId: productVariantId,
+        productQuantity: 1,
+      });
+      if (response.data.success == true) {
+        console.log(`SUCCESSFULL ${response.data}`);
+      }
     } catch (error) {
       console.log('error Add to Cart', error.message);
     }
