@@ -37,7 +37,7 @@ const YourCart = () => {
     );
     return (
       <View style={styles.renderMainView}>
-        <View style={{...styles.imageViewWrapper,alignItems:'center'}}>
+        <View style={{...styles.imageViewWrapper, alignItems: 'center'}}>
           <TouchableOpacity
             onPress={() => {
               const productHandle = item.product.handle;

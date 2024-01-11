@@ -10,7 +10,7 @@ import {
 import {styles} from './WishlistStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
-import {Colors} from '../../global';
+import {Colors, Fonts} from '../../global';
 import RatingComponent from '../../components/RatingStar';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import ShoppingBag from '../../assets/svgs/Shopping_Bag.svg';
@@ -45,7 +45,11 @@ const WishlistScreen = () => {
             <Image
               resizeMode="contain"
               source={require('../../assets/images/Logo.png')}
-              style={{...styles.imageWrapper, height:CHANGE_BY_MOBILE_DPI(50), alignSelf:'center'}}
+              style={{
+                ...styles.imageWrapper,
+                height: CHANGE_BY_MOBILE_DPI(50),
+                alignSelf: 'center',
+              }}
             />
           )}
           <View style={styles.containWrapper}>
@@ -124,12 +128,25 @@ const WishlistScreen = () => {
         showCartIcon={true}
         onCartPress={navigateToCartPage}
       />
-      <FlatList
-        data={wishListData}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        showsVerticalScrollIndicator={false}
-      />
+      {wishListData?.length > 0 ? (
+        <FlatList
+          data={wishListData}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
+        />
+      ) : (
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Text
+            style={{
+              color: Colors.BLACK,
+              fontFamily: Fonts.INTER_REGULAR,
+              fontSize: CHANGE_BY_MOBILE_DPI(16),
+            }}>
+            No Item In Wishlist
+          </Text>
+        </View>
+      )}
     </View>
   );
 };
