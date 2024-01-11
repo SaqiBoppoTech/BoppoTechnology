@@ -11,8 +11,8 @@ import YourCartHook from './YourCartHooks';
 import {Colors} from '../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
-import {GlobalImage} from '../../global/staticImage';
-
+import {useDispatch} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
 const YourCart = () => {
   const {
     handleGoBack,
@@ -22,42 +22,61 @@ const YourCart = () => {
     deleteCartListData,
     addToWishList,
     createCheckout,
+    wishListData,
+    navigateToProdiuctDetail,
   } = YourCartHook();
 
   console.log('hello cartitem', cartListData);
+  console.log('hello wishlistItem', wishListData);
+  const dispatch = useDispatch();
 
   const renderItem = ({item}) => {
-    // console.log(item);
+    console.log('item', item);
+    const isItemInWishlist = wishListData.some(
+      wishlistItem => wishlistItem.product_id === item.product_id,
+    );
     return (
       <View style={styles.renderMainView}>
-        <View style={styles.imageViewWrapper}>
-          {item.product_variant.shop_product_media.url != '/url' ? (
-            <Image
-              source={{
-                uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
-              }}
-              style={styles.imageWrapper}
-            />
-          ) : (
-            <Image
-              resizeMode="contain"
-              source={require('../../assets/images/Logo.png')}
-              style={{
-                ...styles.imageWrapper,
-                height: CHANGE_BY_MOBILE_DPI(50),
-                alignSelf: 'center',
-              }}
-            />
-          )}
+        <View style={{...styles.imageViewWrapper,alignItems:'center'}}>
+          <TouchableOpacity
+            onPress={() => {
+              const productHandle = item.product.handle;
+              const productId = item.product_variant_id;
+              navigateToProdiuctDetail(productHandle, productId);
+              console.log(
+                'productandle and productid',
+                productHandle,
+                productId,
+              );
+            }}>
+            {item.product_variant.shop_product_media.url != '/url' ? (
+              <Image
+                source={{
+                  uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
+                }}
+                style={styles.imageWrapper}
+              />
+            ) : (
+              <Image
+                resizeMode="contain"
+                source={require('../../assets/images/Logo.png')}
+                style={{
+                  ...styles.imageWrapper,
+                  height: CHANGE_BY_MOBILE_DPI(50),
+                  alignSelf: 'center',
+                }}
+              />
+            )}
+          </TouchableOpacity>
           <View style={styles.containWrapper}>
             <Text style={styles.name}>{item.product.title}</Text>
             <View style={styles.priceContainer}>
-              <Text style={styles.price}>{item.product_variant.price} USD</Text>
+              <Text style={styles.price}>{item.product_variant.price} ₹</Text>
               <Text style={styles.discount}>
-                {item.product_variant.compare_price}USD
+                {item.product_variant.compare_price}₹
               </Text>
             </View>
-            <Text style={styles.quantity}>Qty</Text>
+            <Text style={styles.quantity}>1 Qty</Text>
             <BlackIncremnetButton />
           </View>
         </View>
@@ -66,19 +85,34 @@ const YourCart = () => {
           <TouchableOpacity
             style={styles.editWrapper}
             onPress={() =>
-              addToWishList(item.product_id, item.product_variant_id)
+              isItemInWishlist
+                ? dispatch(
+                    UserAction.setToastedAlert({
+                      condition: true,
+                      toastedAlertText: `Product already added in Wishlist`,
+                    }),
+                  )
+                : addToWishList(item.product_id, item.product_variant_id)
             }>
-            <Heart
-              width={CHANGE_BY_MOBILE_DPI(14)}
-              height={CHANGE_BY_MOBILE_DPI(14)}
-            />
+            {isItemInWishlist ? (
+              <Heart
+                width={CHANGE_BY_MOBILE_DPI(14)}
+                height={CHANGE_BY_MOBILE_DPI(14)}
+                fill={Colors.RED}
+              />
+            ) : (
+              <Heart
+                width={CHANGE_BY_MOBILE_DPI(14)}
+                height={CHANGE_BY_MOBILE_DPI(14)}
+              />
+            )}
             <Text style={styles.optionText}>Wishlist</Text>
           </TouchableOpacity>
           <View style={styles.verticalLine}></View>
           <TouchableOpacity
             onPress={() => {
               deleteCartListData(item.id);
-              console.log('clicked');
+              console.log('clicked', item);
             }}
             style={styles.removeWrapper}>
             <Cross

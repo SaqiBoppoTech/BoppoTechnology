@@ -14,11 +14,12 @@ const CategoryDetailHooks = () => {
   const dispatch = useDispatch();
 
   let route = useRoute();
-  const [selectedtopTab, setSelectedTopTab] = React.useState(route.params.index);
-
+  const [selectedtopTab, setSelectedTopTab] = React.useState(
+    route.params.index,
+  );
 
   const navigateToProdiuctDetail = (productHandle, productId) => {
-    console.log('pratikkkkk', productHandle, productId);
+    console.log('Going To Product detail with :', productHandle, productId);
     navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN, {
       productHandle,
       productId,

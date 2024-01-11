@@ -50,13 +50,17 @@ const WishListHooks = () => {
   ///API CODE OF DELETEWISHLIST
   const deleteWishListData = async id => {
     try {
+      dispatch(UserAction.setGlobalLoader(true));
       let url = `${API_END_POINT.DELETE_WISHLIST}/${id}`;
+      console.log('url ===============>', url);
       let response = await axiosInstance.delete(url);
       if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
         getWishListData();
-        console.log(response.data);
+        console.log('delete wishlist response', response.data);
       }
     } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
       console.log('error deleteWishList', error.message);
     }
   };
