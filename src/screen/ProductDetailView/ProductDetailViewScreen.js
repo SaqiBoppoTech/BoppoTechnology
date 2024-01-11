@@ -27,6 +27,8 @@ const ProductDetailViewScreen = () => {
     navigateToCartPage,
     selectedProduct,
     addToCart,
+    wishListData,
+    addToWishList,
   } = ProductDetailViewHooks();
 
   const productData = selectedProduct?.productMedia || [];
@@ -37,6 +39,12 @@ const ProductDetailViewScreen = () => {
   const productId = productInfo?.product_id || '';
   const id = productInfo?.id || '';
   const Imageurl = productData.length > 0 ? productData[0].url || '' : '';
+  const wishlistId = wishListData?.product?.id || '';
+  // const isItemInWishlist = wishListData.some(
+  //   wishlistItem => wishlistItem.product_id === item.product_id,
+  // );
+  // const isItemInWishlist = wishListData;
+  console.log('isItemInWishlist product detail ', wishlistId);
   console.log('productData', productData);
   console.log('productInfo', productInfo, 'yyyyyyyyyyyyyyyyyy', Imageurl);
   console.log('pratik data', selectedProduct);
@@ -47,6 +55,12 @@ const ProductDetailViewScreen = () => {
       navigateToCartPage();
     });
   };
+
+  const isItemInWishlist = wishListData.some(
+    wishlistItem => wishlistItem.product_id === productId,
+  );
+
+  console.log('herererre', isItemInWishlist);
 
   return (
     <View style={styles.mainContainer}>
@@ -70,11 +84,27 @@ const ProductDetailViewScreen = () => {
             style={styles.img}
           />
           <View style={styles.iconPositionContainer}>
-            <HeartSvg
-              heigth={CHANGE_BY_MOBILE_DPI(31)}
-              width={CHANGE_BY_MOBILE_DPI(31)}
-              style={styles.heartSvgStyle}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                stockQuantityCheck == 0 ? null : addToWishList(productId, id);
+              }}>
+              {isItemInWishlist ? (
+                <HeartSvg
+                  heigth={CHANGE_BY_MOBILE_DPI(31)}
+                  width={CHANGE_BY_MOBILE_DPI(31)}
+                  fill={Colors.RED}
+                  stroke={Colors.RED}
+                  style={styles.heartSvgStyle}
+                />
+              ) : (
+                <HeartSvg
+                  heigth={CHANGE_BY_MOBILE_DPI(31)}
+                  width={CHANGE_BY_MOBILE_DPI(31)}
+                  style={styles.heartSvgStyle}
+                />
+              )}
+            </TouchableOpacity>
+
             <ShareSvg
               heigth={CHANGE_BY_MOBILE_DPI(31)}
               width={CHANGE_BY_MOBILE_DPI(31)}

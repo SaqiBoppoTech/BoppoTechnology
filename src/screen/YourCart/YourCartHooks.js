@@ -25,6 +25,15 @@ const YourCartHook = () => {
   const [cartListData, setCartListData] = useState([]);
   const [paymentDataList, setpaymentDataList] = useState(null);
   const [checkoutData, setCheckoutData] = useState(null);
+  const [wishListData, setWishListData] = useState([]);
+
+  const navigateToProdiuctDetail = (productHandle, productId) => {
+    console.log('Going To Product detail with :', productHandle, productId);
+    navigation.navigate(ScreenNames.PRODUCT_DETAIL_VIEW_SCREEN, {
+      productHandle,
+      productId,
+    });
+  };
 
   const getCartListData = async () => {
     let abc = `${BASE_URL}${API_END_POINT.GET_CART}`;
@@ -63,7 +72,7 @@ const YourCartHook = () => {
 
   ///API OF ADDTOWISHLIST
   const addToWishList = async (productID, productVariantId) => {
-    console.log(productID, productVariantId);
+    console.log('addtowishlist item data ', productID, productVariantId);
     try {
       dispatch(UserAction.setGlobalLoader(true));
       const url = `${BASE_URL}${API_END_POINT.ADD_WISHLIST}`;
@@ -71,7 +80,9 @@ const YourCartHook = () => {
         productId: productID,
         productVariantId: productVariantId,
       });
+      console.log('add to wishlist response', response.data);
       if (response.data.success == true) {
+        getWishListData();
         dispatch(UserAction.setGlobalLoader(false));
       }
       console.log(response.data);
@@ -119,11 +130,28 @@ const YourCartHook = () => {
       console.log('error checkout api', error.message);
     }
   };
-
   console.log('checkout =>>>>>>>>>>>>> ', checkoutData);
+
+  const getWishListData = async () => {
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `${API_END_POINT.GET_WISHLIST}`;
+      console.log('url=>>>>>>>>>>>', url);
+      let response = await axiosInstance.get(url);
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setWishListData(response.data.data.customerWishlistDetails);
+        console.log('wishlist form cart', wishListData);
+      }
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error getWishList', error.message);
+    }
+  };
 
   useEffect(() => {
     getCartListData();
+    getWishListData();
   }, []);
 
   return {
@@ -134,6 +162,8 @@ const YourCartHook = () => {
     deleteCartListData,
     addToWishList,
     createCheckout,
+    wishListData,
+    navigateToProdiuctDetail,
   };
 };
 
