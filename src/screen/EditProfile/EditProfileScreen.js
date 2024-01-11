@@ -70,7 +70,6 @@ const EditProfileScreen = () => {
         <CustomTextField
           keyboardType={'default'}
           placeholder={'enter mobile number'}
-          editable={false}
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Mobile Number'}
           externalContainer={styles.space}
