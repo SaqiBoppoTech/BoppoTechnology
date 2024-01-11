@@ -10,7 +10,7 @@ import {
 import {styles} from './WishlistStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
-import {Colors} from '../../global';
+import {Colors, Fonts} from '../../global';
 import RatingComponent from '../../components/RatingStar';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import ShoppingBag from '../../assets/svgs/Shopping_Bag.svg';
