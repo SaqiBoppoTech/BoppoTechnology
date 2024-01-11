@@ -8,7 +8,8 @@ import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {Colors} from '../../global';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import CustomAlert from '../../components/CommonApert';
 
 const EditProfileScreen = () => {
   const {
@@ -24,7 +25,14 @@ const EditProfileScreen = () => {
     email,
     setEmail,
     navigateToSuccessScreen,
-    navigateToVerifyMobileNumberScreen
+    navigateToVerifyMobileNumberScreen,
+    dateOfBirth,
+    setDateOfBirth,
+    gender,
+    setGender,
+    toastAlertText,
+    isToastAlertVisible,
+    setToastAlertVisible
   } = EditProfileHooks();
 
   return (
@@ -70,15 +78,36 @@ const EditProfileScreen = () => {
         <CustomTextField
           keyboardType={'default'}
           placeholder={'enter mobile number'}
-          editable={false}
           placeholderTextColor={Colors.GRAY_DARK}
           title={'Mobile Number'}
           externalContainer={styles.space}
-          value={contactNo}     
+          value={contactNo}
           onChangeText={setContactNo}
           showSuffixText={true}
           suffixText={'Verify Number'}
           onPressSuffixText={navigateToVerifyMobileNumberScreen}
+        />
+
+        <CustomTextField
+          keyboardType={'default'}
+          placeholder={'enter date of birth as yyyy-mm-dd'}
+          placeholderTextColor={Colors.GRAY_DARK}
+          title={'Date of Birth'}
+          showAsterisk={true}
+          value={dateOfBirth}
+          onChangeText={setDateOfBirth}
+          externalContainer={styles.space}
+        />
+
+        <CustomTextField
+          keyboardType={'default'}
+          placeholder={'enter your gender'}
+          placeholderTextColor={Colors.GRAY_DARK}
+          title={'Gender'}
+          showAsterisk={true}
+          value={gender}
+          onChangeText={setGender}
+          externalContainer={styles.space}
         />
 
         <CustomTextField
@@ -91,6 +120,10 @@ const EditProfileScreen = () => {
           showSuffixText={true}
           suffixText={'Change Password'}
           onPressSuffixText={navigateToChangePassword}
+          externalContainer={{
+            ...styles.space,
+            marginTop: CHANGE_BY_MOBILE_DPI(5),
+          }}
         />
       </ScrollView>
       <View style={styles.btn}>
@@ -101,6 +134,11 @@ const EditProfileScreen = () => {
           externalContainer={styles.loginContainer}
         />
       </View>
+      <CustomAlert
+        visible={isToastAlertVisible}
+        message={toastAlertText}
+        onClose={() => setToastAlertVisible(false)}
+      />
     </View>
   );
 };

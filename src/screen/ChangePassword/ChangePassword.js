@@ -8,6 +8,8 @@ import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import ChangePasswordHooks from './ChangePasswordHooks';
 import OTPInput from '../../components/CustomOTPField/CustomOTPField';
+import GlobalAlert from '../../components/GlobalAlert/GlobalAlert';
+import CustomAlert from '../../components/CommonApert';
 
 const ChangePassword = () => {
   const {
@@ -20,6 +22,13 @@ const ChangePassword = () => {
     setCurrentPassword,
     confirmPassword,
     setConfirmPassword,
+    newPassword,
+    setNewPassword,
+    showToastAlert,
+    showToastAlertVisible,
+    toastAlertText,
+    isToastAlertVisible,
+    setToastAlertVisible
   } = ChangePasswordHooks();
   return (
     <View style={styles.mainView}>
@@ -50,6 +59,8 @@ const ChangePassword = () => {
           title={'New Password'}
           showAsterisk={true}
           externalContainer={styles.space}
+          value={newPassword}
+          onChangeText={setNewPassword}
         />
 
         <CustomTextField
@@ -116,6 +127,11 @@ const ChangePassword = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <CustomAlert
+        visible={isToastAlertVisible}
+        message={toastAlertText}
+        onClose={() => setToastAlertVisible(false)}
+      />
     </View>
   );
 };

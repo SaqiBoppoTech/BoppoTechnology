@@ -18,17 +18,6 @@ const OrderHooks = () => {
   //HOOKS
   const [currentTab, setCurrentTab] = useState(1);
 
-  const tabs = [
-    {
-      id: 1,
-      name: 'Delivered',
-    },
-    {
-      id: 2,
-      name: 'Cancelled/Returned',
-    },
-  ];
-
   const redirect = useNavigation();
   const handleGoBack = () => {
     redirect.goBack();

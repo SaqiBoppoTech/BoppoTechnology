@@ -10,7 +10,7 @@ import React from 'react';
 const VerifyMobileNumberHooks = () => {
   let loginData = useSelector(e => e?.user?.mobileNumberData);
   const userData = useSelector(e => e.user?.registrationToken);
-  console.log(`User Registration Access Token is : ${userData}`);;
+  console.log(`User Registration Access Token is : ${userData}`);
   const [otpValue, setOtpValue] = React.useState('');
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -98,8 +98,7 @@ const VerifyMobileNumberHooks = () => {
     try {
       dispatch(UserAction.setGlobalLoader(true));
       var myHeaders = new Headers();
-      myHeaders.append(
-        'registersessiontoken', userData,);
+      myHeaders.append('registersessiontoken', userData);
       myHeaders.append('origin', ORIGIN);
       myHeaders.append('Content-Type', 'application/json');
 

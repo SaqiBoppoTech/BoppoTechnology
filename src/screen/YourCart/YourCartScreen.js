@@ -37,7 +37,7 @@ const YourCart = () => {
     );
     return (
       <View style={styles.renderMainView}>
-        <View style={styles.imageViewWrapper}>
+        <View style={{...styles.imageViewWrapper,alignItems:'center'}}>
           <TouchableOpacity
             onPress={() => {
               const productHandle = item.product.handle;
@@ -49,14 +49,25 @@ const YourCart = () => {
                 productId,
               );
             }}>
-            <Image
-              source={{
-                uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
-              }}
-              style={styles.imageWrapper}
-            />
+            {item.product_variant.shop_product_media.url != '/url' ? (
+              <Image
+                source={{
+                  uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
+                }}
+                style={styles.imageWrapper}
+              />
+            ) : (
+              <Image
+                resizeMode="contain"
+                source={require('../../assets/images/Logo.png')}
+                style={{
+                  ...styles.imageWrapper,
+                  height: CHANGE_BY_MOBILE_DPI(50),
+                  alignSelf: 'center',
+                }}
+              />
+            )}
           </TouchableOpacity>
-
           <View style={styles.containWrapper}>
             <Text style={styles.name}>{item.product.title}</Text>
             <View style={styles.priceContainer}>

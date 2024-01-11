@@ -35,12 +35,20 @@ const WishlistScreen = () => {
     return (
       <View style={styles.renderMainView}>
         <View style={styles.imageViewWrapper}>
-          <Image
-            source={{
-              uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
-            }}
-            style={styles.imageWrapper}
-          />
+          {item.product_variant.shop_product_media.url != '/url' ? (
+            <Image
+              source={{
+                uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
+              }}
+              style={styles.imageWrapper}
+            />
+          ) : (
+            <Image
+              resizeMode="contain"
+              source={require('../../assets/images/Logo.png')}
+              style={{...styles.imageWrapper, height:CHANGE_BY_MOBILE_DPI(50), alignSelf:'center'}}
+            />
+          )}
           <View style={styles.containWrapper}>
             <Text style={styles.name}>{item.product.title}</Text>
             <View style={styles.ratingRowView}>

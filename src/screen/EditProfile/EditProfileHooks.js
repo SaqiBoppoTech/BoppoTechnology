@@ -5,12 +5,12 @@ import axios from 'axios';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
 import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
-import { signUpValidation } from '../../global/validation';
+import {signUpValidation} from '../../global/validation';
 import axiosInstance from '../../global/api-core';
 const EditProfileHooks = () => {
   const navigation = useNavigation();
   let userData = useSelector(e => e?.user?.userData);
-  console.warn("asdasd",userData);
+  console.warn('asdasd', userData);
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -36,7 +36,7 @@ const EditProfileHooks = () => {
 
   const getProfileData = async () => {
     try {
-      const response = await axiosInstance.get(API_END_POINT.PROFILE)
+      const response = await axiosInstance.get(API_END_POINT.PROFILE);
       setProfile(response.data.data.customerDetails);
       setfirstName(response.data.data.customerDetails?.firstname);
       setLastname(response.data.data.customerDetails?.lastname);
@@ -47,14 +47,17 @@ const EditProfileHooks = () => {
     }
   };
 
-  console.warn("asdasda",profile && profile);
+  console.warn('asdasda', profile && profile);
 
   const [firstName, setfirstName] = useState('');
   const [lastname, setLastname] = useState('');
   const [contactNo, setContactNo] = useState('');
   const [email, setEmail] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [gender, setGender] = useState('');
+  const [isToastAlertVisible, setToastAlertVisible] = useState(false);
+  const [toastAlertText, setToastAlertText] = useState('');
 
-  ///API OF UPDATE PROFILE
   const openGlobalModal = ({title}) => {
     dispatch(
       UserAction.setAlertData({
@@ -68,69 +71,45 @@ const EditProfileHooks = () => {
     );
     dispatch(UserAction.setGlobalLoader(false));
   };
-  
+
+  const showToastAlert = text => {
+    setToastAlertText(text);
+    setToastAlertVisible(true);
+  };
+
+  ///API OF UPDATE PROFILE
   const updateUserProfile = async () => {
-    let regestarationData = {
-      firstname: firstName,
-      lastname: lastname,
-      email: email,
-      password: 'Saqi@123',
-      country_code: '+91',
-      contact_no: 9999988888,
-    };
-    if (
-      signUpValidation({
-        ...regestarationData,
-        confirmPassword : 'Saqi@123',
-        openGlobalModal,
-      })
-    ) {
     try {
-      let url = `/auth/api/v1/customer/update-profile`;
-      // console.warn("====2====", url,{
-      //   firstname: firstName,
-      //   lastname: lastname,
-      //   email: email,
-      //   date_of_birth: '2000-12-5',
-      //   gender: 'Male',
-      // },);
-      const response = await axiosInstance.patch(
-        url,{
+      if (dateOfBirth == '') {
+        showToastAlert('Enter Date of Birth');
+      } else if (gender == '') {
+        showToastAlert('Enter Your Gender');
+      } else {
+        let url = `${API_END_POINT.UPDATE_PROFILE}`;
+        let response = await axiosInstance.patch(url, {
           firstname: firstName,
           lastname: lastname,
           email: email,
-          date_of_birth: '2000-12-5',
-          gender: 'Male',
-        },
-      );
-      if (response.data.success == true) {
-        onSubmit();
+          date_of_birth: dateOfBirth,
+          gender: gender,
+        });
+        if (response.data.success == true) {
+          onSubmit();
+        }
       }
     } catch (error) {
       console.log('error UpdateUserProfile', error.message);
     }
-  }
   };
 
   ///API OF CHANGE PASSWORD
   const navigateToChangePassword = async () => {
     try {
-      var myHeaders = new Headers();
-      myHeaders.append('authorization', TOKEN);
-      myHeaders.append('origin', ORIGIN);
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        redirect: 'follow',
-      };
-      const response = await fetch(
-        `${BASE_URL}/auth/api/v1/customer/change-password`,
-        requestOptions,
-      );
-      const result = await response.json();
-      if (result.success == true) {
+      let url = `${API_END_POINT.CHANGE_PASSWORD}`;
+      let response = await axiosInstance.post(url);
+      if (response.data.success == true) {
         navigation.navigate(ScreenNames.CHANGE_PASSWORD);
-        dispatch(UserAction.setChangePasswordOtp(result.data.otp));
+        dispatch(UserAction.setChangePasswordOtp(response.data.data.otp));
       }
     } catch (error) {
       console.log('error ChangePassword', error.message);
@@ -140,33 +119,24 @@ const EditProfileHooks = () => {
   //API OF CHANGE CONTACT NUMBER
   const navigateToVerifyMobileNumberScreen = async () => {
     try {
-      var myHeaders = new Headers();
-      myHeaders.append('authorization', TOKEN);
-      myHeaders.append('origin', ORIGIN);
-      myHeaders.append('Content-Type', 'application/json');
-
-      const body = JSON.stringify({
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `${API_END_POINT.CHANGE_CONTACT_NUMBER}`;
+      let response = await axiosInstance.post(url, {
         new_contact_no: contactNo,
         new_country_code: '+91',
       });
-
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: body,
-        redirect: 'follow',
-      };
-      const response = await fetch(
-        `${BASE_URL}/auth/api/v1/customer/change-contact-no`,
-        requestOptions,
-      );
-      const result = await response.json();
-      if (result.success == true) {
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
         navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
-        dispatch(UserAction.setChangeMobileOtp(result.data.otp));
-        dispatch(UserAction.setChangeMobileOtpToken(result.data.changeContactNoToken));
+        dispatch(UserAction.setChangeMobileOtp(response.data.data.otp));
+        dispatch(
+          UserAction.setChangeMobileOtpToken(
+            response.data.data.changeContactNoToken,
+          ),
+        );
       }
     } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
       console.log('error ChangeMobileNumber', error.message);
     }
   };
@@ -189,6 +159,13 @@ const EditProfileHooks = () => {
     setEmail,
     navigateToSuccessScreen,
     navigateToVerifyMobileNumberScreen,
+    dateOfBirth,
+    setDateOfBirth,
+    gender,
+    setGender,
+    toastAlertText,
+    isToastAlertVisible,
+    setToastAlertVisible,
   };
 };
 

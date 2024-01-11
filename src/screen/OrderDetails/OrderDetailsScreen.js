@@ -35,9 +35,9 @@ const OrderDetailsScreen = () => {
           <Text style={styles.orderDetailTextTop}>ORDER DETAILS</Text>
           <Text style={styles.orderId}>Order ID {orderbyIdData?.order_id}</Text>
           <View style={styles.paymentModeWrapper}>
-            <Text style={styles.paymentModeText}>Payment Mode</Text>
+            <Text style={styles.paymentModeText}>Payment Mode </Text>
             <Paypal />
-            <Text style={styles.paypal}>{orderbyIdData?.payment_mode}</Text>
+            <Text style={styles.paypal}> {orderbyIdData?.payment_mode}</Text>
           </View>
         </View>
         <View style={styles.productContainer}>
@@ -54,28 +54,58 @@ const OrderDetailsScreen = () => {
         </View>
         <View style={styles.orderDetailWrapper}>
           <Text style={styles.orderDetailText}>Order Details</Text>
-          <Text style={styles.priceDetails}>Price details ( 1 Item )</Text>
+          <Text style={styles.priceDetails}>
+            Price details ({orderbyIdData?.order_details_json?.products?.length}{' '}
+            Item )
+          </Text>
           <View style={styles.totalPriceWrapper}>
             <Text style={styles.totalProductPriceText}>
               Total Product Price
             </Text>
-            <Text style={styles.totalProductPriceValue}>40USD</Text>
+            <Text style={styles.totalProductPriceValue}>
+              {orderbyIdData?.total_price} USD
+            </Text>
           </View>
           <View style={styles.supplyDiscountWrapper}>
             <Text style={styles.supplyDiscountText}>Supplier Discount</Text>
-            <Text style={styles.supplyDiscountValue}>3.01USD</Text>
+            <Text style={styles.supplyDiscountValue}>
+              {orderbyIdData?.discount_value} USD
+            </Text>
           </View>
         </View>
         <View style={styles.orderTotalWrapperBorder}>
           <View style={styles.orderTotalWrapper}>
             <Text style={styles.orderTotalText}>Order Total</Text>
-            <Text style={styles.orderTotalValue}>36.99 USD</Text>
+            <Text style={styles.orderTotalValue}>
+              {orderbyIdData?.sub_total_price} USD
+            </Text>
           </View>
         </View>
         <View>
           <Text style={styles.deliveryAddressText}>Delivery Address</Text>
           <View style={styles.deliveryAddressWrapper}>
-            <AddressContainerComponenet />
+            <AddressContainerComponenet
+              addressline1={
+                orderbyIdData?.order_details_json?.customer_shipping_address
+                  ?.address_line1
+              }
+              zipcode={
+                orderbyIdData?.order_details_json?.customer_shipping_address
+                  ?.zipcode
+              }
+              city={
+                orderbyIdData?.order_details_json?.customer_shipping_address
+                  ?.city
+              }
+              province={
+                orderbyIdData?.order_details_json?.customer_shipping_address
+                  ?.province
+              }
+              name={
+                orderbyIdData?.order_details_json?.customer_shipping_address
+                  ?.recepient_name
+              }
+            />
           </View>
         </View>
       </View>

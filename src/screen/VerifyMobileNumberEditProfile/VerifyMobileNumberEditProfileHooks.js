@@ -3,8 +3,10 @@ import {ScreenNames} from '../../global';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
-import {useState} from 'react';
+import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
+import {useEffect, useState} from 'react';
+import {Alert} from 'react-native';
+import axiosInstance from '../../global/api-core';
 
 const VerifyNumberEditProfileHooks = () => {
   const userData = useSelector(e => e.user?.changeMobileOtpData);
@@ -19,41 +21,55 @@ const VerifyNumberEditProfileHooks = () => {
   const [otpValue, setOtpValue] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isToastAlertVisible, setToastAlertVisible] = useState(false);
+  const [toastAlertText, setToastAlertText] = useState('');
 
   const onPressCancel = () => {
     navigation.navigate(ScreenNames.EDIT_PROFILE_SCREEN);
   };
 
+  const showToastAlert = text => {
+    setToastAlertText(text);
+    setToastAlertVisible(true);
+  };
+
   //API OF verify-otp-change-password
-  console.warn('Your OTP is:', userData);
-  console.warn('Your Token is:', userDataToken);
+  console.log('Your Token is:', userDataToken);
+  console.log('Your OTP is:', userData);
+
+  const otpToast = () => {
+    showToastAlert(`Your OTP is: ${userData}`);
+  };
 
   //API OF VERIFY OTP CHANGE CONTACT NUMBER
   const onPressSave = async () => {
     try {
-      let url = `${BASE_URL}/auth/api/v1/customer/verify-otp-change-contact-no`;
-      const response = await axios.post(
-        url,
-        {
-          otp: userData,
+      if (otpValue.length < 6) {
+        showToastAlert('Enter OTP');
+      } else {
+        let url = `${API_END_POINT.VERIFY_OTP_CHANGE_CONTACT_NUMBER}`;
+        let response = await axiosInstance.post(url, {
+          otp: otpValue?.join(''),
           changeContactNoToken: userDataToken,
-        },
-        {
-          headers: {
-            Authorization: TOKEN,
-            origin: ORIGIN,
-          },
-        },
-      );
-      if (response.data.success == true) {
-        navigation.navigate(ScreenNames.SUCCESS_SCREEN_VERIFY_NUMBER, {
-          message: `Number updated\nsuccessfully`,
         });
+        if (response.data.success == true) {
+          navigation.navigate(ScreenNames.SUCCESS_SCREEN_VERIFY_NUMBER, {
+            message: `Number updated\nsuccessfully`,
+          });
+        }
       }
     } catch (error) {
       console.log('error verify Otp Change Contact Number', error.message);
     }
   };
+
+  useEffect(() => {
+    if (userData != null) {
+      otpToast();
+    } else {
+      console.log('OTP IS UNAVAILABLE');
+    }
+  }, [userData]);
 
   return {
     handleGoBack,
@@ -65,6 +81,9 @@ const VerifyNumberEditProfileHooks = () => {
     setCurrentPassword,
     confirmPassword,
     setConfirmPassword,
+    toastAlertText,
+    isToastAlertVisible,
+    setToastAlertVisible,
   };
 };
 
