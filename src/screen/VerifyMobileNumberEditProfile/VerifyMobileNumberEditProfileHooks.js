@@ -3,8 +3,9 @@ import {ScreenNames} from '../../global';
 import * as UserAction from '../../redux/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-import {BASE_URL, ORIGIN, TOKEN} from '../../global/config';
+import {API_END_POINT, BASE_URL, ORIGIN, TOKEN} from '../../global/config';
 import {useState} from 'react';
+import { Alert } from 'react-native';
 
 const VerifyNumberEditProfileHooks = () => {
   const userData = useSelector(e => e.user?.changeMobileOtpData);
@@ -31,25 +32,35 @@ const VerifyNumberEditProfileHooks = () => {
   //API OF VERIFY OTP CHANGE CONTACT NUMBER
   const onPressSave = async () => {
     try {
-      let url = `${BASE_URL}/auth/api/v1/customer/verify-otp-change-contact-no`;
-      const response = await axios.post(
-        url,
-        {
-          otp: userData,
-          changeContactNoToken: userDataToken,
-        },
-        {
-          headers: {
-            Authorization: TOKEN,
-            origin: ORIGIN,
-          },
-        },
-      );
+      let url = `${API_END_POINT.VERIFY_OTP_CHANGE_CONTACT_NUMBER}`;
+      let response = await axiosInstance.post(url, {
+        otp: userData,
+        changeContactNoToken: userDataToken,
+      });
       if (response.data.success == true) {
         navigation.navigate(ScreenNames.SUCCESS_SCREEN_VERIFY_NUMBER, {
           message: `Number updated\nsuccessfully`,
         });
       }
+      // let url = `${BASE_URL}/auth/api/v1/customer/verify-otp-change-contact-no`;
+      // const response = await axios.post(
+      //   url,
+      // {
+      //   otp: userData,
+      //   changeContactNoToken: userDataToken,
+      // },
+      //   {
+      //     headers: {
+      //       Authorization: TOKEN,
+      //       origin: ORIGIN,
+      //     },
+      //   },
+      // );
+      // if (response.data.success == true) {
+      //   navigation.navigate(ScreenNames.SUCCESS_SCREEN_VERIFY_NUMBER, {
+      //     message: `Number updated\nsuccessfully`,
+      //   });
+      // }
     } catch (error) {
       console.log('error verify Otp Change Contact Number', error.message);
     }
