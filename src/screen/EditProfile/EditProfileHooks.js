@@ -53,8 +53,11 @@ const EditProfileHooks = () => {
   const [lastname, setLastname] = useState('');
   const [contactNo, setContactNo] = useState('');
   const [email, setEmail] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [gender, setGender] = useState('');
+  const [isToastAlertVisible, setToastAlertVisible] = useState(false);
+  const [toastAlertText, setToastAlertText] = useState('');
 
-  ///API OF UPDATE PROFILE
   const openGlobalModal = ({title}) => {
     dispatch(
       UserAction.setAlertData({
@@ -69,44 +72,33 @@ const EditProfileHooks = () => {
     dispatch(UserAction.setGlobalLoader(false));
   };
 
+  const showToastAlert = text => {
+    setToastAlertText(text);
+    setToastAlertVisible(true);
+  };
+
+  ///API OF UPDATE PROFILE
   const updateUserProfile = async () => {
-    let regestarationData = {
-      firstname: firstName,
-      lastname: lastname,
-      email: email,
-      password: 'Saqi@123',
-      country_code: '+91',
-      contact_no: 9999988888,
-    };
-    if (
-      signUpValidation({
-        ...regestarationData,
-        confirmPassword: 'Saqi@123',
-        openGlobalModal,
-      })
-    ) {
-      try {
-        let url = `/auth/api/v1/customer/update-profile`;
-        // console.warn("====2====", url,{
-        //   firstname: firstName,
-        //   lastname: lastname,
-        //   email: email,
-        //   date_of_birth: '2000-12-5',
-        //   gender: 'Male',
-        // },);
-        const response = await axiosInstance.patch(url, {
+    try {
+      if (dateOfBirth == '') {
+        showToastAlert('Enter Date of Birth');
+      } else if (gender == '') {
+        showToastAlert('Enter Your Gender');
+      } else {
+        let url = `${API_END_POINT.UPDATE_PROFILE}`;
+        let response = await axiosInstance.patch(url, {
           firstname: firstName,
           lastname: lastname,
           email: email,
-          date_of_birth: '2000-12-5',
-          gender: 'Male',
+          date_of_birth: dateOfBirth,
+          gender: gender,
         });
         if (response.data.success == true) {
           onSubmit();
         }
-      } catch (error) {
-        console.log('error UpdateUserProfile', error.message);
       }
+    } catch (error) {
+      console.log('error UpdateUserProfile', error.message);
     }
   };
 
@@ -127,12 +119,14 @@ const EditProfileHooks = () => {
   //API OF CHANGE CONTACT NUMBER
   const navigateToVerifyMobileNumberScreen = async () => {
     try {
+      dispatch(UserAction.setGlobalLoader(true));
       let url = `${API_END_POINT.CHANGE_CONTACT_NUMBER}`;
       let response = await axiosInstance.post(url, {
         new_contact_no: contactNo,
         new_country_code: '+91',
       });
       if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
         navigation.navigate(ScreenNames.VERIFY_NUMBER_EDIT_PROFILE);
         dispatch(UserAction.setChangeMobileOtp(response.data.data.otp));
         dispatch(
@@ -142,6 +136,7 @@ const EditProfileHooks = () => {
         );
       }
     } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
       console.log('error ChangeMobileNumber', error.message);
     }
   };
@@ -164,6 +159,13 @@ const EditProfileHooks = () => {
     setEmail,
     navigateToSuccessScreen,
     navigateToVerifyMobileNumberScreen,
+    dateOfBirth,
+    setDateOfBirth,
+    gender,
+    setGender,
+    toastAlertText,
+    isToastAlertVisible,
+    setToastAlertVisible,
   };
 };
 

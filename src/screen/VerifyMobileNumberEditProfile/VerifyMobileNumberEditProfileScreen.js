@@ -8,6 +8,7 @@ import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import OTPInput from '../../components/CustomOTPField/CustomOTPField';
 import VerifyNumberEditProfileHooks from './VerifyMobileNumberEditProfileHooks';
 import { styles } from './VerifyMobileNumberEditProfileStyles';
+import CustomAlert from '../../components/CommonApert';
 
 const VerifyNumberEditProfile = () => {
   const {
@@ -20,6 +21,9 @@ const VerifyNumberEditProfile = () => {
     setCurrentPassword,
     confirmPassword,
     setConfirmPassword,
+    toastAlertText,
+    isToastAlertVisible,
+    setToastAlertVisible
   } = VerifyNumberEditProfileHooks();
   return (
     <View style={styles.mainView}>
@@ -116,6 +120,11 @@ const VerifyNumberEditProfile = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <CustomAlert
+        visible={isToastAlertVisible}
+        message={toastAlertText}
+        onClose={() => setToastAlertVisible(false)}
+      />
     </View>
   );
 };
