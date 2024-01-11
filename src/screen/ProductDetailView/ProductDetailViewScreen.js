@@ -65,10 +65,22 @@ const ProductDetailViewScreen = () => {
       />
       <View style={styles.elevationContainer}>
         <View style={styles.carosalContainer}>
-          <Image
-            source={{uri: `https://cdn-stage.boppogo.com/${Imageurl}`}}
-            style={styles.img}
-          />
+          {Imageurl != '' ? (
+            <Image
+              source={{uri: `https://cdn-stage.boppogo.com/${Imageurl}`}}
+              style={styles.img}
+            />
+          ) : (
+            <Image
+              resizeMode="contain"
+              source={require('../../assets/images/Logo.png')}
+              style={{
+                ...styles.imageWrapper,
+                height: CHANGE_BY_MOBILE_DPI(50),
+                alignSelf: 'center',
+              }}
+            />
+          )}
           <View style={styles.iconPositionContainer}>
             <HeartSvg
               heigth={CHANGE_BY_MOBILE_DPI(31)}

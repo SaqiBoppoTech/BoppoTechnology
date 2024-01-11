@@ -29,8 +29,7 @@ const CategoryScreen = () => {
       onPress={() => navigateToCategoryDetail(item, index)}
       activeOpacity={1}>
       <View style={styles.productWrapper}>
-        {`https://cdn-stage.boppogo.com/${item.collection_image_url}` !=
-        null ? (
+        {item.collection_image_url != '/url' ? (
           <Image
             source={{
               uri: `https://cdn-stage.boppogo.com/${item.collection_image_url}`,
@@ -40,8 +39,12 @@ const CategoryScreen = () => {
         ) : (
           <Image
             resizeMode="contain"
-            source={'../../assets/images/Logo.png'}
-            style={styles.imageWrapper}
+            source={require('../../assets/images/Logo.png')}
+            style={{
+              ...styles.imageWrapper,
+              height: CHANGE_BY_MOBILE_DPI(50),
+              alignSelf: 'center',
+            }}
           />
         )}
         <View style={styles.titleWrapper}>
