@@ -43,10 +43,63 @@ export const styles = StyleSheet.create({
   btn: {
     marginVertical: CHANGE_BY_MOBILE_DPI(10),
   },
-  underLine:{
-    height:CHANGE_BY_MOBILE_DPI(1),
-    backgroundColor:Colors.ALTO,
-    marginTop:CHANGE_BY_MOBILE_DPI(10),
-    marginBottom:CHANGE_BY_MOBILE_DPI(10)
-  }
+  underLine: {
+    height: CHANGE_BY_MOBILE_DPI(1),
+    backgroundColor: Colors.ALTO,
+    marginTop: CHANGE_BY_MOBILE_DPI(10),
+    marginBottom: CHANGE_BY_MOBILE_DPI(10),
+  },
+  renderMainView: {
+    backgroundColor: Colors.LIGHT_WHITE,
+    flex: 1,
+    marginBottom: CHANGE_BY_MOBILE_DPI(5),
+    marginTop: CHANGE_BY_MOBILE_DPI(3),
+    marginHorizontal: CHANGE_BY_MOBILE_DPI(5),
+    borderRadius: CHANGE_BY_MOBILE_DPI(10),
+  },
+  imageViewWrapper: {
+    flexDirection: 'row',
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    marginTop: CHANGE_BY_MOBILE_DPI(5),
+  },
+  imageWrapper: {
+    height: CHANGE_BY_MOBILE_DPI(150),
+    width: CHANGE_BY_MOBILE_DPI(150),
+  },
+  containWrapper: {
+    flex: 1,
+    marginLeft: CHANGE_BY_MOBILE_DPI(10),
+    marginRight: CHANGE_BY_MOBILE_DPI(5),
+    gap: CHANGE_BY_MOBILE_DPI(4),
+    paddingVertical: CHANGE_BY_MOBILE_DPI(5),
+  },
+  name: {
+    fontSize: CHANGE_BY_MOBILE_DPI(14),
+    color: Colors.BLACK_DARK,
+    fontFamily: Fonts.MANROPE_SEMIBOLD,
+  },
+
+  discount: {
+    fontFamily: Fonts.MANROPE_BOLD,
+    color: Colors.GRAY_DARK,
+    fontSize: CHANGE_BY_MOBILE_DPI(12),
+    textDecorationLine: 'line-through',
+  },
+  priceContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: CHANGE_BY_MOBILE_DPI(10),
+  },
+  price: {
+    fontFamily: Fonts.MANROPE_BOLD,
+    color: Colors.BLACK,
+    fontSize: CHANGE_BY_MOBILE_DPI(16),
+  },
+
+  quantity: {
+    fontFamily: Fonts.MANROPE_SEMIBOLD,
+    color: Colors.BLACK,
+    fontSize: CHANGE_BY_MOBILE_DPI(12),
+  },
 });

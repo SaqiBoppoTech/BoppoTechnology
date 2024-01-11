@@ -15,6 +15,8 @@ import axiosInstance from '../../global/api-core';
 const OrderSummaryHooks = () => {
   const [orderData, setOrderData] = useState(null);
   const [checkoutInfo, setCheckoutInfo] = useState(null);
+  const [cartListData, setCartListData] = useState([]);
+
   const navigation = useNavigation();
   const handleGoBack = () => {
     navigation.goBack();
@@ -87,9 +89,28 @@ const OrderSummaryHooks = () => {
   };
   console.log('checkpoutInfo', checkoutInfo);
 
+  const getCartListData = async () => {
+    let abc = `${BASE_URL}${API_END_POINT.GET_CART}`;
+    console.log('222222222222222222222', abc);
+    try {
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `${BASE_URL}${API_END_POINT.GET_CART}`;
+      const response = await axiosInstance.get(url);
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        setCartListData(response.data.data.customerCartDetails);
+      }
+      console.log('0000000000000000000000000000000', response.data.data);
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error getCartList', error.message);
+    }
+  };
+
   useEffect(() => {
     // getOrderDetail();
     getCheckoutInfo();
+    getCartListData();
   }, []);
 
   return {
@@ -99,6 +120,7 @@ const OrderSummaryHooks = () => {
     navigateToPayment,
     checkoutInfo,
     onChangeDeliveryAddress,
+    cartListData,
   };
 };
 

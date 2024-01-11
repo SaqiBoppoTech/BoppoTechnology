@@ -1,4 +1,11 @@
-import {ScrollView, Text, View} from 'react-native';
+import {
+  FlatList,
+  ScrollView,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import React from 'react';
 import {styles} from './OrderSummaryStyles';
 import CheckoutNavigationBar from '../../components/CheckoutNavigationBar/CheckoutNavigationBar';
@@ -6,12 +13,11 @@ import AddressContainerComponenet from '../../components/AddressContainer/Addres
 import CommonButton from '../../components/Button/CommonButton';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import OrderSummaryHooks from './OrderSummaryHooks';
-import ShippingMethod from '../../components/ShippingMethod/ShippingMethod';
-import ShippingType from '../../components/ShippingType/ShippingType';
 import ApplyCode from '../../components/ApplyCode/ApplyCode';
 import PaymentDetails from '../../components/PaymentDetails/PaymentDetails';
 import {Colors} from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
+import BlackIncremnetButton from '../../components/BlackIncrementButton/BlackIncrementButton';
 
 const OrderSummary = () => {
   const {
@@ -21,6 +27,7 @@ const OrderSummary = () => {
     navigateToPayment,
     checkoutInfo,
     onChangeDeliveryAddress,
+    cartListData,
   } = OrderSummaryHooks();
 
   console.log('datatatatatta', checkoutInfo);
@@ -38,6 +45,8 @@ const OrderSummary = () => {
   const discountAmount =
     productPaymentDetail.total_price - productPaymentDetail.sub_total_price;
 
+  const cartAddedItem = cartListData || [];
+
   console.log('================================', checkInfoData);
   console.log(
     '++++++++++++++++++++++++++++++++ shippingAddress data ',
@@ -51,6 +60,47 @@ const OrderSummary = () => {
     '********************************* payment data ',
     productPaymentDetail,
   );
+
+  const renderItem = ({item}) => {
+    console.log('item', item);
+    return (
+      <View style={styles.renderMainView}>
+        <View style={{...styles.imageViewWrapper, alignItems: 'center'}}>
+          <View>
+            {item.product_variant.shop_product_media.url != '/url' ? (
+              <Image
+                source={{
+                  uri: `https://cdn-stage.boppogo.com/${item.product_variant.shop_product_media.url}`,
+                }}
+                style={styles.imageWrapper}
+              />
+            ) : (
+              <Image
+                resizeMode="contain"
+                source={require('../../assets/images/Logo.png')}
+                style={{
+                  ...styles.imageWrapper,
+                  height: CHANGE_BY_MOBILE_DPI(50),
+                  alignSelf: 'center',
+                }}
+              />
+            )}
+          </View>
+          <View style={styles.containWrapper}>
+            <Text style={styles.name}>{item.product.title}</Text>
+            <View style={styles.priceContainer}>
+              <Text style={styles.price}>{item.product_variant.price} ₹</Text>
+              <Text style={styles.discount}>
+                {item.product_variant.compare_price}₹
+              </Text>
+            </View>
+            <Text style={styles.quantity}>1 Qty</Text>
+            <BlackIncremnetButton />
+          </View>
+        </View>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.mainView}>
@@ -122,6 +172,12 @@ const OrderSummary = () => {
             externalContainer={styles.loginContainer}
           />
         </View>
+        <FlatList
+          data={cartListData}
+          renderItem={renderItem}
+          keyExtractor={item => item.key}
+          showsHorizontalScrollIndicator={false}
+        />
         <View style={styles.btn}>
           <CommonButton
             title={'Continue'}

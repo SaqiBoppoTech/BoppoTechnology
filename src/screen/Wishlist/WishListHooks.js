@@ -30,7 +30,7 @@ const WishListHooks = () => {
   const dispatch = useDispatch();
 
   ///API CODE GETWISHLIST
-  const [wishListData, setWishListData] = useState(null);
+  const [wishListData, setWishListData] = useState([]);
 
   const getWishListData = async () => {
     try {
@@ -69,6 +69,7 @@ const WishListHooks = () => {
   const addToCart = async (productID, productVariantId, productQuantity) => {
     console.log(productID, productVariantId);
     try {
+      dispatch(UserAction.setGlobalLoader(true));
       let url = `${API_END_POINT.ADD_CART}`;
       let response = await axiosInstance.post(url, {
         productId: productID,
@@ -76,9 +77,11 @@ const WishListHooks = () => {
         productQuantity: 1,
       });
       if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
         console.log(`SUCCESSFULL ${response.data}`);
       }
     } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
       console.log('error Add to Cart', error.message);
     }
   };

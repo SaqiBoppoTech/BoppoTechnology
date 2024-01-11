@@ -138,4 +138,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: CHANGE_BY_MOBILE_DPI(10),
   },
+  noItemView: {alignItems: 'center', justifyContent: 'center', flex: 1},
+  noItemText: {fontSize: CHANGE_BY_MOBILE_DPI(16), color: Colors.BLACK},
 });

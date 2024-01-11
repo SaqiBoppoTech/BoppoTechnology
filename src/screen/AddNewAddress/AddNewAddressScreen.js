@@ -1,4 +1,4 @@
-import {ScrollView, View} from 'react-native';
+import {ScrollView, TouchableOpacity, View, Text} from 'react-native';
 import React, {useEffect} from 'react';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import CommonButton from '../../components/Button/CommonButton';
@@ -9,6 +9,7 @@ import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
 import CountryDropdownComponent from '../../components/CountryDropDown/CountryDropDownComponent';
 import CustomCheckbox from '../../components/CustomCheckBox/CustomCheckBox';
+import Check from '../../assets/svgs/Check.svg';
 
 const AddNewAddress = () => {
   const {
@@ -35,6 +36,11 @@ const AddNewAddress = () => {
   } = AddNewAddressHooks();
 
   console.log('..................', typeOfAddress);
+
+  const handleToggle = () => {
+    setDefaultAddress(!defaultAddress);
+    console.log('yess default is', defaultAddress);
+  };
 
   return (
     <View style={styles.mainView}>
@@ -132,20 +138,32 @@ const AddNewAddress = () => {
               }
             }}
           />
-          <CustomCheckbox
+
+          <View style={styles.checkMainView}>
+            <TouchableOpacity
+              style={[styles.checkbox, defaultAddress ? styles.checked : null]}
+              onPress={handleToggle}>
+              <View style={styles.checkWrapper}>
+                {defaultAddress && <Check width="14" height="14" />}
+              </View>
+            </TouchableOpacity>
+            <Text style={styles.Checktext}>Apply as Default Address</Text>
+          </View>
+
+          {/* <CustomCheckbox
             title={'Apply as Default Address'}
             isCheckBox={defaultAddress}
             onToggle={(type, isChecked) => {
-              console.log('pppppppppppppppp', isChecked, 'dss', type);
+              console.log('isChecked', isChecked, 'type', type);
               if (isChecked) {
-                setDefaultAddress(true);
-                console.log('issisiisisisis', defaultAddress);
-              } else {
                 setDefaultAddress(false);
-                console.log('000000000000000', defaultAddress);
+                console.log('selected ', defaultAddress);
+              } else {
+                setDefaultAddress(true);
+                console.log('not selected ', defaultAddress);
               }
             }}
-          />
+          /> */}
         </View>
         <View style={styles.btn}>
           <CommonButton

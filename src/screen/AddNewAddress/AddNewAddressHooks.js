@@ -60,7 +60,7 @@ const AddNewAddressHooks = () => {
         type: typeOfAddress,
         recepient_name: name,
         recepient_contact: contact,
-        set_as_default: defaultAddress, //defaultAddress,
+        set_as_default: defaultAddress,
       });
       if (response.data.success == true) {
         dispatch(UserAction.setGlobalLoader(false));
@@ -91,7 +91,7 @@ const AddNewAddressHooks = () => {
         type: typeOfAddress,
         recepient_name: name,
         recepient_contact: contact,
-        set_as_default: false, //defaultAddress,
+        set_as_default: false,
         country_code: '+91',
       });
       if (response.data.success == true) {
@@ -115,7 +115,7 @@ const AddNewAddressHooks = () => {
     setName(item?.recepient_name);
     setDefaultAddress(item?.is_default == 1 ? true : false);
     console.log('type of address', item?.type);
-  }, []);
+  }, [item]);
 
   return {
     saveAddress,

@@ -46,7 +46,11 @@ const WishlistScreen = () => {
             <Image
               resizeMode="contain"
               source={require('../../assets/images/Logo.png')}
-              style={{...styles.imageWrapper, height:CHANGE_BY_MOBILE_DPI(50), alignSelf:'center'}}
+              style={{
+                ...styles.imageWrapper,
+                height: CHANGE_BY_MOBILE_DPI(50),
+                alignSelf: 'center',
+              }}
             />
           )}
           <View style={styles.containWrapper}>
@@ -63,12 +67,12 @@ const WishlistScreen = () => {
               </Text>
             </View>
             <View style={styles.priceContainer}>
-              <Text style={styles.price}>{item.product_variant.price} USD</Text>
+              <Text style={styles.price}>{item.product_variant.price} ₹</Text>
               <View style={styles.circle}></View>
-              <Text style={styles.quantity}>{item.quantity}Qty</Text>
+              <Text style={styles.quantity}>{item.quantity}1 Qty</Text>
             </View>
             <Text style={styles.discount}>
-              {item.product_variant.compare_price} USD
+              {item.product_variant.compare_price} ₹
             </Text>
             <TouchableOpacity
               style={styles.btn}
@@ -121,12 +125,18 @@ const WishlistScreen = () => {
         showCartIcon={true}
         onCartPress={navigateToCartPage}
       />
-      <FlatList
-        data={wishListData}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        showsVerticalScrollIndicator={false}
-      />
+      {wishListData.length > 0 ? (
+        <FlatList
+          data={wishListData}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
+        />
+      ) : (
+        <View style={styles.noItemView}>
+          <Text style={styles.noItemText}>No item Added in a WishList</Text>
+        </View>
+      )}
     </View>
   );
 };
