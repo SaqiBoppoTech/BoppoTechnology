@@ -31,6 +31,7 @@ const WishlistScreen = () => {
   } = WishListHooks();
 
   const renderItem = ({item}) => {
+    console.log('puraaaaaa item of wishlist', item);
     return (
       <View style={styles.renderMainView}>
         <View style={styles.imageViewWrapper}>
@@ -67,11 +68,7 @@ const WishlistScreen = () => {
                 const productHandle = item?.product_variant?.handle;
                 const productId = item?.product_variant?.id;
                 navigateToProductScreen(productHandle, productId);
-                console.log(
-                  'productandle and productid',
-                  productHandle,
-                  productId,
-                );
+                console.log('puraaaaaa item of wishlist', item);
               }}>
               <Text style={styles.btnText}>View Product</Text>
             </TouchableOpacity>

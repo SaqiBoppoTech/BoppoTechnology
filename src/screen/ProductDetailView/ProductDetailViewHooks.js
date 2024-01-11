@@ -120,6 +120,24 @@ const ProductDetailViewHooks = () => {
     }
   };
 
+  const deleteWishListData = async id => {
+    try {
+      console.log('this is remove from wishlist data');
+      dispatch(UserAction.setGlobalLoader(true));
+      let url = `${API_END_POINT.DELETE_WISHLIST}/${id}`;
+      console.log('url ===============>', url);
+      let response = await axiosInstance.delete(url);
+      if (response.data.success == true) {
+        dispatch(UserAction.setGlobalLoader(false));
+        getWishListData();
+        console.log('delete wishlist response', response.data);
+      }
+    } catch (error) {
+      dispatch(UserAction.setGlobalLoader(false));
+      console.log('error deleteWishList', error.message);
+    }
+  };
+
   const addToCart = async (productId, id) => {
     console.log('aaaazzzzziddd', productId, id);
     console.log('before', selectedProduct);
@@ -186,6 +204,7 @@ const ProductDetailViewHooks = () => {
     addToCart,
     wishListData,
     addToWishList,
+    deleteWishListData,
   };
 };
 export {ProductDetailViewHooks};

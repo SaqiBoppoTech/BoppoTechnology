@@ -29,6 +29,7 @@ const ProductDetailViewScreen = () => {
     addToCart,
     wishListData,
     addToWishList,
+    deleteWishListData,
   } = ProductDetailViewHooks();
 
   const productData = selectedProduct?.productMedia || [];
@@ -47,7 +48,7 @@ const ProductDetailViewScreen = () => {
   console.log('isItemInWishlist product detail ', wishlistId);
   console.log('productData', productData);
   console.log('productInfo', productInfo, 'yyyyyyyyyyyyyyyyyy', Imageurl);
-  console.log('pratik data', selectedProduct);
+  console.log('+++++++++++++++++++++++++++', selectedProduct);
   console.log('stockQuantity', stockQuantityCheck);
 
   const buyNow = () => {
@@ -68,7 +69,7 @@ const ProductDetailViewScreen = () => {
       <SearchAppBar
         showSearchIcon={true}
         showIcon={true}
-        showHeart={true}
+        showHeart={false}
         showCartIcon={true}
         showCartCount={true}
         handleGoBack={handleGoBack}
@@ -86,7 +87,9 @@ const ProductDetailViewScreen = () => {
           <View style={styles.iconPositionContainer}>
             <TouchableOpacity
               onPress={() => {
-                stockQuantityCheck == 0 ? null : addToWishList(productId, id);
+                isItemInWishlist
+                  ? deleteWishListData(productId)
+                  : addToWishList(productId, id);
               }}>
               {isItemInWishlist ? (
                 <HeartSvg
