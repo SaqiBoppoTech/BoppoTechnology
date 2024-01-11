@@ -4,12 +4,25 @@ import RatingComponent from '../RatingStar';
 import BlackIncremnetButton from '../BlackIncrementButton/BlackIncrementButton';
 import {styles} from './ProductDescriptionStyle';
 import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
+import {Colors, Fonts} from '../../global';
 
-const ProductDescription = ({description, price}) => {
+const ProductDescription = ({description, price, stockCount}) => {
   return (
     <ScrollView style={styles.scrollStyle}>
       <View style={styles.mainView}>
+        {stockCount == 0 && (
+          <Text
+            style={{
+              ...styles.description,
+              color: Colors.RED,
+              fontFamily: Fonts.INTER_BOLD,
+            }}>
+            Product is out of Stock
+          </Text>
+        )}
+
         <Text style={styles.product}>{description}</Text>
+
         <View style={styles.priceview}>
           <Text style={styles.price}>₹ {price}</Text>
           <BlackIncremnetButton />

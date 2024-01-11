@@ -49,9 +49,11 @@ const PaymentScreen = () => {
   const customerInfo = createOrderData?.notes || {};
 
   const handleItemClick = ({item}) => {
-    console.log('item', item);
     setSelectedRadioPayment(item.id);
-    changePaymentMethod();
+    changePaymentMethod(item.payment_provider_id);
+    console.log('item', item);
+
+    console.log('helloooooo provider id', item.payment_provider_id);
   };
 
   console.log('final payment data', createOrderData);
@@ -90,6 +92,12 @@ const PaymentScreen = () => {
     }
 
     const razorpayKey = selectedPaymentMethod.credentials.key;
+    console.log('razorpayyyyyyyyyyyyyyyyyyyy', razorpayKey);
+    console.log('createOrderData.currency', createOrderData.currency);
+    console.log('customerInfo.customer_name', customerInfo.customer_name);
+    console.log('customerInfo.customer_email', customerInfo.customer_email);
+    console.log('customerInfo.customer_mobile', customerInfo.customer_mobile);
+    console.log('createOrderData.amount', createOrderData.amount);
     console.log('razorpayyyyyyyyyyyyyyyyyyyy', razorpayKey);
     const options = {
       description: 'Payment for your product',

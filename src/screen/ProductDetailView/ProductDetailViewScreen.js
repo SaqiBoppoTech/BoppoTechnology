@@ -31,6 +31,7 @@ const ProductDetailViewScreen = () => {
 
   const productData = selectedProduct?.productMedia || [];
   const productInfo = selectedProduct?.shop_product_variants || {};
+  const stockQuantityCheck = selectedProduct?.stockQuantity || 0;
   const productDescription = productInfo?.description || '';
   const productPrice = productInfo?.price || '';
   const productId = productInfo?.product_id || '';
@@ -39,6 +40,13 @@ const ProductDetailViewScreen = () => {
   console.log('productData', productData);
   console.log('productInfo', productInfo, 'yyyyyyyyyyyyyyyyyy', Imageurl);
   console.log('pratik data', selectedProduct);
+  console.log('stockQuantity', stockQuantityCheck);
+
+  const buyNow = () => {
+    addToCart(productId, id).then(res => {
+      navigateToCartPage();
+    });
+  };
 
   return (
     <View style={styles.mainContainer}>
@@ -50,7 +58,9 @@ const ProductDetailViewScreen = () => {
         showCartIcon={true}
         showCartCount={true}
         handleGoBack={handleGoBack}
-        onCartPress={navigateToCartPage}
+        onCartPress={() => {
+          navigateToCartPage();
+        }}
         onPress={handleGoBack}
       />
       <View style={styles.elevationContainer}>
@@ -81,13 +91,15 @@ const ProductDetailViewScreen = () => {
         </View>
       </View>
       <View style={{flex: 1, paddingTop: CHANGE_BY_MOBILE_DPI(2)}}>
-        {openCustomView(productDescription, productPrice)}
+        {openCustomView(productDescription, productPrice, stockQuantityCheck)}
       </View>
       <View style={styles.positionContainer}>
         <View style={styles.addToContainer}>
           <View style={styles.flexContainer}>
             <TouchableOpacity
-              onPress={() => addToCart(productId, id)}
+              onPress={() =>
+                stockQuantityCheck == 0 ? null : addToCart(productId, id)
+              }
               style={styles.addToCartSubContainer}>
               <CartSvg
                 heigth={CHANGE_BY_MOBILE_DPI(23)}
@@ -98,7 +110,7 @@ const ProductDetailViewScreen = () => {
           </View>
           <View style={styles.flexContainer}>
             <TouchableOpacity
-              onPress={navigateToCheckOut}
+              onPress={() => (stockQuantityCheck == 0 ? null : buyNow())}
               style={styles.buyNowContainer}>
               <Text style={styles.buyNowFontStyle}>Buy Now</Text>
             </TouchableOpacity>

@@ -65,7 +65,10 @@ const SearchAppBar = ({
           </TouchableOpacity>
         )}
         {showCartIcon && (
-          <TouchableOpacity style={styles.cartWrapper} onPress={onCartPress}>
+          <TouchableOpacity
+            style={styles.cartWrapper}
+            onPress={onCartPress}
+            hitSlop={{top: 10, bottom: 10, right: 10, left: 10}}>
             <Cart
               height={CHANGE_BY_MOBILE_DPI(24)}
               width={CHANGE_BY_MOBILE_DPI(24)}

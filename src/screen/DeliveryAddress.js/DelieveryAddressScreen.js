@@ -11,6 +11,8 @@ import DeliveryAddressHooks from './DelieveryAddressHooks';
 import {styles} from './DeliveryAddressStyle';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {Colors} from '../../global';
+import {useDispatch} from 'react-redux';
+import * as UserAction from '../../redux/actions/userActions';
 
 const DelieveryAddressScreen = () => {
   const {
@@ -23,6 +25,18 @@ const DelieveryAddressScreen = () => {
     removeAddressFromList,
   } = DeliveryAddressHooks();
 
+  const dispatch = useDispatch();
+
+  const reorderedAddresses = allAddress.sort((a, b) => {
+    if (a.is_default === 1) {
+      return -1;
+    }
+    if (b.is_default === 1) {
+      return 1;
+    }
+    return 0;
+  });
+
   const renderAddressItem = ({item}) => {
     const handleEditPress = () => {
       console.log('Edit pressed for:', item.id);
@@ -31,7 +45,14 @@ const DelieveryAddressScreen = () => {
 
     const handleRemovePress = () => {
       console.log('Remove pressed for:', item.id);
-      removeAddressFromList(item.id);
+      item.is_default == 1
+        ? dispatch(
+            UserAction.setToastedAlert({
+              condition: true,
+              toastedAlertText: `Default Address Can't Remove`,
+            }),
+          )
+        : removeAddressFromList(item.id);
     };
 
     if (item.type == 'Shipping') {
@@ -49,9 +70,9 @@ const DelieveryAddressScreen = () => {
             showLine={true}
             showdefault={item.is_default == 1 ? true : false}
             addressline1={item.address_line1}
-            city={`city ${item.city}`}
-            province={`state ${item.province}`}
-            zipcode={`Zip/Postal ${item.zipcode}`}
+            city={`city: ${item.city}`}
+            province={`state: ${item.province}`}
+            zipcode={`Zip/Postal: ${item.zipcode}`}
             name={`${item.recepient_name}`}
           />
         </TouchableOpacity>
@@ -72,7 +93,7 @@ const DelieveryAddressScreen = () => {
       <FocusAwareStatusBar barColor={Colors.CONCRETE} />
       <SearchAppBar title={'Delivery address'} onPress={handleGoBack} />
       <FlatList
-        data={allAddress}
+        data={reorderedAddresses}
         keyExtractor={item => item.id}
         renderItem={renderAddressItem}
         onEndReached={loadMoreAddresses}

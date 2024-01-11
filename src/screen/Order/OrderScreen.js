@@ -15,15 +15,11 @@ import {Colors} from '../../global';
 import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import SearchAppBar from '../../components/AppBar/SearchAppBar/SearchAppBar';
 import {STATIC_DATA} from '../../global/staticdata';
-import { CHANGE_BY_MOBILE_DPI } from '../../global/constant';
+import {CHANGE_BY_MOBILE_DPI} from '../../global/constant';
 
 const OrderScreen = () => {
-  const {
-    handleGoBack,
-    openCustomView,
-    renderTopBar,
-    navigateToCartPage
-  } = OrderHooks();
+  const {handleGoBack, openCustomView, renderTopBar, navigateToCartPage} =
+    OrderHooks();
 
   return (
     <>
@@ -39,7 +35,9 @@ const OrderScreen = () => {
           onPress={() => {
             handleGoBack();
           }}
-          onCartPress={navigateToCartPage}
+          onCartPress={() => {
+            navigateToCartPage();
+          }}
         />
         <View>
           <FlatList
@@ -49,7 +47,7 @@ const OrderScreen = () => {
             contentContainerStyle={styles.contentContainerStyle}
           />
         </View>
-        <View style={{ paddingTop: CHANGE_BY_MOBILE_DPI(2)}}>
+        <View style={{paddingTop: CHANGE_BY_MOBILE_DPI(2)}}>
           {openCustomView()}
         </View>
       </View>

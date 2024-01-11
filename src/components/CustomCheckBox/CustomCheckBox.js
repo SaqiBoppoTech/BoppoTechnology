@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './CustomCheckBoxStyle';
@@ -7,10 +7,12 @@ import Check from '../../assets/svgs/Check.svg';
 
 const CustomCheckbox = ({title, type, onToggle, isCheckBox}) => {
   const {isChecked, setChecked} = CustomCheckBoxHooks(isCheckBox);
+
   const handleToggle = () => {
     setChecked(!isChecked);
     onToggle(type, !isChecked);
   };
+
   return (
     <View style={styles.mainView}>
       <TouchableOpacity

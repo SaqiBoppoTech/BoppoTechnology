@@ -12,7 +12,7 @@ import {API_END_POINT, BearerToken, ORIGIN, TOKEN} from '../../global/config';
 import axiosInstance from '../../global/api-core';
 
 const AllOrderHooks = () => {
-  const [orders, setorders] = useState(null);
+  const [orders, setorders] = useState([]);
   const userData = useSelector(e => e.user?.logoutToken);
   // VARIABLE
   const navigation = useNavigation();
@@ -34,6 +34,7 @@ const AllOrderHooks = () => {
       dispatch(UserAction.setGlobalLoader(false));
       console.log(`${response.data.data.customerOrderList}`);
       const orderList = response.data.data.customerOrderList;
+      console.log('hello world order', response.data.message);
       if (response.data.success == true) {
         setorders(orderList);
       }

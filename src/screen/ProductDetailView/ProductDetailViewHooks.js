@@ -27,12 +27,16 @@ const ProductDetailViewHooks = () => {
   console.log('routeProductHandle', routeProductHandle);
   console.log('routeProductId', routeProductId);
 
-  const openCustomView = (description, price) => {
+  const openCustomView = (description, price, stockCount) => {
     console.log({description});
     return (
       <View style={styles.marginBottomContainer}>
         {selectedTab == 0 ? (
-          <ProductDescription description={description} price={price} />
+          <ProductDescription
+            description={description}
+            price={price}
+            stockCount={stockCount}
+          />
         ) : selectedTab == 1 ? (
           <ProductDetail />
         ) : selectedTab == 2 ? (
@@ -97,19 +101,13 @@ const ProductDetailViewHooks = () => {
   const addToCart = async (productId, id) => {
     console.log('aaaazzzzziddd', productId, id);
     console.log('before', selectedProduct);
-    dispatch(
-      UserAction.setToastedAlert({
-        condition: true,
-        toastedAlertText: `${response.data.message}`,
-      }),
-    );
     try {
       dispatch(UserAction.setGlobalLoader(true));
       let url = `${BASE_URL}${API_END_POINT.ADD_TO_CART}`;
       console.log('categorydetailurl', url);
       const response = await axiosInstance.post(url, {
-        productId: id,
-        productVariantId: productId,
+        productId: productId,
+        productVariantId: id,
         productQuantity: 1,
       });
       if (response.data.success == true) {
