@@ -50,7 +50,7 @@ const OrderDetailsScreen = () => {
           />
         </View>
         <View style={styles.orderTrackingWrappe}>
-          <Text>Order Tracking YET TO DEVELOP</Text>
+          {/* <Text>Order Tracking YET TO DEVELOP</Text> */}
         </View>
         <View style={styles.orderDetailWrapper}>
           <Text style={styles.orderDetailText}>Order Details</Text>
@@ -63,13 +63,13 @@ const OrderDetailsScreen = () => {
               Total Product Price
             </Text>
             <Text style={styles.totalProductPriceValue}>
-              {orderbyIdData?.total_price} USD
+              {orderbyIdData?.total_price} ₹
             </Text>
           </View>
           <View style={styles.supplyDiscountWrapper}>
             <Text style={styles.supplyDiscountText}>Supplier Discount</Text>
             <Text style={styles.supplyDiscountValue}>
-              {orderbyIdData?.discount_value} USD
+              {orderbyIdData?.discount_value} ₹
             </Text>
           </View>
         </View>
@@ -77,7 +77,7 @@ const OrderDetailsScreen = () => {
           <View style={styles.orderTotalWrapper}>
             <Text style={styles.orderTotalText}>Order Total</Text>
             <Text style={styles.orderTotalValue}>
-              {orderbyIdData?.sub_total_price} USD
+              {orderbyIdData?.sub_total_price} ₹
             </Text>
           </View>
         </View>

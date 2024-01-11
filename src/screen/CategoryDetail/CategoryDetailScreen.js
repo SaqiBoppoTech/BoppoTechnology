@@ -8,6 +8,7 @@ import FocusAwareStatusBar from '../../components/AppBar/FocusAwareStatusBar';
 import {STATIC_DATA} from '../../global/staticdata';
 import {CategoryHooks} from '../Category/CategoryHooks';
 import Card from '../../components/Card/Card';
+import CardCategory from '../../components/CardCategories/CardCategories';
 
 const CategoryDetailScreen = ({route}) => {
   const {name,handle,index,data} = route.params;
@@ -22,9 +23,9 @@ const CategoryDetailScreen = ({route}) => {
   const {categoriesList} = CategoryHooks();
 
   const renderItem = ({item}) => (
-    <Card
+    <CardCategory
       categoryCardContainer={styles.categoryCardContainer}
-      image={`https://cdn-stage.boppogo.com/${item.shop_product_variant.shop_product_media.url}`}
+      image={item.shop_product_variant.shop_product_media.url}
       categoryDetailImageContainer={styles.categoryDetailImageContainer}
       paddingContainerCategoryDetail={styles.paddingContainerCategoryDetail}
       name={item.shop_product.title}
@@ -43,12 +44,11 @@ const CategoryDetailScreen = ({route}) => {
       }}
     />
   );
-  console.log('sdfdsf', collectionByHandel);
   return (
     <View style={styles.main}>
       <FocusAwareStatusBar barColor={Colors.GRAY_LIGHT} />
       <SearchAppBar
-        title={name}
+        title={collectionByHandel[0]?.shop_collection?.name}
         showIcon={true}
         showSearchIcon={true}
         showFilter={true}

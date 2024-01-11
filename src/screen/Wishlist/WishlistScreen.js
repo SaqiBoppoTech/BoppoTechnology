@@ -143,7 +143,7 @@ const WishlistScreen = () => {
               fontFamily: Fonts.INTER_REGULAR,
               fontSize: CHANGE_BY_MOBILE_DPI(16),
             }}>
-            No Item In Wishlist
+            No Item In Wishlist.
           </Text>
         </View>
       )}
